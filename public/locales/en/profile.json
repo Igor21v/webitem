@@ -1,0 +1,22 @@
+{
+    "Profile page": "Profile page",
+    "Edit": "Edit",
+    "Profile": "Profile",
+    "Your name": "Your name",
+    "Your surname": "Your surname",
+    "An error occurred while loading the profile": "An error occurred while loading the profile",
+    "Try reload page": "Try reload page",
+    "Cancel": "Cancel",
+    "Save": "Save",
+    "Your age": "Your age",
+    "Your city": "Your city",
+    "Your login": "Your login",
+    "Enter your login": "Enter your login",
+    "Enter reference to avatar": "Enter reference to avatar",
+    "Incorrect age": "Incorrect age",
+    "Incorrect country": "Incorrect country",
+    "Name and lastname is required": "Name and lastname is required",
+    "No data": "No data",
+    "Server error": "Server error",
+    "Profile not found": "Profile not found"
+}

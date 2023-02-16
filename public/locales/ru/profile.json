@@ -1,0 +1,22 @@
+{
+    "Profile page": "Страница пользователя",
+    "Edit": "Редактировать",
+    "Profile": "Профиль",
+    "Your name": "Ваше имя",
+    "Your surname": "Ваша фамилия",
+    "An error occurred while loading the profile": "Произошла ошибка при загрузке профиля",
+    "Try reload page": "Попробуйте обновить страницу",
+    "Cancel": "Отменить",
+    "Save": "Сохранить",
+    "Your age": "Ваш возраст",
+    "Your city": "Ваш город",
+    "Your login": "Ваш логин",
+    "Enter your login": "Введите Ваш логин",
+    "Enter reference to avatar": "Введите ссылку на аватар",
+    "Incorrect age": "Некорректный возраст",
+    "Incorrect country": "Некорректный регион",
+    "Name and lastname is required": "Имя и фамилия обязательны",
+    "No data": "Данные не указаны",
+    "Server error": "Ошибка на сервере",
+    "Profile not found": "Профиль не найден"
+}

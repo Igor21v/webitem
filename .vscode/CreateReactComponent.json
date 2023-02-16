@@ -1,0 +1,67 @@
+{
+    "folderTemplates.structures": [
+        {
+            "name": "adsad",
+            "omitParentDirectory": true,
+            "structure": [
+                {
+                    "fileName": "<FTName>/<FTName>.tsx",
+                    "template": "TSX FC"
+                },
+                {
+                    "fileName": "<FTName>/<FTName>.module.scss",
+                    "template": "SCSS"
+                },
+                {
+                    "fileName": "<FTName>/<FTName>.stories.tsx",
+                    "template": "STORYBOOK"
+                }
+            ]
+        }
+    ],
+    "folderTemplates.fileTemplates": {
+        "TSX FC": [
+            "import { memo } from 'react';",
+            "import { useTranslation } from 'react-i18next';",
+            "import { classNames } from 'shared/lib/classNames/classNames';",
+            "import cls from './<FTName>.module.scss';",
+            "",
+            "interface <FTName>Props {",
+            "    className?: string;",
+            "}",
+            "",
+            "export const <FTName> = memo((props: <FTName>Props) => {",
+            "    const {",
+            "        className,",
+            "    } = props;",
+            "    const { t } = useTranslation();",
+            "    return (",
+            "        <div className={classNames(cls.<FTName>, {}, [className])} >",
+            "            ",
+            "        </div>",
+            "    );",
+            "});",
+            ""
+        ],
+        "SCSS": [".<FTName> {", "   ", "}"],
+        "STORYBOOK": [
+            "import { ComponentStory, ComponentMeta } from '@storybook/react';",
+            "import { <FTName> } from './<FTName>';",
+            "",
+            "export default {",
+            "    title: 'new/<FTName>',",
+            "    component: <FTName>,",
+            "    argTypes: {",
+            "        backgroundColor: { control: 'color' },",
+            "    },",
+            "} as ComponentMeta<typeof <FTName>>;",
+            "",
+            "const Template: ComponentStory<typeof <FTName>> = (args) => <<FTName> {...args} />;",
+            "",
+            "export const Normal = Template.bind({});",
+            "Normal.args = {",
+            "};",
+            ""
+        ]
+    }
+}

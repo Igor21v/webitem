@@ -1,0 +1,3 @@
+export const ARTICLE_BIG_HEIGHT = 480;
+export const ARTICLE_SMALL_HEIGHT = 400;
+export const ARTICLE_SMALL_WIDTH = 280;

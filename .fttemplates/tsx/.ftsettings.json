@@ -1,0 +1,5 @@
+{
+    "name": "tsx module.scss storybook",
+    "omitParentDirectory": true,
+    "customVariables": ["storybookParent=>shared"]
+}

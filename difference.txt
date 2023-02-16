@@ -1,0 +1,5 @@
+1. 24 lession 15:50 add regenerator-runtime to setupTest.....
+2. 34 lession 27:00 at the text component was deleted styles Primary and main style cls.Text
+3. At storybook/webpack.config.ts exclude @ts-ignore, last lession module five.
+4. At buildLoaders.ts no added i18next-extract plagin
+5. Из модалки и drawer удален класс темы, так как переменные темы относятся к document.body и они доступны в модале и drawer
