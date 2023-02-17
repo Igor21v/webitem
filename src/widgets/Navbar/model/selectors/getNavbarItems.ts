@@ -10,10 +10,10 @@ import MainIcon from '@/shared/assets/icons/main-20-20.svg';
 import AboutIcon from '@/shared/assets/icons/about-20-20.svg';
 import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
 import ArticleIcon from '@/shared/assets/icons/article-20-20.svg';
-import { SidebarItemType } from '../types/sidebar';
+import { NavbarItemType } from '../types/navbar';
 
-export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
-    const sidebarItemsList: SidebarItemType[] = [
+export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
+    const navbarItemsList: NavbarItemType[] = [
         {
             path: getRouteMain(),
             Icon: MainIcon,
@@ -27,7 +27,7 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
     ];
 
     if (userData) {
-        sidebarItemsList.push(
+        navbarItemsList.push(
             {
                 path: getRouteProfile(userData.id),
                 Icon: ProfileIcon,
@@ -37,11 +37,11 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
             {
                 path: getRouteArticles(),
                 Icon: ArticleIcon,
-                text: 'Articles',
+                text: 'Items',
                 authOnly: true,
             },
         );
     }
 
-    return sidebarItemsList;
+    return navbarItemsList;
 });

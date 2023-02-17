@@ -122,6 +122,7 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 Конфигурация github actions находится в /.github/workflows.
 В ci прогоняются тесты, сборка проекта и сторибука, линтинг.
+Генерируются отчеты по исполнению тестов: https://igor21v.github.io/webitem/
 
 В прекоммит хуках проверяем проект линтерами, конфиг в /.husky
 
