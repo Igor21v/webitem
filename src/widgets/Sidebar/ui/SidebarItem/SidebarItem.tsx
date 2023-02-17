@@ -26,7 +26,7 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
             className={classNames(cls.item, { [cls.collapsed]: collapsed })}
         >
             <item.Icon className={cls.icon} />
-            <span className={cls.link}>{t(item.text)}</span>
+            {!collapsed && <span className={cls.link}>{t(item.text)}</span>}
         </AppLink>
     );
 });

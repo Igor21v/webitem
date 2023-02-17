@@ -20,7 +20,9 @@ import {
     getRouteArticles,
     getRouteMain,
     getRouteProfile,
+    getRouteFavourites,
 } from '@/shared/const/router';
+import { FavouritesPage } from '@/pages/FavouritesPage';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
@@ -66,6 +68,10 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         element: <AdminPanelPage />,
         authOnly: true,
         roles: [UserRole.MANAGER, UserRole.ADMIN],
+    },
+    [AppRoutes.FAVOURITES]: {
+        path: getRouteFavourites(),
+        element: <FavouritesPage />,
     },
     [AppRoutes.FORBIDDEN]: {
         path: getRouteForbidden(),

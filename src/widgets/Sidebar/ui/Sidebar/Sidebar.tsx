@@ -35,20 +35,22 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             >
                 {collapsed ? '>' : '<'}
             </Button>
-            <VStack role="navigation" gap="8" className={cls.items}>
-                {componentItemsList.map((item) => (
-                    <SidibarItem
-                        item={item}
-                        collapsed={collapsed}
-                        key={item.type}
-                    />
-                ))}
-            </VStack>
+            <VStack justify="between" className={cls.content}>
+                <VStack role="navigation" gap="8" className={cls.items}>
+                    {componentItemsList.map((item) => (
+                        <SidibarItem
+                            item={item}
+                            collapsed={collapsed}
+                            key={item.type}
+                        />
+                    ))}
+                </VStack>
 
-            <div className={cls.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher className={cls.lang} short={collapsed} />
-            </div>
+                <div className={cls.switchers}>
+                    <ThemeSwitcher />
+                    <LangSwitcher className={cls.lang} short={collapsed} />
+                </div>
+            </VStack>
         </section>
     );
 });
