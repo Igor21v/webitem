@@ -4,16 +4,10 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
-import { SidebarItemType } from '../../model/types/sidebar';
-import cls from './SidebarItem.module.scss';
+import { NavbarItemType } from '../../model/types/navbar';
+import cls from './NavbarItem.module.scss';
 
-interface SidibarItemProps {
-    item: SidebarItemType;
-    collapsed: boolean;
-}
-
-export const SidibarItem = memo((props: SidibarItemProps) => {
-    const { item, collapsed } = props;
+export const NavbarItem = memo((item: NavbarItemType) => {
     const { t } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
     if (item.authOnly && !isAuth) {
@@ -22,8 +16,8 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}
-            to={item.type}
-            className={classNames(cls.item, { [cls.collapsed]: collapsed })}
+            to={item.path}
+            className={classNames(cls.item, {})}
         >
             <item.Icon className={cls.icon} />
             <span className={cls.link}>{t(item.text)}</span>

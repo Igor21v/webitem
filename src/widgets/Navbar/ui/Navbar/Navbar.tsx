@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { LoginModal } from '@/features/AuthByUsername';
 import { getUserAuthData } from '@/entities/User';
-import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { ButtonTheme, Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import cls from './Navbar.module.scss';
+import { NavbarItem } from '../NavbarItem/NavbarItem';
+import { getNavbarItems } from '../../model/selectors/getNavbarItems';
 
 interface NavbarProps {
     className?: string;
@@ -27,20 +27,25 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         setIsAuthModal(true);
     }, []);
     const authData = useSelector(getUserAuthData);
+    const navbarItemsList = useSelector(getNavbarItems);
+    const content = (
+        <>
+            <Text
+                theme={TextTheme.INVERTED}
+                className={cls.appName}
+                title={t('webitem')}
+            />
+            <HStack role="navigation" gap="32">
+                {navbarItemsList.map((item) => (
+                    <NavbarItem {...item} key={item.path} />
+                ))}
+            </HStack>
+        </>
+    );
     if (authData) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
-                <Text
-                    theme={TextTheme.INVERTED}
-                    className={cls.appName}
-                    title={t('App name')}
-                />
-                <AppLink
-                    to={getRouteArticleCreate()}
-                    theme={AppLinkTheme.SECONDARY}
-                >
-                    {t('Create article')}
-                </AppLink>
+                {content}
                 <HStack gap="16" className={cls.actions}>
                     <NotificationButton />
                     <AvatarDropdown />
@@ -51,6 +56,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     return (
         <header className={classNames(cls.Navbar, {}, [className])}>
+            {content}
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
