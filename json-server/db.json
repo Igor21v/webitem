@@ -964,7 +964,7 @@
       "lastname": "Бондаренко",
       "age": 22,
       "currency": "RUB",
-      "country": "Armenia",
+      "country": "Russia",
       "city": "",
       "username": "admin",
       "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
@@ -1005,174 +1005,285 @@
   ],
   "article-ratings": [
     {
-      "id": "1",
-      "rate": 4,
-      "feedback": "Хорошая статья",
-      "userId": "1",
-      "articleId": "1"
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 1
     },
     {
-      "id": "2",
-      "rate": 4,
-      "feedback": "Хорошая статья",
-      "userId": "1",
-      "articleId": "2"
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 2
     },
     {
-      "userId": "1",
-      "articleId": "3",
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 3
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 4
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 5
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 6
+    },
+    {
+      "userId": "",
+      "articleId": "7",
       "rate": 3,
       "feedback": "",
-      "id": "I7ofk1u"
+      "id": 7
     },
     {
-      "userId": "1",
-      "articleId": "9",
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": 8
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": 9
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 10
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 11
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "id": 12
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": 13
+    },
+    {
+      "userId": "",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": 14
+    },
+    {
+      "userId": "",
+      "articleId": "4",
       "rate": 5,
-      "feedback": "asdasdasdasd",
-      "id": "Y7MhPzo"
+      "id": 15
     },
     {
-      "userId": "1",
+      "userId": "",
+      "articleId": "5",
+      "rate": 4,
+      "id": 16
+    },
+    {
+      "userId": "",
+      "articleId": "6",
+      "rate": 2,
+      "id": 17
+    },
+    {
+      "userId": "",
+      "articleId": "8",
+      "rate": 2,
+      "id": 18
+    },
+    {
+      "userId": "",
+      "articleId": "9",
+      "rate": 2,
+      "id": 19
+    },
+    {
+      "userId": "",
       "articleId": "10",
-      "rate": 1,
-      "feedback": "отстой",
-      "id": "II0a75O"
+      "rate": 3,
+      "id": 20
+    },
+    {
+      "userId": "",
+      "articleId": "12",
+      "rate": 5,
+      "id": 21
+    },
+    {
+      "userId": "",
+      "articleId": "13",
+      "rate": 2,
+      "id": 22
+    },
+    {
+      "userId": "",
+      "articleId": "14",
+      "rate": 5,
+      "id": 23
+    },
+    {
+      "userId": "",
+      "articleId": "18",
+      "rate": 5,
+      "id": 24
+    },
+    {
+      "userId": "",
+      "articleId": "Yk3ewpZ",
+      "rate": 4,
+      "id": 25
+    },
+    {
+      "userId": "",
+      "articleId": "gUvP65n",
+      "rate": 5,
+      "feedback": "123",
+      "id": 26
+    },
+    {
+      "userId": "",
+      "articleId": "11",
+      "rate": 3,
+      "id": 27
+    },
+    {
+      "userId": "",
+      "articleId": "11",
+      "rate": 3,
+      "feedback": "",
+      "id": 28
+    },
+    {
+      "userId": "",
+      "articleId": "11",
+      "rate": 3,
+      "feedback": "1234",
+      "id": 29
+    },
+    {
+      "userId": "",
+      "articleId": "11",
+      "rate": 3,
+      "feedback": "1234",
+      "id": 30
+    },
+    {
+      "userId": "",
+      "articleId": "11",
+      "rate": 3,
+      "id": 31
+    },
+    {
+      "userId": "",
+      "articleId": "17",
+      "rate": 4,
+      "id": 32
+    },
+    {
+      "userId": "",
+      "articleId": "sKrdDsV",
+      "rate": 4,
+      "id": 33
+    },
+    {
+      "userId": "",
+      "articleId": "Qo9FIVq",
+      "rate": 2,
+      "id": 34
+    },
+    {
+      "userId": "",
+      "articleId": "NsIs0qB",
+      "rate": 4,
+      "id": 35
+    },
+    {
+      "userId": "",
+      "articleId": "1",
+      "rate": 4,
+      "id": 36
+    },
+    {
+      "userId": "",
+      "articleId": "1",
+      "rate": 4,
+      "id": 37
+    },
+    {
+      "userId": "",
+      "articleId": "1",
+      "rate": 4,
+      "id": 38
     },
     {
       "userId": "1",
       "articleId": "7",
-      "rate": 3,
-      "feedback": "",
-      "id": "bcPnbbZ"
-    },
-    {
-      "userId": "1",
-      "articleId": "19",
-      "rate": 5,
-      "feedback": "ghjgfj",
-      "id": "R763akB"
-    },
-    {
-      "userId": "1",
-      "articleId": "18",
-      "rate": 1,
-      "id": "PFG81SB"
-    },
-    {
-      "userId": "1",
-      "articleId": "18",
-      "rate": 2,
-      "id": "u2nh8py"
-    },
-    {
-      "userId": "1",
-      "articleId": "5",
-      "rate": 2,
-      "id": "GrP422x"
-    },
-    {
-      "userId": "1",
-      "articleId": "5",
-      "rate": 2,
-      "id": "Re2zwZT"
-    },
-    {
-      "userId": "1",
-      "articleId": "13",
       "rate": 4,
-      "id": "Knn3skE"
-    },
-    {
-      "userId": "1",
-      "articleId": "12",
-      "rate": 3,
-      "id": "ONhe1tK"
-    },
-    {
-      "userId": "1",
-      "articleId": "17",
-      "rate": 2,
-      "id": "tpFsslN"
+      "id": 39
     },
     {
       "userId": "1",
       "articleId": "4",
+      "rate": 3,
+      "id": 40
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 5,
+      "feedback": "123",
+      "id": 41
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 4,
+      "id": 42
+    },
+    {
+      "userId": "1",
+      "articleId": "2",
       "rate": 5,
       "feedback": "12345",
-      "id": "me7Ogpe"
+      "id": 43
     },
     {
       "userId": "1",
       "articleId": "6",
-      "rate": 2,
-      "id": "OKeyL3R"
-    },
-    {
-      "userId": "1",
-      "articleId": "16",
-      "rate": 4,
-      "feedback": "",
-      "id": "HVFA5tO"
-    },
-    {
-      "userId": "1",
-      "articleId": "gUvP65n",
-      "rate": 2,
-      "id": "gJuFtt7"
-    },
-    {
-      "userId": "1",
-      "articleId": "NsIs0qB",
-      "rate": 2,
-      "feedback": "Test111",
-      "id": "uGK0toI"
-    },
-    {
-      "userId": "3",
-      "articleId": "4",
-      "rate": 3,
-      "id": "wBBqwGv"
-    },
-    {
-      "userId": "3",
-      "articleId": "7",
-      "rate": 3,
-      "id": "8ndrBOD"
-    },
-    {
-      "userId": "3",
-      "articleId": "3",
       "rate": 5,
-      "id": "2DD7vap"
-    },
-    {
-      "userId": "3",
-      "articleId": "1",
-      "rate": 4,
-      "id": "55xQdhe"
+      "id": 44
     },
     {
       "userId": "1",
       "articleId": "8",
-      "rate": 2,
-      "id": "1bycU1G"
-    }
-  ],
-  "profile-ratings": [
-    {
-      "id": "1",
-      "rate": 4,
-      "feedback": "Хорошая статья",
-      "userId": "1",
-      "profileId": "1"
-    },
-    {
-      "id": "2",
-      "rate": 4,
-      "feedback": "Хорошая статья",
-      "userId": "1",
-      "profileId": "2"
+      "rate": 5,
+      "id": 45
     }
   ]
 }
