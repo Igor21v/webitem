@@ -1284,6 +1284,31 @@
       "articleId": "8",
       "rate": 5,
       "id": 45
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "id": 46
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 4,
+      "feedback": "sdfavcxb",
+      "id": 47
+    },
+    {
+      "userId": "1",
+      "articleId": "12",
+      "rate": 5,
+      "id": 48
+    },
+    {
+      "userId": "1",
+      "articleId": "12",
+      "rate": 4,
+      "id": 49
     }
   ]
 }
