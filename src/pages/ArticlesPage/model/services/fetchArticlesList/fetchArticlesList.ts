@@ -8,25 +8,19 @@ import {
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageSort,
-    getArticlesPageType,
 } from '../../selectors/articlesPageSelectors';
-
-interface FetchArticleListProps {
-    replace?: boolean;
-}
 
 export const fetchArticlesList = createAsyncThunk<
     Article[],
-    FetchArticleListProps,
+    string,
     ThunkConfig<string>
->('articlesPage/fetchArticlesList', async (props, thunkApi) => {
+>('articlesPage/fetchArticlesList', async (type, thunkApi) => {
     const { extra, rejectWithValue, getState } = thunkApi;
     const page = getArticlesPageNum(getState());
     const limit = getArticlesPageLimit(getState());
     const sort = getArticlesPageSort(getState());
     const order = getArticlesPageOrder(getState());
     const search = getArticlesPageSearch(getState());
-    const type = getArticlesPageType(getState());
     try {
         addQueryParams({
             sort,
