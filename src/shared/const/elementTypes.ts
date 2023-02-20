@@ -1,140 +1,179 @@
-import { SidebarItemType } from '../types/sidebar';
 import ArticleIcon from '@/shared/assets/icons/article-20-20.svg';
 
-export const componentItemsList: SidebarItemType[] = [
+export type ElementTypes =
+    'all' |
+    ':type' |
+    'accordion' |
+    'alert' |
+    'animation' |
+    'accordion' |
+    'avatar' |
+    'badge' |
+    'breadcrumbs'|
+    'button' |
+    'card' |
+    'checkbox' |
+    'image' |
+    'label' |
+    'link'|
+    'modal'|
+    'pagination'|
+    'picker' |
+    'progress'|
+    'rating'|
+    'radio_button'|
+    'skeleton'|
+    'select'|
+    'slider'|
+    'spinner'|
+    'tabs'|
+    'text_input'|
+    'textarea'|
+    'toggle'|
+    'tooltip';
+
+export interface ElementItemType {
+    type: ElementTypes;
+    text: string;
+    Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
+    authOnly?: boolean;
+}
+
+export const elementsList: ElementItemType[] = [
         {
             text: 'Accordion',
-            type: 'Accordion',
+            type: 'accordion',
             Icon: ArticleIcon,
         },
         {
-            type: 'Alert',
             text: 'Alert',
+            type: 'alert',
             Icon: ArticleIcon,
         },
         {
             text: 'Animation',
-            type: 'Animation',
+            type: 'animation',
             Icon: ArticleIcon,
         },
         {
             text: 'Avatar',
-            type: 'Avatar',
+            type: 'avatar',
             Icon: ArticleIcon,
         },
         {
-            text: 'Badge',
-            type: 'Badge (Tag)',
+            text: 'Badge (Tag)',
+            type: 'badge',
             Icon: ArticleIcon,
         },
         {
             text: 'Button',
-            type: 'Button',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Card',
-            type: 'Card',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Checkbox',
-            type: 'Checkbox',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Color picker',
-            type: 'Picker',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Image',
-            type: 'Image',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Label',
-            type: 'Label',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Link',
-            type: 'Link',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Modal',
-            type: 'Modal',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Pagination',
-            type: 'Pagination',
-            Icon: ArticleIcon,
-        },
-        {
-            text: 'Progress',
-            type: 'Progress',
+            type: 'button',
             Icon: ArticleIcon,
         },
         {
             text: 'Breadcrumbs',
-            type: 'Breadcrumbs',
+            type: 'breadcrumbs',
             Icon: ArticleIcon,
         },
         {
+            text: 'Card',
+            type: 'card',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Checkbox',
+            type: 'checkbox',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Image',
+            type: 'image',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Label',
+            type: 'label',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Link',
+            type: 'link',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Modal',
+            type: 'modal',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Pagination',
+            type: 'pagination',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Color picker',
+            type: 'picker',
+            Icon: ArticleIcon,
+        },
+        {
+            text: 'Progress',
+            type: 'progress',
+            Icon: ArticleIcon,
+        },
+
+        {
             text: 'Rating',
-            type: 'Rating',
+            type: 'rating',
             Icon: ArticleIcon,
         },
         {
             text: 'Radio button',
-            type: 'Radio_button',
+            type: 'radio_button',
             Icon: ArticleIcon,
         },
         {
             text: 'Skeleton',
-            type: 'Skeleton',
+            type: 'skeleton',
             Icon: ArticleIcon,
         },
         {
             text: 'Select',
-            type: 'Select',
+            type: 'select',
             Icon: ArticleIcon,
         },
         {
             text: 'Slider',
-            type: 'Slider',
+            type: 'slider',
             Icon: ArticleIcon,
         },
         {
             text: 'Spinner',
-            type: 'Spinner',
+            type: 'spinner',
             Icon: ArticleIcon,
         },
         {
             text: 'Tabs',
-            type: 'Tabs',
+            type: 'tabs',
             Icon: ArticleIcon,
         },
         {
             text: 'Text input',
-            type: 'Text_input',
+            type: 'text_input',
             Icon: ArticleIcon,
         },
         {
             text: 'Textarea',
-            type: 'Textarea',
+            type: 'textarea',
             Icon: ArticleIcon,
         },
         {
             text: 'Toggle',
-            type: 'Toggle',
+            type: 'toggle',
             Icon: ArticleIcon,
         },
         {
             text: 'Tooltip',
-            type: 'Tooltip',
+            type: 'tooltip',
             Icon: ArticleIcon,
         },
     ];

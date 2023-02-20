@@ -22,7 +22,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
             text: 'Main',
         },
         {
-            path: getRouteArticles(),
+            path: getRouteArticles('all'),
             Icon: ArticleIcon,
             text: 'All items',
         },

@@ -917,6 +917,12 @@
       "userId": "3",
       "text": "qqqqq",
       "id": "W---erP"
+    },
+    {
+      "articleId": "11",
+      "userId": "1",
+      "text": "sdfasfd",
+      "id": "IoUi_jt"
     }
   ],
   "users": [
@@ -963,7 +969,7 @@
       "first": "Игорь",
       "lastname": "Бондаренко",
       "age": 22,
-      "currency": "RUB",
+      "currency": "USD",
       "country": "Russia",
       "city": "",
       "username": "admin",
@@ -1309,6 +1315,12 @@
       "articleId": "12",
       "rate": 4,
       "id": 49
+    },
+    {
+      "userId": "1",
+      "articleId": "11",
+      "rate": 3,
+      "id": 50
     }
   ]
 }
