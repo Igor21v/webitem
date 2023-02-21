@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleList } from './ArticleList';
-import { ArticleView } from '../../model/consts/ArticleConsts';
+import { ArticleView } from '../../model/consts/ElementConst';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { TEST_ARTICLE } from '@/shared/const/tests';
 

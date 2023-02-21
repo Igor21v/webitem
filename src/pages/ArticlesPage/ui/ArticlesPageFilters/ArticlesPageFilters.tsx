@@ -37,7 +37,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     const search = useSelector(getArticlesPageSearch);
     const { type } = useParams();
     const fetchData = useCallback(() => {
-        dispatch(fetchArticlesList(type));
+        dispatch(fetchArticlesList({ type, replace: true }));
     }, [dispatch, type]);
     const debouncedFetchData = useDebounce(fetchData, 500);
     const onChangeView = useCallback(
@@ -74,7 +74,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     );
     useNonInitialEffect(() => {
         dispatch(articlesPageActions.setPage(1));
-        fetchData(type);
+        fetchData();
     }, [type]);
 
     return (

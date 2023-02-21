@@ -11,10 +11,7 @@ import { getRouteArticleDetails } from '@/shared/const/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ArticleListItem.module.scss';
 import { Article, ArticleTextBlock } from '../../model/types/article';
-import {
-    ArticleBlockType,
-    ArticleView,
-} from '../../model/consts/ArticleConsts';
+import { ArticleBlockType, ArticleView } from '../../model/consts/ElementConst';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';

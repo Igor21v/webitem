@@ -1,4 +1,4 @@
-import { ElementTypes } from './elementTypes';
+import { ElementTypes } from '../../entities/Article/model/consts/ElementList';
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -13,7 +13,6 @@ export enum AppRoutes {
     ADMIN_PANEL = 'admin_panele',
     FORBIDDEN = 'forbidden',
 }
-
 
 export const getRouteMain = () => '/';
 export const getRouteAbout = () => '/about';
