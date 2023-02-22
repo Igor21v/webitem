@@ -1,15 +1,18 @@
-import { DependencyList, useEffect, useRef } from "react";
+import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 
-export const useNonInitialEffect = (callback: () => void, deps?: DependencyList) => {
+export const useNonInitialEffect = (
+    callback: EffectCallback,
+    deps?: DependencyList,
+) => {
     const initialRender = useRef(true);
-    
+
     useEffect(() => {
         if (initialRender.current) {
             initialRender.current = false;
         } else {
-            console.log('Working useNonInitEffect')
             return callback();
         }
-        return undefined
-    }, [callback, deps]);
-}
+        return undefined;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, deps);
+};
