@@ -1,6 +1,9 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable i18next/no-literal-string */
 import { memo, useEffect, useState } from 'react';
+import { javascript } from '@codemirror/lang-javascript';
+import { css } from '@codemirror/lang-css';
+import { html } from '@codemirror/lang-html';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CodeEditor.module.scss';
 import { Button } from '@/shared/ui/Button';
@@ -12,12 +15,10 @@ interface CodeEditorProps {
 
 export const CodeEditor = memo((props: CodeEditorProps) => {
     const { className } = props;
-
     const [openedEditor, setOpenedEditor] = useState('html');
-
-    const [html, setHtml] = useState('');
-    const [css, setCss] = useState('');
-    const [js, setJs] = useState('');
+    const [htmlContent, setHtml] = useState('<div>2</div>');
+    const [cssContent, setCss] = useState('');
+    const [jsContent, setJs] = useState('');
     const [srcDoc, setSrcDoc] = useState(``);
 
     const onTabClick = (editorName: string) => {
@@ -29,19 +30,18 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
             setSrcDoc(
                 `
           <html>
-            <body>${html}</body>
-            <style>${css}</style>
-            <script>${js}</script>
+            <body>${htmlContent}</body>
+            <style>${cssContent}</style>
+            <script>${jsContent}</script>
           </html>
         `,
             );
         }, 250);
 
         return () => clearTimeout(timeOut);
-    }, [html, css, js]);
+    }, [htmlContent, cssContent, jsContent]);
     return (
         <div className={classNames(cls.CodeEditor, {}, [className])}>
-            <p>Welcome to the edior</p>
             <div className="tab-button-container">
                 <Button
                     onClick={() => {
@@ -69,20 +69,20 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
             <div className="editor-container">
                 {openedEditor === 'html' ? (
                     <Editor
-                        language="xml"
-                        value={html}
+                        language={html}
+                        value={htmlContent}
                         setEditorState={setHtml}
                     />
                 ) : openedEditor === 'css' ? (
                     <Editor
-                        language="css"
-                        value={css}
+                        language={css}
+                        value={cssContent}
                         setEditorState={setCss}
                     />
                 ) : (
                     <Editor
-                        language="javascript"
-                        value={js}
+                        language={javascript}
+                        value={jsContent}
                         setEditorState={setJs}
                     />
                 )}
