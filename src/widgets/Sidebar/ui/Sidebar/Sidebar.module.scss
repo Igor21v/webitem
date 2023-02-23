@@ -5,23 +5,6 @@
     position: relative;
     transition: width 0.3s;
     flex-shrink: 0;
-
-    /* Переопределение настроек скроллбара для FireFox */
-    scrollbar-color: var(--primary-color) var(--inverted-bg-color);
-
-    /* Переопределение настроек скроллбара для Chrome/Edge/Safari */
-    ::-webkit-scrollbar {
-        width: 6px;               /* ширина scrollbar */
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: var(--inverted-primary-color);    /* цвет плашки */
-        border: none;  /* padding вокруг плашки */
-    }
-
-    *::-webkit-scrollbar-track {
-        background: var(--inverted-bg-color);        /* цвет дорожки */
-    }
 }
 
 .switchers {

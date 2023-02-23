@@ -1,3 +1,8 @@
 .Editor {
+    background: var(--code-bg);
+    border: 1px solid var(--primary-color);
+    max-height: 400px;
+    overflow: auto;
 
+    /* margin-top: 8px; */
 }

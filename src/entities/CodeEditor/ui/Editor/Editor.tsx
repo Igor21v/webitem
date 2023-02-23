@@ -1,29 +1,28 @@
-/* eslint-disable i18next/no-literal-string */
 import React, { memo } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './Editor.module.scss';
 
-type TODO_any = any;
-
-interface EditorProps {
+export interface EditorProps {
     className?: string;
-    language: TODO_any;
-    value: TODO_any;
-    setEditorState: TODO_any;
+    language: () => Extension;
+    value: string;
+    setEditorState: (value: string) => void;
 }
 
 export const Editor = memo((props: EditorProps) => {
     const { className, language, setEditorState, value } = props;
-    const handleChange = (value: TODO_any) => {
+    const handleChange = (value: string) => {
         setEditorState(value);
     };
 
     return (
-        <div className={classNames('editor-container', {}, [className])}>
+        <div>
             <CodeMirror
+                className={classNames(cls.Editor, {}, [className])}
                 onChange={handleChange}
                 value={value}
-                minHeight="300px"
+                minHeight="200px"
                 theme="dark"
                 extensions={[language()]}
             />

@@ -1,13 +1,12 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable i18next/no-literal-string */
-import { memo, useEffect, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { javascript } from '@codemirror/lang-javascript';
 import { css } from '@codemirror/lang-css';
 import { html } from '@codemirror/lang-html';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CodeEditor.module.scss';
-import { Button } from '@/shared/ui/Button';
 import { Editor } from '../Editor/Editor';
+import { TabItem, Tabs } from '@/shared/ui/Tabs';
+import { Preview } from '../Preview/Preview';
 
 interface CodeEditorProps {
     className?: string;
@@ -16,88 +15,68 @@ interface CodeEditorProps {
 export const CodeEditor = memo((props: CodeEditorProps) => {
     const { className } = props;
     const [openedEditor, setOpenedEditor] = useState('html');
-    const [htmlContent, setHtml] = useState('<div>2</div>');
-    const [cssContent, setCss] = useState('');
-    const [jsContent, setJs] = useState('');
-    const [srcDoc, setSrcDoc] = useState(``);
+    const [htmlContent, setHtmlContent] = useState('<div>2</div>');
+    const [cssContent, setCssContent] = useState('');
+    const [jsContent, setJsContent] = useState('');
 
-    const onTabClick = (editorName: string) => {
-        setOpenedEditor(editorName);
+    const onTabClick = (tab: TabItem) => {
+        setOpenedEditor(tab.value);
     };
+    const langTabs = useMemo(
+        () => [
+            {
+                value: 'html',
+                content: 'HTML',
+            },
+            {
+                value: 'css',
+                content: 'CSS',
+            },
+            {
+                value: 'js',
+                content: 'JS',
+            },
+        ],
+        [],
+    );
+    let editorCurrLang;
+    let editorCurrValue;
+    let editorCurrSetState;
+    switch (openedEditor) {
+        case 'html':
+            editorCurrLang = html;
+            editorCurrValue = htmlContent;
+            editorCurrSetState = setHtmlContent;
+            break;
+        case 'css':
+            editorCurrLang = css;
+            editorCurrValue = cssContent;
+            editorCurrSetState = setCssContent;
+            break;
+        default:
+            editorCurrLang = javascript;
+            editorCurrValue = jsContent;
+            editorCurrSetState = setJsContent;
+    }
 
-    useEffect(() => {
-        const timeOut = setTimeout(() => {
-            setSrcDoc(
-                `
-          <html>
-            <body>${htmlContent}</body>
-            <style>${cssContent}</style>
-            <script>${jsContent}</script>
-          </html>
-        `,
-            );
-        }, 250);
-
-        return () => clearTimeout(timeOut);
-    }, [htmlContent, cssContent, jsContent]);
     return (
         <div className={classNames(cls.CodeEditor, {}, [className])}>
-            <div className="tab-button-container">
-                <Button
-                    onClick={() => {
-                        onTabClick('html');
-                    }}
-                >
-                    HTML
-                </Button>
-                <Button
-                    onClick={() => {
-                        onTabClick('css');
-                    }}
-                >
-                    CSS
-                </Button>
-                <Button
-                    title="JavaScript"
-                    onClick={() => {
-                        onTabClick('js');
-                    }}
-                >
-                    JavaScript
-                </Button>
-            </div>
-            <div className="editor-container">
-                {openedEditor === 'html' ? (
-                    <Editor
-                        language={html}
-                        value={htmlContent}
-                        setEditorState={setHtml}
-                    />
-                ) : openedEditor === 'css' ? (
-                    <Editor
-                        language={css}
-                        value={cssContent}
-                        setEditorState={setCss}
-                    />
-                ) : (
-                    <Editor
-                        language={javascript}
-                        value={jsContent}
-                        setEditorState={setJs}
-                    />
-                )}
-            </div>
-            <div>
-                <iframe
-                    id="my_iframe"
-                    srcDoc={srcDoc}
-                    title="output"
-                    sandbox="allow-scripts"
-                    frameBorder="1"
-                    width="100%"
-                    height="100%"
-                />
-            </div>
+            <Tabs
+                tabs={langTabs}
+                value={openedEditor}
+                onTabClick={onTabClick}
+                className={classNames('', {}, [className])}
+            />
+            <Editor
+                language={editorCurrLang}
+                value={editorCurrValue}
+                setEditorState={editorCurrSetState}
+            />
+            <Preview
+                htmlContent={htmlContent}
+                cssContent={cssContent}
+                jsContent={jsContent}
+            />
         </div>
     );
 });
