@@ -6,7 +6,7 @@ import { SidibarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { elementList } from '@/entities/Article/model/consts/ElementList';
+import { elementList } from '@/entities/Article';
 
 interface SidebarProps {
     className?: string;
@@ -23,6 +23,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             data-testid="sidebar"
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
                 className,
+                'scroll-thin',
             ])}
         >
             <Button

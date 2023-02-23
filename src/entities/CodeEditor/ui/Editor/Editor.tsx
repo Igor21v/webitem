@@ -6,7 +6,7 @@ import cls from './Editor.module.scss';
 export interface EditorProps {
     className?: string;
     language: () => Extension;
-    value: string;
+    value?: string;
     setEditorState: (value: string) => void;
 }
 
@@ -17,15 +17,13 @@ export const Editor = memo((props: EditorProps) => {
     };
 
     return (
-        <div>
-            <CodeMirror
-                className={classNames(cls.Editor, {}, [className])}
-                onChange={handleChange}
-                value={value}
-                minHeight="200px"
-                theme="dark"
-                extensions={[language()]}
-            />
-        </div>
+        <CodeMirror
+            className={classNames(cls.Editor, {}, [className, 'scroll-thin'])}
+            onChange={handleChange}
+            value={value}
+            minHeight="200px"
+            theme="dark"
+            extensions={[language()]}
+        />
     );
 });
