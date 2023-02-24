@@ -33,5 +33,9 @@
   "All items": "Все элементы",
   "Favourites": "Избранное",
   "webitem": "webitem",
-  "Elements for your website": "Элементы для Вашего сайта"
+  "Elements for your website": "Элементы для Вашего сайта",
+  "default": "по умолчанию",
+  "dark": "темная",
+  "light": "светлая",
+  "Theme": "Тема"
 }

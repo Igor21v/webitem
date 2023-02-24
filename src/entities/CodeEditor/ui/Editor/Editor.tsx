@@ -5,17 +5,22 @@ import { css } from '@codemirror/lang-css';
 import { javascript } from '@codemirror/lang-javascript';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Editor.module.scss';
-import { ContentType, languageType } from '../CodeEditor/CodeEditor';
+import {
+    ContentType,
+    EditorThemeType,
+    languageType,
+} from '../CodeEditor/CodeEditor';
 
 interface EditorProps {
     className?: string;
     openedEditor: languageType;
     content: ContentType;
     setContent: Dispatch<SetStateAction<ContentType>>;
+    theme: EditorThemeType;
 }
 
 export const Editor = memo((props: EditorProps) => {
-    const { className, openedEditor, content, setContent } = props;
+    const { className, openedEditor, content, setContent, theme } = props;
     const handleChange = (value: string | undefined) => {
         setContent({ ...content, [openedEditor]: value });
     };
@@ -42,7 +47,7 @@ export const Editor = memo((props: EditorProps) => {
             onChange={handleChange}
             value={currContent}
             minHeight="200px"
-            theme="dark"
+            theme={theme}
             extensions={[currLang()]}
         />
     );

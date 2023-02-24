@@ -33,5 +33,9 @@
   "All items": "All items",
   "Favourites": "Favourites",
   "webitem": "webitem",
-  "Elements for your website": "Elements for your website"
+  "Elements for your website": "Elements for your website",
+  "default": "default",
+  "dark": "dark",
+  "light": "light",
+  "Theme": "Theme"
 }
