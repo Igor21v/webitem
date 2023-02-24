@@ -1,9 +1,9 @@
 import { memo, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CodeEditor.module.scss';
-import { Editor } from '../Editor/Editor';
 import { TabItem, Tabs } from '@/shared/ui/Tabs';
 import { Preview } from '../Preview/Preview';
+import { Editor } from '../Editor/Editor';
 
 export type languageType = 'html' | 'css' | 'js';
 

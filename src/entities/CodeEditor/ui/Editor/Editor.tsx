@@ -1,8 +1,12 @@
-import React, { Dispatch, memo, SetStateAction } from 'react';
+import React, {
+    Dispatch,
+    memo,
+    SetStateAction,
+    useEffect,
+    useRef,
+} from 'react';
 import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-import { css } from '@codemirror/lang-css';
-import { html } from '@codemirror/lang-html';
+import { LanguageSupport } from '@codemirror/language';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Editor.module.scss';
 import { ContentType, languageType } from '../CodeEditor/CodeEditor';
@@ -14,27 +18,55 @@ interface EditorProps {
     setContent: Dispatch<SetStateAction<ContentType>>;
 }
 
+type htmlType = typeof import('@codemirror/lang-html');
+type cssType = typeof import('@codemirror/lang-css');
+type javascriptType = typeof import('@codemirror/lang-javascript');
+const getAsyncCodeModules = async () => {
+    return Promise.all([
+        import('@codemirror/lang-html'),
+        import('@codemirror/lang-css'),
+        import('@codemirror/lang-javascript'),
+    ]);
+};
+
 export const Editor = memo((props: EditorProps) => {
     const { className, openedEditor, content, setContent } = props;
     const handleChange = (value: string | undefined) => {
         setContent({ ...content, [openedEditor]: value });
     };
 
-    let currLang;
+    const htmlRef = useRef<htmlType>();
+    const cssRef = useRef<cssType>();
+    const javascriptRef = useRef<javascriptType>();
+    useEffect(() => {
+        getAsyncCodeModules().then(([html, css, javascript]) => {
+            htmlRef.current = html;
+            cssRef.current = css;
+            javascriptRef.current = javascript;
+        });
+    }, []);
+    let currLang: (() => LanguageSupport) | undefined;
     let currContent;
     switch (openedEditor) {
         case 'html':
-            currLang = html;
+            currLang = htmlRef.current?.html;
             currContent = content.html;
             break;
         case 'css':
-            currLang = css;
+            currLang = cssRef.current?.css;
             currContent = content.css;
             break;
         default:
-            currLang = javascript;
+            currLang = javascriptRef.current?.javascript;
             currContent = content.js;
     }
+
+    const getLang = () => {
+        if (currLang) {
+            return [currLang()];
+        }
+        return [];
+    };
 
     return (
         <CodeMirror
@@ -42,8 +74,8 @@ export const Editor = memo((props: EditorProps) => {
             onChange={handleChange}
             value={currContent}
             minHeight="200px"
-            theme="none"
-            extensions={[currLang()]}
+            theme="dark"
+            extensions={getLang()}
         />
     );
 });
