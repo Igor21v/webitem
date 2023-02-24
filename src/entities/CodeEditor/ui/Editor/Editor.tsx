@@ -1,29 +1,49 @@
-import React, { memo } from 'react';
+import React, { Dispatch, memo, SetStateAction } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+import { css } from '@codemirror/lang-css';
+import { html } from '@codemirror/lang-html';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Editor.module.scss';
+import { ContentType, languageType } from '../CodeEditor/CodeEditor';
 
-export interface EditorProps {
+interface EditorProps {
     className?: string;
-    language: () => Extension;
-    value?: string;
-    setEditorState: (value: string) => void;
+    openedEditor: languageType;
+    content: ContentType;
+    setContent: Dispatch<SetStateAction<ContentType>>;
 }
 
 export const Editor = memo((props: EditorProps) => {
-    const { className, language, setEditorState, value } = props;
-    const handleChange = (value: string) => {
-        setEditorState(value);
+    const { className, openedEditor, content, setContent } = props;
+    const handleChange = (value: string | undefined) => {
+        setContent({ ...content, [openedEditor]: value });
     };
+
+    let currLang;
+    let currContent;
+    switch (openedEditor) {
+        case 'html':
+            currLang = html;
+            currContent = content.html;
+            break;
+        case 'css':
+            currLang = css;
+            currContent = content.css;
+            break;
+        default:
+            currLang = javascript;
+            currContent = content.js;
+    }
 
     return (
         <CodeMirror
             className={classNames(cls.Editor, {}, [className, 'scroll-thin'])}
             onChange={handleChange}
-            value={value}
+            value={currContent}
             minHeight="200px"
-            theme="dark"
-            extensions={[language()]}
+            theme="none"
+            extensions={[currLang()]}
         />
     );
 });

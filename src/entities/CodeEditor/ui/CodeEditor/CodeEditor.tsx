@@ -1,12 +1,13 @@
 import { memo, useState } from 'react';
-import { javascript } from '@codemirror/lang-javascript';
-import { css } from '@codemirror/lang-css';
-import { html } from '@codemirror/lang-html';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CodeEditor.module.scss';
 import { Editor } from '../Editor/Editor';
 import { TabItem, Tabs } from '@/shared/ui/Tabs';
 import { Preview } from '../Preview/Preview';
+
+export type languageType = 'html' | 'css' | 'js';
+
+export type ContentType = Record<languageType, string | undefined>;
 
 interface blocksType {
     HTML: string;
@@ -21,39 +22,21 @@ interface CodeEditorProps {
 
 export const CodeEditor = memo((props: CodeEditorProps) => {
     const { className, blocks } = props;
-    const [openedEditor, setOpenedEditor] = useState('HTML');
-    const [htmlContent, setHtmlContent] = useState(blocks.HTML);
-    const [cssContent, setCssContent] = useState(blocks.CSS);
-    const [jsContent, setJsContent] = useState(blocks.JS);
+    const [openedEditor, setOpenedEditor] = useState<languageType>('html');
+    const [сontent, setContent] = useState<ContentType>({
+        html: blocks.HTML,
+        css: blocks.CSS,
+        js: blocks.JS,
+    });
 
-    const onTabClick = (tab: TabItem) => {
+    const onTabClick = (tab: TabItem<languageType>) => {
         setOpenedEditor(tab.value);
     };
 
     const langTabs = Object.entries(blocks).map(([lang]) => ({
-        value: lang,
+        value: lang.toLowerCase() as languageType,
         content: lang,
     }));
-
-    let editorCurrLang;
-    let editorCurrValue;
-    let editorCurrSetState;
-    switch (openedEditor) {
-        case 'HTML':
-            editorCurrLang = html;
-            editorCurrValue = htmlContent;
-            editorCurrSetState = setHtmlContent;
-            break;
-        case 'CSS':
-            editorCurrLang = css;
-            editorCurrValue = cssContent;
-            editorCurrSetState = setCssContent;
-            break;
-        default:
-            editorCurrLang = javascript;
-            editorCurrValue = jsContent;
-            editorCurrSetState = setJsContent;
-    }
 
     return (
         <div
@@ -62,22 +45,21 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                 'scroll-thin',
             ])}
         >
-            <Tabs
+            <Tabs<languageType>
                 tabs={langTabs}
                 value={openedEditor}
                 onTabClick={onTabClick}
                 className={classNames('', {}, [className])}
             />
             <Editor
-                className="scroll-thin"
-                language={editorCurrLang}
-                value={editorCurrValue}
-                setEditorState={editorCurrSetState}
+                openedEditor={openedEditor}
+                content={сontent}
+                setContent={setContent}
             />
             <Preview
-                htmlContent={htmlContent}
-                cssContent={cssContent}
-                jsContent={jsContent}
+                htmlContent={сontent.html}
+                cssContent={сontent.css}
+                jsContent={сontent.js}
             />
         </div>
     );
