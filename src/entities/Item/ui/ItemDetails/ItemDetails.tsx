@@ -20,6 +20,7 @@ import {
 import cls from './ItemDetails.module.scss';
 import { AppImage } from '@/shared/ui/AppImage';
 import ItemIcon from '@/shared/assets/icons/item.svg';
+import { CodeEditor } from '@/entities/CodeEditor';
 
 interface ItemDetailsProps {
     className?: string;
@@ -120,7 +121,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                         <Text text={item?.createdAt} />
                     </HStack>
                 </VStack>
-                {/* {item?.blocks.map(renderBlock)} */}
+                <CodeEditor codes={item?.codes} />
             </>
         );
     }

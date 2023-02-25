@@ -15,11 +15,11 @@ export type EditorThemeType = 'none' | 'dark' | 'light';
 
 interface CodeEditorProps {
     className?: string;
-    codes: Record<languageType, string>;
+    codes?: Record<languageType, string>;
 }
 
 export const CodeEditor = memo((props: CodeEditorProps) => {
-    const { className, codes } = props;
+    const { className, codes = { html: '', css: '', js: '' } } = props;
 
     const defaultEditorTheme =
         (localStorage.getItem(CODE_EDITOR_THEME_KEY) as EditorThemeType) ||
@@ -28,9 +28,9 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
         useState<EditorThemeType>(defaultEditorTheme);
     const [openedEditor, setOpenedEditor] = useState<languageType>('html');
     const [сontent, setContent] = useState<ContentType>({
-        html: codes.html,
-        css: codes.css,
-        js: codes.js,
+        html: codes?.html,
+        css: codes?.css,
+        js: codes?.js,
     });
 
     const onTabClick = useCallback((tab: TabItem<languageType>) => {
