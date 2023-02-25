@@ -12,11 +12,7 @@ export const fetchItemById = createAsyncThunk<
         if (!itemId) {
             throw new Error();
         }
-        const response = await extra.api.get<Item>(`/items/${itemId}`, {
-            params: {
-                _expand: 'user',
-            },
-        });
+        const response = await extra.api.get<Item>(`/items/${itemId}`);
         if (!response.data) {
             throw new Error();
         }

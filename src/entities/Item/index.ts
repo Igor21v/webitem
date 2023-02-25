@@ -6,7 +6,7 @@ export {
     ItemBlockType,
 } from './model/consts/ItemConst';
 
-export type { ItemTypes as ElementTypes } from './model/consts/ItemList';
+export type { ItemTypes } from './model/consts/ItemList';
 
 export type { ItemType } from './model/consts/ItemList';
 

@@ -1,8 +1,7 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { Item, ItemSortField, ItemView } from '@/entities/Item';
+import { Item, ItemSortField, ItemView, ItemTypes } from '@/entities/Item';
 
 import { SortOrder } from '@/shared/types';
-import { ElementTypes } from '@/entities/Item';
 
 export interface ItemsPageSchema extends EntityState<Item> {
     isLoading?: boolean;
@@ -16,7 +15,7 @@ export interface ItemsPageSchema extends EntityState<Item> {
     order: SortOrder;
     sort: ItemSortField;
     search: string;
-    type: ElementTypes;
+    type: ItemTypes;
 
     _inited: boolean;
 }

@@ -6,7 +6,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getItemDetailsData } from '@/entities/Item';
 import { HStack } from '@/shared/ui/Stack';
-import { getCanEditItem } from '../../model/selectors/item';
 import { getRouteItemEdit, getRouteItems } from '@/shared/const/router';
 
 interface ItemDetailsPageHeaderProps {
@@ -18,7 +17,7 @@ export const ItemDetailsPageHeader = memo(
         const { className } = props;
         const { t } = useTranslation('itemDetails');
         const navigate = useNavigate();
-        const canEdit = useSelector(getCanEditItem);
+        const canEdit = true;
         const item = useSelector(getItemDetailsData);
         const onBackToList = useCallback(() => {
             navigate(getRouteItems('all'));
@@ -34,14 +33,19 @@ export const ItemDetailsPageHeader = memo(
                 justify="between"
                 className={classNames('', {}, [className])}
             >
-                <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-                    {t('Back to the list')}
-                </Button>
-                {canEdit && (
-                    <Button theme={ButtonTheme.OUTLINE} onClick={onEditItem}>
-                        {t('Edit')}
+                <>
+                    <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
+                        {t('Back to the list')}
                     </Button>
-                )}
+                    {canEdit && (
+                        <Button
+                            theme={ButtonTheme.OUTLINE}
+                            onClick={onEditItem}
+                        >
+                            {t('Edit')}
+                        </Button>
+                    )}
+                </>
             </HStack>
         );
     },

@@ -5,11 +5,8 @@ import { css } from '@codemirror/lang-css';
 import { javascript } from '@codemirror/lang-javascript';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Editor.module.scss';
-import {
-    ContentType,
-    EditorThemeType,
-    languageType,
-} from '../CodeEditor/CodeEditor';
+import { ContentType, EditorThemeType } from '../CodeEditor/CodeEditor';
+import { languageType } from '@/shared/types/codes';
 
 interface EditorProps {
     className?: string;

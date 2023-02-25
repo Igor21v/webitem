@@ -7,26 +7,19 @@ import { Editor } from '../Editor/Editor';
 import { HStack } from '@/shared/ui/Stack';
 import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
 import { CODE_EDITOR_THEME_KEY } from '@/shared/const/localstorage';
-
-export type languageType = 'html' | 'css' | 'js';
+import { languageType } from '@/shared/types/codes';
 
 export type ContentType = Record<languageType, string | undefined>;
 
 export type EditorThemeType = 'none' | 'dark' | 'light';
 
-interface blocksType {
-    HTML: string;
-    CSS?: string;
-    JS?: string;
-}
-
 interface CodeEditorProps {
     className?: string;
-    blocks: blocksType;
+    codes: Record<languageType, string>;
 }
 
 export const CodeEditor = memo((props: CodeEditorProps) => {
-    const { className, blocks } = props;
+    const { className, codes } = props;
 
     const defaultEditorTheme =
         (localStorage.getItem(CODE_EDITOR_THEME_KEY) as EditorThemeType) ||
@@ -35,9 +28,9 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
         useState<EditorThemeType>(defaultEditorTheme);
     const [openedEditor, setOpenedEditor] = useState<languageType>('html');
     const [сontent, setContent] = useState<ContentType>({
-        html: blocks.HTML,
-        css: blocks.CSS,
-        js: blocks.JS,
+        html: codes.html,
+        css: codes.css,
+        js: codes.js,
     });
 
     const onTabClick = useCallback((tab: TabItem<languageType>) => {
@@ -46,11 +39,11 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
 
     const langTabs = useMemo(
         () =>
-            Object.entries(blocks).map(([lang]) => ({
-                value: lang.toLowerCase() as languageType,
-                content: lang,
+            Object.entries(codes).map(([lang]) => ({
+                value: lang as languageType, // TODO
+                content: lang.toUpperCase(),
             })),
-        [blocks],
+        [codes],
     );
 
     return (

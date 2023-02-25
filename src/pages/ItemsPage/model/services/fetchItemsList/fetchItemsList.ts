@@ -36,7 +36,6 @@ export const fetchItemsList = createAsyncThunk<
         });
         const response = await extra.api.get<Item[]>('/items/', {
             params: {
-                _expand: 'user',
                 _limit: limit,
                 _page: page,
                 _sort: sort,

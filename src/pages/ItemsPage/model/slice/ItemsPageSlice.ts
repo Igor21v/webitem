@@ -4,12 +4,11 @@ import {
     PayloadAction,
 } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { Item, ItemSortField, ItemView } from '@/entities/Item';
+import { Item, ItemSortField, ItemTypes, ItemView } from '@/entities/Item';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { SortOrder } from '@/shared/types';
 import { fetchItemsList } from '../services/fetchItemsList/fetchItemsList';
 import { ItemsPageSchema } from '../types/itemsPageSchema';
-import { ElementTypes } from '@/entities/Item';
 
 const itemsAdapter = createEntityAdapter<Item>({
     selectId: (item) => item.id,
@@ -56,7 +55,7 @@ export const itemsPageSlice = createSlice({
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
         },
-        setType: (state, action: PayloadAction<ElementTypes>) => {
+        setType: (state, action: PayloadAction<ItemTypes>) => {
             state.type = action.payload;
         },
         setLimit: (state, action: PayloadAction<number>) => {

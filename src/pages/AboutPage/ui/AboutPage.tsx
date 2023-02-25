@@ -4,15 +4,15 @@ import { CodeEditor } from '@/entities/CodeEditor';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
-    const blocks = {
-        HTML: '<div class="test">TEXT</div>',
-        CSS: '.test {font-size: 30px}',
-        JS: 'console.log("test")',
+    const codes = {
+        html: '<div class="test">TEXT</div>',
+        css: '.test {font-size: 30px}',
+        js: 'console.log("test")',
     };
     return (
         <Page data-testid="AboutPage">
             {t('Page about site')}
-            <CodeEditor blocks={blocks} />
+            <CodeEditor codes={codes} />
         </Page>
     );
 }

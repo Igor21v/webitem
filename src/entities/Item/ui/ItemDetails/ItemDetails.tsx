@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -11,8 +11,6 @@ import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { itemDetailsReducer } from '../../model/slice/itemDetailsSlice';
-import { ItemBlock } from '../../model/types/item';
-import { ItemBlockType } from '../../model/consts/ItemConst';
 import { fetchItemById } from '../../model/services/fetchItemById/fetchItemById';
 import {
     getItemDetailsData,
@@ -20,9 +18,6 @@ import {
     getItemDetailsIsLoading,
 } from '../../model/selectors/itemDetails';
 import cls from './ItemDetails.module.scss';
-import { ItemCodeBlockComponent } from '../ItemCodeBlockComponent/ItemCodeBlockComponent';
-import { ItemImageBlockComponent } from '../ItemImageBlockComponent/ItemImageBlockComponent';
-import { ItemTextBlockComponent } from '../ItemTextBlockComponent/ItemTextBlockComponent';
 import { AppImage } from '@/shared/ui/AppImage';
 import ItemIcon from '@/shared/assets/icons/item.svg';
 
@@ -46,7 +41,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
     const isLoading = useSelector(getItemDetailsIsLoading);
     const error = useSelector(getItemDetailsError);
     const item = useSelector(getItemDetailsData);
-    const renderBlock = useCallback((block: ItemBlock) => {
+    /*     const renderBlock = useCallback((block: ItemBlock) => {
         switch (block.type) {
             case ItemBlockType.CODE:
                 return <ItemCodeBlockComponent key={block.id} block={block} />;
@@ -57,7 +52,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
             default:
                 return null;
         }
-    }, []);
+    }, []); */
     let content;
     if (isLoading) {
         content = (
@@ -113,7 +108,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 <VStack gap="4" data-testid="ItemDetails.Info">
                     <Text
                         title={item?.title}
-                        text={item?.subtitle}
+                        text={item?.description}
                         size={TextSize.L}
                     />
                     <HStack gap="8">
@@ -125,7 +120,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                         <Text text={item?.createdAt} />
                     </HStack>
                 </VStack>
-                {item?.blocks.map(renderBlock)}
+                {/* {item?.blocks.map(renderBlock)} */}
             </>
         );
     }

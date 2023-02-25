@@ -1,5 +1,4 @@
-import { User } from '@/entities/User';
-import { ItemTypes } from '../consts/ItemList';
+import { languageType } from '@/shared/types/codes';
 import { ItemBlockType } from '../consts/ItemConst';
 
 export interface ItemBlockBase {
@@ -29,11 +28,9 @@ export type ItemBlock = ItemCodeBlock | ItemImageBlock | ItemTextBlock;
 export interface Item {
     id: string;
     title: string;
-    user: User;
-    subtitle: string;
+    description: string;
     img: string;
     views: number;
     createdAt: string;
-    type: ItemTypes[];
-    blocks: ItemBlock[];
+    codes: Record<languageType, string>;
 }
