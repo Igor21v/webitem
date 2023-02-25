@@ -6,10 +6,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import cls from './SidebarItem.module.scss';
 import { getRouteItems } from '@/shared/const/router';
-import { ElementItemType } from '@/entities/Item';
+import { ItemType } from '@/entities/Item';
 
 interface SidibarItemProps {
-    item: ElementItemType;
+    item: ItemType;
     collapsed: boolean;
 }
 

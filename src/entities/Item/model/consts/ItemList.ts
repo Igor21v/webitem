@@ -39,7 +39,7 @@ export interface ItemType {
     authOnly?: boolean;
 }
 
-export const elementList: ItemType[] = [
+export const itemList: ItemType[] = [
     {
         text: 'Accordion',
         type: 'accordion',

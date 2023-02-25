@@ -1,4 +1,4 @@
-import { ElementTypes } from '../../entities/Item/model/consts/ElementList';
+import { ItemTypes } from '../../entities/Item/model/consts/ItemList';
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -17,7 +17,7 @@ export enum AppRoutes {
 export const getRouteMain = () => '/';
 export const getRouteAbout = () => '/about';
 export const getRouteProfile = (id: string) => `/profile/${id}`;
-export const getRouteItems = (type: ElementTypes) => `/items/${type}`;
+export const getRouteItems = (type: ItemTypes) => `/items/${type}`;
 export const getRouteItemDetails = (id: string) => `/item/${id}`;
 export const getRouteItemCreate = () => '/items/new';
 export const getRouteItemEdit = (id: string) => `/items/${id}/edit`;

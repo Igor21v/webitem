@@ -6,7 +6,7 @@ import { SidibarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { elementList } from '@/entities/Item';
+import { itemList } from '@/entities/Item';
 
 interface SidebarProps {
     className?: string;
@@ -38,7 +38,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             </Button>
             <VStack justify="between" className={cls.content}>
                 <VStack role="navigation" gap="8" className={cls.items}>
-                    {elementList.map((item) => (
+                    {itemList.map((item) => (
                         <SidibarItem
                             item={item}
                             collapsed={collapsed}
