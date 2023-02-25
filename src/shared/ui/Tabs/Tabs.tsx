@@ -2,6 +2,7 @@ import { ReactNode, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Tabs.module.scss';
 import { Card, CardTheme } from '../Card/Card';
+import { genericMemo } from '@/shared/lib/components/GenericMemo/GenericMemo';
 
 export interface TabItem<T> {
     value: T;
@@ -15,7 +16,7 @@ interface TabsProps<T> {
     onTabClick: (tab: TabItem<T>) => void;
 }
 
-export const Tabs = <T extends string>(props: TabsProps<T>) => {
+const Tabs = <T extends string>(props: TabsProps<T>) => {
     const { className, tabs, onTabClick, value } = props;
     const clickHandle = useCallback(
         (tab: TabItem<T>) => () => {
@@ -42,3 +43,6 @@ export const Tabs = <T extends string>(props: TabsProps<T>) => {
         </div>
     );
 };
+
+const TabsMemo = genericMemo(Tabs);
+export { TabsMemo as Tabs };

@@ -37,7 +37,7 @@ export const ThemeSelect = memo((props: ThemeSelectProps) => {
             options={selectOptions}
             value={editorTheme}
             onChange={selectHandler}
-            label={t('Theme')}
+            label={t('Editor_s theme')}
         />
     );
 });

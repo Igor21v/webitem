@@ -37,5 +37,6 @@
   "default": "default",
   "dark": "dark",
   "light": "light",
-  "Theme": "Theme"
+  "Theme": "Theme",
+  "Editor_s theme": "Editor's theme"
 }
