@@ -9,10 +9,10 @@
     "date of creation": "date of creation",
     "title": "title",
     "views": "views",
-    "All articles": "All articles",
+    "All items": "All items",
     "IT": "IT",
     "Economics": "Economics",
     "Science": "Science",
-    "Articles not found": "Articles not found",
-    "an error occurred while downloading articles ": "an error occurred while downloading articles"
+    "Items not found": "Items not found",
+    "an error occurred while downloading items ": "an error occurred while downloading items"
 }

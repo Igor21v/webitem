@@ -63,7 +63,7 @@
       "userId": "2"
     }
   ],
-  "articles": [
+  "items": [
     {
       "id": "1",
       "title": "Javascript news СВЕЖАЯ",
@@ -699,227 +699,227 @@
     {
       "id": "1",
       "text": "some comment",
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1"
     },
     {
       "id": "2",
       "text": "some comment 2",
-      "articleId": "1",
+      "itemId": "1",
       "userId": "2"
     },
     {
       "id": "3",
       "text": "some comment 3",
-      "articleId": "1",
+      "itemId": "1",
       "userId": "2"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "555",
       "id": "MIwXOvi"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "fffssss",
       "id": "CUsbucw"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "xxxzzz",
       "id": "roDlH6k"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "4452",
       "id": "8538sGE"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "yyy",
       "id": "D6NT9qM"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "bbbbbvvvv",
       "id": "k-HBZlU"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "mmmjjjj",
       "id": "_OV99Ik"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "1",
       "text": "fffFFF",
       "id": "7HB4er6"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "2",
       "text": "44444",
       "id": "kNwdyar"
     },
     {
-      "articleId": "2",
+      "itemId": "2",
       "userId": "1",
       "text": "1234",
       "id": "b7smrzH"
     },
     {
-      "articleId": "16",
+      "itemId": "16",
       "userId": "1",
       "text": "123",
       "id": "C5j6r-G"
     },
     {
-      "articleId": "16",
+      "itemId": "16",
       "userId": "1",
       "text": "1233wq",
       "id": "r65kkJx"
     },
     {
-      "articleId": "16",
+      "itemId": "16",
       "userId": "1",
       "text": "000",
       "id": "lGCEAWp"
     },
     {
-      "articleId": "16",
+      "itemId": "16",
       "userId": "1",
       "text": "00",
       "id": "9_no4mf"
     },
     {
-      "articleId": "7",
+      "itemId": "7",
       "userId": "1",
       "text": "000",
       "id": "4LgoXsi"
     },
     {
-      "articleId": "3",
+      "itemId": "3",
       "userId": "1",
       "text": "123",
       "id": "T5hxWWj"
     },
     {
-      "articleId": "3",
+      "itemId": "3",
       "userId": "3",
       "text": "123",
       "id": "0F4Fu5g"
     },
     {
-      "articleId": "3",
+      "itemId": "3",
       "userId": "3",
       "text": "xcv",
       "id": "ranlMV_"
     },
     {
-      "articleId": "3",
+      "itemId": "3",
       "userId": "3",
       "text": "123",
       "id": "UqjnWVm"
     },
     {
-      "articleId": "3",
+      "itemId": "3",
       "userId": "3",
       "text": "qw",
       "id": "vK1FEKq"
     },
     {
-      "articleId": "3",
+      "itemId": "3",
       "userId": "3",
       "text": "qw",
       "id": "08SOqwp"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "123",
       "id": "rm1BQTu"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "123ddds",
       "id": "zdlXroN"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "casd",
       "id": "xyeCsBy"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "xvff",
       "id": "Vh4by15"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "df",
       "id": "RMX-zsw"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "qwe",
       "id": "fbqE-AB"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "s",
       "id": "Oibbk4h"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "3",
       "text": "qqsc",
       "id": "S8nPF0M"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "1",
       "text": "sdf",
       "id": "S2q8BFE"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "1",
       "text": "sa",
       "id": "YAnm4JC"
     },
     {
-      "articleId": "4",
+      "itemId": "4",
       "userId": "1",
       "text": "12222222222222222222222222222222222",
       "id": "jux6Elj"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "3",
       "text": "sdfs",
       "id": "sQ4pV7U"
     },
     {
-      "articleId": "1",
+      "itemId": "1",
       "userId": "3",
       "text": "qqqqq",
       "id": "W---erP"
     },
     {
-      "articleId": "11",
+      "itemId": "11",
       "userId": "1",
       "text": "sdfasfd",
       "id": "IoUi_jt"
@@ -1009,316 +1009,316 @@
       "avatar": "https://yobte.ru/uploads/posts/2019-11/programmist-42-foto-34.jpg"
     }
   ],
-  "article-ratings": [
+  "item-ratings": [
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 1
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 2
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 3
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 4
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 5
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 6
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "feedback": "",
       "id": 7
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "feedback": "",
       "id": 8
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "feedback": "",
       "id": 9
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 10
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 11
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "id": 12
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "feedback": "",
       "id": 13
     },
     {
       "userId": "",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 3,
       "feedback": "",
       "id": 14
     },
     {
       "userId": "",
-      "articleId": "4",
+      "itemId": "4",
       "rate": 5,
       "id": 15
     },
     {
       "userId": "",
-      "articleId": "5",
+      "itemId": "5",
       "rate": 4,
       "id": 16
     },
     {
       "userId": "",
-      "articleId": "6",
+      "itemId": "6",
       "rate": 2,
       "id": 17
     },
     {
       "userId": "",
-      "articleId": "8",
+      "itemId": "8",
       "rate": 2,
       "id": 18
     },
     {
       "userId": "",
-      "articleId": "9",
+      "itemId": "9",
       "rate": 2,
       "id": 19
     },
     {
       "userId": "",
-      "articleId": "10",
+      "itemId": "10",
       "rate": 3,
       "id": 20
     },
     {
       "userId": "",
-      "articleId": "12",
+      "itemId": "12",
       "rate": 5,
       "id": 21
     },
     {
       "userId": "",
-      "articleId": "13",
+      "itemId": "13",
       "rate": 2,
       "id": 22
     },
     {
       "userId": "",
-      "articleId": "14",
+      "itemId": "14",
       "rate": 5,
       "id": 23
     },
     {
       "userId": "",
-      "articleId": "18",
+      "itemId": "18",
       "rate": 5,
       "id": 24
     },
     {
       "userId": "",
-      "articleId": "Yk3ewpZ",
+      "itemId": "Yk3ewpZ",
       "rate": 4,
       "id": 25
     },
     {
       "userId": "",
-      "articleId": "gUvP65n",
+      "itemId": "gUvP65n",
       "rate": 5,
       "feedback": "123",
       "id": 26
     },
     {
       "userId": "",
-      "articleId": "11",
+      "itemId": "11",
       "rate": 3,
       "id": 27
     },
     {
       "userId": "",
-      "articleId": "11",
+      "itemId": "11",
       "rate": 3,
       "feedback": "",
       "id": 28
     },
     {
       "userId": "",
-      "articleId": "11",
+      "itemId": "11",
       "rate": 3,
       "feedback": "1234",
       "id": 29
     },
     {
       "userId": "",
-      "articleId": "11",
+      "itemId": "11",
       "rate": 3,
       "feedback": "1234",
       "id": 30
     },
     {
       "userId": "",
-      "articleId": "11",
+      "itemId": "11",
       "rate": 3,
       "id": 31
     },
     {
       "userId": "",
-      "articleId": "17",
+      "itemId": "17",
       "rate": 4,
       "id": 32
     },
     {
       "userId": "",
-      "articleId": "sKrdDsV",
+      "itemId": "sKrdDsV",
       "rate": 4,
       "id": 33
     },
     {
       "userId": "",
-      "articleId": "Qo9FIVq",
+      "itemId": "Qo9FIVq",
       "rate": 2,
       "id": 34
     },
     {
       "userId": "",
-      "articleId": "NsIs0qB",
+      "itemId": "NsIs0qB",
       "rate": 4,
       "id": 35
     },
     {
       "userId": "",
-      "articleId": "1",
+      "itemId": "1",
       "rate": 4,
       "id": 36
     },
     {
       "userId": "",
-      "articleId": "1",
+      "itemId": "1",
       "rate": 4,
       "id": 37
     },
     {
       "userId": "",
-      "articleId": "1",
+      "itemId": "1",
       "rate": 4,
       "id": 38
     },
     {
       "userId": "1",
-      "articleId": "7",
+      "itemId": "7",
       "rate": 4,
       "id": 39
     },
     {
       "userId": "1",
-      "articleId": "4",
+      "itemId": "4",
       "rate": 3,
       "id": 40
     },
     {
       "userId": "1",
-      "articleId": "3",
+      "itemId": "3",
       "rate": 5,
       "feedback": "123",
       "id": 41
     },
     {
       "userId": "1",
-      "articleId": "5",
+      "itemId": "5",
       "rate": 4,
       "id": 42
     },
     {
       "userId": "1",
-      "articleId": "2",
+      "itemId": "2",
       "rate": 5,
       "feedback": "12345",
       "id": 43
     },
     {
       "userId": "1",
-      "articleId": "6",
+      "itemId": "6",
       "rate": 5,
       "id": 44
     },
     {
       "userId": "1",
-      "articleId": "8",
+      "itemId": "8",
       "rate": 5,
       "id": 45
     },
     {
       "userId": "1",
-      "articleId": "9",
+      "itemId": "9",
       "rate": 5,
       "id": 46
     },
     {
       "userId": "1",
-      "articleId": "10",
+      "itemId": "10",
       "rate": 4,
       "feedback": "sdfavcxb",
       "id": 47
     },
     {
       "userId": "1",
-      "articleId": "12",
+      "itemId": "12",
       "rate": 5,
       "id": 48
     },
     {
       "userId": "1",
-      "articleId": "12",
+      "itemId": "12",
       "rate": 4,
       "id": 49
     },
     {
       "userId": "1",
-      "articleId": "11",
+      "itemId": "11",
       "rate": 3,
       "id": 50
     }

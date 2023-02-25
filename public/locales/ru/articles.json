@@ -9,10 +9,10 @@
     "date of creation": "дате создания",
     "title": "названию",
     "views": "просмотрам",
-    "All articles": "Все статьи",
+    "All items": "Все статьи",
     "IT": "IT",
     "Economics": "Экономика",
     "Science": "Наука",
-    "Articles not found": "Статьи не найдены",
-    "an error occurred while downloading articles ": "Произошла ошибка при загрузке статей"
+    "Items not found": "Статьи не найдены",
+    "an error occurred while downloading items ": "Произошла ошибка при загрузке статей"
 }

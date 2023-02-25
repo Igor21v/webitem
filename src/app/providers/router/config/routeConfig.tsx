@@ -2,9 +2,9 @@ import { RouteProps } from 'react-router-dom';
 import { UserRole } from '@/entities/User';
 import { AboutPage } from '@/pages/AboutPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
-import { ArticleDetailPage } from '@/pages/ArticleDetailsPage';
-import { ArticleEditPage } from '@/pages/ArticleEditPage';
-import { ArticlesPage } from '@/pages/ArticlesPage';
+import { ItemDetailPage } from '@/pages/ItemDetailsPage';
+import { ItemEditPage } from '@/pages/ItemEditPage';
+import { ItemsPage } from '@/pages/ItemsPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -13,11 +13,11 @@ import {
     AppRoutes,
     getRouteAbout,
     getRouteAdmin,
-    getRouteArticleCreate,
-    getRouteArticleDetails,
-    getRouteArticleEdit,
+    getRouteItemCreate,
+    getRouteItemDetails,
+    getRouteItemEdit,
     getRouteForbidden,
-    getRouteArticles,
+    getRouteItems,
     getRouteMain,
     getRouteProfile,
     getRouteFavourites,
@@ -44,21 +44,21 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         authOnly: true,
     },
     [AppRoutes.ARTICLES]: {
-        path: getRouteArticles(':type'),
-        element: <ArticlesPage />,
+        path: getRouteItems(':type'),
+        element: <ItemsPage />,
     },
     [AppRoutes.ARTICLE_DETAILS]: {
-        path: getRouteArticleDetails(':id'),
-        element: <ArticleDetailPage />,
+        path: getRouteItemDetails(':id'),
+        element: <ItemDetailPage />,
     },
     [AppRoutes.ARTICLE_CREATE]: {
-        path: getRouteArticleCreate(),
-        element: <ArticleEditPage />,
+        path: getRouteItemCreate(),
+        element: <ItemEditPage />,
         authOnly: true,
     },
     [AppRoutes.ARTICLE_EDIT]: {
-        path: getRouteArticleEdit(':id'),
-        element: <ArticleEditPage />,
+        path: getRouteItemEdit(':id'),
+        element: <ItemEditPage />,
         authOnly: true,
     },
     [AppRoutes.ADMIN_PANEL]: {

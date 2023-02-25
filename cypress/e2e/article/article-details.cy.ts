@@ -1,32 +1,32 @@
-let currentArticleId = '';
+let currentItemId = '';
 describe('Пользователь заходит на страницу статей', () => {
     beforeEach(() => {
         cy.login();
-        cy.createArticle().then((article) => {
-            currentArticleId = article.id;
-            cy.visit(`articles/${article.id}`);
+        cy.createItem().then((item) => {
+            currentItemId = item.id;
+            cy.visit(`items/${item.id}`);
         });
     });
     afterEach(() => {
-        cy.removeArticle(currentArticleId);
+        cy.removeItem(currentItemId);
     });
     it('И видит содержимое статьи', () => {
-        cy.getByTestID('ArticleDetails.Info').should('exist');
+        cy.getByTestID('ItemDetails.Info').should('exist');
     });
     it('И видит список рекомендаций', () => {
-        cy.getByTestID('ArticleRecommendationList').should('exist');
+        cy.getByTestID('ItemRecommendationList').should('exist');
     });
     it('И оставляет комментарий', () => {
-        cy.getByTestID('ArticleDetails.Info');
+        cy.getByTestID('ItemDetails.Info');
         cy.getByTestID('AddCommentForm').scrollIntoView();
         cy.addComment('text');
         cy.getByTestID('CommentCard.Content').should('have.length', 1);
     });
     it('И ставит оценку', () => {
-        cy.intercept('GET', '**/articles/*', {
-            fixture: 'article-details.json',
+        cy.intercept('GET', '**/items/*', {
+            fixture: 'item-details.json',
         });
-        cy.getByTestID('ArticleDetails.Info');
+        cy.getByTestID('ItemDetails.Info');
         cy.getByTestID('RatingCard').scrollIntoView();
         cy.setRating(4, 'feedback');
         cy.get('[data-selected=true]').should('have.length', 4);

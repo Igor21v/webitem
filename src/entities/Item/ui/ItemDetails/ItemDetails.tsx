@@ -1,0 +1,143 @@
+import { memo, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
+import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
+import { Icon } from '@/shared/ui/Icon';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { itemDetailsReducer } from '../../model/slice/itemDetailsSlice';
+import { ItemBlock } from '../../model/types/item';
+import { ItemBlockType } from '../../model/consts/ItemConst';
+import { fetchItemById } from '../../model/services/fetchItemById/fetchItemById';
+import {
+    getItemDetailsData,
+    getItemDetailsError,
+    getItemDetailsIsLoading,
+} from '../../model/selectors/itemDetails';
+import cls from './ItemDetails.module.scss';
+import { ItemCodeBlockComponent } from '../ItemCodeBlockComponent/ItemCodeBlockComponent';
+import { ItemImageBlockComponent } from '../ItemImageBlockComponent/ItemImageBlockComponent';
+import { ItemTextBlockComponent } from '../ItemTextBlockComponent/ItemTextBlockComponent';
+import { AppImage } from '@/shared/ui/AppImage';
+import ItemIcon from '@/shared/assets/icons/item.svg';
+
+interface ItemDetailsProps {
+    className?: string;
+    id?: string;
+}
+
+export const ItemDetails = memo((props: ItemDetailsProps) => {
+    const { className, id } = props;
+    const { t } = useTranslation();
+    const reducers = {
+        itemDetails: itemDetailsReducer,
+    };
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchItemById(id));
+        }
+    }, [dispatch, id]);
+    const isLoading = useSelector(getItemDetailsIsLoading);
+    const error = useSelector(getItemDetailsError);
+    const item = useSelector(getItemDetailsData);
+    const renderBlock = useCallback((block: ItemBlock) => {
+        switch (block.type) {
+            case ItemBlockType.CODE:
+                return <ItemCodeBlockComponent key={block.id} block={block} />;
+            case ItemBlockType.IMAGE:
+                return <ItemImageBlockComponent key={block.id} block={block} />;
+            case ItemBlockType.TEXT:
+                return <ItemTextBlockComponent key={block.id} block={block} />;
+            default:
+                return null;
+        }
+    }, []);
+    let content;
+    if (isLoading) {
+        content = (
+            <>
+                <Skeleton
+                    className={cls.itemImage}
+                    width={200}
+                    height={200}
+                    border="50%"
+                />
+                <Skeleton width={300} height={32} />
+                <Skeleton width={600} height={24} />
+                <Skeleton width="100%" height={200} />
+                <Skeleton width="100%" height={200} />
+            </>
+        );
+    } else if (error) {
+        content = (
+            <Text
+                align={TextAlign.CENTER}
+                title={t('An error occurred while downloading')}
+                theme={TextTheme.ERROR}
+            />
+        );
+    } else {
+        content = (
+            <>
+                <HStack justify="center" max>
+                    <AppImage
+                        height={200}
+                        width={200}
+                        round
+                        src={item?.img}
+                        className={cls.itemImage}
+                        fallback={
+                            <Skeleton
+                                className={cls.itemImage}
+                                width={200}
+                                height={200}
+                                border="50%"
+                            />
+                        }
+                        errorFallback={
+                            <Icon
+                                Svg={ItemIcon}
+                                width={200}
+                                height={200}
+                                opacity={0.7}
+                            />
+                        }
+                    />
+                </HStack>
+                <VStack gap="4" data-testid="ItemDetails.Info">
+                    <Text
+                        title={item?.title}
+                        text={item?.subtitle}
+                        size={TextSize.L}
+                    />
+                    <HStack gap="8">
+                        <Icon Svg={EyeIcon} />
+                        <Text text={String(item?.views)} />
+                    </HStack>
+                    <HStack gap="8">
+                        <Icon Svg={CalendarIcon} />
+                        <Text text={item?.createdAt} />
+                    </HStack>
+                </VStack>
+                {item?.blocks.map(renderBlock)}
+            </>
+        );
+    }
+    return (
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <VStack
+                gap="16"
+                max
+                className={classNames(cls.ItemDetails, {}, [className])}
+            >
+                {content}
+            </VStack>
+        </DynamicModuleLoader>
+    );
+});

@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Article } from '@/entities/Article/testing';
+import { Item } from '@/entities/Item/testing';
 
 export const TEST_ARTICLE = {
     id: '1',
@@ -74,4 +74,4 @@ export const TEST_ARTICLE = {
             ],
         },
     ],
-} as Article;
+} as Item;

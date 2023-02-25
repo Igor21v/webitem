@@ -6,7 +6,7 @@ import { SidibarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { elementList } from '@/entities/Article';
+import { elementList } from '@/entities/Item';
 
 interface SidebarProps {
     className?: string;

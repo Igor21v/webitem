@@ -1,6 +1,6 @@
-import { Article } from '../../../src/entities/Article';
+import { Item } from '../../../src/entities/Item';
 
-const defaultArticle = {
+const defaultItem = {
     title: 'TESTING ARTICLE',
     subtitle: 'Экономика',
     img: 'https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg',
@@ -11,21 +11,21 @@ const defaultArticle = {
     blocks: [],
 };
 
-export const createArticle = (article?: Article) => {
+export const createItem = (item?: Item) => {
     return cy
         .request({
             method: 'POST',
-            url: 'http://localhost:8000/articles',
+            url: 'http://localhost:8000/items',
             headers: { Authorization: 'qwesd' },
-            body: article ?? defaultArticle,
+            body: item ?? defaultItem,
         })
         .then((resp) => resp.body);
 };
 
-export const removeArticle = (articleId: string) => {
+export const removeItem = (itemId: string) => {
     return cy.request({
         method: 'DELETE',
-        url: `http://localhost:8000/articles/${articleId}`,
+        url: `http://localhost:8000/items/${itemId}`,
         headers: { Authorization: 'qwesd' },
     });
 };
@@ -33,8 +33,8 @@ export const removeArticle = (articleId: string) => {
 declare global {
     namespace Cypress {
         interface Chainable {
-            createArticle(article?: Article): Chainable<Article>;
-            removeArticle(articleId: string): Chainable<void>;
+            createItem(item?: Item): Chainable<Item>;
+            removeItem(itemId: string): Chainable<void>;
         }
     }
 }
