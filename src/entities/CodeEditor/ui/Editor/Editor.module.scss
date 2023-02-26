@@ -4,4 +4,15 @@
     max-height: 400px;
     overflow: auto;
     margin-top: 1px;
+    position: relative;
+}
+
+.copyBtn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.copyIcon path {
+    stroke: var(--primary-color);
 }

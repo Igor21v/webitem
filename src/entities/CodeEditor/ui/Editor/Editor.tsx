@@ -1,4 +1,4 @@
-import React, { Dispatch, memo, SetStateAction } from 'react';
+import React, { Dispatch, memo, SetStateAction, useCallback } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
@@ -7,6 +7,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Editor.module.scss';
 import { ContentType, EditorThemeType } from '../CodeEditor/CodeEditor';
 import { languageType } from '@/shared/types/codes';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
 
 interface EditorProps {
     className?: string;
@@ -23,29 +25,41 @@ export const Editor = memo((props: EditorProps) => {
     };
 
     let currLang;
-    let currContent;
+    let currContent: string;
     switch (openedEditor) {
         case 'html':
             currLang = html;
-            currContent = content.html;
+            currContent = content.html || '';
             break;
         case 'css':
             currLang = css;
-            currContent = content.css;
+            currContent = content.css || '';
             break;
         default:
             currLang = javascript;
-            currContent = content.js;
+            currContent = content.js || '';
     }
 
+    const onCopy = useCallback(() => {
+        navigator.clipboard.writeText(currContent);
+    }, [currContent]);
+
     return (
-        <CodeMirror
-            className={classNames(cls.Editor, {}, [className, 'scroll-thin'])}
-            onChange={handleChange}
-            value={currContent}
-            minHeight="200px"
-            theme={theme}
-            extensions={[currLang()]}
-        />
+        <div className={classNames(cls.Editor, {}, [className, 'scroll-thin'])}>
+            <CodeMirror
+                onChange={handleChange}
+                value={currContent}
+                minHeight="200px"
+                theme={theme}
+                extensions={[currLang()]}
+            />
+            <Button
+                onClick={onCopy}
+                className={cls.copyBtn}
+                theme={ButtonTheme.CLEAR}
+            >
+                <CopyIcon className={cls.copyIcon} />
+            </Button>
+        </div>
     );
 });
