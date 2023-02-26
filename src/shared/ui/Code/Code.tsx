@@ -22,7 +22,7 @@ export const Code = memo((props: CodeProps) => {
                 className={cls.copyBtn}
                 theme={ButtonTheme.CLEAR}
             >
-                <CopyIcon className={cls.copyIcon} />
+                <CopyIcon />
             </Button>
             <code>{text}</code>
         </pre>
