@@ -33,13 +33,14 @@ export const AppImage = memo((props: AppImageProps) => {
         img.src = src ?? '';
         img.onload = () => {
             setIsLoading(false);
+            console.log('loaded');
         };
         img.onerror = () => {
             setIsLoading(false);
             setHasError(true);
         };
     }, [src]);
-
+    console.log(`loading image` + `isLoading ${isLoading}fallback ${fallback}`);
     if (isLoading && fallback) {
         return fallback;
     }
