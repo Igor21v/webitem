@@ -30,6 +30,7 @@ export interface Item {
     title: string;
     description: string;
     img: string;
+    imgAnim: string;
     views: number;
     createdAt: string;
     codes: Record<languageType, string>;

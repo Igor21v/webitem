@@ -69,6 +69,7 @@
       "title": "Javascript news СВЕЖАЯ",
       "description": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "imgAnim": "https://habrastorage.org/getpro/habr/upload_files/a7f/2e0/5e2/a7f2e05e2ff8203dab389f8a8a5d842f.gif",
       "views": 1022,
       "createdAt": "26.04.2022",
       "codes": {
@@ -82,6 +83,7 @@
       "title": "Python news",
       "description": "Что нового в JS за 2022 год?",
       "img": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/113415626/original/a17667d573bf34559bf0d35993ed76e57d43ad00/program-python-scripts-for-automation-and-data-mining.png",
+      "imgAnim": "https://habrastorage.org/getpro/habr/upload_files/45f/3b9/4d8/45f3b94d8807cf11e44720d8897134b7.gif",
       "views": 5204,
       "createdAt": "26.02.2022",
       "codes": {

@@ -14,6 +14,8 @@ import { ItemView } from '../../model/consts/ItemConst';
 import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import ItemIcon from '@/shared/assets/icons/item.svg';
+import { useHover } from '@/shared/lib/hooks/useHover/useHover';
+import { AnimateHover } from '@/shared/ui/AnimateHover';
 
 interface ItemListItemProps {
     className?: string;
@@ -34,6 +36,7 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
             <Icon Svg={EyeIcon} />
         </>
     );
+    const [isHover, { onMouseEnter, onMouseLeave }] = useHover();
     if (view === ItemView.BIG) {
         return (
             <div
@@ -88,10 +91,14 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
             to={getRouteItemDetails(item.id)}
             className={classNames('', {}, [className, cls[view]])}
             data-testid="ItemListItem"
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
         >
             <Card>
                 <div className={cls.imageWrapper}>
-                    <AppImage
+                    <AnimateHover
+                        isHover={isHover}
+                        animateSrc={item.imgAnim}
                         src={item.img}
                         className={cls.img}
                         alt={item.title}
