@@ -5,3 +5,8 @@
     transform: translate(-50%, -50%);
     z-index: var(--loader-z-index);
 }
+
+.round {
+    border-radius: 50%;
+    object-fit: cover;
+}

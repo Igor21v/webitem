@@ -15,7 +15,7 @@ import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import ItemIcon from '@/shared/assets/icons/item.svg';
 import { useHover } from '@/shared/lib/hooks/useHover/useHover';
-import { AnimateHover } from '@/shared/ui/AnimateHover';
+import { HoverImage } from '@/shared/ui/HoverImage';
 
 interface ItemListItemProps {
     className?: string;
@@ -96,7 +96,7 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
         >
             <Card>
                 <div className={cls.imageWrapper}>
-                    <AnimateHover
+                    <HoverImage
                         isHover={isHover}
                         animateSrc={item.imgAnim}
                         src={item.img}
