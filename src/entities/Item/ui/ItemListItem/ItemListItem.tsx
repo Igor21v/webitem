@@ -45,9 +45,9 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
             >
                 <Card>
                     <div className={cls.header}>
+                        <Text title={item.title} className={cls.title} />
                         <Text text={item.createdAt} className={cls.data} />
                     </div>
-                    <Text title={item.title} className={cls.title} />
                     {languages}
                     <AppImage
                         src={item.img}
