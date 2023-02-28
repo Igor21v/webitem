@@ -28,7 +28,7 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
     const { className, item, view, target } = props;
     const { t } = useTranslation();
     const languages = (
-        <Text text={Object.keys(item).join(', ')} className={cls.types} />
+        <Text text={Object.keys(item.codes).join(', ')} className={cls.types} />
     );
     const views = (
         <>
@@ -75,7 +75,7 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
                             to={getRouteItemDetails(item.id)}
                         >
                             <Button theme={ButtonTheme.OUTLINE}>
-                                {t('Read more')}
+                                {t('View the code')}
                             </Button>
                         </AppLink>
                         {views}
