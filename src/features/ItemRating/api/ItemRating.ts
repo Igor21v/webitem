@@ -17,7 +17,7 @@ const itemRatingApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getItemRating: build.query<Rating[], GetItemRatingArg>({
             query: ({ userId, itemId }) => ({
-                url: '/item-ratings',
+                url: '/itemRatings',
                 params: {
                     userId,
                     itemId,
@@ -26,7 +26,7 @@ const itemRatingApi = rtkApi.injectEndpoints({
         }),
         reteItem: build.mutation<Rating[], RateItemArg>({
             query: (arg) => ({
-                url: '/item-ratings',
+                url: '/itemRatings',
                 method: 'POST',
                 body: arg,
             }),

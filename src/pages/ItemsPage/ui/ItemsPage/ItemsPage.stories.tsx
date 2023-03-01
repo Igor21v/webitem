@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
-import { TEST_ARTICLE } from '@/shared/const/tests';
+import { TEST_ITEM } from '@/shared/const/tests';
 import ItemsPage from './ItemsPage';
 
 export default {
@@ -26,7 +26,7 @@ Normal.parameters = {
             method: 'GET',
             status: 200,
             response: new Array(9).fill(0).map((item, index) => ({
-                ...TEST_ARTICLE,
+                ...TEST_ITEM,
                 id: String(index),
             })),
         },

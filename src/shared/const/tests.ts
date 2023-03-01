@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { Item } from '@/entities/Item/testing';
 
-export const TEST_ARTICLE = {
+export const TEST_ITEM = {
     id: '1',
     title: 'Javascript news asfasjf asfjkask f',
     description: 'Что нового в JS за 2022 год?',

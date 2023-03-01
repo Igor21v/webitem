@@ -7,6 +7,7 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getItemDetailsData } from '@/entities/Item';
 import { HStack } from '@/shared/ui/Stack';
 import { getRouteItemEdit, getRouteItems } from '@/shared/const/router';
+import { getCanEditItem } from '../../model/selectors/item';
 
 interface ItemDetailsPageHeaderProps {
     className?: string;
@@ -17,7 +18,7 @@ export const ItemDetailsPageHeader = memo(
         const { className } = props;
         const { t } = useTranslation('itemDetails');
         const navigate = useNavigate();
-        const canEdit = true;
+        const canEdit = useSelector(getCanEditItem);
         const item = useSelector(getItemDetailsData);
         const onBackToList = useCallback(() => {
             navigate(getRouteItems('all'));

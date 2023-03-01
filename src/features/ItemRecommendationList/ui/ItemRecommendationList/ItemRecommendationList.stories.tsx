@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { ItemRecommendationList } from './ItemRecommendationList';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
-import { TEST_ARTICLE } from '@/shared/const/tests';
+import { TEST_ITEM } from '@/shared/const/tests';
 
 export default {
     title: 'features/ItemRecommendationList',
@@ -27,9 +27,9 @@ Normal.parameters = {
             method: 'GET',
             status: 200,
             response: [
-                { ...TEST_ARTICLE, id: '1' },
-                { ...TEST_ARTICLE, id: '2' },
-                { ...TEST_ARTICLE, id: '3' },
+                { ...TEST_ITEM, id: '1' },
+                { ...TEST_ITEM, id: '2' },
+                { ...TEST_ITEM, id: '3' },
             ],
         },
     ],

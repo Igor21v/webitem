@@ -1,7 +1,7 @@
 import { Item } from '../../../src/entities/Item';
 
 const defaultItem = {
-    title: 'TESTING ARTICLE',
+    title: 'TESTING ITEM',
     subtitle: 'Экономика',
     img: 'https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg',
     views: 1022,

@@ -5,12 +5,12 @@ import { SortOrder } from '@/shared/types';
 import { getItemsPageInited } from '../../selectors/itemsPageSelectors';
 import { itemsPageActions } from '../../slice/ItemsPageSlice';
 import { fetchItemsList } from '../fetchItemsList/fetchItemsList';
-import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
+import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { getPageDimensions } from '@/features/UI';
 import {
-    ARTICLE_BIG_HEIGHT,
-    ARTICLE_SMALL_HEIGHT,
-    ARTICLE_SMALL_WIDTH,
+    ITEM_BIG_HEIGHT,
+    ITEM_SMALL_HEIGHT,
+    ITEM_SMALL_WIDTH,
 } from '@/shared/const/dimensions';
 
 export const initItemsPage = createAsyncThunk<
@@ -38,7 +38,7 @@ export const initItemsPage = createAsyncThunk<
             dispatch(itemsPageActions.setType(typeFromUrl));
         }
         const view = localStorage.getItem(
-            ARTICLES_VIEW_LOCALSTORAGE_KEY,
+            ITEMS_VIEW_LOCALSTORAGE_KEY,
         ) as ItemView;
         if (view) {
             dispatch(itemsPageActions.setView(view));
@@ -48,10 +48,10 @@ export const initItemsPage = createAsyncThunk<
         );
         let limit;
         if (view === ItemView.BIG) {
-            limit = Math.ceil(pageHeight / ARTICLE_BIG_HEIGHT) + 2;
+            limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT) + 2;
         } else {
             const pageSquare = pageHeight * pageWidth;
-            const itemSquare = ARTICLE_SMALL_HEIGHT * ARTICLE_SMALL_WIDTH;
+            const itemSquare = ITEM_SMALL_HEIGHT * ITEM_SMALL_WIDTH;
             limit = Math.max(Math.ceil(pageSquare / itemSquare) + 6, 9);
         }
 

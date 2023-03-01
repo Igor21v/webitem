@@ -6,7 +6,7 @@ import { ItemList } from '@/entities/Item';
 import { Text, TextSize } from '@/shared/ui/Text';
 import { useItemRecommendationsList } from '../../api/itemRecommendationsApi';
 import cls from './ItemRecommendationList.module.scss';
-import { ARTICLE_SMALL_WIDTH } from '@/shared/const/dimensions';
+import { ITEM_SMALL_WIDTH } from '@/shared/const/dimensions';
 
 interface ItemRecommendationListProps {
     className?: string;
@@ -17,7 +17,7 @@ export const ItemRecommendationList = memo(
     (props: ItemRecommendationListProps) => {
         const { className, pageWidth } = props;
         const { t } = useTranslation('itemDetails');
-        const limit = Math.round(pageWidth / ARTICLE_SMALL_WIDTH);
+        const limit = Math.round(pageWidth / ITEM_SMALL_WIDTH);
         const {
             isLoading,
             data: items,

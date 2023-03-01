@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { ItemDetails } from './ItemDetails';
-import { TEST_ARTICLE } from '@/shared/const/tests';
+import { TEST_ITEM } from '@/shared/const/tests';
 
 export default {
     title: 'entities/ItemDetails',
@@ -20,7 +20,7 @@ Normal.args = {};
 Normal.decorators = [
     StoreDecorator({
         itemDetails: {
-            data: TEST_ARTICLE,
+            data: TEST_ITEM,
         },
     }),
 ];

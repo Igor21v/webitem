@@ -43,20 +43,20 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         element: <ProfilePage />,
         authOnly: true,
     },
-    [AppRoutes.ARTICLES]: {
+    [AppRoutes.ITEMS]: {
         path: getRouteItems(':type'),
         element: <ItemsPage />,
     },
-    [AppRoutes.ARTICLE_DETAILS]: {
+    [AppRoutes.ITEM_DETAILS]: {
         path: getRouteItemDetails(':id'),
         element: <ItemDetailPage />,
     },
-    [AppRoutes.ARTICLE_CREATE]: {
+    [AppRoutes.ITEM_CREATE]: {
         path: getRouteItemCreate(),
         element: <ItemEditPage />,
         authOnly: true,
     },
-    [AppRoutes.ARTICLE_EDIT]: {
+    [AppRoutes.ITEM_EDIT]: {
         path: getRouteItemEdit(':id'),
         element: <ItemEditPage />,
         authOnly: true,

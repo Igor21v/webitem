@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ItemList } from './ItemList';
 import { ItemView } from '../../model/consts/ItemConst';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
-import { TEST_ARTICLE } from '@/shared/const/tests';
+import { TEST_ITEM } from '@/shared/const/tests';
 
 export default {
     title: 'entities/Item/ItemList',
@@ -36,7 +36,7 @@ LoadingSmall.args = {
 export const ListSmall = Template.bind({});
 ListSmall.args = {
     items: new Array(9).fill(0).map((item, index) => ({
-        ...TEST_ARTICLE,
+        ...TEST_ITEM,
         id: String(index),
     })),
     isLoading: false,
@@ -46,7 +46,7 @@ ListSmall.args = {
 export const ListBig = Template.bind({});
 ListBig.args = {
     items: new Array(9).fill(0).map((item, index) => ({
-        ...TEST_ARTICLE,
+        ...TEST_ITEM,
         id: String(index),
     })),
     isLoading: false,

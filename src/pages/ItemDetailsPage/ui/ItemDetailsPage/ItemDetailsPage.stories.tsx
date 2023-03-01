@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import ItemDetailsPage from './ItemDetailsPage';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
-import { TEST_ARTICLE } from '@/shared/const/tests';
+import { TEST_ITEM } from '@/shared/const/tests';
 
 export default {
     title: 'pages/ItemDetailsPage/ItemDetailsPage',
@@ -14,7 +14,7 @@ export default {
         RouterDecorator(),
         StoreDecorator({
             itemDetails: {
-                data: TEST_ARTICLE,
+                data: TEST_ITEM,
             },
             user: {
                 authData: { id: '1' },
@@ -46,7 +46,7 @@ Normal.parameters = {
             method: 'GET',
             status: 200,
             response: new Array(7).fill(0).map((item, index) => ({
-                ...TEST_ARTICLE,
+                ...TEST_ITEM,
                 id: String(index),
             })),
         },

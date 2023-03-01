@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Item, ItemSortField, ItemTypes, ItemView } from '@/entities/Item';
-import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
+import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { SortOrder } from '@/shared/types';
 import { fetchItemsList } from '../services/fetchItemsList/fetchItemsList';
 import { ItemsPageSchema } from '../types/itemsPageSchema';
@@ -38,10 +38,7 @@ export const itemsPageSlice = createSlice({
     reducers: {
         setView: (state, action: PayloadAction<ItemView>) => {
             state.view = action.payload;
-            localStorage.setItem(
-                ARTICLES_VIEW_LOCALSTORAGE_KEY,
-                action.payload,
-            );
+            localStorage.setItem(ITEMS_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;

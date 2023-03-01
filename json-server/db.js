@@ -1,5 +1,5 @@
 const comments = require('./db/comments.json');
-const itemRatings = require('./db/item-ratings.json');
+const itemRatings = require('./db/itemRatings.json');
 const items = require('./db/items.json');
 const notifications = require('./db/notifications.json');
 const profile = require('./db/profile.json');

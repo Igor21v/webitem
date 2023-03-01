@@ -56,7 +56,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 <Skeleton width={600} height={24} />
                 <Skeleton width={200} height={18} />
                 <Skeleton width={200} height={18} />
-                <VStack max>
+                <VStack max gap="4">
                     <HStack justify="between" align="end" max>
                         <HStack gap="8">
                             <Skeleton width={60} height={56} border="20%" />
