@@ -22,10 +22,15 @@ server.use(async (req, res, next) => {
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
+        console.log(`PATH ${path.resolve(__dirname, 'db', 'user.json')}`);
         const db = JSON.parse(
-            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+            fs.readFileSync(
+                path.resolve(__dirname, 'db', 'users.json'),
+                'UTF-8',
+            ),
         );
-        const { users = [] } = db;
+        console.log(`DB!!!${db}`);
+        const users = db;
 
         const userFromBd = users.find(
             (user) => user.username === username && user.password === password,
