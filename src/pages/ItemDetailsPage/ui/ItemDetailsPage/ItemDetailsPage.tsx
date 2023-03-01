@@ -13,7 +13,6 @@ import { ItemRecommendationList } from '@/features/ItemRecommendationList';
 import { ItemDetailsPageHeader } from '../ItemDetailsPageHeader/ItemDetailsPageHeader';
 import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
-import { ItemDetailsComments } from '../ItemDetailsComments/ItemDetailsComments';
 import { ItemRating } from '@/features/ItemRating';
 import { getPageDimensions } from '@/features/UI';
 
@@ -37,7 +36,6 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     <ItemDetails id={id} />
                     <ItemRating itemId={id} />
                     <ItemRecommendationList pageWidth={pageWidth} />
-                    <ItemDetailsComments id={id} />
                 </VStack>
             </Page>
         </DynamicModuleLoader>

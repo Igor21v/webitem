@@ -42,18 +42,6 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
     const isLoading = useSelector(getItemDetailsIsLoading);
     const error = useSelector(getItemDetailsError);
     const item = useSelector(getItemDetailsData);
-    /*     const renderBlock = useCallback((block: ItemBlock) => {
-        switch (block.type) {
-            case ItemBlockType.CODE:
-                return <ItemCodeBlockComponent key={block.id} block={block} />;
-            case ItemBlockType.IMAGE:
-                return <ItemImageBlockComponent key={block.id} block={block} />;
-            case ItemBlockType.TEXT:
-                return <ItemTextBlockComponent key={block.id} block={block} />;
-            default:
-                return null;
-        }
-    }, []); */
     let content;
     if (isLoading) {
         content = (
@@ -66,8 +54,19 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 />
                 <Skeleton width={300} height={32} />
                 <Skeleton width={600} height={24} />
-                <Skeleton width="100%" height={200} />
-                <Skeleton width="100%" height={200} />
+                <Skeleton width={200} height={18} />
+                <Skeleton width={200} height={18} />
+                <VStack max>
+                    <HStack justify="between" align="end" max>
+                        <HStack gap="8">
+                            <Skeleton width={60} height={56} border="20%" />
+                            <Skeleton width={60} height={56} border="20%" />
+                            <Skeleton width={60} height={56} border="20%" />
+                        </HStack>
+                        <Skeleton width={200} height={24} />
+                    </HStack>
+                    <Skeleton width="100%" height={400} />
+                </VStack>
             </>
         );
     } else if (error) {
