@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ItemSortField, ItemView } from '@/entities/Item';
+import { ItemSortField, ItemTypes, ItemView } from '@/entities/Item';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Input } from '@/shared/ui/Input';
 import { Card } from '@/shared/ui/Card';
@@ -35,10 +35,10 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const sort = useSelector(getItemsPageSort);
     const order = useSelector(getItemsPageOrder);
     const search = useSelector(getItemsPageSearch);
-    const { type } = useParams();
+    const { type } = useParams<{ type: ItemTypes }>();
     const fetchData = useCallback(() => {
-        dispatch(fetchItemsList({ type, replace: true }));
-    }, [dispatch, type]);
+        dispatch(fetchItemsList({ replace: true }));
+    }, [dispatch]);
     const debouncedFetchData = useDebounce(fetchData, 500);
     const onChangeView = useCallback(
         (view: ItemView) => {
@@ -74,6 +74,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     );
     useNonInitialEffect(() => {
         dispatch(itemsPageActions.setPage(1));
+        dispatch(itemsPageActions.setType(type || 'all'));
         fetchData();
     }, [type]);
 

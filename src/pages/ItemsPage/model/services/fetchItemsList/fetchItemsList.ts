@@ -8,25 +8,25 @@ import {
     getItemsPageOrder,
     getItemsPageSearch,
     getItemsPageSort,
+    getItemsPageType,
 } from '../../selectors/itemsPageSelectors';
 
 interface FetchItemListProps {
     replace?: boolean;
-    type?: string;
 }
 
 export const fetchItemsList = createAsyncThunk<
     Item[],
     FetchItemListProps,
     ThunkConfig<string>
->('itemsPage/fetchItemsList', async (props, thunkApi) => {
-    const { type } = props;
+>('itemsPage/fetchItemsList', async (_props, thunkApi) => {
     const { extra, rejectWithValue, getState } = thunkApi;
     const page = getItemsPageNum(getState());
     const limit = getItemsPageLimit(getState());
     const sort = getItemsPageSort(getState());
     const order = getItemsPageOrder(getState());
     const search = getItemsPageSearch(getState());
+    const type = getItemsPageType(getState());
     try {
         addQueryParams({
             sort,

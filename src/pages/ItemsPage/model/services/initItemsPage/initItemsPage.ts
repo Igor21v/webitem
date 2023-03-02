@@ -63,10 +63,8 @@ export const initItemsPage = createAsyncThunk<
         dispatch(itemsPageActions.setLimit(limit));
         dispatch(itemsPageActions.initState());
     }
-    console.log(`test1${currType}`);
     if (!inited || type !== currType) {
         dispatch(itemsPageActions.setType(type || 'all'));
-        dispatch(fetchItemsList({ type }));
-        console.log('test2');
+        dispatch(fetchItemsList({}));
     }
 });
