@@ -32,7 +32,6 @@ export const fetchItemsList = createAsyncThunk<
             sort,
             order,
             search,
-            type,
         });
         const response = await extra.api.get<Item[]>('/items/', {
             params: {

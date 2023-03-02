@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -14,6 +14,7 @@ import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
 import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
 import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
+import { ItemTypes } from '@/entities/Item';
 
 interface ItemsPageProps {
     className?: string;
@@ -27,11 +28,12 @@ const ItemsPage = (props: ItemsPageProps) => {
     const { className } = props;
     const dispatch = useAppDispatch();
     const [searchParams] = useSearchParams();
+    const { type } = useParams<{ type: ItemTypes }>();
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextItemsPage());
     }, [dispatch]);
     useInitialEffect(() => {
-        dispatch(initItemsPage(searchParams));
+        dispatch(initItemsPage({ searchParams, type }));
     });
 
     return (

@@ -1,8 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { ItemSortField, ItemView, ItemTypes } from '@/entities/Item';
+import { ItemSortField, ItemTypes, ItemView } from '@/entities/Item';
 import { SortOrder } from '@/shared/types';
-import { getItemsPageInited } from '../../selectors/itemsPageSelectors';
+import {
+    getItemsPageInited,
+    getItemsPageType,
+} from '../../selectors/itemsPageSelectors';
 import { itemsPageActions } from '../../slice/ItemsPageSlice';
 import { fetchItemsList } from '../fetchItemsList/fetchItemsList';
 import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
@@ -13,18 +16,24 @@ import {
     ITEM_SMALL_WIDTH,
 } from '@/shared/const/dimensions';
 
+interface InitItemsPageProps {
+    searchParams: URLSearchParams;
+    type?: ItemTypes;
+}
+
 export const initItemsPage = createAsyncThunk<
     void,
-    URLSearchParams,
+    InitItemsPageProps,
     ThunkConfig<string>
->('itemsPage/initItemPage', async (searchParams, thunkApi) => {
+>('itemsPage/initItemPage', async (props, thunkApi) => {
+    const { searchParams, type } = props;
     const { dispatch, getState } = thunkApi;
     const inited = getItemsPageInited(getState());
+    const currType = getItemsPageType(getState());
     if (!inited) {
         const orderFromUrl = searchParams.get('order') as SortOrder;
         const sortFromUrl = searchParams.get('sort') as ItemSortField;
         const searchFromUrl = searchParams.get('search');
-        const typeFromUrl = searchParams.get('type') as ItemTypes;
         if (orderFromUrl) {
             dispatch(itemsPageActions.setOrder(orderFromUrl));
         }
@@ -33,9 +42,6 @@ export const initItemsPage = createAsyncThunk<
         }
         if (searchFromUrl) {
             dispatch(itemsPageActions.setSearch(searchFromUrl));
-        }
-        if (typeFromUrl) {
-            dispatch(itemsPageActions.setType(typeFromUrl));
         }
         const view = localStorage.getItem(
             ITEMS_VIEW_LOCALSTORAGE_KEY,
@@ -54,9 +60,13 @@ export const initItemsPage = createAsyncThunk<
             const itemSquare = ITEM_SMALL_HEIGHT * ITEM_SMALL_WIDTH;
             limit = Math.max(Math.ceil(pageSquare / itemSquare) + 6, 9);
         }
-
         dispatch(itemsPageActions.setLimit(limit));
         dispatch(itemsPageActions.initState());
-        dispatch(fetchItemsList({}));
+    }
+    console.log(`test1${currType}`);
+    if (!inited || type !== currType) {
+        dispatch(itemsPageActions.setType(type || 'all'));
+        dispatch(fetchItemsList({ type }));
+        console.log('test2');
     }
 });
