@@ -32,6 +32,7 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
             <Icon Svg={EyeIcon} />
         </HStack>
     );
+
     if (view === ItemView.BIG) {
         return (
             <ItemListBigItem

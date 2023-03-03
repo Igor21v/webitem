@@ -27,6 +27,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                     <Text text={item.createdAt} className={cls.data} />
                 </div>
                 {languages}
+
                 <AppImage
                     src={item.img}
                     className={cls.img}

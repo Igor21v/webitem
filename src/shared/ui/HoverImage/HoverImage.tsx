@@ -5,7 +5,7 @@ import cls from './HoverImage.module.scss';
 import { Loader } from '../Loader';
 
 interface HoverImageProps extends AppImageProps {
-    isHover: boolean;
+    isHover?: boolean;
     animateSrc?: string;
 }
 
