@@ -2,19 +2,17 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import cls from './ItemListItem.module.scss';
-import { ItemView } from '../../model/consts/ItemConst';
+import cls from './ItemListBigItem.module.scss';
 
 interface ItemListItemSkeletonProps {
     className?: string;
-    view: ItemView;
 }
 
-export const ItemListItemSkeleton = memo((props: ItemListItemSkeletonProps) => {
-    const { className, view } = props;
-    if (view === ItemView.BIG) {
+export const ItemListItemBigSkeleton = memo(
+    (props: ItemListItemSkeletonProps) => {
+        const { className } = props;
         return (
-            <div className={classNames('', {}, [className, cls[view]])}>
+            <div className={classNames('', {}, [className])}>
                 <Card>
                     <div className={cls.header}>
                         <Skeleton width={150} height={24} />
@@ -42,19 +40,5 @@ export const ItemListItemSkeleton = memo((props: ItemListItemSkeletonProps) => {
                 </Card>
             </div>
         );
-    }
-
-    return (
-        <div className={classNames('', {}, [className, cls[view]])}>
-            <Card>
-                <div className={cls.imageWrapper}>
-                    <Skeleton width={200} height={200} className={cls.img} />
-                </div>
-                <div className={cls.infoWrapper}>
-                    <Skeleton width={130} height={16} />
-                </div>
-                <Skeleton width={150} height={16} />
-            </Card>
-        </div>
-    );
-});
+    },
+);

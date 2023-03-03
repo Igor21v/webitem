@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ItemListItem } from './ItemListItem';
-import { ItemView } from '../../model/consts/ItemConst';
+import { ItemView } from '../../../model/consts/ItemConst';
 import { TEST_ITEM } from '@/shared/const/tests';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 
