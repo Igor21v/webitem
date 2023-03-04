@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
@@ -11,13 +11,37 @@ import { ItemListSpecItemProps } from '../ItemListItem/ItemListItem';
 import { ItemCoverImg } from '../../ItemCoverImg/ItemCoverImg';
 import { HStack, VStack } from '@/shared/ui/Stack';
 
+type AnyTODO = any;
+
 export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
     const { t } = useTranslation();
+    const triggerElement = useRef() as MutableRefObject<HTMLDivElement>;
+    const [animateOn, setAnimateOn] = useState(false);
+    const intersectionHandler = (entries: AnyTODO[]) => {
+        entries.forEach((entry) => {
+            const { isIntersecting } = entry;
+            if (isIntersecting) {
+                setAnimateOn(true);
+            } else {
+                setAnimateOn(false);
+            }
+        });
+    };
+    useEffect(() => {
+        const options = {
+            rootMargin: '-10px',
+            threshold: [1],
+        };
+        const observer = new IntersectionObserver(intersectionHandler, options);
+        observer.observe(triggerElement.current);
+    }, []);
+
     return (
         <div
             className={classNames('', {}, [className])}
             data-testid="ItemListItem"
+            ref={triggerElement}
         >
             <Card shadow>
                 <HStack max>
@@ -25,7 +49,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                         item={item}
                         width={444}
                         className={cls.img}
-                        animateOn
+                        animateOn={animateOn}
                     />
                     <VStack
                         max

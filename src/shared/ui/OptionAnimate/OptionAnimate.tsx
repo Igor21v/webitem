@@ -1,4 +1,4 @@
-import { memo, useLayoutEffect, useState } from 'react';
+import { memo, ReactNode, useLayoutEffect, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppImageProps } from '../AppImage';
 import cls from './OptionAnimate.module.scss';
@@ -63,22 +63,20 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
         setAnimateLoaded(false);
     }
 
-    const staticImg = (
-        <img
-            className={classNames('', { [cls.round]: round }, [className])}
-            src={src}
-            alt={alt}
-            {...otherProps}
-        />
+    const staticImg = (children?: ReactNode) => (
+        <div className={cls.staticWrapper}>
+            <img
+                className={classNames('', { [cls.round]: round }, [className])}
+                src={src}
+                alt={alt}
+                {...otherProps}
+            />
+            {children}
+        </div>
     );
 
     if (isLoadingAnimate) {
-        return (
-            <>
-                {staticImg}
-                <Loader className={cls.loader} />
-            </>
-        );
+        return <>{staticImg(<Loader className={cls.loader} />)}</>;
     }
 
     if (animateLoaded && animateOn) {
@@ -100,5 +98,5 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
         return errorFallback;
     }
 
-    return staticImg;
+    return staticImg();
 });

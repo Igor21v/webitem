@@ -70,6 +70,7 @@
       "title": "Golang news",
       "description": "Что нового в JS за 2022 год?",
       "img": "https://i.pinimg.com/originals/36/67/a9/3667a92e986f1d10d72a24f213f9f085.png",
+      "imgAnim": "https://otkritkis.com/wp-content/uploads/2022/06/i7yqs.gif",
       "views": 10222,
       "createdAt": "2022.06.26",
       "type": [
@@ -195,10 +196,11 @@
       }
     },
     {
-      "id": "5",
+      "id": "5444",
       "title": "Golang news",
       "description": "Что нового в JS за 2022 год?",
       "img": "https://i.pinimg.com/originals/36/67/a9/3667a92e986f1d10d72a24f213f9f085.png",
+      "imgAnim": "https://otkritkis.com/wp-content/uploads/2022/06/i7yqs.gif",
       "views": 10222,
       "createdAt": "2023.02.01",
       "type": [
