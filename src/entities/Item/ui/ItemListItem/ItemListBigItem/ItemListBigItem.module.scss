@@ -1,9 +1,5 @@
-.views {
-    margin-left: auto;
-}
-
-.languages {
-    margin-top: 16px;
+.ItemListBigItem {
+    position: relative;
 }
 
 .img {
@@ -20,4 +16,15 @@
 
 .description {
     height: 250px;
+}
+
+.itemLike {
+    margin-left: auto;
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+}
+
+.skeletonText {
+    width: 100%;
 }

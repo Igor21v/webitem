@@ -1,16 +1,15 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
-import { Icon } from '@/shared/ui/Icon';
 import { Card } from '@/shared/ui/Card';
 import { getRouteItemDetails } from '@/shared/const/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ItemListSmallItem.module.scss';
 import { useHover } from '@/shared/lib/hooks/useHover/useHover';
-import FavouriteIcon from '@/shared/assets/icons/favourite-20-20.svg';
 import { HStack } from '@/shared/ui/Stack';
 import { ItemListSpecItemProps } from '../ItemListItem/ItemListItem';
 import { ItemCoverImg } from '../../ItemCoverImg/ItemCoverImg';
+import { ItemLike } from '../../ItemLike/ItemLike';
 
 export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
@@ -30,6 +29,7 @@ export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
                     <ItemCoverImg
                         item={item}
                         width={355}
+                        height={250}
                         className={cls.img}
                         animateOn={isHover}
                     />
@@ -37,11 +37,7 @@ export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
                 </div>
                 <HStack justify="between" align="center">
                     <Text text={item.title} className={cls.title} />
-                    <Icon
-                        Svg={FavouriteIcon}
-                        height={30}
-                        className={cls.favIcon}
-                    />
+                    <ItemLike />
                 </HStack>
                 <HStack justify="around" className={cls.infoWrapper}>
                     {languages}

@@ -10,6 +10,7 @@ import cls from './ItemListBigItem.module.scss';
 import { ItemListSpecItemProps } from '../ItemListItem/ItemListItem';
 import { ItemCoverImg } from '../../ItemCoverImg/ItemCoverImg';
 import { HStack, VStack } from '@/shared/ui/Stack';
+import { ItemLike } from '../../ItemLike/ItemLike';
 
 type AnyTODO = any;
 
@@ -39,15 +40,16 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
 
     return (
         <div
-            className={classNames('', {}, [className])}
+            className={classNames(cls.ItemListBigItem, {}, [className])}
             data-testid="ItemListItem"
             ref={triggerElement}
         >
             <Card shadow>
-                <HStack max>
+                <HStack>
                     <ItemCoverImg
                         item={item}
                         width={444}
+                        height={250}
                         className={cls.img}
                         animateOn={animateOn}
                     />
@@ -58,15 +60,16 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                         className={cls.description}
                     >
                         <Text title={item.title} />
-                        <Text text={item.createdAt} />
-                        {languages}
                         {item.description && (
                             <Text
                                 text={item.description}
                                 className={cls.textBlock}
                             />
                         )}
+                        {languages}
+                        <Text text={item.createdAt} />
                         {views}
+
                         <AppLink
                             target={target}
                             to={getRouteItemDetails(item.id)}
@@ -75,6 +78,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                                 {t('View the source code')}
                             </Button>
                         </AppLink>
+                        <ItemLike className={cls.itemLike} />
                     </VStack>
                 </HStack>
             </Card>

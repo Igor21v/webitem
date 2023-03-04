@@ -64,9 +64,17 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
     }
 
     const staticImg = (children?: ReactNode) => (
-        <div className={cls.staticWrapper}>
+        <div
+            className={classNames(cls.staticWrapper, { [cls.round]: round }, [
+                className,
+            ])}
+        >
             <img
-                className={classNames('', { [cls.round]: round }, [className])}
+                className={classNames(
+                    cls.staticWrapper,
+                    { [cls.round]: round },
+                    [className],
+                )}
                 src={src}
                 alt={alt}
                 {...otherProps}

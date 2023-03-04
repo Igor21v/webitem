@@ -11,6 +11,13 @@ interface SkeletonProps {
 
 export const Skeleton = (props: SkeletonProps) => {
     const { className, height, width, border } = props;
+    /*    let calculatedWidth;
+         if (typeof width === 'number' && inHStack) {
+        calculatedWidth = width + width * 0.8;
+    } else {
+        calculatedWidth = width;
+    } */
+
     const styles: CSSProperties = {
         width,
         height,

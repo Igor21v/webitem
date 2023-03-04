@@ -3,6 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './ItemListBigItem.module.scss';
+import { HStack, VStack } from '@/shared/ui/Stack';
 
 interface ItemListItemSkeletonProps {
     className?: string;
@@ -12,31 +13,33 @@ export const ItemListItemBigSkeleton = memo(
     (props: ItemListItemSkeletonProps) => {
         const { className } = props;
         return (
-            <div className={classNames('', {}, [className])}>
+            <div className={classNames(cls.ItemListBigItem, {}, [className])}>
                 <Card>
-                    <div className={cls.header}>
-                        <Skeleton width={150} height={24} />
-                        <Skeleton
-                            width={150}
-                            height={16}
-                            className={cls.data}
-                        />
-                    </div>
-                    <Skeleton
-                        width={250}
-                        height={24}
-                        className={cls.languages}
-                    />
-                    <Skeleton height={250} className={cls.img} />
-                    <Skeleton
-                        width={300}
-                        height={24}
-                        className={cls.textBlock}
-                    />
-                    <div className={cls.fotter}>
-                        <Skeleton width={200} height={36} />
-                        <Skeleton width={60} height={24} />
-                    </div>
+                    <HStack>
+                        <div className={cls.img}>
+                            <Skeleton width={444} height={250} />
+                        </div>
+                        <div className={cls.skeletonText}>
+                            <VStack
+                                max
+                                justify="between"
+                                align="center"
+                                className={cls.description}
+                            >
+                                <Skeleton width={170} height={24} />
+                                <Skeleton width={200} height={20} />
+                                <Skeleton width={170} height={20} />
+                                <Skeleton width={170} height={20} />
+                                <Skeleton width={170} height={20} />
+                                <Skeleton width={170} height={28} />
+                                <Skeleton
+                                    width={30}
+                                    height={30}
+                                    className={cls.itemLike}
+                                />
+                            </VStack>
+                        </div>
+                    </HStack>
                 </Card>
             </div>
         );

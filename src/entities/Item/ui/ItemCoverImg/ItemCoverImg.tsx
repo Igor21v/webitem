@@ -9,11 +9,12 @@ interface ItemCoverImgProps {
     className?: string;
     animateOn?: boolean;
     width: number;
+    height: number;
     item: Item;
 }
 
 export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
-    const { className, animateOn, item, width } = props;
+    const { className, animateOn, item, width, height } = props;
     return (
         <OptionAnimate
             animateOn={animateOn}
@@ -21,9 +22,18 @@ export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
             src={item.img}
             className={className}
             alt={item.title}
-            fallback={<Skeleton width={width} height={200} />}
+            fallback={
+                <div>
+                    <Skeleton width={width} height={height} />
+                </div>
+            }
             errorFallback={
-                <Icon Svg={ItemIcon} width={width} height={200} opacity={0.7} />
+                <Icon
+                    Svg={ItemIcon}
+                    width={width}
+                    height={height}
+                    opacity={0.7}
+                />
             }
         />
     );
