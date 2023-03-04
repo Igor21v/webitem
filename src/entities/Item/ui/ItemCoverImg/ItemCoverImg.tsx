@@ -2,21 +2,21 @@ import { memo } from 'react';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Icon } from '@/shared/ui/Icon';
 import { Item } from '../../model/types/item';
-import { HoverImage } from '@/shared/ui/HoverImage';
+import { OptionAnimate } from '@/shared/ui/OptionAnimate';
 import ItemIcon from '@/shared/assets/icons/item.svg';
 
 interface ItemCoverImgProps {
     className?: string;
-    isHover?: boolean;
+    animateOn?: boolean;
     width: number;
     item: Item;
 }
 
 export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
-    const { className, isHover, item, width } = props;
+    const { className, animateOn, item, width } = props;
     return (
-        <HoverImage
-            isHover={isHover}
+        <OptionAnimate
+            animateOn={animateOn}
             animateSrc={item.imgAnim}
             src={item.img}
             className={className}

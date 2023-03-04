@@ -1,1 +1,0 @@
-export { HoverImage } from './HoverImage';

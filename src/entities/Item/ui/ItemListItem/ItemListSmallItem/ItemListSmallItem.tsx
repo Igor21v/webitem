@@ -27,7 +27,12 @@ export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
         >
             <Card shadow>
                 <div className={cls.imageWrapper}>
-                    <ItemCoverImg />
+                    <ItemCoverImg
+                        item={item}
+                        width={355}
+                        className={cls.img}
+                        animateOn={isHover}
+                    />
                     <Text text={item.createdAt} className={cls.date} />
                 </div>
                 <HStack justify="between" align="center">

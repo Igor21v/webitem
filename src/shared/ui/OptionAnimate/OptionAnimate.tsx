@@ -1,17 +1,17 @@
 import { memo, useLayoutEffect, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppImageProps } from '../AppImage';
-import cls from './HoverImage.module.scss';
+import cls from './OptionAnimate.module.scss';
 import { Loader } from '../Loader';
 
-interface HoverImageProps extends AppImageProps {
-    isHover?: boolean;
+interface OptionAnimateProps extends AppImageProps {
+    animateOn?: boolean;
     animateSrc?: string;
 }
 
-export const HoverImage = memo((props: HoverImageProps) => {
+export const OptionAnimate = memo((props: OptionAnimateProps) => {
     const {
-        isHover,
+        animateOn,
         animateSrc,
         className,
         src,
@@ -40,7 +40,7 @@ export const HoverImage = memo((props: HoverImageProps) => {
     }, [src]);
 
     if (
-        isHover &&
+        animateOn &&
         animateSrc &&
         !isLoadingAnimate &&
         !hasErrorAnimate &&
@@ -59,7 +59,7 @@ export const HoverImage = memo((props: HoverImageProps) => {
         };
     }
 
-    if (!isHover && animateLoaded) {
+    if (!animateOn && animateLoaded) {
         setAnimateLoaded(false);
     }
 
@@ -81,7 +81,7 @@ export const HoverImage = memo((props: HoverImageProps) => {
         );
     }
 
-    if (animateLoaded && isHover) {
+    if (animateLoaded && animateOn) {
         return (
             <img
                 className={classNames('', { [cls.round]: round }, [className])}

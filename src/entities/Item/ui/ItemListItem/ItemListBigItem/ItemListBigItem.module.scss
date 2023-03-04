@@ -2,34 +2,22 @@
     margin-left: auto;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-}
-
 .languages {
     margin-top: 16px;
 }
 
-.data {
-    margin-left: auto;
-}
-
 .img {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
-    margin-top: 16px;
-}
-
-.fotter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 16px;
+    width: 444px;
+    height: 250px;
+    border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .textBlock {
     max-height: 200px;
     overflow-y: hidden;
+}
+
+.description {
+    height: 250px;
 }

@@ -1,16 +1,16 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { HoverImage } from './HoverImage';
+import { OptionAnimate } from './OptionAnimate';
 
 export default {
     title: 'shared/AnimateHover',
-    component: HoverImage,
+    component: OptionAnimate,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof HoverImage>;
+} as ComponentMeta<typeof OptionAnimate>;
 
-const Template: ComponentStory<typeof HoverImage> = (args) => (
-    <HoverImage {...args} />
+const Template: ComponentStory<typeof OptionAnimate> = (args) => (
+    <OptionAnimate {...args} />
 );
 
 export const Normal = Template.bind({});
