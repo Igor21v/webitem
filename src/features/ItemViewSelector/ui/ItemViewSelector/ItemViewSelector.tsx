@@ -1,11 +1,12 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import ListIcon from '@/shared/assets/icons/list-24-24.svg';
-import TiledIcon from '@/shared/assets/icons/tiled-24-24.svg';
+import ListIcon from '@/shared/assets/icons/list-16-16.svg';
+import TiledIcon from '@/shared/assets/icons/tiled-16-16.svg';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import cls from './ItemViewSelector.module.scss';
 import { ItemView } from '@/entities/Item';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ItemViewSelectorProps {
     className?: string;
@@ -30,7 +31,7 @@ export const ItemViewSelector = memo((props: ItemViewSelectorProps) => {
         onViewClick?.(newView);
     };
     return (
-        <div className={classNames('', {}, [className])}>
+        <HStack gap="8" className={classNames('', {}, [className])}>
             {viewTypes.map((viewType) => (
                 <Button
                     theme={ButtonTheme.CLEAR}
@@ -45,6 +46,6 @@ export const ItemViewSelector = memo((props: ItemViewSelectorProps) => {
                     />
                 </Button>
             ))}
-        </div>
+        </HStack>
     );
 });

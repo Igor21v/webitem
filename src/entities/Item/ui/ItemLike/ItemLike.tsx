@@ -2,7 +2,7 @@ import { memo, MouseEventHandler, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ItemLike.module.scss';
 import { Icon } from '@/shared/ui/Icon';
-import FavouriteIcon from '@/shared/assets/icons/favourite-20-20.svg';
+import FavouriteIcon from '@/shared/assets/icons/like.svg';
 import { Item } from '../../model/types/item';
 import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
 
@@ -40,7 +40,6 @@ export const ItemLike = memo((props: ItemLikeProps) => {
         <Icon
             onClick={onclickHandler}
             Svg={FavouriteIcon}
-            height={30}
             className={classNames(cls.ItemLike, { [cls.isLiked]: isLiked }, [
                 className,
             ])}
