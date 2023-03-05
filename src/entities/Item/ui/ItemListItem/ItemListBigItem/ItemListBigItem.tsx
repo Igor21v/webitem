@@ -31,7 +31,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
     };
     useEffect(() => {
         const options = {
-            rootMargin: '-10px',
+            rootMargin: '-30px',
             threshold: [1],
         };
         const observer = new IntersectionObserver(intersectionHandler, options);
@@ -78,7 +78,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                                 {t('View the source code')}
                             </Button>
                         </AppLink>
-                        <ItemLike className={cls.itemLike} />
+                        <ItemLike className={cls.itemLike} item={item} />
                     </VStack>
                 </HStack>
             </Card>

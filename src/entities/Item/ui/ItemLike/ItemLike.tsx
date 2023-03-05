@@ -1,22 +1,49 @@
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, MouseEventHandler, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ItemLike.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import FavouriteIcon from '@/shared/assets/icons/favourite-20-20.svg';
+import { Item } from '../../model/types/item';
+import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
 
 interface ItemLikeProps {
     className?: string;
+    item: Item;
 }
 
 export const ItemLike = memo((props: ItemLikeProps) => {
-    const { className } = props;
-    const { t } = useTranslation();
+    const { className, item } = props;
+    const likesItem = JSON.parse(
+        localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE) || '{}',
+    );
+    const getIsLiked = item.id in likesItem;
+    const [isLiked, setIsLiked] = useState(getIsLiked);
+    console.log(`isLiked ${isLiked}  item.id  ${item.id}`);
+    const onclickHandler: MouseEventHandler<SVGSVGElement> = (event) => {
+        event.preventDefault();
+        if (isLiked) {
+            delete likesItem[item.id];
+            localStorage.setItem(
+                LOCAL_STORAGE_ITEMS_LIKE,
+                JSON.stringify(likesItem),
+            );
+            setIsLiked(false);
+        } else {
+            localStorage.setItem(
+                LOCAL_STORAGE_ITEMS_LIKE,
+                JSON.stringify({ ...likesItem, [item.id]: '' }),
+            );
+            setIsLiked(true);
+        }
+    };
     return (
         <Icon
+            onClick={onclickHandler}
             Svg={FavouriteIcon}
             height={30}
-            className={classNames(cls.ItemLike, {}, [className])}
+            className={classNames(cls.ItemLike, { [cls.isLiked]: isLiked }, [
+                className,
+            ])}
         />
     );
 });

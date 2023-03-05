@@ -20,11 +20,13 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
             path: getRouteMain(),
             Icon: MainIcon,
             text: 'Main',
+            fill: true,
         },
         {
             path: getRouteItems('all'),
             Icon: ItemIcon,
             text: 'All items',
+            fill: true,
         },
         {
             path: getRouteFavourites(),
@@ -35,6 +37,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
             path: getRouteAbout(),
             Icon: AboutIcon,
             text: 'About',
+            fill: true,
         },
     ];
 
@@ -44,6 +47,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
             Icon: ProfileIcon,
             text: 'Profile',
             authOnly: true,
+            fill: true,
         });
     }
 

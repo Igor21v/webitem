@@ -19,7 +19,7 @@ export const NavbarItem = memo((item: NavbarItemType) => {
             to={item.path}
             className={classNames(cls.item, {})}
         >
-            <item.Icon className={cls.icon} />
+            <item.Icon className={classNames('', { [cls.icon]: item.fill })} />
             <span className={cls.link}>{t(item.text)}</span>
         </AppLink>
     );

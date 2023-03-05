@@ -37,7 +37,7 @@ export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
                 </div>
                 <HStack justify="between" align="center">
                     <Text text={item.title} className={cls.title} />
-                    <ItemLike />
+                    <ItemLike item={item} />
                 </HStack>
                 <HStack justify="around" className={cls.infoWrapper}>
                     {languages}
