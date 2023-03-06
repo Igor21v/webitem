@@ -13,18 +13,13 @@ interface ItemLikeProps {
 
 export const ItemLike = memo((props: ItemLikeProps) => {
     const { className, item } = props;
-    const likesItem = JSON.parse(
-        localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE) || '{}',
-    );
-    const getIsLiked = item.id in likesItem;
+    const getLikesItem = () =>
+        JSON.parse(localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE) || '{}');
+    const getIsLiked = item.id in getLikesItem();
     const [isLiked, setIsLiked] = useState(getIsLiked);
-    console.log(
-        `isLiked ${isLiked}  item.id  ${
-            item.id
-        } type item.id  ${typeof item.id}`,
-    );
     const onclickHandler: MouseEventHandler<SVGSVGElement> = (event) => {
         event.preventDefault();
+        const likesItem = getLikesItem();
         if (isLiked) {
             delete likesItem[item.id];
             localStorage.setItem(
@@ -42,6 +37,8 @@ export const ItemLike = memo((props: ItemLikeProps) => {
     };
     return (
         <Icon
+            width={25}
+            height={24}
             onClick={onclickHandler}
             Svg={FavouriteIcon}
             className={classNames(cls.ItemLike, { [cls.isLiked]: isLiked }, [

@@ -3,6 +3,8 @@ import { memo } from 'react';
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
 import { ItemLikeListFetch } from './ItemLikeListFetch';
 import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
+import { Icon } from '@/shared/ui/Icon';
+import FavouriteIcon from '@/shared/assets/icons/like.svg';
 
 interface ItemLikeListProps {
     className?: string;
@@ -15,11 +17,14 @@ export const ItemLikeList = memo((props: ItemLikeListProps) => {
 
     if (!likeItems || likeItems === '{}') {
         return (
-            <Text
-                text={t('Not favourite elements')}
-                size={TextSize.L}
-                align={TextAlign.CENTER}
-            />
+            <>
+                <Text
+                    text={t('Not favourite elements')}
+                    size={TextSize.L}
+                    align={TextAlign.CENTER}
+                />
+                <Icon width={21} Svg={FavouriteIcon} />
+            </>
         );
     }
 
