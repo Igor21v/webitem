@@ -3,15 +3,9 @@ import { Page } from '@/widgets/Page';
 import { ItemLikeList } from '@/features/ItemLikeList';
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
-import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
 
 export default function ItemsLikePage() {
     const { t } = useTranslation('itemsLike');
-    const likesItem = localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE);
-    console.log(` likesItem ${likesItem}`);
-    if (!likesItem) {
-        return <Text text={t('Not favourite elements')} />;
-    }
 
     return (
         <Page data-testid="MainPage">
@@ -21,7 +15,7 @@ export default function ItemsLikePage() {
                     title={t('Favorite elements')}
                     align={TextAlign.CENTER}
                 />
-                <ItemLikeList likesItem={likesItem} />
+                <ItemLikeList />
             </VStack>
         </Page>
     );

@@ -1,28 +1,27 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { useItemRecommendationsList } from '../../api/itemLikeListApi';
-import { ItemList } from '@/entities/Item';
-import { Text } from '@/shared/ui/Text';
+import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
+import { ItemLikeListFetch } from './ItemLikeListFetch';
+import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
 
 interface ItemLikeListProps {
     className?: string;
-    likesItem: string;
 }
 
 export const ItemLikeList = memo((props: ItemLikeListProps) => {
-    const { className, likesItem } = props;
+    const { className } = props;
     const { t } = useTranslation('itemsLike');
-    const {
-        isError,
-        isLoading,
-        data: items,
-    } = useItemRecommendationsList(likesItem);
+    const likeItems = localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE);
 
-    if (isError) {
-        return <Text text={t('an error occurred while downloading items ')} />;
+    if (!likeItems || likeItems === '{}') {
+        return (
+            <Text
+                text={t('Not favourite elements')}
+                size={TextSize.L}
+                align={TextAlign.CENTER}
+            />
+        );
     }
 
-    return (
-        <ItemList isLoading={isLoading} items={items} className={className} />
-    );
+    return <ItemLikeListFetch likeItems={likeItems} className={className} />;
 });

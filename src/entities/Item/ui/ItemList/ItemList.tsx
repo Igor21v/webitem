@@ -40,7 +40,7 @@ export const ItemList = memo((props: ItemListProps) => {
     if (!isLoading && !items?.length) {
         return (
             <div className={classNames('', {}, [className, cls[view]])}>
-                <Text size={TextSize.L} title={t('Статьи не найдены')} />
+                <Text size={TextSize.L} title={t('Elements not found')} />
             </div>
         );
     }
