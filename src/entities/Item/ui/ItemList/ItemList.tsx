@@ -10,7 +10,7 @@ import { ItemView } from '../../model/consts/ItemConst';
 
 interface ItemListProps {
     className?: string;
-    items: Item[];
+    items?: Item[];
     isLoading?: boolean;
     target?: HTMLAttributeAnchorTarget;
     view?: ItemView;
@@ -37,7 +37,7 @@ export const ItemList = memo((props: ItemListProps) => {
     } = props;
     const { t } = useTranslation();
 
-    if (!isLoading && !items.length) {
+    if (!isLoading && !items?.length) {
         return (
             <div className={classNames('', {}, [className, cls[view]])}>
                 <Text size={TextSize.L} title={t('Статьи не найдены')} />
@@ -50,7 +50,7 @@ export const ItemList = memo((props: ItemListProps) => {
             className={classNames('', {}, [cls[view], className])}
             data-testid="ItemList"
         >
-            {items.map((item) => (
+            {items?.map((item) => (
                 <ItemListItem
                     item={item}
                     view={view}

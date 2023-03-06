@@ -22,7 +22,7 @@ import {
     getRouteProfile,
     getRouteFavourites,
 } from '@/shared/const/router';
-import { FavouritesPage } from '@/pages/FavouritesPage';
+import { ItemsLikePage } from '@/pages/ItemsLikePage';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
@@ -69,7 +69,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     },
     [AppRoutes.FAVOURITES]: {
         path: getRouteFavourites(),
-        element: <FavouritesPage />,
+        element: <ItemsLikePage />,
     },
     [AppRoutes.FORBIDDEN]: {
         path: getRouteForbidden(),

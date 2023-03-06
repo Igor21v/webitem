@@ -22,14 +22,12 @@ server.use(async (req, res, next) => {
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        console.log(`PATH ${path.resolve(__dirname, 'db', 'user.json')}`);
         const db = JSON.parse(
             fs.readFileSync(
                 path.resolve(__dirname, 'db', 'users.json'),
                 'UTF-8',
             ),
         );
-        console.log(`DB!!!${db}`);
         const users = db;
 
         const userFromBd = users.find(
@@ -47,6 +45,40 @@ server.post('/login', (req, res) => {
     }
 });
 
+// Эндпоинт для избранного
+server.get('/itemsLike', (req, res) => {
+    try {
+        console.log(`Res ${JSON.stringify(req.query)}`);
+        const itemsReq = JSON.parse(req.query.itemsReq);
+        console.log(`itemsReq ${JSON.stringify(itemsReq)}`);
+        const itemsDB = JSON.parse(
+            fs.readFileSync(
+                path.resolve(__dirname, 'db', 'items.json'),
+                'UTF-8',
+            ),
+        );
+        const itemsRes = Object.keys(itemsReq).map((itemReq) =>
+            itemsDB.find((itemDB) => {
+                console.log(
+                    `itemDB.id ${itemDB.id} itemReq.id ${itemReq} bool ${
+                        itemDB.id === itemReq
+                    }`,
+                );
+                return itemDB.id === itemReq;
+            }),
+        );
+
+        if (itemsRes) {
+            console.log(`itemsRes ${JSON.stringify(itemsRes)}`);
+            return res.json(itemsRes);
+        }
+
+        return res.status(403).json({ message: 'Items not found' });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+});
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 /* server.use((req, res, next) => {

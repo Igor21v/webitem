@@ -18,7 +18,11 @@ export const ItemLike = memo((props: ItemLikeProps) => {
     );
     const getIsLiked = item.id in likesItem;
     const [isLiked, setIsLiked] = useState(getIsLiked);
-    console.log(`isLiked ${isLiked}  item.id  ${item.id}`);
+    console.log(
+        `isLiked ${isLiked}  item.id  ${
+            item.id
+        } type item.id  ${typeof item.id}`,
+    );
     const onclickHandler: MouseEventHandler<SVGSVGElement> = (event) => {
         event.preventDefault();
         if (isLiked) {
