@@ -1,0 +1,16 @@
+[
+    {
+        "id": "19",
+        "title": "Научная статья - Биология",
+        "description": "БиологиЯ",
+        "img": "https://proza.ru/pics/2022/01/04/1415.jpg",
+        "views": 1022,
+        "createdAt": "2023.01.01",
+        "type": ["animation"],
+        "codes": {
+            "html": "<div class=\"test\">TEXT</div>",
+            "css": ".test {font-size: 30px}",
+            "js": "console.log(\"test\")"
+        }
+    }
+]
