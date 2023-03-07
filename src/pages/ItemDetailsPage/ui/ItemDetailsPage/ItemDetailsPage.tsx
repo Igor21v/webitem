@@ -13,7 +13,6 @@ import { ItemRecommendationList } from '@/features/ItemRecommendationList';
 import { ItemDetailsPageHeader } from '../ItemDetailsPageHeader/ItemDetailsPageHeader';
 import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
-import { ItemRating } from '@/features/ItemRating';
 import { getPageDimensions } from '@/features/UI';
 
 interface ItemDetailsPageProps {
@@ -34,7 +33,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                 <VStack gap="16" max>
                     <ItemDetailsPageHeader />
                     <ItemDetails id={id} />
-                    <ItemRating itemId={id} />
+                    {/* <ItemRating itemId={id} /> */}
                     <ItemRecommendationList pageWidth={pageWidth} />
                 </VStack>
             </Page>

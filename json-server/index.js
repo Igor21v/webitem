@@ -2,6 +2,7 @@
 const fs = require('fs');
 const jsonServer = require('json-server');
 const path = require('path');
+const items = require('./db/items');
 
 const server = jsonServer.create();
 
@@ -51,12 +52,7 @@ server.get('/itemsLike', (req, res) => {
         console.log(`Res ${JSON.stringify(req.query)}`);
         const itemsReq = JSON.parse(req.query.itemsReq);
         console.log(`itemsReq ${JSON.stringify(itemsReq)}`);
-        const itemsDB = JSON.parse(
-            fs.readFileSync(
-                path.resolve(__dirname, 'db', 'items.json'),
-                'UTF-8',
-            ),
-        );
+        const itemsDB = items();
         const itemsRes = Object.keys(itemsReq).map((itemReq) =>
             itemsDB.find((itemDB) => {
                 console.log(

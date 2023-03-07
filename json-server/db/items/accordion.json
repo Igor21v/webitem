@@ -6,7 +6,7 @@
         "img": "https://avatars.mds.yandex.net/i?id=b46aeea09f9de3b8be9978f973ef395b8db35d89-6356076-images-thumbs&n=13",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -20,7 +20,7 @@
         "img": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/113415626/original/a17667d573bf34559bf0d35993ed76e57d43ad00/program-python-scripts-for-automation-and-data-mining.png",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -35,7 +35,7 @@
         "imgAnim": "https://otkritkis.com/wp-content/uploads/2022/06/i7yqs.gif",
         "views": 10222,
         "createdAt": "2023.02.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -49,7 +49,7 @@
         "img": "https://andreyex.ru/wp-content/uploads/2018/05/Kak-ustanovit-Java-s-apt-na-Ubuntu-18.04.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -63,7 +63,7 @@
         "img": "https://avatars.mds.yandex.net/i?id=b46aeea09f9de3b8be9978f973ef395b8db35d89-6356076-images-thumbs&n=13",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -77,7 +77,7 @@
         "img": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/113415626/original/a17667d573bf34559bf0d35993ed76e57d43ad00/program-python-scripts-for-automation-and-data-mining.png",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -91,7 +91,7 @@
         "img": "https://avatars.mds.yandex.net/i?id=b46aeea09f9de3b8be9978f973ef395b8db35d89-6356076-images-thumbs&n=13",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -105,7 +105,7 @@
         "img": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/113415626/original/a17667d573bf34559bf0d35993ed76e57d43ad00/program-python-scripts-for-automation-and-data-mining.png",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -119,7 +119,7 @@
         "img": "https://avatars.mds.yandex.net/i?id=b46aeea09f9de3b8be9978f973ef395b8db35d89-6356076-images-thumbs&n=13",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -133,7 +133,7 @@
         "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -147,7 +147,7 @@
         "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -160,7 +160,7 @@
         "img": "https://ostrovrusa.ru/wp-content/uploads/2020/02/ekonomika_01.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -174,7 +174,7 @@
         "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -188,7 +188,7 @@
         "img": "https://vuzopedia.ru/storage/app/uploads/public/5e1/8e5/62c/5e18e562ce212340957924.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -202,7 +202,7 @@
         "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",
@@ -216,7 +216,7 @@
         "img": "https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg",
         "views": 1022,
         "createdAt": "2023.01.01",
-        "type": ["accordion"],
+        "type": "accordion",
         "codes": {
             "html": "<div class=\"test\">TEXT</div>",
             "css": ".test {font-size: 30px}",

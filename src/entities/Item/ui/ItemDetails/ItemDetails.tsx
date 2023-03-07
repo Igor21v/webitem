@@ -58,10 +58,12 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                         <Skeleton width={300} height={32} />
                         <Skeleton width={600} height={24} />
                     </VStack>
+                    <Skeleton width={100} height={18} />
+                </HStack>
+                <HStack max justify="between">
+                    <Skeleton width={200} height={18} />
                     <Skeleton width={25} height={24} />
                 </HStack>
-
-                <Skeleton width={200} height={18} />
                 <Skeleton width={200} height={18} />
                 <VStack max gap="4">
                     <HStack justify="between" align="end" max>
@@ -119,12 +121,15 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                             text={item?.description}
                             size={TextSize.L}
                         />
-                        <ItemLike itemId={item?.id || ''} />
+                        <Text text={item?.type} />
                     </HStack>
 
-                    <HStack gap="8">
-                        <Icon Svg={EyeIcon} />
-                        <Text text={String(item?.views)} />
+                    <HStack max justify="between">
+                        <HStack gap="8">
+                            <Icon Svg={EyeIcon} />
+                            <Text text={String(item?.views)} />
+                        </HStack>
+                        <ItemLike itemId={item?.id || ''} />
                     </HStack>
                     <HStack gap="8">
                         <Icon Svg={CalendarIcon} />

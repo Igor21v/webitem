@@ -31,6 +31,7 @@ export interface Item {
     description: string;
     img: string;
     imgAnim: string;
+    type: string;
     views: number;
     createdAt: string;
     codes: Record<languageType, string>;
