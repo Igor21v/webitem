@@ -21,6 +21,7 @@ import cls from './ItemDetails.module.scss';
 import { AppImage } from '@/shared/ui/AppImage';
 import ItemIcon from '@/shared/assets/icons/item.svg';
 import { CodeEditor } from '@/entities/CodeEditor';
+import { ItemLike } from '../ItemLike/ItemLike';
 
 interface ItemDetailsProps {
     className?: string;
@@ -105,12 +106,16 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                         }
                     />
                 </HStack>
-                <VStack gap="4" data-testid="ItemDetails.Info">
-                    <Text
-                        title={item?.title}
-                        text={item?.description}
-                        size={TextSize.L}
-                    />
+                <VStack gap="4" data-testid="ItemDetails.Info" max>
+                    <HStack max justify="between">
+                        <Text
+                            title={item?.title}
+                            text={item?.description}
+                            size={TextSize.L}
+                        />
+                        <ItemLike itemId={item?.id || ''} />
+                    </HStack>
+
                     <HStack gap="8">
                         <Icon Svg={EyeIcon} />
                         <Text text={String(item?.views)} />

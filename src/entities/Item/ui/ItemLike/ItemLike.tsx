@@ -3,25 +3,24 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ItemLike.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import FavouriteIcon from '@/shared/assets/icons/like.svg';
-import { Item } from '../../model/types/item';
 import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
 
 interface ItemLikeProps {
     className?: string;
-    item: Item;
+    itemId: string;
 }
 
 export const ItemLike = memo((props: ItemLikeProps) => {
-    const { className, item } = props;
+    const { className, itemId } = props;
     const getLikesItem = () =>
         JSON.parse(localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE) || '{}');
-    const getIsLiked = item.id in getLikesItem();
+    const getIsLiked = itemId in getLikesItem();
     const [isLiked, setIsLiked] = useState(getIsLiked);
     const onclickHandler: MouseEventHandler<SVGSVGElement> = (event) => {
         event.preventDefault();
         const likesItem = getLikesItem();
         if (isLiked) {
-            delete likesItem[item.id];
+            delete likesItem[itemId];
             localStorage.setItem(
                 LOCAL_STORAGE_ITEMS_LIKE,
                 JSON.stringify(likesItem),
@@ -30,7 +29,7 @@ export const ItemLike = memo((props: ItemLikeProps) => {
         } else {
             localStorage.setItem(
                 LOCAL_STORAGE_ITEMS_LIKE,
-                JSON.stringify({ ...likesItem, [item.id]: '' }),
+                JSON.stringify({ ...likesItem, [itemId]: '' }),
             );
             setIsLiked(true);
         }

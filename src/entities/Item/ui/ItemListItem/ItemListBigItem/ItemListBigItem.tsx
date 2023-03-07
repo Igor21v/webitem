@@ -78,7 +78,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                                 {t('View the source code')}
                             </Button>
                         </AppLink>
-                        <ItemLike className={cls.itemLike} item={item} />
+                        <ItemLike className={cls.itemLike} itemId={item.id} />
                     </VStack>
                 </HStack>
             </Card>
