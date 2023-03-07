@@ -10,6 +10,7 @@ import { ItemView } from '../../model/consts/ItemConst';
 
 interface ItemListProps {
     className?: string;
+    classNameCard?: string;
     items?: Item[];
     isLoading?: boolean;
     target?: HTMLAttributeAnchorTarget;
@@ -34,6 +35,7 @@ export const ItemList = memo((props: ItemListProps) => {
         view = ItemView.SMALL,
         isLoading,
         target,
+        classNameCard,
     } = props;
     const { t } = useTranslation();
 
@@ -56,7 +58,7 @@ export const ItemList = memo((props: ItemListProps) => {
                     view={view}
                     target={target}
                     key={item.id}
-                    className={cls.card}
+                    className={classNames(cls.card, {}, [classNameCard])}
                 />
             ))}
             {isLoading && getSkeletons(view)}

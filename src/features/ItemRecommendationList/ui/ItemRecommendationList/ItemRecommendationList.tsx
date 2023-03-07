@@ -39,6 +39,7 @@ export const ItemRecommendationList = memo(
                     items={items}
                     target="_blank"
                     className={cls.itemList}
+                    classNameCard={cls.card}
                 />
             </VStack>
         );
