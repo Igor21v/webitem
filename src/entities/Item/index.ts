@@ -1,4 +1,4 @@
-export { ItemDetails } from './ui/ItemDetails/ItemDetails';
+export { ItemDetailsWrapper as ItemDetails } from './ui/ItemDetails/ItemDetailsWrapper';
 
 export {
     ItemView,

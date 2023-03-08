@@ -1,20 +1,20 @@
-import React, { Dispatch, memo, SetStateAction, useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
 import { javascript } from '@codemirror/lang-javascript';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Editor.module.scss';
-import { ContentType, EditorThemeType } from '../CodeEditor/CodeEditor';
-import { languageType } from '@/shared/types/codes';
+import { EditorThemeType } from '../CodeEditor/CodeEditor';
+import { CodesContentType, languageType } from '@/shared/types/codes';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
 
 interface EditorProps {
     className?: string;
     openedEditor: languageType;
-    content: ContentType;
-    setContent: Dispatch<SetStateAction<ContentType>>;
+    content: CodesContentType;
+    setContent: (codes: CodesContentType) => void;
     theme: EditorThemeType;
 }
 
