@@ -1,10 +1,13 @@
 .Editor {
+    position: relative;
+}
+
+.codeMirror {
     background: var(--code-bg);
     border: 1px solid var(--primary-color);
     max-height: 400px;
     overflow: auto;
     margin-top: 1px;
-    position: relative;
 }
 
 .copyBtn {

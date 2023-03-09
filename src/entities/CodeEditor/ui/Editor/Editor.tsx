@@ -45,8 +45,12 @@ export const Editor = memo((props: EditorProps) => {
     }, [currContent]);
 
     return (
-        <div className={classNames(cls.Editor, {}, [className, 'scroll-thin'])}>
+        <div className={cls.Editor}>
             <CodeMirror
+                className={classNames(cls.codeMirror, {}, [
+                    className,
+                    'scroll-thin',
+                ])}
                 onChange={handleChange}
                 value={currContent}
                 minHeight="200px"

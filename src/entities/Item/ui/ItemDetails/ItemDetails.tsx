@@ -54,15 +54,12 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 />
             </HStack>
             <VStack gap="4" data-testid="ItemDetails.Info" max>
-                <HStack max justify="between">
-                    <Text
-                        title={item?.title}
-                        text={item?.description}
-                        size={TextSize.L}
-                    />
-                    <Text text={item?.type} />
-                </HStack>
-
+                <Text title={item?.title} size={TextSize.L} />
+                <Text
+                    text={item?.description}
+                    size={TextSize.M}
+                    className={cls.description}
+                />
                 <HStack max justify="between">
                     <HStack gap="8">
                         <Icon Svg={EyeIcon} />
@@ -74,6 +71,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     <Icon Svg={CalendarIcon} />
                     <Text text={item?.createdAt} />
                 </HStack>
+                <Text text={item?.type} />
             </VStack>
             <CodeEditor codes={codes} setCodes={setCodes} />
         </>

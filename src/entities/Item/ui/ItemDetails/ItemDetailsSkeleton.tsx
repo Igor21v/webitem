@@ -11,18 +11,16 @@ export const ItemDetailsSkeleton = memo(() => (
             height={200}
             border="50%"
         />
-        <HStack max justify="between">
-            <VStack gap="16">
-                <Skeleton width={300} height={32} />
-                <Skeleton width={600} height={24} />
-            </VStack>
-            <Skeleton width={100} height={18} />
-        </HStack>
+        <VStack gap="16">
+            <Skeleton width={300} height={32} />
+            <Skeleton width={600} height={24} />
+        </VStack>
         <HStack max justify="between">
             <Skeleton width={200} height={18} />
             <Skeleton width={25} height={24} />
         </HStack>
         <Skeleton width={200} height={18} />
+        <Skeleton width={100} height={18} />
         <VStack max gap="4">
             <HStack justify="between" align="end" max>
                 <HStack gap="8">

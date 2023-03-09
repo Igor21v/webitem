@@ -71,6 +71,7 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                 content={codes}
                 setContent={setCodes}
                 theme={editorTheme}
+                className={cls.editor}
             />
             <Preview
                 htmlContent={codes.html}
