@@ -15,15 +15,17 @@ interface CodeEditorProps {
     className?: string;
     codes?: CodesContentType;
     setCodes: (codes: CodesContentType) => void;
-    classNamePreview?: string;
+    previewHeight?: number;
+    previewWidth?: number;
 }
 
 export const CodeEditor = memo((props: CodeEditorProps) => {
     const {
         className,
-        classNamePreview,
         setCodes,
         codes = { html: '', css: '', js: '' },
+        previewHeight,
+        previewWidth,
     } = props;
 
     const defaultEditorTheme =
@@ -77,7 +79,8 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                 htmlContent={codes.html}
                 cssContent={codes.css}
                 jsContent={codes.js}
-                className={classNamePreview}
+                height={previewHeight}
+                width={previewWidth}
             />
         </div>
     );

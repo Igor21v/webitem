@@ -5,7 +5,6 @@ import { CodeEditor } from '@/entities/CodeEditor';
 import { CodesContentType, languageType } from '@/shared/types/codes';
 import { Text, TextAlign } from '@/shared/ui/Text';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import cls from './AdminPanelPage.module.scss';
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
 
 const AdminPanelPage = () => {
@@ -33,7 +32,8 @@ const AdminPanelPage = () => {
             <CodeEditor
                 codes={codes}
                 setCodes={setCodes}
-                classNamePreview={cls.preview}
+                previewHeight={256}
+                previewWidth={450}
             />
 
             <Text title="Код HTML" text={JSON.stringify(codes.html)} />

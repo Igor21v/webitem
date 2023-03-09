@@ -10,6 +10,7 @@ import cls from './ItemDetails.module.scss';
 import { AppImage } from '@/shared/ui/AppImage';
 import ItemIcon from '@/shared/assets/icons/item.svg';
 import { ItemLike } from '../ItemLike/ItemLike';
+import TypeIcon from '@/shared/assets/icons/type.svg';
 import { CodesContentType } from '@/shared/types/codes';
 import { Item } from '../../model/types/item';
 import { CodeEditor } from '@/entities/CodeEditor';
@@ -71,7 +72,10 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     <Icon Svg={CalendarIcon} />
                     <Text text={item?.createdAt} />
                 </HStack>
-                <Text text={item?.type} />
+                <HStack gap="8">
+                    <Icon Svg={TypeIcon} />
+                    <Text text={item?.type} />
+                </HStack>
             </VStack>
             <CodeEditor codes={codes} setCodes={setCodes} />
         </>
