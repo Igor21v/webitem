@@ -22,6 +22,8 @@ import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsLi
 import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
 import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
+import { HStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
 
 interface ItemsPageFiltersProps {
     className?: string;
@@ -89,13 +91,18 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                 />
                 <ItemViewSelector view={view} onViewClick={onChangeView} />
             </div>
-            <Card className={cls.search}>
-                <Input
-                    placeholder={t('Search')}
-                    onChange={onChangeSearch}
-                    value={search}
-                />
-            </Card>
+            <HStack max justify="between" className={cls.search}>
+                <Card max>
+                    <Input
+                        placeholder={t('Search')}
+                        onChange={onChangeSearch}
+                        value={search}
+                    />
+                </Card>
+                <Card className={cls.type}>
+                    <Text text={type} />
+                </Card>
+            </HStack>
         </div>
     );
 });

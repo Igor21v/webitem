@@ -6,7 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getItemDetailsData } from '@/entities/Item';
 import { HStack } from '@/shared/ui/Stack';
-import { getRouteItemEdit, getRouteItems } from '@/shared/const/router';
+import { getRouteItemEdit } from '@/shared/const/router';
 import { getUserAuthData } from '@/entities/User';
 
 interface ItemDetailsPageHeaderProps {
@@ -21,7 +21,7 @@ export const ItemDetailsPageHeader = memo(
         const authData = useSelector(getUserAuthData);
         const item = useSelector(getItemDetailsData);
         const onBackToList = useCallback(() => {
-            navigate(getRouteItems('all'));
+            navigate(-1);
         }, [navigate]);
         const onEditItem = useCallback(() => {
             if (item) {

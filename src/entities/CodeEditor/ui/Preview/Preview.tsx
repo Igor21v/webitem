@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Preview.module.scss';
 
@@ -12,8 +12,10 @@ interface PreviewProps {
 export const Preview = memo((props: PreviewProps) => {
     const { className, cssContent, htmlContent, jsContent } = props;
     const [srcDoc, setSrcDoc] = useState(``);
+    const iframeKey = useRef(0);
     useEffect(() => {
         const timeOut = setTimeout(() => {
+            iframeKey.current = Math.random();
             setSrcDoc(
                 `
           <html>
@@ -30,6 +32,7 @@ export const Preview = memo((props: PreviewProps) => {
     return (
         <div className={classNames(cls.Preview, {}, [className])}>
             <iframe
+                key={iframeKey.current}
                 id="my_iframe"
                 srcDoc={srcDoc}
                 title="output"

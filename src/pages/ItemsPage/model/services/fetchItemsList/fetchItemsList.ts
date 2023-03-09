@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { Item } from '@/entities/Item';
+import { Item, ItemSortField } from '@/entities/Item';
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 import {
     getItemsPageLimit,
@@ -28,11 +28,17 @@ export const fetchItemsList = createAsyncThunk<
     const search = getItemsPageSearch(getState());
     const type = getItemsPageType(getState());
     try {
-        addQueryParams({
-            sort,
-            order,
-            search,
-        });
+        if (
+            sort !== ItemSortField.CREATED ||
+            order !== 'asc' ||
+            search !== ''
+        ) {
+            addQueryParams({
+                sort,
+                order,
+                search,
+            });
+        }
         const response = await extra.api.get<Item[]>('/items/', {
             params: {
                 _limit: limit,
