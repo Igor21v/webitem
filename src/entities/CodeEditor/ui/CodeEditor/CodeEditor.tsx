@@ -8,7 +8,6 @@ import { HStack } from '@/shared/ui/Stack';
 import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
 import { CODE_EDITOR_THEME_KEY } from '@/shared/const/localstorage';
 import { CodesContentType, languageType } from '@/shared/types/codes';
-import { Text } from '@/shared/ui/Text';
 
 export type EditorThemeType = 'none' | 'dark' | 'light';
 
@@ -76,11 +75,6 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                 cssContent={codes.css}
                 jsContent={codes.js}
             />
-            <Text text={JSON.stringify(codes.html)} />
-            <hr />
-            <Text text={JSON.stringify(codes.css)} />
-            <hr />
-            <Text text={JSON.stringify(codes.js)} />
         </div>
     );
 });
