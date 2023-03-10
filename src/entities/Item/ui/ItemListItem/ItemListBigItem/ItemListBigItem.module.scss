@@ -2,9 +2,13 @@
     position: relative;
 }
 
-.img {
+.img,
+.imgWrapper {
     width: 444px;
     height: 250px;
+}
+
+.img {
     border-radius: 10px;
     flex-shrink: 0;
 }

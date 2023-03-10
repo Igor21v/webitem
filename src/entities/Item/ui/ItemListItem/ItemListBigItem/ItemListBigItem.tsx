@@ -46,13 +46,16 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
         >
             <Card shadow>
                 <HStack>
-                    <ItemCoverImg
-                        item={item}
-                        width={444}
-                        height={250}
-                        className={cls.img}
-                        animateOn={animateOn}
-                    />
+                    <div className={cls.imgWrapper}>
+                        <ItemCoverImg
+                            item={item}
+                            width={444}
+                            height={250}
+                            className={cls.img}
+                            animateOn={animateOn}
+                        />
+                    </div>
+
                     <VStack
                         max
                         justify="between"

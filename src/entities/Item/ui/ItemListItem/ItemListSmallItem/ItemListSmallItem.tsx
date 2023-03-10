@@ -29,7 +29,7 @@ export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
                     <ItemCoverImg
                         item={item}
                         width={355}
-                        height={250}
+                        height={200}
                         className={cls.img}
                         animateOn={isHover}
                     />
