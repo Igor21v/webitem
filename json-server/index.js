@@ -8,7 +8,9 @@ const server = jsonServer.create();
 
 const router = jsonServer.router(require('./db.js')());
 
-server.use(jsonServer.defaults({}));
+server.use(jsonServer.defaults({ static: './json-server/static' }));
+// Заменить путь при деплое
+
 server.use(jsonServer.bodyParser);
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
