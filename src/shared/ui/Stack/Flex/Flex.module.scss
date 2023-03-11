@@ -18,6 +18,10 @@
     justify-content: space-between;
 }
 
+.justifyAround {
+    justify-content: space-around;
+}
+
 .alignStart {
     align-items: start;
 }
@@ -28,6 +32,10 @@
 
 .alignCenter {
     align-items: center;
+}
+
+.alignStretch {
+    align-items: stretch;
 }
 
 .directionRow {
@@ -52,6 +60,14 @@
 
 .gap32 {
     gap: 32px;
+}
+
+.gap64 {
+    gap: 64px;
+}
+
+.gap128 {
+    gap: 128px;
 }
 
 .max {

@@ -6,14 +6,14 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { ArticleDetailsSchema } from '@/entities/Article';
+import { ItemDetailsSchema } from '@/entities/Item';
 import { UserSchema } from '@/entities/User';
 import { AddCommentFormSchema } from '@/features/addCommentForm';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { ProfileSchema } from '@/features/EditableProfileCard';
 import { UISchema } from '@/features/UI';
-import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
-import { ArticlesPageSchema } from '@/pages/ArticlesPage';
+import { ItemDetailsPageSchema } from '@/pages/ItemDetailsPage';
+import { ItemsPageSchema } from '@/pages/ItemsPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
@@ -24,10 +24,10 @@ export interface StateSchema {
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
-    articleDetails?: ArticleDetailsSchema;
+    itemDetails?: ItemDetailsSchema;
     addCommentForm?: AddCommentFormSchema;
-    articlesPage?: ArticlesPageSchema;
-    articleDetailsPage?: ArticleDetailsPageSchema;
+    itemsPage?: ItemsPageSchema;
+    itemDetailsPage?: ItemDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

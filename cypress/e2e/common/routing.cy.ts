@@ -25,8 +25,8 @@ describe('Роутинг', () => {
             cy.get(selectByTestId('ProfilePage')).should('exist');
         });
         it('Переход на станицу статей', () => {
-            cy.visit('/articles');
-            cy.get(selectByTestId('ArticlesPage')).should('exist');
+            cy.visit('/items');
+            cy.get(selectByTestId('ItemsPage')).should('exist');
         });
     });
 });

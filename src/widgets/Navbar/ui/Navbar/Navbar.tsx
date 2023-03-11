@@ -6,12 +6,16 @@ import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ButtonTheme, Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
-import { Text, TextTheme } from '@/shared/ui/Text';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import cls from './Navbar.module.scss';
 import { NavbarItem } from '../NavbarItem/NavbarItem';
 import { getNavbarItems } from '../../model/selectors/getNavbarItems';
+import { AppLink } from '@/shared/ui/AppLink';
+import { getRouteMain } from '@/shared/const/router';
+import { Icon } from '@/shared/ui/Icon';
+import AppIcon from '@/shared/assets/icons/app-icon.svg';
 
 interface NavbarProps {
     className?: string;
@@ -30,11 +34,18 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const navbarItemsList = useSelector(getNavbarItems);
     const content = (
         <>
-            <Text
-                theme={TextTheme.INVERTED}
-                className={cls.appName}
-                title={t('webitem')}
-            />
+            <AppLink to={getRouteMain()} className={cls.appName}>
+                <HStack gap="16">
+                    <Text theme={TextTheme.INVERTED} title={t('webitem')} />
+                    <Icon Svg={AppIcon} inverted />
+                    <Text
+                        theme={TextTheme.INVERTED}
+                        title={t('Elements for your website')}
+                        size={TextSize.S}
+                    />
+                </HStack>
+            </AppLink>
+
             <HStack role="navigation" gap="32">
                 {navbarItemsList.map((item) => (
                     <NavbarItem {...item} key={item.path} />
@@ -46,7 +57,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
                 {content}
-                <HStack gap="16" className={cls.actions}>
+                <HStack gap="16">
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>

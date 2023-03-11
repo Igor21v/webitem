@@ -1,8 +1,8 @@
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
-import { AppLink } from '../../../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
@@ -51,7 +51,7 @@ export function Dropdown(props: DropdownProps) {
                         return (
                             <Menu.Item
                                 key={index}
-                                as={AppLink}
+                                as={Link}
                                 to={item.href}
                                 disabled={item.disabled}
                             >

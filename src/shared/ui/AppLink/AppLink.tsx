@@ -13,6 +13,7 @@ interface AppLinkProps extends LinkProps {
     className?: string;
     theme?: AppLinkTheme;
     children?: ReactNode;
+    preventChangeOpacity?: boolean;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
@@ -21,12 +22,17 @@ export const AppLink = memo((props: AppLinkProps) => {
         children,
         to,
         theme = AppLinkTheme.PRIMARY,
+        preventChangeOpacity,
         ...otherProps
     } = props;
     return (
         <Link
             to={to}
-            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+            className={classNames(
+                cls.AppLink,
+                { [cls.changeOpacity]: !preventChangeOpacity },
+                [className, cls[theme]],
+            )}
             {...otherProps}
         >
             {children}

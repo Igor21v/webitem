@@ -1,0 +1,33 @@
+.ItemListBigItem {
+    position: relative;
+}
+
+.img,
+.imgWrapper {
+    width: 444px;
+    height: 250px;
+}
+
+.img {
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.textBlock {
+    max-height: 200px;
+    overflow-y: hidden;
+}
+
+.description {
+    height: 250px;
+}
+
+.itemLike {
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+}
+
+.skeletonText {
+    width: 100%;
+}

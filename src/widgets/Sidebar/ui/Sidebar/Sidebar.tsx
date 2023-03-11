@@ -6,7 +6,7 @@ import { SidibarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { componentItemsList } from '../../model/consts/componentItems';
+import { itemList } from '@/entities/Item';
 
 interface SidebarProps {
     className?: string;
@@ -23,6 +23,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             data-testid="sidebar"
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
                 className,
+                'scroll-thin',
             ])}
         >
             <Button
@@ -35,20 +36,22 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             >
                 {collapsed ? '>' : '<'}
             </Button>
-            <VStack role="navigation" gap="8" className={cls.items}>
-                {componentItemsList.map((item) => (
-                    <SidibarItem
-                        item={item}
-                        collapsed={collapsed}
-                        key={item.type}
-                    />
-                ))}
-            </VStack>
+            <VStack justify="between" className={cls.content}>
+                <VStack role="navigation" gap="8" className={cls.items}>
+                    {itemList.map((item) => (
+                        <SidibarItem
+                            item={item}
+                            collapsed={collapsed}
+                            key={item.type}
+                        />
+                    ))}
+                </VStack>
 
-            <div className={cls.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher className={cls.lang} short={collapsed} />
-            </div>
+                <div className={cls.switchers}>
+                    <ThemeSwitcher />
+                    <LangSwitcher className={cls.lang} short={collapsed} />
+                </div>
+            </VStack>
         </section>
     );
 });

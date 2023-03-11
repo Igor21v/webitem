@@ -2,21 +2,23 @@ import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
-export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
+export type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
+export type FlexAlign = 'start' | 'center' | 'end' | 'stretch';
 export type FlexDirection = 'row' | 'column';
-export type FlexGap = '4' | '8' | '16' | '32';
+export type FlexGap = '4' | '8' | '16' | '32' | '64' | '128';
 
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
     center: cls.justifyCenter,
     end: cls.justifyEnd,
     between: cls.justifyBetween,
+    around: cls.justifyAround,
 };
 const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignStart,
     center: cls.alignCenter,
     end: cls.alignEnd,
+    stretch: cls.alignStretch,
 };
 const directionClasses: Record<FlexDirection, string> = {
     row: cls.directionRow,
@@ -27,6 +29,8 @@ const gapClasses: Record<FlexGap, string> = {
     8: cls.gap8,
     16: cls.gap16,
     32: cls.gap32,
+    64: cls.gap64,
+    128: cls.gap128,
 };
 
 type DivProps = DetailedHTMLProps<

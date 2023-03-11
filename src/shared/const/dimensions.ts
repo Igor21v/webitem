@@ -1,3 +1,3 @@
-export const ARTICLE_BIG_HEIGHT = 480;
-export const ARTICLE_SMALL_HEIGHT = 400;
-export const ARTICLE_SMALL_WIDTH = 280;
+export const ITEM_BIG_HEIGHT = 480;
+export const ITEM_SMALL_HEIGHT = 400;
+export const ITEM_SMALL_WIDTH = 280;

@@ -1,0 +1,16 @@
+[
+    {
+        "id": "6",
+        "title": "Java news",
+        "description": "Что нового в JS за 2022 год?",
+        "img": "https://andreyex.ru/wp-content/uploads/2018/05/Kak-ustanovit-Java-s-apt-na-Ubuntu-18.04.jpg",
+        "views": 1022,
+        "createdAt": "2022.08.16",
+        "type": "alert",
+        "codes": {
+            "html": "<div class=\"test\">TEXT</div>",
+            "css": ".test {font-size: 30px}",
+            "js": "console.log(\"test\")"
+        }
+    }
+]

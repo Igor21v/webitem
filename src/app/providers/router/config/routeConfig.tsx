@@ -2,9 +2,9 @@ import { RouteProps } from 'react-router-dom';
 import { UserRole } from '@/entities/User';
 import { AboutPage } from '@/pages/AboutPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
-import { ArticleDetailPage } from '@/pages/ArticleDetailsPage';
-import { ArticleEditPage } from '@/pages/ArticleEditPage';
-import { ArticlesPage } from '@/pages/ArticlesPage';
+import { ItemDetailPage } from '@/pages/ItemDetailsPage';
+import { ItemEditPage } from '@/pages/ItemEditPage';
+import { ItemsPage } from '@/pages/ItemsPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -13,14 +13,16 @@ import {
     AppRoutes,
     getRouteAbout,
     getRouteAdmin,
-    getRouteArticleCreate,
-    getRouteArticleDetails,
-    getRouteArticleEdit,
+    getRouteItemCreate,
+    getRouteItemDetails,
+    getRouteItemEdit,
     getRouteForbidden,
-    getRouteArticles,
+    getRouteItems,
     getRouteMain,
     getRouteProfile,
+    getRouteFavourites,
 } from '@/shared/const/router';
+import { ItemsLikePage } from '@/pages/ItemsLikePage';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
@@ -41,24 +43,22 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         element: <ProfilePage />,
         authOnly: true,
     },
-    [AppRoutes.ARTICLES]: {
-        path: getRouteArticles(),
-        element: <ArticlesPage />,
+    [AppRoutes.ITEMS]: {
+        path: getRouteItems(':type'),
+        element: <ItemsPage />,
+    },
+    [AppRoutes.ITEM_DETAILS]: {
+        path: getRouteItemDetails(':id'),
+        element: <ItemDetailPage />,
+    },
+    [AppRoutes.ITEM_CREATE]: {
+        path: getRouteItemCreate(),
+        element: <ItemEditPage />,
         authOnly: true,
     },
-    [AppRoutes.ARTICLE_DETAILS]: {
-        path: getRouteArticleDetails(':id'),
-        element: <ArticleDetailPage />,
-        authOnly: true,
-    },
-    [AppRoutes.ARTICLE_CREATE]: {
-        path: getRouteArticleCreate(),
-        element: <ArticleEditPage />,
-        authOnly: true,
-    },
-    [AppRoutes.ARTICLE_EDIT]: {
-        path: getRouteArticleEdit(':id'),
-        element: <ArticleEditPage />,
+    [AppRoutes.ITEM_EDIT]: {
+        path: getRouteItemEdit(':id'),
+        element: <ItemEditPage />,
         authOnly: true,
     },
     [AppRoutes.ADMIN_PANEL]: {
@@ -66,6 +66,10 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         element: <AdminPanelPage />,
         authOnly: true,
         roles: [UserRole.MANAGER, UserRole.ADMIN],
+    },
+    [AppRoutes.FAVOURITES]: {
+        path: getRouteFavourites(),
+        element: <ItemsLikePage />,
     },
     [AppRoutes.FORBIDDEN]: {
         path: getRouteForbidden(),

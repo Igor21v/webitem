@@ -8,8 +8,7 @@
 }
 
 .switchers {
-    position: absolute;
-    bottom: 20px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -24,11 +23,18 @@
     right: -32px;
     bottom: 32px;
     z-index: var(--sidebar-button-z-index);
+    border-radius: 0 20% 20% 0;
 }
 
 .items {
     margin-top: 20px;
-    margin-left: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.content {
+    max-height: 100%;
 }
 
 .collapsed {

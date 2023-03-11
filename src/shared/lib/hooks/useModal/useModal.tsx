@@ -6,30 +6,24 @@ import {
     useState,
 } from 'react';
 
-interface useModalProps {
+interface UseModalProps {
     onClose?: () => void;
     isOpen?: boolean;
     animationDelay: number;
 }
+
 /**
- * Перуиспользуемый хук для модальных компонентов (drawer/modal)
- * @param props
- * @returns
+ * Переиспользуемый хук для модальных компонентов (drawer/modal)
+ * @param animationDelay
+ * @param isOpen
+ * @param onClose
  */
-export function useModal(props: useModalProps) {
-    const { onClose, isOpen, animationDelay } = props;
+export function useModal({ animationDelay, isOpen, onClose }: UseModalProps) {
     const [isClosing, setIsClosing] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
+    const [isRendered, setIsRendered] = useState(false);
     const timerRef = useRef() as MutableRefObject<
         ReturnType<typeof setTimeout>
     >;
-
-    useEffect(() => {
-        if (isOpen) {
-            setIsMounted(true);
-        }
-    }, [isOpen]);
-
     const close = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
@@ -53,6 +47,7 @@ export function useModal(props: useModalProps) {
     useEffect(() => {
         if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
+            setIsRendered(true);
         }
 
         return () => {
@@ -60,9 +55,10 @@ export function useModal(props: useModalProps) {
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);
+
     return {
         isClosing,
-        isMounted,
         close,
+        isRendered,
     };
 }

@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
-import { SidebarItemType } from '../../model/types/sidebar';
 import cls from './SidebarItem.module.scss';
+import { getRouteItems } from '@/shared/const/router';
+import { ItemType } from '@/entities/Item';
 
 interface SidibarItemProps {
-    item: SidebarItemType;
+    item: ItemType;
     collapsed: boolean;
 }
 
@@ -22,11 +23,11 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}
-            to={item.type}
+            to={getRouteItems(item.type)}
             className={classNames(cls.item, { [cls.collapsed]: collapsed })}
         >
             <item.Icon className={cls.icon} />
-            <span className={cls.link}>{t(item.text)}</span>
+            {!collapsed && <span className={cls.link}>{t(item.text)}</span>}
         </AppLink>
     );
 });

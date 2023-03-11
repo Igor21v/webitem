@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { FormEvent, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -47,15 +47,24 @@ const LoginForm = memo((props: LoginFormProps) => {
         },
         [dispatch],
     );
-    const onLoginClick = useCallback(async () => {
-        const result = await dispatch(loginByUsername({ username, password }));
-        if (result.meta.requestStatus === 'fulfilled') {
-            onSuccess();
-        }
-    }, [onSuccess, dispatch, password, username]);
+    const onLoginClick = useCallback(
+        async (e: FormEvent) => {
+            e.preventDefault();
+            const result = await dispatch(
+                loginByUsername({ username, password }),
+            );
+            if (result.meta.requestStatus === 'fulfilled') {
+                onSuccess();
+            }
+        },
+        [onSuccess, dispatch, password, username],
+    );
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-            <div className={classNames(cls.LoginForm, {}, [className])}>
+            <form
+                onSubmit={onLoginClick}
+                className={classNames(cls.LoginForm, {}, [className])}
+            >
                 <Text title={t('Authorization form')} />
                 {error && (
                     <Text
@@ -79,12 +88,12 @@ const LoginForm = memo((props: LoginFormProps) => {
                 <Button
                     theme={ButtonTheme.OUTLINE}
                     className={cls.loginBtn}
-                    onClick={onLoginClick}
+                    type="submit"
                     disabled={isLoading}
                 >
                     {t('sign-in')}
                 </Button>
-            </div>
+            </form>
         </DynamicModuleLoader>
     );
 });

@@ -17,7 +17,7 @@
     padding: 20px;
     border-radius: 12px;
     background: var(--bg-color);
-    transition: 0.3s transform;
+    transition: 0.5s transform;
     transform: scale(0.5);
     max-width: 60%;
     z-index: var(--modal-z-index);
@@ -37,4 +37,8 @@
     .content {
         transform: scale(0.2);
     }
+}
+
+.overlayTransp {
+    opacity: 0;
 }

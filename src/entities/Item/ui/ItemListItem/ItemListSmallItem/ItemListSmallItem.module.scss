@@ -1,0 +1,58 @@
+.date {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+.ItemListSmallItem {
+    transition: 0.2s;
+
+    &:hover {
+        transform: scale(1.01);
+        cursor: pointer;
+
+        .date {
+            display: block;
+        }
+    }
+}
+
+.imageWrapper {
+    width: 355px;
+    height: 200px;
+    position: relative;
+}
+
+.img {
+    width: 355px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.infoWrapper {
+    margin-top: 8px;
+}
+
+.types p {
+    width: 115px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.views {
+    margin-left: auto;
+    margin-right: 8px;
+}
+
+.title {
+    margin-top: 8px;
+}
+
+.title p {
+    width: 320px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
