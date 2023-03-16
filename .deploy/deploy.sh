@@ -1,5 +1,5 @@
 cd ~/webitem
 npm run build:prod
 
-rm -rf /var/www/webitem/html
-mv ~/webitem/build /var/www/webitem/html
+rm sudo -rf /var/www/webitem/html
+mv sudo ~/webitem/build /var/www/webitem/html
