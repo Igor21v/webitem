@@ -1,3 +1,5 @@
+#!/bin/bash
+echo "Старт скрипта деплоя"  
 cd ~/webitem
 npm run build:prod
 
