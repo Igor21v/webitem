@@ -15,15 +15,17 @@ const server = jsonServer.create();
 
 const router = jsonServer.router(require('./db.js')());
 
+server.use((req, res, next) => {
+    res.header('Cache-Control', 'public, max-age=86400000'); // change max-age to any value in milliseconds you want
+    next();
+});
+
 server.use(
     jsonServer.defaults({
         static: path.resolve(__dirname, 'static'),
     }),
 );
-server.use((req, res, next) => {
-    res.header('Cache-Control', 'public, max-age=86400000'); // change max-age to any value in milliseconds you want
-    next();
-});
+
 // Заменить путь при деплое
 
 server.use(jsonServer.bodyParser);

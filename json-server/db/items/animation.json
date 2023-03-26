@@ -77,7 +77,7 @@
         "title": "Outfit at Dusk",
         "description": "Анимация перетекающего фона. Реализована с помощью JavaScript и CSS. Если хотите разнообразить свои работы, то такой формат точно подойдёт.",
         "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
-        "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
+        "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim1.gif",
         "views": 564,
         "createdAt": "2023.03.27",
         "type": "animation",
