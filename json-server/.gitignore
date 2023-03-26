@@ -1,2 +1,3 @@
-/static
-*.pem
+static
+cert.pem
+key.pem
