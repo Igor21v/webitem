@@ -2,6 +2,7 @@
 echo "Старт деплоя фронта"  
 source ~/.nvm/nvm.sh
 cd /home/igor21v/webitem
+git pull
 pwd
 npm run build:prod
 
