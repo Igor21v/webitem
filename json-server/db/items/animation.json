@@ -73,6 +73,21 @@
         }
     },
     {
+        "id": "555",
+        "title": "Golang news 2",
+        "description": "Что нового в Golang за 2022 год?",
+        "img": "https://i.pinimg.com/originals/36/67/a9/3667a92e986f1d10d72a24f213f9f085.png",
+        "imgAnim": "https://otkritkis.com/wp-content/uploads/2022/06/i7yqs.gif",
+        "views": 10222,
+        "createdAt": "2022.06.28",
+        "type": "animation",
+        "codes": {
+            "html": "<div class=\"test\">TEXT</div>",
+            "css": ".test {font-size: 30px}",
+            "js": "console.log(\"test\")"
+        }
+    },
+    {
         "id": "122",
         "title": "Outfit at Dusk",
         "description": "Анимация перетекающего фона. Реализована с помощью JavaScript и CSS. Если хотите разнообразить свои работы, то такой формат точно подойдёт.",
