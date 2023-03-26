@@ -7,8 +7,8 @@ const http = require('http');
 const items = require('./db/items');
 
 const options = {
-    key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
-    cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
+    key: fs.readFileSync(path.resolve(__dirname, keys, 'key.pem')),
+    cert: fs.readFileSync(path.resolve(__dirname, keys, 'cert.pem')),
 };
 
 const server = jsonServer.create();
