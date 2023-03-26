@@ -20,17 +20,21 @@ server.use(
         static: path.resolve(__dirname, 'static'),
     }),
 );
+server.use((req, res, next) => {
+    res.header('Cache-Control', 'public, max-age=86400000'); // change max-age to any value in milliseconds you want
+    next();
+});
 // Заменить путь при деплое
 
 server.use(jsonServer.bodyParser);
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
-server.use(async (req, res, next) => {
+/* server.use(async (req, res, next) => {
     await new Promise((res) => {
         setTimeout(res, 800);
     });
     next();
-});
+}); */
 
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
