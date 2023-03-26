@@ -15,7 +15,11 @@ const server = jsonServer.create();
 
 const router = jsonServer.router(require('./db.js')());
 
-server.use(jsonServer.defaults({ static: './json-server/static' }));
+server.use(
+    jsonServer.defaults({
+        static: path.resolve(__dirname, 'static'),
+    }),
+);
 // Заменить путь при деплое
 
 server.use(jsonServer.bodyParser);
