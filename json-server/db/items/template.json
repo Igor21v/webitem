@@ -1,0 +1,17 @@
+[
+    {
+        "id": "7521",
+        "title": "Range Slider Progress in Chrome with pure CSS",
+        "description": "Интерактивные ползунки, выполненные на чистом CSS, без использования JavaScript.",
+        "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
+        "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
+        "views": 5614,
+        "createdAt": "2023.03.27",
+        "type": "loader",
+        "codes": {
+            "html": "",
+            "css": "",
+            "js": ""
+        }
+    }
+]
