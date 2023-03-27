@@ -12,7 +12,7 @@ export default function AboutPage() {
             {t('Page about site')}
             <ItemListItemBigSkeleton />
             <ItemListItemSmallSkeleton />
-            123456789
+            5555
         </Page>
     );
 }
