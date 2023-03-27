@@ -12,7 +12,6 @@ export default function AboutPage() {
             {t('Page about site')}
             <ItemListItemBigSkeleton />
             <ItemListItemSmallSkeleton />
-            5555
         </Page>
     );
 }
