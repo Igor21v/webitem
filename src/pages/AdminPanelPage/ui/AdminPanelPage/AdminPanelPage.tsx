@@ -9,12 +9,12 @@ import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
 
 const AdminPanelPage = () => {
     const { t } = useTranslation();
-    const [codes, setCodes] = useState<CodesContentType>({
+    const initCodes = {
         html: '',
         css: '',
         js: '',
-    });
-
+    };
+    const [codes, setCodes] = useState<CodesContentType>(initCodes);
     const onCopy = useCallback(
         (lang: languageType) => () => {
             const codeStringify = JSON.stringify(codes[lang]);
@@ -22,6 +22,11 @@ const AdminPanelPage = () => {
         },
         [codes],
     );
+
+    const langTabs = Object.keys(initCodes).map((lang) => ({
+        value: lang as languageType, // TODO
+        content: lang.toUpperCase(),
+    }));
 
     return (
         <Page data-testid="AdminPanelPage">
@@ -34,6 +39,7 @@ const AdminPanelPage = () => {
                 setCodes={setCodes}
                 previewHeight={256}
                 previewWidth={450}
+                langTabs={langTabs}
             />
 
             <Text title="Код HTML" text={JSON.stringify(codes.html)} />

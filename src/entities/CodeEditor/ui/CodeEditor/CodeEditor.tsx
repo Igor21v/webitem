@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CodeEditor.module.scss';
 import { TabItem, Tabs } from '@/shared/ui/Tabs';
@@ -17,6 +17,7 @@ interface CodeEditorProps {
     setCodes: (codes: CodesContentType) => void;
     previewHeight?: number;
     previewWidth?: number;
+    langTabs: TabItem<languageType>[];
 }
 
 export const CodeEditor = memo((props: CodeEditorProps) => {
@@ -24,6 +25,7 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
         className,
         setCodes,
         codes = { html: '', css: '', js: '' },
+        langTabs,
         previewHeight,
         previewWidth,
     } = props;
@@ -38,15 +40,6 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
     const onTabClick = useCallback((tab: TabItem<languageType>) => {
         setOpenedEditor(tab.value);
     }, []);
-
-    const langTabs = useMemo(
-        () =>
-            Object.entries(codes).map(([lang]) => ({
-                value: lang as languageType, // TODO
-                content: lang.toUpperCase(),
-            })),
-        [codes],
-    );
 
     return (
         <div

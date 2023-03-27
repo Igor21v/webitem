@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize } from '@/shared/ui/Text';
@@ -11,7 +11,7 @@ import { AppImage } from '@/shared/ui/AppImage';
 import ItemIcon from '@/shared/assets/icons/item.svg';
 import { ItemLike } from '../ItemLike/ItemLike';
 import TypeIcon from '@/shared/assets/icons/type.svg';
-import { CodesContentType } from '@/shared/types/codes';
+import { CodesContentType, languageType } from '@/shared/types/codes';
 import { Item } from '../../model/types/item';
 import { CodeEditor } from '@/entities/CodeEditor';
 
@@ -27,6 +27,15 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
         css: item?.codes.css,
         js: item?.codes.js,
     });
+    const langTabs = useMemo(() => {
+        if (item) {
+            return Object.keys(item?.codes).map((lang) => ({
+                value: lang as languageType, // TODO
+                content: lang.toUpperCase(),
+            }));
+        }
+        return [];
+    }, [item]);
     return (
         <>
             <HStack justify="center" max>
@@ -77,7 +86,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     <Text text={item?.type} />
                 </HStack>
             </VStack>
-            <CodeEditor codes={codes} setCodes={setCodes} />
+            <CodeEditor codes={codes} setCodes={setCodes} langTabs={langTabs} />
         </>
     );
 });
