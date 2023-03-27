@@ -1,0 +1,15 @@
+[
+    {
+        "id": "45131",
+        "title": "Outfit at Dusk",
+        "description": "Анимация перетекающего фона. Реализована с помощью JavaScript и CSS. Если хотите разнообразить свои работы, то такой формат точно подойдёт.",
+        "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
+        "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
+        "views": 5614,
+        "createdAt": "2023.03.27",
+        "type": "loader",
+        "codes": {
+            "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"955 0 44 44\">\n  <svg x=\"955\" stroke=\"#000\">\n    <g fill=\"none\" fill-rule=\"evenodd\" stroke-width=\"2\">\n      <circle cx=\"22\" cy=\"22\" r=\"1\">\n        <animate attributeName=\"r\" begin=\"0s\" calcMode=\"spline\" dur=\"1.8s\" keySplines=\"0.165, 0.84, 0.44, 1\" keyTimes=\"0; 1\" repeatCount=\"indefinite\" values=\"1; 20\" />\n        <animate attributeName=\"stroke-opacity\" begin=\"0s\" calcMode=\"spline\" dur=\"1.8s\" keySplines=\"0.3, 0.61, 0.355, 1\" keyTimes=\"0; 1\" repeatCount=\"indefinite\" values=\"1; 0\" />\n      </circle>\n      <circle cx=\"22\" cy=\"22\" r=\"1\">\n        <animate attributeName=\"r\" begin=\"-0.9s\" calcMode=\"spline\" dur=\"1.8s\" keySplines=\"0.165, 0.84, 0.44, 1\" keyTimes=\"0; 1\" repeatCount=\"indefinite\" values=\"1; 20\" />\n        <animate attributeName=\"stroke-opacity\" begin=\"-0.9s\" calcMode=\"spline\" dur=\"1.8s\" keySplines=\"0.3, 0.61, 0.355, 1\" keyTimes=\"0; 1\" repeatCount=\"indefinite\" values=\"1; 0\" />\n      </circle>\n    </g>\n  </svg>\n</svg>"
+        }
+    }
+]

@@ -16,6 +16,7 @@ export type ItemTypes =
     | 'image'
     | 'label'
     | 'link'
+    | 'loader'
     | 'modal'
     | 'pagination'
     | 'picker'
@@ -98,6 +99,11 @@ export const itemList: ItemType[] = [
     {
         text: 'Link',
         type: 'link',
+        Icon: ItemIcon,
+    },
+    {
+        text: 'Loader',
+        type: 'loader',
         Icon: ItemIcon,
     },
     {
