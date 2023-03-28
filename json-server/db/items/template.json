@@ -13,5 +13,21 @@
             "css": "",
             "js": ""
         }
+    },
+    {
+        "id": "",
+        "title": "",
+        "description": "",
+        "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
+        "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
+        "views": 564,
+        "createdAt": "2023.03.27",
+        "type": "animation",
+        "codes": {
+            "html": "",
+            "css": "",
+            "js": ""
+        }
     }
+    
 ]
