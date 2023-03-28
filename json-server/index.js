@@ -5,6 +5,7 @@ const path = require('path');
 const https = require('https');
 const http = require('http');
 const items = require('./db/items');
+const findUser = require('./findUser');
 
 const options = {
     key: fs.readFileSync(path.resolve(__dirname, 'keys', 'key.pem')),
@@ -20,44 +21,23 @@ server.use((req, res, next) => {
     next();
 });
 
+// Подключение статики
 server.use(
     jsonServer.defaults({
         static: path.resolve(__dirname, 'static'),
     }),
 );
 
-// Заменить путь при деплое
-
 server.use(jsonServer.bodyParser);
-
-// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
-/* server.use(async (req, res, next) => {
-    await new Promise((res) => {
-        setTimeout(res, 800);
-    });
-    next();
-}); */
 
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        const db = JSON.parse(
-            fs.readFileSync(
-                path.resolve(__dirname, 'db', 'users.json'),
-                'UTF-8',
-            ),
-        );
-        const users = db;
-
-        const userFromBd = users.find(
-            (user) => user.username === username && user.password === password,
-        );
-
+        userFromBd = findUser(username, password);
         if (userFromBd) {
             return res.json(userFromBd);
         }
-
         return res.status(403).json({ message: 'User not found' });
     } catch (e) {
         console.log(e);
@@ -94,15 +74,26 @@ server.get('/itemsLike', (req, res) => {
         return res.status(500).json({ message: e.message });
     }
 });
-// проверяем, авторизован ли пользователь
-// eslint-disable-next-line
-/* server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
-    }
 
+// авторизован ли пользователь
+server.use((req, res, next) => {
+    if (req.method === 'POST') {
+        req.body.createdAt = Date.now();
+    }
+    if (
+        req.method === 'POST' ||
+        req.method === 'PUT' ||
+        req.method === 'PATCH'
+    ) {
+        const username = req.headers.authorization?.username;
+        const password = req.headers.authorization?.password;
+        userFromBd = findUser(username, password);
+        if (!userFromBd) {
+            return res.status(403).json({ message: 'AUTH ERROR' });
+        }
+    }
     next();
-}); */
+});
 
 server.use(router);
 
