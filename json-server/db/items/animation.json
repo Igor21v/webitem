@@ -1,63 +1,5 @@
 [
     {
-        "id": "1",
-        "title": "Javascript news СВЕЖАЯ",
-        "description": "Что нового в JS за 2022 год?",
-        "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-        "imgAnim": "https://habrastorage.org/getpro/habr/upload_files/a7f/2e0/5e2/a7f2e05e2ff8203dab389f8a8a5d842f.gif",
-        "views": 1022,
-        "createdAt": "2022.04.26",
-        "type": "animation",
-        "codes": {
-            "html": "<div class=\"test\">TEXT</div>",
-            "css": ".test {font-size: 30px}",
-            "js": "console.log(\"test\")"
-        }
-    },
-    {
-        "id": "2",
-        "title": "Python news",
-        "description": "Что нового в JS за 2022 год?",
-        "img": "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/113415626/original/a17667d573bf34559bf0d35993ed76e57d43ad00/program-python-scripts-for-automation-and-data-mining.png",
-        "imgAnim": "https://habrastorage.org/getpro/habr/upload_files/45f/3b9/4d8/45f3b94d8807cf11e44720d8897134b7.gif",
-        "views": 5204,
-        "createdAt": "2022.04.22",
-        "type": "animation",
-        "codes": {
-            "html": "<div class=\"test\">TEXT</div>",
-            "css": ".test {font-size: 30px}",
-            "js": "console.log(\"test\")"
-        }
-    },
-    {
-        "id": "3",
-        "title": "Kotlin news 2019",
-        "description": "Что нового в JS за 2022 год?",
-        "img": "https://avatars.mds.yandex.net/i?id=b46aeea09f9de3b8be9978f973ef395b8db35d89-6356076-images-thumbs&n=13",
-        "views": 94002,
-        "createdAt": "2022.04.1",
-        "type": "animation",
-        "codes": {
-            "html": "<div class=\"test\">TEXT</div>",
-            "css": ".test {font-size: 30px}",
-            "js": "console.log(\"test\")"
-        }
-    },
-    {
-        "id": "4",
-        "title": "Scala news",
-        "description": "Что нового в JS за 2022 год?",
-        "img": "https://folderit.net/wp-content/uploads/2014/09/scala-scalable-language.jpg",
-        "views": 10222,
-        "createdAt": "2023.01.26",
-        "type": "animation",
-        "codes": {
-            "html": "<div class=\"test\">TEXT</div>",
-            "css": ".test {font-size: 30px}",
-            "js": "console.log(\"test\")"
-        }
-    },
-    {
         "id": "5",
         "title": "Golang news",
         "description": "Что нового в JS за 2022 год?",
@@ -142,6 +84,20 @@
         "codes": {
             "html": "<ul>\n  <li style=\"--clr:#00ade1\">\n    <a href=\"#\" data-text=\"&nbsp;Home\">&nbsp;Home&nbsp;</a>\n  </li>\n  <li style=\"--clr:#ff6492\">\n    <a href=\"#\" data-text=\"&nbsp;About\">&nbsp;About&nbsp;</a>\n  </li>\n  <li style=\"--clr:#ffdd1c\">\n    <a href=\"#\" data-text=\"&nbsp;Services\">&nbsp;Services&nbsp;</a>\n  </li>\n  <li style=\"--clr:#00dc82\">\n    <a href=\"#\" data-text=\"&nbsp;Blog\">&nbsp;Blog&nbsp;</a>\n  </li>\n  <li style=\"--clr:#dc00d4\">\n    <a href=\"#\" data-text=\"&nbsp;Contact\">&nbsp;Contact&nbsp;</a>\n  </li>\n</ul>",
             "css": "@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');\n* {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n  font-family: 'Mochiy Pop One', sans-serif;\n}\n\nbody {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 100vh;\n  background: #252839;\n}\nul {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 30px;\n}\nul li {\n  position: relative;\n  list-style: none;\n}\nul li a {\n  font-size: 4em;\n  text-decoration: none;\n  letter-spacing: 2px;\n  line-height: 1em;\n  text-transform: uppercase;\n  color: transparent;\n  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);\n}\nul li a::before {\n  content: attr(data-text);\n  position: absolute;\n  color: var(--clr);\n  width: 0;\n  overflow: hidden;\n  transition: 1s;\n  border-right: 8px solid var(--clr);\n  -webkit-text-stroke: 1px var(--clr);\n}\nul li a:hover::before {\n  width: 100%;\n  filter: drop-shadow(0 0 25px var(--clr))\n}"
+        }
+    },
+    {
+        "id": "jtye",
+        "title": "",
+        "description": "",
+        "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
+        "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
+        "views": 564,
+        "createdAt": "2023.03.27",
+        "type": "animation",
+        "codes": {
+            "html": "<nav>\n  <ul>\n    <li>\n      <a href=\"#\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span class=\"fab fa-instagram\"></span>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span class=\"fab fa-facebook-f\"></span>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span class=\"fab fa-twitter\"></span>\n      </a>\n    </li>\n    <li>\n      <a href=\"#\">\n        <span></span>\n        <span></span>\n        <span></span>\n        <span></span>\n        <span class=\"fab fa-twitch\"></span>\n      </a>\n    </li>\n  </ul>\n</nav>",
+            "css": "html {\n\t box-sizing: border-box;\n}\n *, *::before, *::after {\n\t box-sizing: inherit;\n}\n body {\n\t padding: 0;\n\t margin: 0;\n\t background-color: #1c1c1c;\n}\n a {\n\t text-decoration: none;\n\t color: #fff;\n}\n ul {\n\t list-style: none;\n\t padding: 0;\n\t margin: 0;\n\t position: absolute;\n\t top: 50%;\n\t left: 50%;\n\t width: 500px;\n\t height: 250px;\n\t display: flex;\n\t justify-content: center;\n\t margin: -125px -250px;\n\t transform-style: preserve-3d;\n\t transform: rotate(-25deg) skew(20deg);\n}\n ul li {\n\t position: relative;\n\t background-color: #292929;\n\t margin-right: 15px;\n\t width: 25%;\n\t tansition: 0.4s;\n}\n ul li:last-of-type {\n\t margin-right: 0;\n}\n ul li::before {\n\t content: '';\n\t position: absolute;\n\t top: 0;\n\t left: -9px;\n\t background-color: #242424;\n\t height: 100%;\n\t width: 9px;\n\t transform-origin: right;\n\t transform: skewY(-45deg);\n}\n ul li::after {\n\t content: '';\n\t position: absolute;\n\t bottom: -10px;\n\t left: 0;\n\t background-color: #242424;\n\t width: 100%;\n\t height: 10px;\n\t transform-origin: top;\n\t transform: skewX(-45deg);\n}\n ul li span {\n\t position: absolute;\n\t top: 0;\n\t left: 0;\n\t display: flex !important;\n\t justify-content: center;\n\t align-items: center;\n\t color: rgba(255, 255, 255, .2);\n\t width: 100%;\n\t height: 100%;\n\t font-size: 3em;\n\t transition: 0.4s;\n}\n li:hover a span {\n\t z-index: 1000;\n\t transition: 0.5s;\n\t color: rgba(255, 255, 255, 1);\n\t box-shadow: -1px 1px 1px rgba(0, 0, 0, .05);\n}\n li:hover > a span:nth-of-type(1) {\n\t transform: translate(10px, -10px);\n}\n li:hover > a span:nth-of-type(2) {\n\t transform: translate(20px, -20px);\n}\n li:hover > a span:nth-of-type(3) {\n\t transform: translate(30px, -30px);\n}\n li:hover > a span:nth-of-type(4) {\n\t transform: translate(40px, -40px);\n}\n li:hover > a span:nth-of-type(5) {\n\t transform: translate(50px, -50px);\n}\n a span:nth-of-type(1) {\n\t opacity: 0.2;\n}\n a span:nth-of-type(2) {\n\t opacity: 0.4;\n}\n a span:nth-of-type(3) {\n\t opacity: 0.6;\n}\n a span:nth-of-type(4) {\n\t opacity: 0.8;\n}\n a span:nth-of-type(5) {\n\t opacity: 1;\n}\n li:nth-of-type(1):hover span {\n\t background-color: #d6249f;\n\t background-image: linear-gradient(270deg, #fd5949, #d6249f, #285aeb);\n\t background-size: 800% 800%;\n\t animation: gradient 10s ease infinite;\n}\n li:nth-of-type(2):hover span {\n\t background-color: #3b5998;\n\t background-image: linear-gradient(270deg, #3b5998, #383838);\n\t background-size: 400% 400%;\n\t animation: gradient 6s ease infinite;\n}\n li:nth-of-type(3):hover span {\n\t background-color: #0077f2;\n\t background-image: linear-gradient(270deg, #4cbdff, #0077f2);\n\t background-size: 400% 400%;\n\t animation: gradient 6s ease infinite;\n}\n li:nth-of-type(4):hover span {\n\t background-color: #6441a5;\n\t background-image: linear-gradient(270deg, #27c6b0, #6441a5);\n\t background-size: 400% 400%;\n\t animation: gradient 6s ease infinite alternate forwards;\n}\n @keyframes gradient {\n\t 0% {\n\t\t background-position: 0% 50%;\n\t}\n\t 50% {\n\t\t background-position: 100% 50%;\n\t}\n\t 100% {\n\t\t background-position: 0% 50%;\n\t}\n}\n "
         }
     }
 ]
