@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { Page } from '@/widgets/Page';
 import { CodeEditor } from '@/entities/CodeEditor';
 import { CodesContentType, languageType } from '@/shared/types/codes';
-import { Text, TextAlign } from '@/shared/ui/Text';
+import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
 
@@ -32,8 +32,6 @@ const AdminPanelPage = () => {
         <Page data-testid="AdminPanelPage">
             <Text title={t('Admin panel')} align={TextAlign.CENTER} />
 
-            <Text text="Конвертер кода в JSON" />
-
             <CodeEditor
                 codes={codes}
                 setCodes={setCodes}
@@ -41,7 +39,11 @@ const AdminPanelPage = () => {
                 previewWidth={450}
                 langTabs={langTabs}
             />
-
+            <Text
+                title="Конвертер кода в JSON"
+                size={TextSize.L}
+                align={TextAlign.CENTER}
+            />
             <Text title="Код HTML" text={JSON.stringify(codes.html)} />
             <Button onClick={onCopy('html')} theme={ButtonTheme.CLEAR}>
                 <CopyIcon />
