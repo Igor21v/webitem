@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CodeEditor } from '@/entities/CodeEditor';
 import { CodesContentType, languageType } from '@/shared/types/codes';
@@ -9,6 +9,8 @@ import { Text } from '@/shared/ui/Text';
 import { ItemTypeSelector } from '../ItemTypeSelector/ItemTypeSelector';
 import { VStack } from '@/shared/ui/Stack';
 import { SizePreview } from '../SizePreview/SizePreview';
+import { useItemAdd } from '../../model/api/ItemAdd';
+import { ItemTypes } from '@/entities/Item';
 
 interface ItemAddProps {
     className?: string;
@@ -31,9 +33,26 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const [description, setDescription] = useState('');
     const [img, setImg] = useState('');
     const [imgAnim, setImgAnim] = useState('');
-    const [width, setWidth] = useState('450');
-    const [height, setHeight] = useState('256');
+    const [type, setType] = useState<ItemTypes>('not selected');
+    const [width, setWidth] = useState(450);
+    const [height, setHeight] = useState(256);
     const [fullWidth, setFullWidth] = useState(true);
+    const [rateItemMutation] = useItemAdd();
+    const handleAddItem = useCallback(
+        (starsCount: number, feedback?: string) => {
+            rateItemMutation({
+                codes,
+                title,
+                description,
+                type,
+                img,
+                imgAnim,
+                height,
+                width,
+            });
+        },
+        [],
+    );
 
     return (
         <VStack gap="8" className={classNames('', {}, [className])}>
@@ -51,7 +70,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                 placeholder={t('Description')}
                 onChange={setDescription}
             />
-            <ItemTypeSelector />
+            <ItemTypeSelector type={type} setType={setType} />
             <Input value={img} placeholder={t('Image')} onChange={setImg} />
             <Input
                 value={imgAnim}

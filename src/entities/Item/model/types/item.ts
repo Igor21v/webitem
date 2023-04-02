@@ -1,4 +1,4 @@
-import { languageType } from '@/shared/types/codes';
+import { CodesContentType } from '@/shared/types/codes';
 import { ItemBlockType } from '../consts/ItemConst';
 
 export interface ItemBlockBase {
@@ -34,5 +34,7 @@ export interface Item {
     type: string;
     views: number;
     createdAt: string;
-    codes: Record<languageType, string>;
+    codes: CodesContentType;
+    width?: number;
+    height?: number;
 }

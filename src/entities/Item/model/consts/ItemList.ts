@@ -3,6 +3,7 @@ import ItemIcon from '@/shared/assets/icons/item-20-20.svg';
 export type ItemTypes =
     | 'all'
     | ':type'
+    | 'not selected'
     | 'accordion'
     | 'alert'
     | 'animation'

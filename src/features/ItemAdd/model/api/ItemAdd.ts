@@ -1,12 +1,8 @@
+import { Item } from '@/entities/Item';
 import { Rating } from '@/entities/Rating';
 import { rtkApi } from '@/shared/api/rtkApi';
 
-interface ItemAddArg {
-    userId: string;
-    itemId?: string;
-    rate: number;
-    feedback?: string;
-}
+type ItemAddArg = Omit<Item, 'id' | 'views' | 'createdAt'>;
 
 const itemAddApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({

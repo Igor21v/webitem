@@ -9,10 +9,10 @@ import { Card } from '@/shared/ui/Card';
 
 interface SizePreviewProps {
     className?: string;
-    width: string;
-    height: string;
-    setWidth: (value: string) => void;
-    setHeight: (value: string) => void;
+    width: number;
+    height: number;
+    setWidth: (value: number) => void;
+    setHeight: (value: number) => void;
     fullWidth: boolean;
     setFullWidth: (value: boolean) => void;
 }

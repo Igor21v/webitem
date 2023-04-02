@@ -23,9 +23,9 @@ const Select = <T extends string>(props: SelectProps<T>) => {
         if (!value) {
             options?.unshift({
                 value: '' as T,
-                content: 'Not selected',
+                content: 'not selected',
             });
-        } else if (options?.[0].content === 'Not selected') {
+        } else if (options?.[0].content === 'not selected') {
             options?.shift();
         }
         return options?.map((opt) => (
