@@ -1,10 +1,4 @@
-import React, {
-    InputHTMLAttributes,
-    memo,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import React, { InputHTMLAttributes, memo, useRef } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -32,58 +26,33 @@ export const Input = memo((props: InputProps) => {
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
-    const [isFocused, setIsFocuset] = useState(false);
-    const [caretPosition, setCaretPosition] = useState(0);
-
-    useEffect(() => {
-        if (autoFocus) {
-            setIsFocuset(true);
-            ref.current?.focus();
-        }
-    }, [autoFocus]);
+    const canEdit = !readOnly;
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length);
     };
-    const onBlur = () => {
-        setIsFocuset(false);
-    };
-    const onFocus = () => {
-        setIsFocuset(true);
-    };
-    const onSelect = (e: any) => {
-        setCaretPosition(e?.target?.selectionStart || 0);
-    };
+
     const mods: Mods = {
         [cls.readOnly]: readOnly,
+        [cls.canEdit]: canEdit,
     };
-    const isCaretVisible = isFocused && !readOnly;
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
-            {placeholder && (
-                <div className={cls.placeholder}>{`${placeholder}>`}</div>
-            )}
-            <div className={cls.caretWrapper}>
-                <input
-                    ref={ref}
-                    type={type}
-                    onChange={onChangeHandler}
-                    readOnly={readOnly}
-                    value={value}
-                    {...otherProps}
-                    className={classNames(cls.input, mods, [])}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSelect={onSelect}
-                />
-                {isCaretVisible && (
-                    <span
-                        className={cls.caret}
-                        style={{ left: `${caretPosition * 9}px` }}
-                    />
-                )}
-            </div>
+        <div className={cls.wrapper}>
+            <label htmlFor={placeholder} className={cls.lable}>
+                <div>{placeholder}</div>
+                {'>'}
+            </label>
+            <input
+                ref={ref}
+                type={type}
+                onChange={onChangeHandler}
+                disabled={readOnly}
+                value={value}
+                {...otherProps}
+                className={classNames(cls.input, mods, [className])}
+                autoFocus={autoFocus}
+                id={placeholder}
+            />
         </div>
     );
 });

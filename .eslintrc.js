@@ -60,16 +60,24 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx', '**/tests.ts'],
-            }],
+                testFilesPatterns: [
+                    '**/*.test.*',
+                    '**/*.story.*',
+                    '**/StoreDecorator.tsx',
+                    '**/tests.ts',
+                ],
+            },
+        ],
         'igor21v/layer-imports': [
             'error',
             {
                 alias: '@',
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
-            }],
+            },
+        ],
         'consistent-return': 'warn',
-        'unused-imports/no-unused-imports': 'error'
+        'unused-imports/no-unused-imports': 'error',
+        'jsx-a11y/no-autofocus': 'off',
         // 'react/jsx-max-props-per-line' : ['error', {maximum: 1}],
     },
     globals: {

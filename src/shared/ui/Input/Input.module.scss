@@ -1,49 +1,38 @@
-.InputWrapper {
+.wrapper {
     display: flex;
+    gap: 2px;
+    align-items: center;
+    width: 100%;
 }
 
-.placeholder {
-    margin-right: 5px;
+.lable {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .input {
-    background: transparent;
-    border: none;
+    color: var(--primary-color);
+    background: var(--input-bg);
     outline: none;
+    padding: 4px;
+    border: 0 solid var(--primary-color);
+    border-radius: 8px;
     width: 100%;
-    color: transparent;
-    text-shadow: 0 0 0 var(--primary-color);
-}
 
-.caretWrapper {
-    flex-grow: 1;
-    position: relative;
-}
+    &.canEdit {
+        &:hover {
+            outline: 1px solid var(--primary-color);
+        }
+    }
 
-.caret {
-    height: 3px;
-    width: 9px;
-    background: var(--primary-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    animation: blink 0.7s forwards infinite;
+    &::placeholder {
+        color: var(--primary-color);
+        opacity: 0.4;
+    }
 }
 
 .readOnly {
     opacity: 0.7;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.01;
-    }
-
-    100% {
-        opacity: 1;
-    }
 }

@@ -19,34 +19,44 @@ interface SelectProps<T extends string> {
 
 const Select = <T extends string>(props: SelectProps<T>) => {
     const { className, label, options, value, onChange, readonly } = props;
-    const optionsList = useMemo(
-        () =>
-            options?.map((opt) => (
-                <option
-                    className={cls.option}
-                    value={opt.value}
-                    key={opt.value}
-                >
-                    {opt.content}
-                </option>
-            )),
-        [options],
-    );
+    const optionsList = useMemo(() => {
+        if (!value) {
+            options?.unshift({
+                value: '' as T,
+                content: 'Not selected',
+            });
+        } else if (options?.[0].content === 'Not selected') {
+            options?.shift();
+        }
+        return options?.map((opt) => (
+            <option className={cls.option} value={opt.value} key={opt.value}>
+                {opt.content}
+            </option>
+        ));
+    }, [options, value]);
+
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         onChange?.(e.target.value as T);
     };
 
     return (
-        <div className={classNames(cls.Wrapper, {}, [className])}>
-            {label && <span className={cls.label}>{`${label}>`}</span>}
-            <select
-                disabled={readonly}
-                className={cls.select}
-                value={value}
-                onChange={onChangeHandler}
-            >
-                {optionsList}
-            </select>
+        <div
+            className={classNames(cls.Wrapper, {}, [className, 'scroll-thin'])}
+        >
+            <p>
+                <label htmlFor={label}>
+                    {label && <span className={cls.label}>{`${label}>`}</span>}
+                </label>
+                <select
+                    disabled={readonly}
+                    className={cls.select}
+                    value={value}
+                    onChange={onChangeHandler}
+                    id={label}
+                >
+                    {optionsList}
+                </select>
+            </p>
         </div>
     );
 };
