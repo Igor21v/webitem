@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useState } from 'react';
+import { memo, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CodeEditor } from '@/entities/CodeEditor';
 import { CodesContentType, languageType } from '@/shared/types/codes';
@@ -9,8 +9,13 @@ import { Text } from '@/shared/ui/Text';
 import { ItemTypeSelector } from '../ItemTypeSelector/ItemTypeSelector';
 import { VStack } from '@/shared/ui/Stack';
 import { SizePreview } from '../SizePreview/SizePreview';
-import { useItemAdd } from '../../model/api/ItemAdd';
+import { useItemAdd } from '../../api/ItemAdd';
 import { ItemTypes } from '@/entities/Item';
+import { itemAddReducer } from '../../model/slice/ItemAddSlice';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 interface ItemAddProps {
     className?: string;
@@ -37,55 +42,63 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const [width, setWidth] = useState(450);
     const [height, setHeight] = useState(256);
     const [fullWidth, setFullWidth] = useState(true);
+    /* const itemAddForm = useItemAddSelector();
+    const { updateItem } = useItemAddActions();
+    const handleUpdateItem = (value: string) => {
+        updateItem({ title: value });
+    }; */
     const [rateItemMutation] = useItemAdd();
-    const handleAddItem = useCallback(
-        (starsCount: number, feedback?: string) => {
-            rateItemMutation({
-                codes,
-                title,
-                description,
-                type,
-                img,
-                imgAnim,
-                height,
-                width,
-            });
-        },
-        [],
-    );
+    const reducers: ReducersList = {
+        itemAdd: itemAddReducer,
+    };
+    const handleAddItem = () =>
+        rateItemMutation({
+            codes,
+            title,
+            description,
+            type,
+            img,
+            imgAnim,
+        });
 
     return (
-        <VStack gap="8" className={classNames('', {}, [className])}>
-            <Text title={t('Add new item')} />
-            <CodeEditor
-                codes={codes}
-                setCodes={setCodes}
-                previewWidth={Number(width)}
-                previewHeight={Number(height)}
-                langTabs={langTabs}
-            />
-            <Input value={title} placeholder={t('Title')} onChange={setTitle} />
-            <Input
-                value={description}
-                placeholder={t('Description')}
-                onChange={setDescription}
-            />
-            <ItemTypeSelector type={type} setType={setType} />
-            <Input value={img} placeholder={t('Image')} onChange={setImg} />
-            <Input
-                value={imgAnim}
-                placeholder={t('Image with animation')}
-                onChange={setImgAnim}
-            />
-            <SizePreview
-                width={width}
-                height={height}
-                setWidth={setWidth}
-                setHeight={setHeight}
-                fullWidth={fullWidth}
-                setFullWidth={setFullWidth}
-            />
-            <Button>{t('Add item')}</Button>
-        </VStack>
+        <DynamicModuleLoader reducers={reducers}>
+            <VStack gap="8" className={classNames('', {}, [className])}>
+                <Text title={t('Add new item')} />
+                <CodeEditor
+                    codes={codes}
+                    setCodes={setCodes}
+                    previewWidth={width}
+                    previewHeight={height}
+                    langTabs={langTabs}
+                />
+                <Input
+                    value={title}
+                    placeholder={t('Title')}
+                    onChange={setTitle}
+                />
+                <Input
+                    value={description}
+                    placeholder={t('Description')}
+                    onChange={setDescription}
+                />
+                <ItemTypeSelector type={type} setType={setType} />
+                <Input value={img} placeholder={t('Image')} onChange={setImg} />
+                <Input
+                    value={imgAnim}
+                    placeholder={t('Image with animation')}
+                    onChange={setImgAnim}
+                />
+                <SizePreview
+                    width={width}
+                    height={height}
+                    setWidth={setWidth}
+                    setHeight={setHeight}
+                    fullWidth={fullWidth}
+                    setFullWidth={setFullWidth}
+                />
+                <Button onClick={handleAddItem}>{t('Add item')}</Button>
+            </VStack>
+        </DynamicModuleLoader>
     );
 });

@@ -15,6 +15,7 @@ import { UISchema } from '@/features/UI';
 import { ItemDetailsPageSchema } from '@/pages/ItemDetailsPage';
 import { ItemsPageSchema } from '@/pages/ItemsPage';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { ItemAddSchema } from '@/features/ItemAdd';
 
 export interface StateSchema {
     user: UserSchema;
@@ -28,6 +29,7 @@ export interface StateSchema {
     addCommentForm?: AddCommentFormSchema;
     itemsPage?: ItemsPageSchema;
     itemDetailsPage?: ItemDetailsPageSchema;
+    itemAdd?: ItemAddSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = function (username, password) {
     const users = JSON.parse(
-        fs.readFileSync(path.resolve(__dirname, 'db', 'users.json'), 'UTF-8'),
+        fs.readFileSync(path.resolve(__dirname, 'keys', 'users.json'), 'UTF-8'),
     );
 
     const userFromBd = users.find(

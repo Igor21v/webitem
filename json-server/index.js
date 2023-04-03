@@ -4,7 +4,6 @@ const jsonServer = require('json-server');
 const path = require('path');
 const https = require('https');
 const http = require('http');
-const items = require('./db/items');
 const findUser = require('./findUser');
 
 const options = {
@@ -50,8 +49,11 @@ server.get('/itemsLike', (req, res) => {
     try {
         console.log(`Res ${JSON.stringify(req.query)}`);
         const itemsReq = JSON.parse(req.query.itemsReq);
+        const db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        );
         console.log(`itemsReq ${JSON.stringify(itemsReq)}`);
-        const itemsDB = items();
+        const itemsDB = db.items;
         const itemsRes = Object.keys(itemsReq).map((itemReq) =>
             itemsDB.find((itemDB) => {
                 console.log(

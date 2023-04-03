@@ -1,5 +1,6 @@
 import { CodesContentType } from '@/shared/types/codes';
 import { ItemBlockType } from '../consts/ItemConst';
+import { ItemTypes } from '../consts/ItemList';
 
 export interface ItemBlockBase {
     id: string;
@@ -31,7 +32,7 @@ export interface Item {
     description: string;
     img: string;
     imgAnim: string;
-    type: string;
+    type: ItemTypes;
     views: number;
     createdAt: string;
     codes: CodesContentType;
