@@ -14,7 +14,7 @@ const options = {
 
 const server = jsonServer.create();
 
-const router = jsonServer.router(require('./db.js')());
+const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 server.use((req, res, next) => {
     res.header('Cache-Control', 'public, max-age=86400000'); // change max-age to any value in milliseconds you want
