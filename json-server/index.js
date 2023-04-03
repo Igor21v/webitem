@@ -85,11 +85,14 @@ server.use((req, res, next) => {
         req.method === 'PUT' ||
         req.method === 'PATCH'
     ) {
-        const username = req.headers.authorization?.username;
-        const password = req.headers.authorization?.password;
+        const headAuth = JSON.parse(req.headers.authorization);
+        console.log(`HA ${headAuth}`);
+        const username = headAuth?.username;
+        const password = headAuth?.password;
+        console.log(`username ${username} password ${password}`);
         userFromBd = findUser(username, password);
         if (!userFromBd) {
-            return res.status(403).json({ message: 'AUTH ERROR' });
+            return res.status(401).json({ message: 'AUTH ERROR' });
         }
     }
     next();

@@ -30,7 +30,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
     const { t } = useTranslation();
     return (
         <Card>
-            <VStack className={cls.SizePreview}>
+            <VStack>
                 <Text
                     text="Настройка окна предварительного просмотра, (450*256 для создания скрина)"
                     className={cls.text}
