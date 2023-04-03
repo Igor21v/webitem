@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, memo, useRef } from 'react';
+import React, { InputHTMLAttributes, useRef } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -7,14 +7,17 @@ type HTMLInputProps = Omit<
     'value' | 'onChange' | 'readOnly'
 >;
 
-interface InputProps extends HTMLInputProps {
+interface InputProps<T extends string | number | undefined>
+    extends HTMLInputProps {
     className?: string;
-    value?: string | number;
-    onChange?: ((value: string) => void) | ((value: number) => void);
+    value?: T;
+    onChange?: (value: T) => void;
     autofocus?: boolean;
     readOnly?: boolean;
 }
-export const Input = memo((props: InputProps) => {
+export const Input = <T extends number | string | undefined>(
+    props: InputProps<T>,
+) => {
     const {
         className,
         value,
@@ -29,7 +32,11 @@ export const Input = memo((props: InputProps) => {
     const canEdit = !readOnly;
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
+        if (type === 'text') {
+            onChange?.(e.target.value as T);
+        } else if (type === 'number') {
+            onChange?.(Number(e.target.value) as T);
+        }
     };
 
     const mods: Mods = {
@@ -55,4 +62,4 @@ export const Input = memo((props: InputProps) => {
             />
         </div>
     );
-});
+};
