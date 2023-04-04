@@ -1,3 +1,7 @@
 import { Item } from '@/entities/Item';
 
-export type ItemAddSchema = Omit<Item, 'id' | 'views' | 'createdAt'>;
+export type ItemAdd = Omit<Item, 'id' | 'views' | 'createdAt'>;
+
+export interface ItemAddSchema {
+    item: ItemAdd;
+}

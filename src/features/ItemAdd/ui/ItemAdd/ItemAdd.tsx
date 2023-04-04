@@ -11,11 +11,15 @@ import { VStack } from '@/shared/ui/Stack';
 import { SizePreview } from '../SizePreview/SizePreview';
 import { useItemAdd } from '../../api/ItemAdd';
 import { ItemTypes } from '@/entities/Item';
-import { itemAddReducer } from '../../model/slice/ItemAddSlice';
+import {
+    itemAddReducer,
+    useItemAddActions,
+} from '../../model/slice/ItemAddSlice';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItemAddForm';
 
 interface ItemAddProps {
     className?: string;
@@ -42,11 +46,11 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const [width, setWidth] = useState(450);
     const [height, setHeight] = useState(256);
     const [fullWidth, setFullWidth] = useState(true);
-    /* const itemAddForm = useItemAddSelector();
+    const itemForm = useItemAddSelector();
     const { updateItem } = useItemAddActions();
     const handleUpdateItem = (value: string) => {
         updateItem({ title: value });
-    }; */
+    };
     const [rateItemMutation] = useItemAdd();
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
@@ -62,7 +66,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         });
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
             <VStack gap="8" className={classNames('', {}, [className])}>
                 <Text title={t('Add new item')} />
                 <CodeEditor
@@ -73,9 +77,9 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                     langTabs={langTabs}
                 />
                 <Input
-                    value={title}
+                    value={itemForm?.item.title}
                     placeholder={t('Title')}
-                    onChange={setTitle}
+                    onChange={handleUpdateItem}
                 />
                 <Input
                     value={description}

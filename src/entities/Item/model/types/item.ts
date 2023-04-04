@@ -29,9 +29,9 @@ export type ItemBlock = ItemCodeBlock | ItemImageBlock | ItemTextBlock;
 export interface Item {
     id: string;
     title: string;
-    description: string;
-    img: string;
-    imgAnim: string;
+    description?: string;
+    img?: string;
+    imgAnim?: string;
     type: ItemTypes;
     views: number;
     createdAt: string;
