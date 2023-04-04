@@ -9,8 +9,8 @@ import { Card } from '@/shared/ui/Card';
 
 interface SizePreviewProps {
     className?: string;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     setWidth: (value: number) => void;
     setHeight: (value: number) => void;
     fullWidth: boolean;

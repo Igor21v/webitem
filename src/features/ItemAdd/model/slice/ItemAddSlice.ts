@@ -10,6 +10,8 @@ const initialState: ItemAddSchema = {
         type: 'not selected',
         img: '',
         imgAnim: '',
+        width: 450,
+        height: 256,
     },
 };
 

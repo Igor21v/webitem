@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CodeEditor } from '@/entities/CodeEditor';
-import { CodesContentType, languageType } from '@/shared/types/codes';
+import { languageType } from '@/shared/types/codes';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
@@ -10,7 +10,6 @@ import { ItemTypeSelector } from '../ItemTypeSelector/ItemTypeSelector';
 import { VStack } from '@/shared/ui/Stack';
 import { SizePreview } from '../SizePreview/SizePreview';
 import { useItemAdd } from '../../api/ItemAdd';
-import { ItemTypes } from '@/entities/Item';
 import {
     itemAddReducer,
     useItemAddActions,
@@ -34,26 +33,18 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         css: '',
         js: '',
     };
-    const [codes, setCodes] = useState<CodesContentType>(initCodes);
     const langTabs = Object.keys(initCodes).map((lang) => ({
         value: lang as languageType, // TODO
         content: lang.toUpperCase(),
     }));
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [img, setImg] = useState('');
-    const [imgAnim, setImgAnim] = useState('');
-    const [type, setType] = useState<ItemTypes>('not selected');
-    const [width, setWidth] = useState(450);
-    const [height, setHeight] = useState(256);
     const [fullWidth, setFullWidth] = useState(true);
     const itemForm = useItemAddSelector();
     const { updateItem } = useItemAddActions();
     const handleUpdateItem = useCallback(
-        (key: keyof ItemAddType) => (value: string) => {
+        (key: keyof ItemAddType) => (value: any) => {
             updateItem({ [key]: value });
         },
-        [],
+        [updateItem],
     );
 
     const [rateItemMutation] = useItemAdd();
@@ -62,12 +53,12 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     };
     const handleAddItem = () =>
         rateItemMutation({
-            codes,
-            title,
-            description,
-            type,
-            img,
-            imgAnim,
+            codes: itemForm?.codes ?? initCodes,
+            title: itemForm?.title ?? '',
+            description: itemForm?.description,
+            type: itemForm?.type ?? 'not selected',
+            img: itemForm?.img,
+            imgAnim: itemForm?.imgAnim,
         });
 
     return (
@@ -75,34 +66,41 @@ export const ItemAdd = memo((props: ItemAddProps) => {
             <VStack gap="8" className={classNames('', {}, [className])}>
                 <Text title={t('Add new item')} />
                 <CodeEditor
-                    codes={codes}
-                    setCodes={setCodes}
-                    previewWidth={width}
-                    previewHeight={height}
+                    codes={itemForm?.codes}
+                    setCodes={handleUpdateItem('codes')}
+                    previewWidth={itemForm?.width}
+                    previewHeight={itemForm?.height}
                     langTabs={langTabs}
                 />
                 <Input
-                    value={itemForm?.item.title}
+                    value={itemForm?.title}
                     placeholder={t('Title')}
                     onChange={handleUpdateItem('title')}
                 />
                 <Input
-                    value={description}
+                    value={itemForm?.description}
                     placeholder={t('Description')}
-                    onChange={setDescription}
+                    onChange={handleUpdateItem('description')}
                 />
-                <ItemTypeSelector type={type} setType={setType} />
-                <Input value={img} placeholder={t('Image')} onChange={setImg} />
+                <ItemTypeSelector
+                    type={itemForm?.type}
+                    setType={handleUpdateItem('type')}
+                />
                 <Input
-                    value={imgAnim}
+                    value={itemForm?.img}
+                    placeholder={t('Image')}
+                    onChange={handleUpdateItem('img')}
+                />
+                <Input
+                    value={itemForm?.imgAnim}
                     placeholder={t('Image with animation')}
-                    onChange={setImgAnim}
+                    onChange={handleUpdateItem('imgAnim')}
                 />
                 <SizePreview
-                    width={width}
-                    height={height}
-                    setWidth={setWidth}
-                    setHeight={setHeight}
+                    width={itemForm?.width}
+                    height={itemForm?.height}
+                    setWidth={handleUpdateItem('width')}
+                    setHeight={handleUpdateItem('height')}
                     fullWidth={fullWidth}
                     setFullWidth={setFullWidth}
                 />

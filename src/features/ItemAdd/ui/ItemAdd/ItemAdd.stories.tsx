@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ItemAddType } from './ItemAdd';
+import { ItemAdd } from './ItemAdd';
 
 export default {
     title: 'features/ItemAdd',
