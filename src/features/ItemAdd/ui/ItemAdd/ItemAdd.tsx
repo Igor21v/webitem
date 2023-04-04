@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CodeEditor } from '@/entities/CodeEditor';
 import { CodesContentType, languageType } from '@/shared/types/codes';
@@ -20,6 +20,7 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItemAddForm';
+import { ItemAddType } from '../../model/types/itemAddSchema';
 
 interface ItemAddProps {
     className?: string;
@@ -48,9 +49,13 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const [fullWidth, setFullWidth] = useState(true);
     const itemForm = useItemAddSelector();
     const { updateItem } = useItemAddActions();
-    const handleUpdateItem = (value: string) => {
-        updateItem({ title: value });
-    };
+    const handleUpdateItem = useCallback(
+        (key: keyof ItemAddType) => (value: string) => {
+            updateItem({ [key]: value });
+        },
+        [],
+    );
+
     const [rateItemMutation] = useItemAdd();
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
@@ -79,7 +84,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                 <Input
                     value={itemForm?.item.title}
                     placeholder={t('Title')}
-                    onChange={handleUpdateItem}
+                    onChange={handleUpdateItem('title')}
                 />
                 <Input
                     value={description}

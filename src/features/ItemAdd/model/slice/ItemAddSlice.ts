@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { buildSlice } from '@/shared/lib/store/buildSlice';
-import { ItemAdd, ItemAddSchema } from '../types/itemAddSchema';
+import { ItemAddType, ItemAddSchema } from '../types/itemAddSchema';
 
 const initialState: ItemAddSchema = {
     item: {
@@ -17,7 +17,7 @@ export const profileSlice = buildSlice({
     name: 'itemAdd',
     initialState,
     reducers: {
-        updateItem: (state, action: PayloadAction<Partial<ItemAdd>>) => {
+        updateItem: (state, action: PayloadAction<Partial<ItemAddType>>) => {
             state.item = {
                 ...state.item,
                 ...action.payload,
