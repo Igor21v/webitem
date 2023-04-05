@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CodeEditor } from '@/entities/CodeEditor';
 import { languageType } from '@/shared/types/codes';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
-import { Text } from '@/shared/ui/Text';
+import { Text, TextTheme } from '@/shared/ui/Text';
 import { ItemTypeSelector } from '../ItemTypeSelector/ItemTypeSelector';
-import { VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { SizePreview } from '../SizePreview/SizePreview';
-import { useItemAdd } from '../../api/ItemAdd';
 import {
     itemAddReducer,
     useItemAddActions,
@@ -22,6 +21,7 @@ import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItem
 import { ItemAddType } from '../../model/types/itemAddSchema';
 import { itemAdd } from '../../model/services/addItem';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { initialState } from '../../model/consts/itemAddConsts';
 
 interface ItemAddProps {
     className?: string;
@@ -30,17 +30,12 @@ interface ItemAddProps {
 export const ItemAdd = memo((props: ItemAddProps) => {
     const { className } = props;
     const { t } = useTranslation('adminPanel');
-    const initCodes = {
-        html: '',
-        css: '',
-        js: '',
-    };
-    const langTabs = Object.keys(initCodes).map((lang) => ({
+    const langTabs = Object.keys(initialState.item.codes).map((lang) => ({
         value: lang as languageType, // TODO
         content: lang.toUpperCase(),
     }));
-    const [fullWidth, setFullWidth] = useState(true);
-    const itemForm = useItemAddSelector();
+    const itemAddState = useItemAddSelector();
+    const itemForm = itemAddState.item;
     const { updateItem } = useItemAddActions();
     const dispatch = useAppDispatch();
     const handleAddItem = useCallback(() => {
@@ -53,20 +48,9 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         },
         [updateItem],
     );
-
-    const [rateItemMutation] = useItemAdd();
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
     };
-    /* const handleAddItem = () =>
-        rateItemMutation({
-            codes: itemForm?.codes ?? initCodes,
-            title: itemForm?.title ?? '',
-            description: itemForm?.description,
-            type: itemForm?.type ?? 'not selected',
-            img: itemForm?.img,
-            imgAnim: itemForm?.imgAnim,
-        }); */
 
     return (
         <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
@@ -111,7 +95,15 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                     fullWidth={itemForm?.fullWidth}
                     setFullWidth={handleUpdateItem('fullWidth')}
                 />
-                <Button onClick={handleAddItem}>{t('Add item')}</Button>
+                <HStack gap="8">
+                    <Button onClick={handleAddItem}>{t('Add item')}</Button>
+                    {itemAddState.fulfilled && (
+                        <Text
+                            theme={TextTheme.SUCCESS}
+                            text="Компонент успешно добавлен"
+                        />
+                    )}
+                </HStack>
             </VStack>
         </DynamicModuleLoader>
     );

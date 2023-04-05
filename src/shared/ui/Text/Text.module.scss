@@ -18,6 +18,16 @@
     }
 }
 
+.success {
+    .title {
+        color: var(--green-light-color);
+    }
+
+    .text {
+        color: var(--green-dark-color);
+    }
+}
+
 .inverted {
     .title {
         color: var(--inverted-primary-color);

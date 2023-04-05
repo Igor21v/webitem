@@ -1,4 +1,5 @@
 import { ChangeEvent, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 import { genericMemo } from '@/shared/lib/components/GenericMemo/GenericMemo';
@@ -19,13 +20,14 @@ interface SelectProps<T extends string> {
 
 const Select = <T extends string>(props: SelectProps<T>) => {
     const { className, label, options, value, onChange, readonly } = props;
+    const { t } = useTranslation();
     const optionsList = useMemo(() => {
         if (!value) {
             options?.unshift({
                 value: '' as T,
-                content: 'not selected',
+                content: t('not selected'),
             });
-        } else if (options?.[0].content === 'not selected') {
+        } else if (options?.[0].content === t('not selected')) {
             options?.shift();
         }
         return options?.map((opt) => (
@@ -33,7 +35,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                 {opt.content}
             </option>
         ));
-    }, [options, value]);
+    }, [options, t, value]);
 
     const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         onChange?.(e.target.value as T);

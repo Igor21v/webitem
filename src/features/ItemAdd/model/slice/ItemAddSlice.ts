@@ -1,23 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { buildSlice } from '@/shared/lib/store/buildSlice';
-import { ItemAddType, ItemAddSchema } from '../types/itemAddSchema';
+import { ItemAddType } from '../types/itemAddSchema';
 import { itemAdd } from '../services/addItem';
-
-const initialState: ItemAddSchema = {
-    isLoading: false,
-    error: undefined,
-    fulfilled: false,
-    item: {
-        codes: { html: '', css: '', js: '' },
-        title: '',
-        description: '',
-        type: 'not selected',
-        img: '',
-        imgAnim: '',
-        width: 450,
-        height: 256,
-    },
-};
+import { initialState } from '../consts/itemAddConsts';
 
 export const profileSlice = buildSlice({
     name: 'itemAdd',
@@ -34,13 +19,14 @@ export const profileSlice = buildSlice({
         builder
             .addCase(itemAdd.pending, (state) => {
                 state.error = undefined;
+                state.fulfilled = false;
                 state.isLoading = true;
             })
             .addCase(itemAdd.fulfilled, (state) => {
-                console.log('fulfilled');
-                state = initialState;
-                state.isLoading = false;
+                state.error = undefined;
                 state.fulfilled = true;
+                state.isLoading = false;
+                state.item = initialState.item;
             })
             .addCase(itemAdd.rejected, (state, action) => {
                 state.isLoading = false;

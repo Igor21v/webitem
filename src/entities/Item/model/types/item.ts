@@ -32,7 +32,7 @@ export interface Item {
     description?: string;
     img?: string;
     imgAnim?: string;
-    type: ItemTypes;
+    type?: ItemTypes;
     views: number;
     createdAt: string;
     codes: CodesContentType;
