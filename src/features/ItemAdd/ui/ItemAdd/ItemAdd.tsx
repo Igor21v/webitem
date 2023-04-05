@@ -20,6 +20,8 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItemAddForm';
 import { ItemAddType } from '../../model/types/itemAddSchema';
+import { itemAdd } from '../../model/services/addItem';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface ItemAddProps {
     className?: string;
@@ -40,6 +42,11 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const [fullWidth, setFullWidth] = useState(true);
     const itemForm = useItemAddSelector();
     const { updateItem } = useItemAddActions();
+    const dispatch = useAppDispatch();
+    const handleAddItem = useCallback(() => {
+        dispatch(itemAdd());
+    }, [dispatch]);
+
     const handleUpdateItem = useCallback(
         (key: keyof ItemAddType) => (value: any) => {
             updateItem({ [key]: value });
@@ -51,7 +58,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
     };
-    const handleAddItem = () =>
+    /* const handleAddItem = () =>
         rateItemMutation({
             codes: itemForm?.codes ?? initCodes,
             title: itemForm?.title ?? '',
@@ -59,7 +66,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
             type: itemForm?.type ?? 'not selected',
             img: itemForm?.img,
             imgAnim: itemForm?.imgAnim,
-        });
+        }); */
 
     return (
         <DynamicModuleLoader removeAfterUnmount={false} reducers={reducers}>
@@ -101,8 +108,8 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                     height={itemForm?.height}
                     setWidth={handleUpdateItem('width')}
                     setHeight={handleUpdateItem('height')}
-                    fullWidth={fullWidth}
-                    setFullWidth={setFullWidth}
+                    fullWidth={itemForm?.fullWidth}
+                    setFullWidth={handleUpdateItem('fullWidth')}
                 />
                 <Button onClick={handleAddItem}>{t('Add item')}</Button>
             </VStack>

@@ -13,7 +13,7 @@ interface SizePreviewProps {
     height?: number;
     setWidth: (value: number) => void;
     setHeight: (value: number) => void;
-    fullWidth: boolean;
+    fullWidth?: boolean;
     setFullWidth: (value: boolean) => void;
 }
 

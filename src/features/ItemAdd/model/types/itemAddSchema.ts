@@ -1,7 +1,14 @@
 import { Item } from '@/entities/Item';
 
-export type ItemAddType = Omit<Item, 'id' | 'views' | 'createdAt'>;
+interface ItemAddTypeImport extends Item {
+    fullWidth?: boolean;
+}
+
+export type ItemAddType = Omit<ItemAddTypeImport, 'id' | 'views' | 'createdAt'>;
 
 export interface ItemAddSchema {
     item: ItemAddType;
+    error?: string;
+    isLoading?: boolean;
+    fulfilled?: boolean;
 }
