@@ -10,5 +10,9 @@
   "Preview window size": "Размер окна предварительного просмотра",
   "With": "Ширина",
   "Height": "Высота",
-  "The component was successfully added": "Компонент успешно добавлен"
+  "The component was successfully added": "Компонент успешно добавлен",
+  "Enter the title": "Введите заголовок",
+  "Server error": "Ошибка на сервере",
+  "Type not selected": "Тип не выбран",
+  "Incorrect size": "Размер указан некорректно"
 }

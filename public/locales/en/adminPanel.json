@@ -10,5 +10,9 @@
   "Preview window size": "Preview window size",
   "With": "With",
   "Height": "Height",
-  "The component was successfully added": "The component was successfully added"
+  "The component was successfully added": "The component was successfully added",
+  "Enter the title": "Enter the title",
+  "Server error": "Server error",
+  "Type not selected": "Type not selected",
+  "Incorrect size": "Incorrect size"
 }

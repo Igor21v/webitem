@@ -21,7 +21,10 @@ import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItem
 import { ItemAddType } from '../../model/types/itemAddSchema';
 import { itemAdd } from '../../model/services/addItem/addItem';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { initialState } from '../../model/consts/itemAddConsts';
+import {
+    initialState,
+    ValidateAddItemError,
+} from '../../model/consts/itemAddConsts';
 
 interface ItemAddProps {
     className?: string;
@@ -50,6 +53,13 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     );
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
+    };
+    const validateErrorTranslates = {
+        [ValidateAddItemError.SERVER_ERROR]: t('Server error'),
+        [ValidateAddItemError.INCORRECT_TITLE]: t('Enter the title'),
+        [ValidateAddItemError.INCORRECT_TYPE]: t('Type not selected'),
+        [ValidateAddItemError.INCORRECT_SIZE]: t('Incorrect size'),
+        [ValidateAddItemError.SERVER_ERROR]: t('Server error'),
     };
 
     return (
@@ -103,6 +113,15 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                             text={t('The component was successfully added')}
                         />
                     )}
+                    {itemAddState.error?.length &&
+                        itemAddState.error?.map((err: ValidateAddItemError) => (
+                            <Text
+                                theme={TextTheme.ERROR}
+                                text={`${validateErrorTranslates[err]};`}
+                                key={err}
+                                data-testid="EditableProfileCard.Error"
+                            />
+                        ))}
                 </HStack>
             </VStack>
         </DynamicModuleLoader>

@@ -1,19 +1,27 @@
 import { ValidateAddItemError } from '../../consts/itemAddConsts';
 import { ItemAddType } from '../../types/itemAddSchema';
 
-export const validateProfileData = (item?: ItemAddType) => {
-    const {} = item;
+export const validateAddItem = (item: ItemAddType) => {
+    const { title, type, fullWidth, width, height } = item;
     const errors: ValidateAddItemError[] = [];
 
-    if (!first || !lastname) {
-        errors.push(ValidateProfileError.INCORRECT_USER_DATA);
+    if (!title) {
+        errors.push(ValidateAddItemError.INCORRECT_TITLE);
     }
-    console.log(`ffss ${typeof age}`);
-    if (!age || !Number.isInteger(age) || age > 150) {
-        errors.push(ValidateProfileError.INCORRECT_AGE);
+    console.log(`type ${type}`);
+    if (!type) {
+        errors.push(ValidateAddItemError.INCORRECT_TYPE);
     }
-    if (!country) {
-        errors.push(ValidateProfileError.INCORRECT_COUNTRY);
+    if (
+        !fullWidth &&
+        (!width ||
+            !height ||
+            width < 10 ||
+            width > 4000 ||
+            height < 10 ||
+            height > 4000)
+    ) {
+        errors.push(ValidateAddItemError.INCORRECT_SIZE);
     }
 
     return errors;

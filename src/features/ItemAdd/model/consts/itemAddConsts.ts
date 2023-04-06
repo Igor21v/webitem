@@ -18,8 +18,8 @@ export const initialState: ItemAddSchema = {
 };
 
 export enum ValidateAddItemError {
-    NO_DATA = 'NO_DATA',
     SERVER_ERROR = 'SERVER_ERROR',
     INCORRECT_TYPE = 'INCORRECT_TYPE',
     INCORRECT_TITLE = 'INCORRECT_TITLE',
+    INCORRECT_SIZE = 'INCORRECT_SIZE',
 }
