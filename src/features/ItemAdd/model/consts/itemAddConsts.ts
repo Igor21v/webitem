@@ -16,3 +16,10 @@ export const initialState: ItemAddSchema = {
         fullWidth: true,
     },
 };
+
+export enum ValidateAddItemError {
+    NO_DATA = 'NO_DATA',
+    SERVER_ERROR = 'SERVER_ERROR',
+    INCORRECT_TYPE = 'INCORRECT_TYPE',
+    INCORRECT_TITLE = 'INCORRECT_TITLE',
+}

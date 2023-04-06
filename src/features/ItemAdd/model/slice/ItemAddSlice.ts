@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { buildSlice } from '@/shared/lib/store/buildSlice';
 import { ItemAddType } from '../types/itemAddSchema';
-import { itemAdd } from '../services/addItem';
+import { itemAdd } from '../services/addItem/addItem';
 import { initialState } from '../consts/itemAddConsts';
 
 export const profileSlice = buildSlice({

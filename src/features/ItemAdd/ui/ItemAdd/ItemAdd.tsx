@@ -19,7 +19,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItemAddForm';
 import { ItemAddType } from '../../model/types/itemAddSchema';
-import { itemAdd } from '../../model/services/addItem';
+import { itemAdd } from '../../model/services/addItem/addItem';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { initialState } from '../../model/consts/itemAddConsts';
 
@@ -100,7 +100,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                     {itemAddState.fulfilled && (
                         <Text
                             theme={TextTheme.SUCCESS}
-                            text="Компонент успешно добавлен"
+                            text={t('The component was successfully added')}
                         />
                     )}
                 </HStack>
