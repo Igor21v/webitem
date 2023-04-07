@@ -1,7 +1,7 @@
 import { ItemEditType } from '@/entities/Item';
-import { ValidateAddItemError } from '../consts/itemAddConsts';
+import { ValidateAddItemError } from '../consts/ItemEditConsts';
 
-export interface ItemAddSchema {
+export interface ItemEditSchema {
     item: ItemEditType;
     error?: ValidateAddItemError[];
     isLoading?: boolean;

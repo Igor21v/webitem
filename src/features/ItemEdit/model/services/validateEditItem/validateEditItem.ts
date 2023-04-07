@@ -1,5 +1,5 @@
 import { ItemEditType } from '@/entities/Item';
-import { ValidateAddItemError } from '../../consts/itemAddConsts';
+import { ValidateAddItemError } from '../../consts/ItemEditConsts';
 
 export const validateAddItem = (item: ItemEditType) => {
     const { title, type, fullWidth, width, height } = item;

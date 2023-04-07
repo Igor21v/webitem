@@ -86,7 +86,13 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     <Text text={item?.type} />
                 </HStack>
             </VStack>
-            <CodeEditor codes={codes} setCodes={setCodes} langTabs={langTabs} />
+            <CodeEditor
+                codes={codes}
+                setCodes={setCodes}
+                langTabs={langTabs}
+                previewWidth={item?.width}
+                previewHeight={item?.height}
+            />
         </>
     );
 });

@@ -29,7 +29,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
     } = props;
     const { t } = useTranslation();
     return (
-        <Card>
+        <Card max>
             <VStack>
                 <Text
                     text="Настройка окна предварительного просмотра, (450*256 для создания скрина)"

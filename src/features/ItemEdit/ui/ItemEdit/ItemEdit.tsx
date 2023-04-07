@@ -7,27 +7,29 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import {
     itemAddReducer,
     useItemAddActions,
-} from '../../model/slice/ItemAddSlice';
+} from '../../model/slice/ItemEditSlice';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItemAddForm';
+import { useItemAddSelector } from '../../model/selectors/getItemEditForm/getItemEditForm';
 
-import { itemAdd } from '../../model/services/addItem/addItem';
+import { itemAdd } from '../../model/services/editItem/editItem';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     initialState,
     ValidateAddItemError,
-} from '../../model/consts/itemAddConsts';
-import { ItemEditCard, ItemEditType } from '@/entities/Item';
+} from '../../model/consts/ItemEditConsts';
+import { fetchItemById, ItemEditCard, ItemEditType } from '@/entities/Item';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 
 interface ItemAddProps {
     className?: string;
+    id?: string;
 }
 
-export const ItemAdd = memo((props: ItemAddProps) => {
-    const { className } = props;
+export const ItemEdit = memo((props: ItemAddProps) => {
+    const { className, id } = props;
     const { t } = useTranslation('adminPanel');
     const langTabs = Object.keys(initialState.item.codes).map((lang) => ({
         value: lang as languageType, // TODO
@@ -40,6 +42,9 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     const handleAddItem = useCallback(() => {
         dispatch(itemAdd());
     }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchItemById(id));
+    });
 
     const handleUpdateItem = useCallback(
         (key: keyof ItemEditType) => (value: any) => {

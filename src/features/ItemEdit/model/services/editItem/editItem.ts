@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { getItemAddForm } from '../../selectors/getItemAddForm/getItemAddForm';
+import { getItemAddForm } from '../../selectors/getItemEditForm/getItemEditForm';
 
-import { validateAddItem } from '../validateAddItem/validateAddItem';
-import { ValidateAddItemError } from '../../consts/itemAddConsts';
+import { validateAddItem } from '../validateEditItem/validateEditItem';
+import { ValidateAddItemError } from '../../consts/ItemEditConsts';
 import { ItemEditType } from '@/entities/Item';
 
 export const itemAdd = createAsyncThunk<

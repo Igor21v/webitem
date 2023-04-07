@@ -1,8 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { buildSlice } from '@/shared/lib/store/buildSlice';
 
-import { itemAdd } from '../services/addItem/addItem';
-import { initialState } from '../consts/itemAddConsts';
+import { itemAdd } from '../services/editItem/editItem';
+import { initialState } from '../consts/ItemEditConsts';
 import { ItemEditType } from '@/entities/Item';
 
 export const profileSlice = buildSlice({
