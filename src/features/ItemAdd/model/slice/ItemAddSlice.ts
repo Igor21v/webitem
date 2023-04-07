@@ -5,7 +5,7 @@ import { itemAdd } from '../services/addItem/addItem';
 import { initialState } from '../consts/itemAddConsts';
 import { ItemEditType } from '@/entities/Item';
 
-export const profileSlice = buildSlice({
+export const itemEditSlice = buildSlice({
     name: 'itemAdd',
     initialState,
     reducers: {
@@ -40,4 +40,4 @@ export const {
     actions: itemAddActions,
     reducer: itemAddReducer,
     useActions: useItemAddActions,
-} = profileSlice;
+} = itemEditSlice;
