@@ -4,3 +4,7 @@
 .text {
     flex-shrink: 0.4;
 }
+
+.validateError {
+    outline: 1px solid var(--red-dark-color);
+}

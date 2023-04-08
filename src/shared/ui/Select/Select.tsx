@@ -16,10 +16,19 @@ interface SelectProps<T extends string> {
     value?: T;
     onChange?: (value: T) => void;
     readonly?: boolean;
+    validateError?: boolean;
 }
 
 const Select = <T extends string>(props: SelectProps<T>) => {
-    const { className, label, options, value, onChange, readonly } = props;
+    const {
+        className,
+        label,
+        options,
+        value,
+        onChange,
+        readonly,
+        validateError,
+    } = props;
     const { t } = useTranslation();
     const optionsList = options?.map((opt) => (
         <option className={cls.option} value={opt.value} key={opt.value}>
@@ -41,12 +50,18 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                 </label>
                 <select
                     disabled={readonly}
-                    className={cls.select}
+                    className={classNames(
+                        cls.select,
+                        { [cls.validateError]: validateError },
+                        [className, 'scroll-thin'],
+                    )}
                     value={value}
                     onChange={onChangeHandler}
                     id={label}
                 >
-                    <option className={cls.option}>{t('not selected')}</option>
+                    <option className={cls.option} value="not selected">
+                        {t('not selected')}
+                    </option>
                     {optionsList}
                 </select>
             </p>

@@ -6,6 +6,7 @@ import { Input } from '@/shared/ui/Input';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Checkbox } from '@/shared/ui/Checkbox';
 import { Card } from '@/shared/ui/Card';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface SizePreviewProps {
     className?: string;
@@ -15,6 +16,7 @@ interface SizePreviewProps {
     setHeight: (value: number) => void;
     useSize?: boolean;
     setFullWidth: (value: boolean) => void;
+    validateError?: boolean;
 }
 
 export const SizePreview = memo((props: SizePreviewProps) => {
@@ -26,10 +28,14 @@ export const SizePreview = memo((props: SizePreviewProps) => {
         setWidth,
         useSize,
         setFullWidth,
+        validateError,
     } = props;
     const { t } = useTranslation();
     return (
-        <Card max>
+        <Card
+            max
+            className={classNames('', { [cls.validateError]: validateError })}
+        >
             <VStack>
                 <Text
                     text="Настройка окна предварительного просмотра, (450*256 для создания скрина)"

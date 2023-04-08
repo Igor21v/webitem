@@ -7,10 +7,11 @@ interface ItemTypeSelectorProps {
     className?: string;
     type: ItemTypes | undefined;
     setType: (type: ItemTypes) => void;
+    validateError?: boolean;
 }
 
 export const ItemTypeSelector = memo((props: ItemTypeSelectorProps) => {
-    const { className, type, setType } = props;
+    const { className, type, setType, validateError } = props;
     const { t } = useTranslation('adminPanel');
     const sortFieldOptions = useMemo<SelectOption<ItemTypes>[]>(
         () =>
@@ -27,6 +28,7 @@ export const ItemTypeSelector = memo((props: ItemTypeSelectorProps) => {
             value={type}
             onChange={setType}
             className={className}
+            validateError={validateError}
         />
     );
 });

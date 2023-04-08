@@ -33,7 +33,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
     }));
     const itemAddState = useItemAddSelector();
     const itemForm = itemAddState.item;
-    const { updateItem } = useItemAddActions();
+    const { updateItem, setError } = useItemAddActions();
     const dispatch = useAppDispatch();
     const handleAddItem = useCallback(() => {
         dispatch(itemAdd());
@@ -45,7 +45,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         },
         [updateItem],
     );
-    const addErrorHandler = useCallback(() => {}, []);
+    /* const addFormErrorHandler = useCallback(() => {}, []); */
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
     };
@@ -64,6 +64,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                     item={itemForm}
                     langTabs={langTabs}
                     handleUpdateItem={handleUpdateItem}
+                    setError={setError}
                 />
                 <HStack gap="8">
                     <Button onClick={handleAddItem}>{t('Add item')}</Button>

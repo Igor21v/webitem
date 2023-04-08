@@ -14,6 +14,7 @@ interface InputProps<T extends string | number | undefined>
     onChange?: (value: T) => void;
     autofocus?: boolean;
     readOnly?: boolean;
+    validateError?: boolean;
 }
 export const Input = <T extends number | string | undefined>(
     props: InputProps<T>,
@@ -26,6 +27,7 @@ export const Input = <T extends number | string | undefined>(
         onChange,
         autoFocus,
         readOnly,
+        validateError,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
@@ -42,6 +44,7 @@ export const Input = <T extends number | string | undefined>(
     const mods: Mods = {
         [cls.readOnly]: readOnly,
         [cls.canEdit]: canEdit,
+        [cls.validateError]: validateError,
     };
     return (
         <div className={cls.wrapper}>

@@ -15,7 +15,7 @@ export const itemEditSlice = buildSlice({
                 ...action.payload,
             };
         },
-        addError: (state, action: PayloadAction<EditItemError[]>) => {
+        setError: (state, action: PayloadAction<EditItemError[]>) => {
             state.formError = action.payload;
         },
     },
