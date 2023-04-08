@@ -1,9 +1,11 @@
-import { ItemEditType } from '@/entities/Item';
-import { ValidateAddItemError } from '../consts/itemAddConsts';
+import { EditItemError, ItemEditType } from '@/entities/Item';
+
+export type ValidateAddItemError = EditItemError | 'server error';
 
 export interface ItemAddSchema {
     item: ItemEditType;
     error?: ValidateAddItemError[];
+    formError?: EditItemError[];
     isLoading?: boolean;
     fulfilled?: boolean;
 }

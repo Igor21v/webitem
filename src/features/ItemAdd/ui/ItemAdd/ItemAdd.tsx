@@ -16,11 +16,9 @@ import { useItemAddSelector } from '../../model/selectors/getItemAddForm/getItem
 
 import { itemAdd } from '../../model/services/addItem/addItem';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    initialState,
-    ValidateAddItemError,
-} from '../../model/consts/itemAddConsts';
+import { initialState } from '../../model/consts/itemAddConsts';
 import { ItemEditCard, ItemEditType } from '@/entities/Item';
+import { ValidateAddItemError } from '../../model/types/itemAddSchema';
 
 interface ItemAddProps {
     className?: string;
@@ -47,15 +45,15 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         },
         [updateItem],
     );
+    const addErrorHandler = useCallback(() => {}, []);
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
     };
-    const validateErrorTranslates = {
-        [ValidateAddItemError.SERVER_ERROR]: t('Server error'),
-        [ValidateAddItemError.INCORRECT_TITLE]: t('Enter the title'),
-        [ValidateAddItemError.INCORRECT_TYPE]: t('Type not selected'),
-        [ValidateAddItemError.INCORRECT_SIZE]: t('Incorrect size'),
-        [ValidateAddItemError.SERVER_ERROR]: t('Server error'),
+    const validateErrorTranslates: Record<ValidateAddItemError, 'string'> = {
+        'server error': t('Server error'),
+        'incorrect size': t('Enter the title'),
+        'incorrect title': t('Type not selected'),
+        'incorrect type': t('Incorrect size'),
     };
 
     return (

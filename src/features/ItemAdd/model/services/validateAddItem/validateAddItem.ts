@@ -1,15 +1,15 @@
 import { ItemEditType } from '@/entities/Item';
-import { ValidateAddItemError } from '../../consts/itemAddConsts';
+import { ValidateAddItemError } from '../../types/itemAddSchema';
 
 export const validateAddItem = (item: ItemEditType) => {
     const { title, type, useSize, width, height } = item;
     const errors: ValidateAddItemError[] = [];
 
     if (!title) {
-        errors.push(ValidateAddItemError.INCORRECT_TITLE);
+        errors.push('incorrect title');
     }
     if (!type) {
-        errors.push(ValidateAddItemError.INCORRECT_TYPE);
+        errors.push('incorrect type');
     }
     if (
         useSize &&
@@ -20,7 +20,7 @@ export const validateAddItem = (item: ItemEditType) => {
             height < 10 ||
             height > 4000)
     ) {
-        errors.push(ValidateAddItemError.INCORRECT_SIZE);
+        errors.push('incorrect size');
     }
 
     return errors;

@@ -26,6 +26,16 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
         width = item.width;
         height = item.height;
     }
+    /*   const onChangeTitle = useCallback(
+        (value: string) => {
+            handleUpdateItem('title')(value);
+        },
+        [handleUpdateItem],
+    ); */
+    if (item?.title === '') {
+        console.log('Validation error title');
+    }
+
     return (
         <VStack gap="8" className={classNames('', {}, [className])} max>
             <CodeEditor

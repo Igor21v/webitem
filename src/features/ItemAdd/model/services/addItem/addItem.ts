@@ -3,7 +3,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { getItemAddForm } from '../../selectors/getItemAddForm/getItemAddForm';
 
 import { validateAddItem } from '../validateAddItem/validateAddItem';
-import { ValidateAddItemError } from '../../consts/itemAddConsts';
+import { ValidateAddItemError } from '../../types/itemAddSchema';
 
 export const itemAdd = createAsyncThunk<
     undefined,
@@ -21,6 +21,6 @@ export const itemAdd = createAsyncThunk<
         await extra.api.post(`/items`, item);
         return undefined;
     } catch (error) {
-        return rejectWithValue([ValidateAddItemError.SERVER_ERROR]);
+        return rejectWithValue(['server error']);
     }
 });
