@@ -4,13 +4,12 @@ import { getItemAddForm } from '../../selectors/getItemAddForm/getItemAddForm';
 
 import { validateAddItem } from '../validateAddItem/validateAddItem';
 import { ValidateAddItemError } from '../../consts/itemAddConsts';
-import { ItemEditType } from '@/entities/Item';
 
 export const itemAdd = createAsyncThunk<
     undefined,
     void,
     ThunkConfig<ValidateAddItemError[]>
->('profile/itemAdd', async (_, thunkApi) => {
+>('item/itemAdd', async (_, thunkApi) => {
     const { extra, rejectWithValue, getState } = thunkApi;
     const formData = getItemAddForm(getState());
     const { item } = formData;
@@ -18,21 +17,8 @@ export const itemAdd = createAsyncThunk<
     if (errors.length) {
         return rejectWithValue(errors);
     }
-    const dataToSend: ItemEditType = {
-        title: item.title,
-        description: item.description,
-        codes: item.codes,
-        type: item.type,
-        img: item.img,
-        imgAnim: item.imgAnim,
-    };
-    if (!item.fullWidth) {
-        dataToSend.width = item.width;
-        dataToSend.height = item.height;
-    }
-
     try {
-        await extra.api.post(`/items`, dataToSend);
+        await extra.api.post(`/items`, item);
         return undefined;
     } catch (error) {
         return rejectWithValue([ValidateAddItemError.SERVER_ERROR]);

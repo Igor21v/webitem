@@ -13,7 +13,7 @@ interface SizePreviewProps {
     height?: number;
     setWidth: (value: number) => void;
     setHeight: (value: number) => void;
-    fullWidth?: boolean;
+    useSize?: boolean;
     setFullWidth: (value: boolean) => void;
 }
 
@@ -24,7 +24,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
         width,
         setHeight,
         setWidth,
-        fullWidth,
+        useSize,
         setFullWidth,
     } = props;
     const { t } = useTranslation();
@@ -37,9 +37,9 @@ export const SizePreview = memo((props: SizePreviewProps) => {
                     align={TextAlign.CENTER}
                 />
                 <Checkbox
-                    checked={Boolean(fullWidth)}
+                    checked={Boolean(useSize)}
                     onChange={setFullWidth}
-                    label="Во всю ширину"
+                    label="Задать статический размер окна для элемента:"
                 />
                 <HStack gap="8">
                     <Input
@@ -47,14 +47,14 @@ export const SizePreview = memo((props: SizePreviewProps) => {
                         placeholder="Ширина"
                         onChange={setWidth}
                         type="number"
-                        readOnly={fullWidth}
+                        readOnly={!useSize}
                     />
                     <Input
                         value={height}
                         placeholder={t('Height')}
                         onChange={setHeight}
                         type="number"
-                        readOnly={fullWidth}
+                        readOnly={!useSize}
                     />
                 </HStack>
             </VStack>

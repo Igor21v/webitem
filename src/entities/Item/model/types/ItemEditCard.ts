@@ -1,10 +1,3 @@
 import { Item } from './item';
 
-interface ItemEditCardTypeImport extends Item {
-    fullWidth?: boolean;
-}
-
-export type ItemEditCardType = Omit<
-    ItemEditCardTypeImport,
-    'id' | 'views' | 'createdAt'
->;
+export type ItemEditCardType = Omit<Item, 'id' | 'views' | 'createdAt'>;

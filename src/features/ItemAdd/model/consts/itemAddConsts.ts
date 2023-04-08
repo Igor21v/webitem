@@ -13,7 +13,7 @@ export const initialState: ItemAddSchema = {
         imgAnim: '',
         width: 450,
         height: 256,
-        fullWidth: true,
+        useSize: false,
     },
 };
 

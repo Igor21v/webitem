@@ -5,6 +5,9 @@ export const initialState: ItemEditSchema = {
     error: undefined,
     fulfilled: false,
     item: {
+        id: '',
+        views: 0,
+        createdAt: '',
         codes: { html: '', css: '', js: '' },
         title: '',
         description: '',
@@ -13,7 +16,7 @@ export const initialState: ItemEditSchema = {
         imgAnim: '',
         width: 450,
         height: 256,
-        fullWidth: true,
+        useSize: false,
     },
 };
 

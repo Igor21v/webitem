@@ -36,6 +36,7 @@ export interface Item {
     views: number;
     createdAt: string;
     codes: CodesContentType;
+    useSize?: boolean;
     width?: number;
     height?: number;
 }

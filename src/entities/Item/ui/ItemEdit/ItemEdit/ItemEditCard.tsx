@@ -20,13 +20,19 @@ interface ItemEditProps {
 export const ItemEditCard = memo((props: ItemEditProps) => {
     const { className, item, handleUpdateItem, langTabs } = props;
     const { t } = useTranslation('adminPanel');
+    let width;
+    let height;
+    if (item.useSize) {
+        width = item.width;
+        height = item.height;
+    }
     return (
         <VStack gap="8" className={classNames('', {}, [className])} max>
             <CodeEditor
                 codes={item?.codes}
                 setCodes={handleUpdateItem('codes')}
-                previewWidth={item?.width}
-                previewHeight={item?.height}
+                previewWidth={width}
+                previewHeight={height}
                 langTabs={langTabs}
             />
             <Input
@@ -58,8 +64,8 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
                 height={item?.height}
                 setWidth={handleUpdateItem('width')}
                 setHeight={handleUpdateItem('height')}
-                fullWidth={item?.fullWidth}
-                setFullWidth={handleUpdateItem('fullWidth')}
+                useSize={item?.useSize}
+                setFullWidth={handleUpdateItem('useSize')}
             />
         </VStack>
     );

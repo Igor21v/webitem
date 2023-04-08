@@ -1,15 +1,15 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { buildSlice } from '@/shared/lib/store/buildSlice';
 
-import { itemAdd } from '../services/editItem/editItem';
+import { itemEdit } from '../services/editItem/editItem';
 import { initialState } from '../consts/ItemEditConsts';
-import { ItemEditType } from '@/entities/Item';
+import { Item } from '@/entities/Item';
 
 export const itemEditSlice = buildSlice({
-    name: 'itemAdd',
+    name: 'itemEdit',
     initialState,
     reducers: {
-        updateItem: (state, action: PayloadAction<Partial<ItemEditType>>) => {
+        updateItem: (state, action: PayloadAction<Partial<Item>>) => {
             state.item = {
                 ...state.item,
                 ...action.payload,
@@ -18,18 +18,18 @@ export const itemEditSlice = buildSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(itemAdd.pending, (state) => {
+            .addCase(itemEdit.pending, (state) => {
                 state.error = undefined;
                 state.fulfilled = false;
                 state.isLoading = true;
             })
-            .addCase(itemAdd.fulfilled, (state) => {
+            .addCase(itemEdit.fulfilled, (state) => {
                 state.error = undefined;
                 state.fulfilled = true;
                 state.isLoading = false;
                 state.item = initialState.item;
             })
-            .addCase(itemAdd.rejected, (state, action) => {
+            .addCase(itemEdit.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             });

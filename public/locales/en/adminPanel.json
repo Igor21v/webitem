@@ -15,5 +15,8 @@
     "Server error": "Server error",
     "Type not selected": "Type not selected",
     "Incorrect size": "Incorrect size",
-    "The component was successfully edit": "The component was successfully edite"
+    "The component was successfully edit": "The component was successfully edite",
+    "Edit item": "Edit item",
+    "Save": "Save",
+    "Cancel": "Cancel"
 }

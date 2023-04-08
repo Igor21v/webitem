@@ -15,5 +15,8 @@
     "Server error": "Ошибка на сервере",
     "Type not selected": "Тип не выбран",
     "Incorrect size": "Размер указан некорректно",
-    "The component was successfully edit": "Компонент успешно изменен"
+    "The component was successfully edit": "Компонент успешно изменен",
+    "Edit item": "Редактирование компонента",
+    "Save": "Сохранить",
+    "Cancel": "Отменить"
 }

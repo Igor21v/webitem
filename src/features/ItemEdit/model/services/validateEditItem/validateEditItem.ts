@@ -2,7 +2,7 @@ import { ItemEditType } from '@/entities/Item';
 import { ValidateAddItemError } from '../../consts/ItemEditConsts';
 
 export const validateAddItem = (item: ItemEditType) => {
-    const { title, type, fullWidth, width, height } = item;
+    const { title, type, useSize, width, height } = item;
     const errors: ValidateAddItemError[] = [];
 
     if (!title) {
@@ -12,7 +12,7 @@ export const validateAddItem = (item: ItemEditType) => {
         errors.push(ValidateAddItemError.INCORRECT_TYPE);
     }
     if (
-        !fullWidth &&
+        useSize &&
         (!width ||
             !height ||
             width < 10 ||

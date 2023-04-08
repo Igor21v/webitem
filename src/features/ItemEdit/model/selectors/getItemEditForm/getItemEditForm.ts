@@ -1,6 +1,6 @@
 import { buildSelector } from '@/shared/lib/store';
 import { initialState } from '../../consts/ItemEditConsts';
 
-export const [useItemAddSelector, getItemAddForm] = buildSelector(
+export const [useItemEditSelector, getItemEditForm] = buildSelector(
     (state) => state.itemEdit ?? initialState,
 );
