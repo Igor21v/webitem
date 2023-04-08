@@ -18,7 +18,7 @@ export const itemEdit = createAsyncThunk<
         return rejectWithValue(errors);
     }
     try {
-        await extra.api.post(`/items`, item);
+        await extra.api.put(`/items/${item.id}`, item);
         return undefined;
     } catch (error) {
         return rejectWithValue([ValidateAddItemError.SERVER_ERROR]);

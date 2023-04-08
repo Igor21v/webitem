@@ -154,18 +154,21 @@
     },
     {
       "id": "5",
-      "title": "Golang news",
-      "description": "Что нового в JS за 2022 год?",
-      "img": "https://i.pinimg.com/originals/36/67/a9/3667a92e986f1d10d72a24f213f9f085.png",
-      "imgAnim": "https://otkritkis.com/wp-content/uploads/2022/06/i7yqs.gif",
       "views": 10222,
       "createdAt": "2022.06.26",
-      "type": "animation",
       "codes": {
         "html": "<div class=\"test\">TEXT</div>",
         "css": ".test {font-size: 30px}",
         "js": "console.log(\"test\")"
-      }
+      },
+      "title": "Golang news",
+      "description": "Что нового в JS за 2022 год?112",
+      "type": "animation",
+      "img": "https://i.pinimg.com/originals/36/67/a9/3667a92e986f1d10d72a24f213f9f085.png",
+      "imgAnim": "https://otkritkis.com/wp-content/uploads/2022/06/i7yqs.gif",
+      "width": 450,
+      "height": 256,
+      "useSize": false
     },
     {
       "id": "122",
@@ -184,17 +187,20 @@
     },
     {
       "id": "122c",
-      "title": "CSS Folder Hover Micro Interaction",
-      "description": "Анимация при наведении курсора на папку. Написана на чистом CSS. Приятная и не сложная в разработке анимация. Подойдёт для каждого уровня подготовки",
-      "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
-      "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
       "views": 564,
       "createdAt": "2023.03.27",
-      "type": "animation",
       "codes": {
         "html": "<div class=\"folder\">\n  <div class=\"folder__back\">\n    <div class=\"paper\"></div>\n    <div class=\"paper\"></div>\n    <div class=\"paper\"></div>\n    <div class=\"folder__front\"></div>\n    <div class=\"folder__front right\"></div>\n  </div>\n</div>",
         "css": "body {\n\t margin: 0;\n\t padding: 0;\n\t width: 100%;\n\t height: 100vh;\n\t background: #f1f2f6;\n\t display: flex;\n\t justify-content: center;\n\t align-items: center;\n}\n .folder {\n\t transition: all 0.2s ease-in;\n}\n .folder__back {\n\t position: relative;\n\t width: 100px;\n\t height: 80px;\n\t background: #4786ff;\n\t border-radius: 0px 5px 5px 5px;\n}\n .folder__back::after {\n\t position: absolute;\n\t bottom: 98%;\n\t left: 0;\n\t content: \"\";\n\t width: 30px;\n\t height: 10px;\n\t background: #4786ff;\n\t border-radius: 5px 5px 0 0;\n}\n .folder__back .paper {\n\t position: absolute;\n\t bottom: 10%;\n\t left: 50%;\n\t transform: translate(-50%, 10%);\n\t width: 70%;\n\t height: 80%;\n\t background: #e6e6e6;\n\t border-radius: 5px;\n\t transition: all 0.3s ease-in-out;\n}\n .folder__back .paper:nth-child(2) {\n\t background: #f2f2f2;\n\t width: 80%;\n\t height: 70%;\n}\n .folder__back .paper:nth-child(3) {\n\t background: #fff;\n\t width: 90%;\n\t height: 60%;\n}\n .folder__back .folder__front {\n\t position: absolute;\n\t width: 100%;\n\t height: 100%;\n\t background: #70a1ff;\n\t border-radius: 5px;\n\t transform-origin: bottom;\n\t transition: all 0.3s ease-in-out;\n}\n .folder:hover {\n\t transform: translateY(-8px);\n}\n .folder:hover .paper {\n\t transform: translate(-50%, 0%);\n}\n .folder:hover .folder__front {\n\t transform: skew(15deg) scaleY(0.6);\n}\n .folder:hover .right {\n\t transform: skew(-15deg) scaleY(0.6);\n}\n "
-      }
+      },
+      "title": "CSS Folder Hover Micro Interaction",
+      "description": "Анимация при наведении курсора на папку. Написана на чистом CSS. Приятная и не сложная в разработке анимация. Подойдёт для каждого уровня подготовки",
+      "type": "animation",
+      "img": "https://webitem.ru/api/static/items/animation/OutfitAtDusk.png",
+      "imgAnim": "https://webitem.ru/api/static/items/animation/OutfitAtDusk_anim.gif",
+      "width": 450,
+      "height": 256,
+      "useSize": false
     },
     {
       "id": "asdf",

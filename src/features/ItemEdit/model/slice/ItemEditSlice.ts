@@ -27,7 +27,6 @@ export const itemEditSlice = buildSlice({
                 state.error = undefined;
                 state.fulfilled = true;
                 state.isLoading = false;
-                state.item = initialState.item;
             })
             .addCase(itemEdit.rejected, (state, action) => {
                 state.isLoading = false;
