@@ -8,4 +8,5 @@ export interface ItemAddSchema {
     formError?: EditItemError[];
     isLoading?: boolean;
     fulfilled?: boolean;
+    validateEnable?: boolean;
 }

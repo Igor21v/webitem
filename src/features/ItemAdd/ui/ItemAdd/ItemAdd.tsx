@@ -32,7 +32,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         content: lang.toUpperCase(),
     }));
     const itemAddState = useItemAddSelector();
-    const itemForm = itemAddState.item;
+    const { validateEnable, item } = itemAddState;
     const { updateItem, setError } = useItemAddActions();
     const dispatch = useAppDispatch();
     const handleAddItem = useCallback(() => {
@@ -45,15 +45,14 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         },
         [updateItem],
     );
-    /* const addFormErrorHandler = useCallback(() => {}, []); */
     const reducers: ReducersList = {
         itemAdd: itemAddReducer,
     };
     const validateErrorTranslates: Record<ValidateAddItemError, 'string'> = {
         'server error': t('Server error'),
-        'incorrect size': t('Enter the title'),
-        'incorrect title': t('Type not selected'),
-        'incorrect type': t('Incorrect size'),
+        'incorrect size': t('Incorrect size'),
+        'incorrect title': t('Enter the title'),
+        'incorrect type': t('Type not selected'),
     };
 
     return (
@@ -61,11 +60,13 @@ export const ItemAdd = memo((props: ItemAddProps) => {
             <VStack gap="8">
                 <Text title={t('Add new item')} />
                 <ItemEditCard
-                    item={itemForm}
+                    item={item}
                     langTabs={langTabs}
                     handleUpdateItem={handleUpdateItem}
                     setError={setError}
+                    validateEnable={validateEnable}
                 />
+
                 <HStack gap="8">
                     <Button onClick={handleAddItem}>{t('Add item')}</Button>
                     {itemAddState.fulfilled && (

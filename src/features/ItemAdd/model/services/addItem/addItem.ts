@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { getItemAddForm } from '../../selectors/getItemAddForm/getItemAddForm';
-
-import { validateAddItem } from '../validateAddItem/validateAddItem';
 import { ValidateAddItemError } from '../../types/itemAddSchema';
 
 export const itemAdd = createAsyncThunk<
@@ -12,10 +10,9 @@ export const itemAdd = createAsyncThunk<
 >('item/itemAdd', async (_, thunkApi) => {
     const { extra, rejectWithValue, getState } = thunkApi;
     const formData = getItemAddForm(getState());
-    const { item } = formData;
-    const errors = validateAddItem(item);
-    if (errors.length) {
-        return rejectWithValue(errors);
+    const { item, formError } = formData;
+    if (formError?.length) {
+        return rejectWithValue(formError);
     }
     try {
         await extra.api.post(`/items`, item);

@@ -31,10 +31,12 @@ export const itemEditSlice = buildSlice({
                 state.fulfilled = true;
                 state.isLoading = false;
                 state.item = initialState.item;
+                state.validateEnable = false;
             })
             .addCase(itemAdd.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+                state.validateEnable = true;
             });
     },
 });

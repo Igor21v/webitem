@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { CodeEditor } from '@/entities/CodeEditor';
@@ -12,7 +12,6 @@ import {
 import { ItemTypeSelector } from '../ItemTypeSelector/ItemTypeSelector';
 import { TabItem } from '@/shared/ui/Tabs';
 import { languageType } from '@/shared/types/codes';
-import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 
 interface ItemEditProps {
     className?: string;
@@ -20,7 +19,7 @@ interface ItemEditProps {
     handleUpdateItem: (key: keyof ItemEditCardType) => (value: any) => void;
     langTabs: TabItem<languageType>[];
     setError?: (errors: EditItemError[]) => void;
-    validate?: boolean;
+    validateEnable?: boolean;
 }
 
 export const ItemEditCard = memo((props: ItemEditProps) => {
@@ -30,7 +29,7 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
         handleUpdateItem,
         langTabs,
         setError,
-        validate = true,
+        validateEnable,
     } = props;
     const { t } = useTranslation('adminPanel');
     let width;
@@ -41,7 +40,7 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
     }
 
     const errors: EditItemError[] = [];
-    const titleError = item?.title === '';
+    const titleError = !item?.title;
     if (titleError) {
         errors.push('incorrect title');
     }
@@ -60,9 +59,10 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
     if (sizeError) {
         errors.push('incorrect size');
     }
-    useNonInitialEffect(() => {
+    useEffect(() => {
         setError?.(errors);
-    }, [titleError, typeError, sizeError]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [titleError, sizeError, typeError]);
 
     return (
         <VStack gap="8" className={classNames('', {}, [className])} max>
@@ -77,7 +77,7 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
                 value={item?.title}
                 placeholder={t('Title')}
                 onChange={handleUpdateItem('title')}
-                validateError={titleError && validate}
+                validateError={titleError && validateEnable}
             />
             <Input
                 value={item?.description}
@@ -87,7 +87,7 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
             <ItemTypeSelector
                 type={item?.type}
                 setType={handleUpdateItem('type')}
-                validateError={typeError && validate}
+                validateError={typeError && validateEnable}
             />
             <Input
                 value={item?.img}
@@ -106,7 +106,7 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
                 setHeight={handleUpdateItem('height')}
                 useSize={item?.useSize}
                 setFullWidth={handleUpdateItem('useSize')}
-                validateError={sizeError && validate}
+                validateError={sizeError && validateEnable}
             />
         </VStack>
     );
