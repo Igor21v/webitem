@@ -60,7 +60,6 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                     setEditorTheme={setEditorTheme}
                 />
             </HStack>
-
             <Editor
                 openedEditor={openedEditor}
                 content={codes}

@@ -18,7 +18,7 @@ interface DynamicModuleLoaderProps {
 }
 
 export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
-    const [reducetInited, setReducetInited] = useState(false);
+    const [reducetInited, setReducerInited] = useState(false);
     const { children, reducers, removeAfterUnmount = true } = props;
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
     }, []);
     setTimeout(() => {
         // возвращаем компонент в следуещей макрозадаче, только тогда будет инициализирован редюсер. Это нужно для того случая когда хотим в useEffect использовать этот редюсер
-        setReducetInited(true);
+        setReducerInited(true);
     });
     if (reducetInited) {
         return (
