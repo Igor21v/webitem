@@ -3,7 +3,7 @@ import { buildSlice } from '@/shared/lib/store/buildSlice';
 
 import { itemEdit } from '../services/editItem/editItem';
 import { initialState } from '../consts/ItemEditConsts';
-import { Item } from '@/entities/Item';
+import { EditItemError, Item } from '@/entities/Item';
 
 export const itemEditSlice = buildSlice({
     name: 'itemEdit',
@@ -14,6 +14,9 @@ export const itemEditSlice = buildSlice({
                 ...state.item,
                 ...action.payload,
             };
+        },
+        setError: (state, action: PayloadAction<EditItemError[]>) => {
+            state.formError = action.payload;
         },
     },
     extraReducers: (builder) => {

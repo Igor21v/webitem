@@ -9,12 +9,10 @@ import { useItemEditSelector } from '../../model/selectors/getItemEditForm/getIt
 
 import { itemEdit } from '../../model/services/editItem/editItem';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    initialState,
-    ValidateAddItemError,
-} from '../../model/consts/ItemEditConsts';
+import { initialState } from '../../model/consts/ItemEditConsts';
 import { ItemEditCard, ItemEditType, Item } from '@/entities/Item';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { ValidateEditItemError } from '../../model/types/itemEditSchema';
 
 interface ItemAddProps {
     className?: string;
@@ -31,7 +29,7 @@ export const ItemEdit = memo((props: ItemAddProps) => {
 
     const itemEditState = useItemEditSelector();
     const itemForm = itemEditState.item;
-    const { updateItem } = useItemEditActions();
+    const { updateItem, setError } = useItemEditActions();
     const dispatch = useAppDispatch();
     const handleEditItem = useCallback(() => {
         dispatch(itemEdit());
@@ -49,12 +47,11 @@ export const ItemEdit = memo((props: ItemAddProps) => {
         },
         [updateItem],
     );
-    const validateErrorTranslates = {
-        [ValidateAddItemError.SERVER_ERROR]: t('Server error'),
-        [ValidateAddItemError.INCORRECT_TITLE]: t('Enter the title'),
-        [ValidateAddItemError.INCORRECT_TYPE]: t('Type not selected'),
-        [ValidateAddItemError.INCORRECT_SIZE]: t('Incorrect size'),
-        [ValidateAddItemError.SERVER_ERROR]: t('Server error'),
+    const validateErrorTranslates: Record<ValidateEditItemError, 'string'> = {
+        'server error': t('Server error'),
+        'incorrect size': t('Incorrect size'),
+        'incorrect title': t('Enter the title'),
+        'incorrect type': t('Type not selected'),
     };
 
     return (
@@ -63,6 +60,8 @@ export const ItemEdit = memo((props: ItemAddProps) => {
                 item={itemForm}
                 langTabs={langTabs}
                 handleUpdateItem={handleUpdateItem}
+                setError={setError}
+                validateEnable
             />
             <HStack gap="8" max>
                 <Button onClick={setInit} theme={ButtonTheme.OUTLINE_RED}>
@@ -76,7 +75,7 @@ export const ItemEdit = memo((props: ItemAddProps) => {
                     />
                 )}
                 {itemEditState.error?.length &&
-                    itemEditState.error?.map((err: ValidateAddItemError) => (
+                    itemEditState.error?.map((err: ValidateEditItemError) => (
                         <Text
                             theme={TextTheme.ERROR}
                             text={`${validateErrorTranslates[err]};`}

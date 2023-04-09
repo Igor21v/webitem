@@ -1,26 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { getItemEditForm } from '../../selectors/getItemEditForm/getItemEditForm';
-
-import { validateAddItem } from '../validateEditItem/validateEditItem';
-import { ValidateAddItemError } from '../../consts/ItemEditConsts';
+import { ValidateEditItemError } from '../../types/itemEditSchema';
 
 export const itemEdit = createAsyncThunk<
     undefined,
     void,
-    ThunkConfig<ValidateAddItemError[]>
+    ThunkConfig<ValidateEditItemError[]>
 >('item/itemEdit', async (_, thunkApi) => {
     const { extra, rejectWithValue, getState } = thunkApi;
     const formData = getItemEditForm(getState());
-    const { item } = formData;
-    const errors = validateAddItem(item);
-    if (errors.length) {
-        return rejectWithValue(errors);
+    const { item, formError } = formData;
+    if (formError?.length) {
+        return rejectWithValue(formError);
     }
     try {
         await extra.api.put(`/items/${item.id}`, item);
         return undefined;
     } catch (error) {
-        return rejectWithValue([ValidateAddItemError.SERVER_ERROR]);
+        return rejectWithValue(['server error']);
     }
 });

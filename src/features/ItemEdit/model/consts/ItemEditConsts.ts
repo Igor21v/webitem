@@ -19,10 +19,3 @@ export const initialState: ItemEditSchema = {
         useSize: false,
     },
 };
-
-export enum ValidateAddItemError {
-    SERVER_ERROR = 'SERVER_ERROR',
-    INCORRECT_TYPE = 'INCORRECT_TYPE',
-    INCORRECT_TITLE = 'INCORRECT_TITLE',
-    INCORRECT_SIZE = 'INCORRECT_SIZE',
-}
