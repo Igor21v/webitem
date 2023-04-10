@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { Editor, EditorWrapperProps } from './Editor';
 
 export type CodeMirrorType = typeof import('@uiw/react-codemirror');
@@ -15,7 +15,7 @@ const getAsyncCodeMirror = async () => {
     ]);
 };
 
-export const EditorWrapper = (props: EditorWrapperProps) => {
+export const EditorWrapper = memo((props: EditorWrapperProps) => {
     const CodeMirrorRef = useRef<CodeMirrorType>();
     const LangHtmlRef = useRef<LangHtmlType>();
     const LangCssRef = useRef<LangCssType>();
@@ -51,4 +51,4 @@ export const EditorWrapper = (props: EditorWrapperProps) => {
             {...props}
         />
     );
-};
+});

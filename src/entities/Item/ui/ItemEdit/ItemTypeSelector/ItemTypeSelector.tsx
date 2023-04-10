@@ -29,6 +29,7 @@ export const ItemTypeSelector = memo((props: ItemTypeSelectorProps) => {
             onChange={setType}
             className={className}
             validateError={validateError}
+            notSelectedEnable
         />
     );
 });
