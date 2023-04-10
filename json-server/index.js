@@ -79,22 +79,22 @@ server.get('/itemsLike', (req, res) => {
 
 // авторизован ли пользователь
 server.use((req, res, next) => {
-    if (req.method === 'POST') {
-        req.body.createdAt = Date.now();
-    }
     if (
         req.method === 'POST' ||
         req.method === 'PUT' ||
         req.method === 'PATCH'
     ) {
         const headAuth = JSON.parse(req.headers.authorization);
-        console.log(`HA ${headAuth}`);
         const username = headAuth?.username;
         const password = headAuth?.password;
         console.log(`username ${username} password ${password}`);
         userFromBd = findUser(username, password);
         if (!userFromBd) {
             return res.status(401).json({ message: 'AUTH ERROR' });
+        }
+        if (req.method === 'POST') {
+            req.body.createdAt = Date.now();
+            req.body.views = 0;
         }
     }
     next();
