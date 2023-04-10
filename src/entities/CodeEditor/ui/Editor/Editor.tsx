@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 /* import CodeMirror from '@uiw/react-codemirror'; */
 /* import { html } from '@codemirror/lang-html';
 import { css } from '@codemirror/lang-css';
@@ -9,10 +9,15 @@ import { EditorThemeType } from '../CodeEditor/CodeEditor';
 import { CodesContentType, languageType } from '@/shared/types/codes';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
-import { CodeMirrorProvider, useCodeMirrorLib } from './CodeMirrorProvider';
+import {
+    CodeMirrorType,
+    LangCssType,
+    LangHtmlType,
+    LangJsType,
+} from './EditorWrapper';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-interface EditorProps {
+export interface EditorWrapperProps {
     className?: string;
     openedEditor: languageType;
     content: CodesContentType;
@@ -20,39 +25,66 @@ interface EditorProps {
     theme: EditorThemeType;
 }
 
-export const EditorContent = memo((props: EditorProps) => {
-    const { CodeMirror, LangCss, LangHtml, LangJs } = useCodeMirrorLib();
-    const useCodeMirror = CodeMirror?.useCodeMirror;
-    const { className, openedEditor, content, setContent, theme } = props;
+interface EditorProps extends EditorWrapperProps {
+    CodeMirror: CodeMirrorType;
+    LangHtml: LangHtmlType;
+    LangCss: LangCssType;
+    LangJs: LangJsType;
+}
+
+export const Editor = memo((props: EditorProps) => {
+    const {
+        className,
+        openedEditor,
+        content,
+        setContent,
+        theme,
+        CodeMirror,
+        LangCss,
+        LangHtml,
+        LangJs,
+    } = props;
     const handleChange = (value: string | undefined) => {
         setContent({ ...content, [openedEditor]: value });
     };
-
-    let currLang;
-    let currContent: string;
-    switch (openedEditor) {
-        case 'html':
-            currLang = LangHtml.html;
-            currContent = content.html || '';
-            break;
-        case 'css':
-            currLang = LangCss.css;
-            currContent = content.css || '';
-            break;
-        default:
-            currLang = LangJs.javascript;
-            currContent = content.js || '';
-    }
+    const useCodeMirror = CodeMirror?.useCodeMirror;
+    const currLang = useMemo(() => {
+        switch (openedEditor) {
+            case 'html':
+                return {
+                    currLang: LangHtml.html,
+                    currContent: content.html || '',
+                };
+            case 'css':
+                return {
+                    currLang: LangCss.css,
+                    currContent: content.css || '',
+                };
+            default:
+                return {
+                    currLang: LangJs.javascript,
+                    currContent: content.js || '',
+                };
+        }
+    }, [
+        LangCss.css,
+        LangHtml.html,
+        LangJs.javascript,
+        content.css,
+        content.html,
+        content.js,
+        openedEditor,
+    ]);
 
     const onCopy = useCallback(() => {
-        navigator.clipboard.writeText(currContent);
-    }, [currContent]);
+        navigator.clipboard.writeText(currLang.currContent);
+    }, [currLang.currContent]);
 
     const editor = useRef<HTMLInputElement>(null);
     const { setContainer } = useCodeMirror({
         container: editor.current,
-        extensions: [currLang()],
-        value: currContent,
+        extensions: [currLang.currLang()],
+        value: currLang.currContent,
         onChange: handleChange,
         minHeight: '200px',
         theme,
@@ -62,21 +94,10 @@ export const EditorContent = memo((props: EditorProps) => {
         if (editor.current) {
             setContainer(editor.current);
         }
-    }, [editor.current]);
+    }, [setContainer]);
 
     return (
         <div className={cls.Editor}>
-            {/* <CodeMirror
-                className={classNames(cls.codeMirror, {}, [
-                    className,
-                    'scroll-thin',
-                ])}
-                onChange={handleChange}
-                value={currContent}
-                minHeight="200px"
-                theme={theme}
-                extensions={[currLang()]}
-            /> */}
             <div
                 ref={editor}
                 className={classNames(cls.codeMirror, {}, [
@@ -94,21 +115,3 @@ export const EditorContent = memo((props: EditorProps) => {
         </div>
     );
 });
-
-const EditorAsync = (props: EditorProps) => {
-    const { isLoaded } = useCodeMirrorLib();
-
-    if (!isLoaded) {
-        return null;
-    }
-
-    return <EditorContent {...props} />;
-};
-
-export const Editor = (props: EditorProps) => {
-    return (
-        <CodeMirrorProvider>
-            <EditorAsync {...props} />
-        </CodeMirrorProvider>
-    );
-};

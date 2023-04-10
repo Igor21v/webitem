@@ -1,27 +1,10 @@
-import {
-    createContext,
-    ReactNode,
-    useContext,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
-} from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Editor, EditorWrapperProps } from './Editor';
 
 export type CodeMirrorType = typeof import('@uiw/react-codemirror');
 export type LangHtmlType = typeof import('@codemirror/lang-html');
 export type LangCssType = typeof import('@codemirror/lang-css');
 export type LangJsType = typeof import('@codemirror/lang-javascript');
-
-interface CodeMirrorContextPayload {
-    CodeMirror?: CodeMirrorType;
-    LangHtml?: LangHtmlType;
-    LangCss?: LangCssType;
-    LangJs?: LangJsType;
-    isLoaded?: boolean;
-}
-
-const CodeMirrorContext = createContext<CodeMirrorContextPayload>({});
 
 const getAsyncCodeMirror = async () => {
     return Promise.all([
@@ -32,11 +15,7 @@ const getAsyncCodeMirror = async () => {
     ]);
 };
 
-export const useCodeMirrorLib = () => {
-    return useContext(CodeMirrorContext) as Required<CodeMirrorContextPayload>;
-};
-
-export const CodeMirrorProvider = ({ children }: { children: ReactNode }) => {
+export const EditorWrapper = (props: EditorWrapperProps) => {
     const CodeMirrorRef = useRef<CodeMirrorType>();
     const LangHtmlRef = useRef<LangHtmlType>();
     const LangCssRef = useRef<LangCssType>();
@@ -53,20 +32,23 @@ export const CodeMirrorProvider = ({ children }: { children: ReactNode }) => {
         });
     }, []);
 
-    const value = useMemo(
-        () => ({
-            CodeMirror: CodeMirrorRef.current,
-            LangHtml: LangHtmlRef.current,
-            LangCss: LangCssRef.current,
-            LangJs: LangJsRef.current,
-            isLoaded,
-        }),
-        [isLoaded],
-    );
+    if (
+        !isLoaded ||
+        !CodeMirrorRef.current ||
+        !LangHtmlRef.current ||
+        !LangCssRef.current ||
+        !LangJsRef.current
+    ) {
+        return null;
+    }
 
     return (
-        <CodeMirrorContext.Provider value={value}>
-            {children}
-        </CodeMirrorContext.Provider>
+        <Editor
+            CodeMirror={CodeMirrorRef.current}
+            LangHtml={LangHtmlRef.current}
+            LangCss={LangCssRef.current}
+            LangJs={LangJsRef.current}
+            {...props}
+        />
     );
 };

@@ -3,11 +3,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CodeEditor.module.scss';
 import { TabItem, Tabs } from '@/shared/ui/Tabs';
 import { Preview } from '../Preview/Preview';
-import { Editor } from '../Editor/Editor';
 import { HStack } from '@/shared/ui/Stack';
 import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
 import { CODE_EDITOR_THEME_KEY } from '@/shared/const/localstorage';
 import { CodesContentType, languageType } from '@/shared/types/codes';
+import { EditorWrapper } from '../Editor/EditorWrapper';
 
 export type EditorThemeType = 'none' | 'dark' | 'light';
 
@@ -60,7 +60,7 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                     setEditorTheme={setEditorTheme}
                 />
             </HStack>
-            <Editor
+            <EditorWrapper
                 openedEditor={openedEditor}
                 content={codes}
                 setContent={setCodes}
