@@ -110,7 +110,8 @@ server.use((req, res, next) => {
             return res.status(401).json({ message: 'AUTH ERROR' });
         }
         if (req.method === 'POST') {
-            req.body.createdAt = Date.now();
+            const dateNow = new Date();
+            req.body.createdAt = `${dateNow.getFullYear()}.${dateNow.getMonth()}.${dateNow.getDate()}`;
             req.body.views = 0;
         }
     }

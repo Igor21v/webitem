@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
+import { Text, TextAlign } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getRouteItemDetails } from '@/shared/const/router';
@@ -45,7 +45,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
             ref={triggerElement}
         >
             <Card shadow>
-                <HStack>
+                <HStack gap="16">
                     <div className={cls.imgWrapper}>
                         <ItemCoverImg
                             item={item}
@@ -67,6 +67,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                             <Text
                                 text={item.description}
                                 className={cls.textBlock}
+                                align={TextAlign.CENTER}
                             />
                         )}
                         {languages}
