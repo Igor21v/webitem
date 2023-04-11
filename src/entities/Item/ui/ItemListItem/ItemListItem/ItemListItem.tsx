@@ -1,5 +1,5 @@
 import { HTMLAttributeAnchorTarget, memo, ReactNode } from 'react';
-import { Text } from '@/shared/ui/Text';
+import { Text, TextAlign } from '@/shared/ui/Text';
 import { Icon } from '@/shared/ui/Icon';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import cls from './ItemListItem.module.scss';
@@ -24,7 +24,11 @@ export interface ItemListSpecItemProps extends ItemListItemProps {
 export const ItemListItem = memo((props: ItemListItemProps) => {
     const { className, item, view, target } = props;
     const languages = (
-        <Text text={Object.keys(item.codes).join(', ')} className={cls.types} />
+        <Text
+            text={Object.keys(item.codes).join(', ')}
+            className={cls.types}
+            align={TextAlign.CENTER}
+        />
     );
     const views = (
         <HStack>

@@ -62,7 +62,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                         align="center"
                         className={cls.description}
                     >
-                        <Text title={item.title} />
+                        <Text title={item.title} align={TextAlign.CENTER} />
                         {item.description && (
                             <Text
                                 text={item.description}
