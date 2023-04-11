@@ -4,7 +4,12 @@ const jsonServer = require('json-server');
 const path = require('path');
 const https = require('https');
 const http = require('http');
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
 const findUser = require('./findUser');
+
+const db = low(new FileSync(path.resolve(__dirname, 'db.json')));
+const router = jsonServer.router(db);
 
 const options = {
     key: fs.readFileSync(path.resolve(__dirname, 'keys', 'key.pem')),
@@ -12,8 +17,6 @@ const options = {
 };
 
 const server = jsonServer.create();
-
-const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 server.use((req, res, next) => {
     res.header('Cache-Control', 'public, max-age=86400000'); // change max-age to any value in milliseconds you want
@@ -74,6 +77,20 @@ server.get('/itemsLike', (req, res) => {
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
+    }
+});
+
+// Дабавляем просмотр
+server.get('/items/:id', (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const itemDB = db.get('items').find({ id: `${id}` });
+        const { views } = itemDB.value();
+        itemDB.assign({ views: views + 1 }).write();
+        next();
+    } catch (e) {
+        console.log(`Ошибка при добавлении просмотра ${e}`);
+        next();
     }
 });
 
