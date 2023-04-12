@@ -89,16 +89,6 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
                 setType={handleUpdateItem('type')}
                 validateError={typeError && validateEnable}
             />
-            <Input
-                value={item?.img}
-                placeholder={t('Image')}
-                onChange={handleUpdateItem('img')}
-            />
-            <Input
-                value={item?.imgAnim}
-                placeholder={t('Image with animation')}
-                onChange={handleUpdateItem('imgAnim')}
-            />
             <SizePreview
                 width={item?.width}
                 height={item?.height}

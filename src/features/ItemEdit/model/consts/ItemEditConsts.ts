@@ -12,8 +12,6 @@ export const initialState: ItemEditSchema = {
         title: '',
         description: '',
         type: undefined,
-        img: '',
-        imgAnim: '',
         width: 455,
         height: 260,
         useSize: false,

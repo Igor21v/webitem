@@ -9,8 +9,6 @@ export const initialState: ItemAddSchema = {
         title: '',
         description: '',
         type: undefined,
-        img: '',
-        imgAnim: '',
         width: 455,
         height: 260,
         useSize: false,

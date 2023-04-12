@@ -30,8 +30,6 @@ export interface Item {
     id: string;
     title: string;
     description?: string;
-    img?: string;
-    imgAnim?: string;
     type?: ItemTypes;
     views: number;
     createdAt: string;
