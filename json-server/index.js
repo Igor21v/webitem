@@ -120,8 +120,10 @@ server.use((req, res, next) => {
                     .json({ message: 'ELEMENT ALREADY EXISTS' });
             }
 
-            const dateNow = new Date();
-            req.body.createdAt = `${dateNow.getFullYear()}.${dateNow.getMonth()}.${dateNow.getDate()}`;
+            const dateTime = new Date().toISOString();
+            const date = dateTime.slice(0, 10).replaceAll('-', '.');
+            console.log(`DN  ${date}`);
+            req.body.createdAt = date;
             req.body.views = 0;
         }
     }

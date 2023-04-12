@@ -8,7 +8,7 @@ export const initialState: ItemAddSchema = {
         codes: { html: '', css: '', js: '' },
         title: '',
         description: '',
-        type: undefined,
+        type: 'not selected',
         width: 455,
         height: 260,
         useSize: false,
