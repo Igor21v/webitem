@@ -53,6 +53,7 @@ export const ItemAdd = memo((props: ItemAddProps) => {
         'incorrect size': t('Incorrect size'),
         'incorrect title': t('Enter the title'),
         'incorrect type': t('Type not selected'),
+        'already exists': t('A component with this header already exists'),
     };
 
     return (

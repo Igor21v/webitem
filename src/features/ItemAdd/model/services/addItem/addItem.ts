@@ -18,6 +18,9 @@ export const itemAdd = createAsyncThunk<
         await extra.api.post(`/items`, item);
         return undefined;
     } catch (error) {
+        if (String(error).includes('code 409')) {
+            return rejectWithValue(['already exists']);
+        }
         return rejectWithValue(['server error']);
     }
 });

@@ -1,6 +1,9 @@
 import { EditItemError, ItemEditType } from '@/entities/Item';
 
-export type ValidateAddItemError = EditItemError | 'server error';
+export type ValidateAddItemError =
+    | EditItemError
+    | 'server error'
+    | 'already exists';
 
 export interface ItemAddSchema {
     item: ItemEditType;

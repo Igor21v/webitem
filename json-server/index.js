@@ -104,12 +104,22 @@ server.use((req, res, next) => {
         const headAuth = JSON.parse(req.headers.authorization);
         const username = headAuth?.username;
         const password = headAuth?.password;
-        console.log(`username ${username} password ${password}`);
         userFromBd = findUser(username, password);
         if (!userFromBd) {
             return res.status(401).json({ message: 'AUTH ERROR' });
         }
-        if (req.method === 'POST') {
+        if (req.method === 'POST' && req.path === '/items') {
+            console.log(`test ${JSON.stringify(req.path)}`);
+            const { title } = req.body;
+            console.log(`title ${JSON.stringify(title)}`);
+            const itemDB = db.get('items').find({ title: `${title}` });
+            console.log(`itemDB ${JSON.stringify(itemDB.value())}`);
+            if (itemDB.value()) {
+                return res
+                    .status(409)
+                    .json({ message: 'ELEMENT ALREADY EXISTS' });
+            }
+
             const dateNow = new Date();
             req.body.createdAt = `${dateNow.getFullYear()}.${dateNow.getMonth()}.${dateNow.getDate()}`;
             req.body.views = 0;
