@@ -38,7 +38,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
         >
             <VStack>
                 <Text
-                    text="Настройка окна предварительного просмотра, (450*256 для создания скрина)"
+                    text="Настройка окна предварительного просмотра, (455*260 для создания скрина 450*256)"
                     className={cls.text}
                     align={TextAlign.CENTER}
                 />

@@ -22,7 +22,7 @@ export const Preview = memo((props: PreviewProps) => {
             previewDiv.current.style.height = `${height}px`;
         } else {
             const currWidth = previewDiv.current.clientWidth;
-            const computedHeight = currWidth * 0.5625;
+            const computedHeight = currWidth * 0.574;
             previewDiv.current.style.height = `${computedHeight}px`;
         }
         if (width) {
