@@ -37,10 +37,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <AppLink to={getRouteMain()} className={cls.appName}>
                 <HStack gap="16">
                     <Text theme={TextTheme.INVERTED} title={t('webitem')} />
-                    <Icon Svg={AppIcon} inverted />
+                    <Icon Svg={AppIcon} inverted height={20} width={20} />
                     <Text
                         theme={TextTheme.INVERTED}
-                        title={t('Elements for your website')}
+                        title={t('Gallery of web components')}
                         size={TextSize.S}
                     />
                 </HStack>

@@ -33,7 +33,6 @@
     "All items": "All items",
     "Favourites": "Favourites",
     "webitem": "webitem.ru",
-    "Elements for your website": "Elements for your website",
     "default": "default",
     "dark": "dark",
     "light": "light",
@@ -42,5 +41,6 @@
     "View the code": "View the code",
     "View the source code": "View the source code",
     "Elements not found": "Elements not found",
-    "not selected": "Not selected"
+    "not selected": "Not selected",
+    "Gallery of web components": "Gallery of web components"
 }
