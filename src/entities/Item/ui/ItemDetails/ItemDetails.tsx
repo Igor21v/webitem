@@ -36,6 +36,12 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
         }
         return [];
     }, [item]);
+    let width;
+    let height;
+    if (item?.useSize) {
+        width = item.width;
+        height = item.height;
+    }
     return (
         <>
             <HStack justify="center" max>
@@ -90,8 +96,8 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 codes={codes}
                 setCodes={setCodes}
                 langTabs={langTabs}
-                previewWidth={item?.width}
-                previewHeight={item?.height}
+                previewWidth={width}
+                previewHeight={height}
             />
         </>
     );

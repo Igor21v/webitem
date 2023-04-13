@@ -5,6 +5,8 @@ export const getItemDetailsData = (state: StateSchema) =>
     state.itemDetails?.data;
 export const getItemDetailsIsLoading = (state: StateSchema) =>
     state.itemDetails?.isLoading || false;
+export const getItemDetailsFulfilled = (state: StateSchema) =>
+    state.itemDetails?.fulfilled || false;
 export const getItemDetailsError = (state: StateSchema) =>
     state.itemDetails?.error;
 export const [useItemDetailsSelector, getItemDetails] = buildSelector(

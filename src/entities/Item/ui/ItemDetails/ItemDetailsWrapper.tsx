@@ -2,15 +2,14 @@ import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
-import { itemDetailsReducer } from '../../model/slice/itemDetailsSlice';
 import { fetchItemById } from '../../model/services/fetchItemById/fetchItemById';
 import {
     getItemDetailsData,
     getItemDetailsError,
+    getItemDetailsFulfilled,
     getItemDetailsIsLoading,
 } from '../../model/selectors/itemDetails';
 import cls from './ItemDetails.module.scss';
@@ -25,9 +24,6 @@ interface ItemDetailsProps {
 export const ItemDetailsWrapper = memo((props: ItemDetailsProps) => {
     const { className, id } = props;
     const { t } = useTranslation();
-    const reducers = {
-        itemDetails: itemDetailsReducer,
-    };
     const dispatch = useAppDispatch();
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -37,7 +33,8 @@ export const ItemDetailsWrapper = memo((props: ItemDetailsProps) => {
     const isLoading = useSelector(getItemDetailsIsLoading);
     const error = useSelector(getItemDetailsError);
     const item = useSelector(getItemDetailsData);
-    let content;
+    const fulfilled = useSelector(getItemDetailsFulfilled);
+    let content = null;
     if (isLoading) {
         content = <ItemDetailsSkeleton />;
     } else if (error) {
@@ -48,18 +45,16 @@ export const ItemDetailsWrapper = memo((props: ItemDetailsProps) => {
                 theme={TextTheme.ERROR}
             />
         );
-    } else {
+    } else if (fulfilled) {
         content = <ItemDetails item={item} />;
     }
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <VStack
-                gap="16"
-                max
-                className={classNames(cls.ItemDetails, {}, [className])}
-            >
-                {content}
-            </VStack>
-        </DynamicModuleLoader>
+        <VStack
+            gap="16"
+            max
+            className={classNames(cls.ItemDetails, {}, [className])}
+        >
+            {content}
+        </VStack>
     );
 });

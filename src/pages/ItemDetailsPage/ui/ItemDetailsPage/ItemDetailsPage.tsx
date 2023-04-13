@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { ItemDetails } from '@/entities/Item';
+import { ItemDetails, itemDetailsReducer } from '@/entities/Item';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -24,6 +24,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
     const reducers: ReducersList = {
         itemDetailsPage: itemDetailsPageReducer,
+        itemDetails: itemDetailsReducer,
     };
     const { width: pageWidth } = useSelector(getPageDimensions);
 
