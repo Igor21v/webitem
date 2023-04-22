@@ -99,7 +99,8 @@ server.use((req, res, next) => {
     if (
         req.method === 'POST' ||
         req.method === 'PUT' ||
-        req.method === 'PATCH'
+        req.method === 'PATCH' ||
+        req.method === 'DELETE'
     ) {
         const headAuth = JSON.parse(req.headers.authorization);
         const username = headAuth?.username;
