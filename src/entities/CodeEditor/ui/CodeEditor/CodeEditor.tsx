@@ -48,7 +48,21 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                 'scroll-thin',
             ])}
         >
-            <HStack justify="between" align="end">
+            <Preview
+                htmlContent={codes.html}
+                cssContent={codes.css}
+                jsContent={codes.js}
+                height={previewHeight}
+                width={previewWidth}
+            />
+            <EditorWrapper
+                openedEditor={openedEditor}
+                content={codes}
+                setContent={setCodes}
+                theme={editorTheme}
+                className={cls.editor}
+            />
+            <HStack justify="between" align="start">
                 <Tabs<languageType>
                     tabs={langTabs}
                     value={openedEditor}
@@ -60,20 +74,6 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                     setEditorTheme={setEditorTheme}
                 />
             </HStack>
-            <EditorWrapper
-                openedEditor={openedEditor}
-                content={codes}
-                setContent={setCodes}
-                theme={editorTheme}
-                className={cls.editor}
-            />
-            <Preview
-                htmlContent={codes.html}
-                cssContent={codes.css}
-                jsContent={codes.js}
-                height={previewHeight}
-                width={previewWidth}
-            />
         </div>
     );
 });
