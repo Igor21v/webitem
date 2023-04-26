@@ -54,7 +54,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
                 <HStack gap="8">
                     <Input
                         value={width}
-                        placeholder="Ширина"
+                        placeholder={t('With')}
                         onChange={setWidth}
                         type="number"
                         readOnly={!useSize}
