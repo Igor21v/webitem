@@ -9,7 +9,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
-    paths, isDev, apiUrl, project, bundleAnalyzer,
+    paths, isDev, apiUrl, project, bundleAnalyzer, staticUrl
 }: BuildOptions): webpack.WebpackPluginInstance[] {
     const isProd = !isDev;
     const plugins = [
@@ -20,6 +20,7 @@ export function buildPlugins({
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
+            __STATIC_URL__: JSON.stringify(staticUrl),
             __PROJECT__: JSON.stringify(project),
         }),
         new CircularDependencyPlugin({

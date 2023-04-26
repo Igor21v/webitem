@@ -13,6 +13,16 @@ function getApiUrl(mode: BuildMode, apiUrl?: string) {
     return 'http://localhost:8000';
 }
 
+function getStaticUrl(mode: BuildMode, staticUrl?: string) {
+    if (staticUrl) {
+        return staticUrl;
+    }
+    if (mode === 'production') {
+        return '/static';
+    }
+    return 'http://localhost:8000/static';
+}
+
 export default (env: BuilEnv) => {
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -26,6 +36,7 @@ export default (env: BuilEnv) => {
     const mode = env?.mode || 'development';
     const PORT = env?.port || 3000;
     const apiUrl = getApiUrl(mode, env?.apiUrl);
+    const staticUrl = getStaticUrl(mode, env?.staticUrl);
     const bundleAnalyzer = env?.bundleAnalyzer || false;
 
     const isDev = mode === 'development';
@@ -36,6 +47,7 @@ export default (env: BuilEnv) => {
         isDev,
         port: PORT,
         apiUrl,
+        staticUrl,
         project: 'frontend',
         bundleAnalyzer,
     });

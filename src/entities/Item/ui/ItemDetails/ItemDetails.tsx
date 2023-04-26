@@ -49,7 +49,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     height={200}
                     width={200}
                     round
-                    src={`${__API__}/static/items/${item?.title}.png`}
+                    src={`${__STATIC_URL__}/items/${item?.title}.png`}
                     className={cls.itemImage}
                     fallback={
                         <Skeleton

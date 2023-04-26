@@ -18,8 +18,8 @@ export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
     return (
         <OptionAnimate
             animateOn={animateOn}
-            animateSrc={`${__API__}/static/items/${item.title}.gif`}
-            src={`${__API__}/static/items/${item.title}.png`}
+            animateSrc={`${__STATIC_URL__}/items/${item.title}.gif`}
+            src={`${__STATIC_URL__}/items/${item.title}.png`}
             className={className}
             alt={item.title}
             fallback={
