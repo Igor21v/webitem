@@ -9,8 +9,8 @@ export const initialState: ItemAddSchema = {
         title: '',
         description: '',
         type: 'not selected',
-        width: 455,
-        height: 260,
+        width: 805,
+        height: 462,
         useSize: false,
     },
 };

@@ -12,8 +12,8 @@ export const initialState: ItemEditSchema = {
         title: '',
         description: '',
         type: undefined,
-        width: 455,
-        height: 260,
+        width: 805,
+        height: 462,
         useSize: false,
     },
 };
