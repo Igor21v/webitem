@@ -7,18 +7,19 @@ export type ItemTypes =
     | 'accordion'
     | 'alert'
     | 'animation'
-    | 'accordion'
-    | 'avatar'
-    | 'badge'
-    | 'breadcrumbs'
+    | 'background'
     | 'button'
     | 'card'
     | 'checkbox'
-    | 'image'
+    | 'error'
+    | 'icon'
     | 'label'
-    | 'link'
+    | 'link_text'
     | 'loader'
+    | 'mini_app'
     | 'modal'
+    | 'navigation_tabs'
+    | 'notification'
     | 'pagination'
     | 'picker'
     | 'progress'
@@ -28,9 +29,7 @@ export type ItemTypes =
     | 'select'
     | 'slider'
     | 'spinner'
-    | 'tabs'
-    | 'text_input'
-    | 'textarea'
+    | 'input'
     | 'toggle'
     | 'tooltip';
 
@@ -48,33 +47,18 @@ export const itemList: ItemType[] = [
         Icon: ItemIcon,
     },
     {
-        text: 'Alert',
-        type: 'alert',
-        Icon: ItemIcon,
-    },
-    {
         text: 'Animation',
         type: 'animation',
         Icon: ItemIcon,
     },
     {
-        text: 'Avatar',
-        type: 'avatar',
-        Icon: ItemIcon,
-    },
-    {
-        text: 'Badge (Tag)',
-        type: 'badge',
+        text: 'Background',
+        type: 'background',
         Icon: ItemIcon,
     },
     {
         text: 'Button',
         type: 'button',
-        Icon: ItemIcon,
-    },
-    {
-        text: 'Breadcrumbs',
-        type: 'breadcrumbs',
         Icon: ItemIcon,
     },
     {
@@ -88,28 +72,48 @@ export const itemList: ItemType[] = [
         Icon: ItemIcon,
     },
     {
-        text: 'Image',
-        type: 'image',
+        text: 'Error',
+        type: 'error',
         Icon: ItemIcon,
     },
     {
-        text: 'Label',
-        type: 'label',
+        text: 'Icon',
+        type: 'icon',
         Icon: ItemIcon,
     },
     {
-        text: 'Link',
-        type: 'link',
+        text: 'Input',
+        type: 'input',
         Icon: ItemIcon,
     },
     {
-        text: 'Loader',
+        text: 'Link/Text',
+        type: 'link_text',
+        Icon: ItemIcon,
+    },
+    {
+        text: 'Loader/Progress',
         type: 'loader',
+        Icon: ItemIcon,
+    },
+    {
+        text: 'Mini app',
+        type: 'mini_app',
         Icon: ItemIcon,
     },
     {
         text: 'Modal',
         type: 'modal',
+        Icon: ItemIcon,
+    },
+    {
+        text: 'Navigation/Tabs',
+        type: 'navigation_tabs',
+        Icon: ItemIcon,
+    },
+    {
+        text: 'Notification',
+        type: 'notification',
         Icon: ItemIcon,
     },
     {
@@ -122,12 +126,6 @@ export const itemList: ItemType[] = [
         type: 'picker',
         Icon: ItemIcon,
     },
-    {
-        text: 'Progress',
-        type: 'progress',
-        Icon: ItemIcon,
-    },
-
     {
         text: 'Rating',
         type: 'rating',
@@ -156,21 +154,6 @@ export const itemList: ItemType[] = [
     {
         text: 'Spinner',
         type: 'spinner',
-        Icon: ItemIcon,
-    },
-    {
-        text: 'Tabs',
-        type: 'tabs',
-        Icon: ItemIcon,
-    },
-    {
-        text: 'Text input',
-        type: 'text_input',
-        Icon: ItemIcon,
-    },
-    {
-        text: 'Textarea',
-        type: 'textarea',
         Icon: ItemIcon,
     },
     {
