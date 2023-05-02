@@ -1,23 +1,45 @@
 import { useTranslation } from 'react-i18next';
+import cls from './AboutPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { Text } from '@/shared/ui/Text';
 import AppIcon from '@/shared/assets/icons/app-icon.svg';
 import { Icon } from '@/shared/ui/Icon';
+import { AppLink } from '@/shared/ui/AppLink';
 import { HStack } from '@/shared/ui/Stack';
-// eslint-disable-next-line igor21v/public-api-imports
-// eslint-disable-next-line igor21v/public-api-imports
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
+    const link = 'https://github.com/Igor21v/webitem';
     return (
         <Page data-testid="AboutPage">
-            <HStack>
-                <div>
-                    <Text text={t('Introduction')} />
-                    <Text text={t('Developer')} />
-                </div>
-                <Icon Svg={AppIcon} height={400} width={400} />
+            <HStack justify="center">
+                <Icon
+                    Svg={AppIcon}
+                    height={100}
+                    width={100}
+                    className={cls._}
+                />
             </HStack>
+            <br />
+            <Text text={t('Github')} />
+            <AppLink to={link} target="_blank">
+                <Text title={link} />
+            </AppLink>
+            <br />
+            <ul>
+                <li>
+                    <Text text={t('Introduction')} />
+                </li>
+                <li>
+                    <Text text={t('Frontend')} />
+                </li>
+                <li>
+                    <Text text={t('Backend')} />
+                </li>
+                <li>
+                    <Text text={t('Developer')} />
+                </li>
+            </ul>
         </Page>
     );
 }
