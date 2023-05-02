@@ -14,7 +14,6 @@ export default function AboutPage() {
             <HStack>
                 <div>
                     <Text text={t('Introduction')} />
-                    <Text text={t('A call')} />
                     <Text text={t('Developer')} />
                 </div>
                 <Icon Svg={AppIcon} height={400} width={400} />

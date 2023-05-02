@@ -13,12 +13,13 @@ export type ItemTypes =
     | 'checkbox'
     | 'error'
     | 'icon'
+    | 'input_form'
+    | 'text_link'
     | 'label'
-    | 'link_text'
     | 'loader'
     | 'mini_app'
     | 'modal'
-    | 'navigation_tabs'
+    | 'menu_tabs_dropdown'
     | 'notification'
     | 'pagination'
     | 'picker'
@@ -26,10 +27,7 @@ export type ItemTypes =
     | 'rating'
     | 'radio_button'
     | 'skeleton'
-    | 'select'
     | 'slider'
-    | 'spinner'
-    | 'input'
     | 'toggle'
     | 'tooltip';
 
@@ -41,11 +39,11 @@ export interface ItemType {
 }
 
 export const itemList: ItemType[] = [
-    {
+    /*     {
         text: 'Accordion',
         type: 'accordion',
         Icon: ItemIcon,
-    },
+    }, */
     {
         text: 'Animation',
         type: 'animation',
@@ -71,6 +69,11 @@ export const itemList: ItemType[] = [
         type: 'checkbox',
         Icon: ItemIcon,
     },
+    /*     {
+        text: 'Color picker',
+        type: 'picker',
+        Icon: ItemIcon,
+    }, */
     {
         text: 'Error',
         type: 'error',
@@ -82,13 +85,13 @@ export const itemList: ItemType[] = [
         Icon: ItemIcon,
     },
     {
-        text: 'Input',
-        type: 'input',
+        text: 'Input/Form',
+        type: 'input_form',
         Icon: ItemIcon,
     },
     {
-        text: 'Link/Text',
-        type: 'link_text',
+        text: 'Text/Link',
+        type: 'text_link',
         Icon: ItemIcon,
     },
     {
@@ -107,8 +110,8 @@ export const itemList: ItemType[] = [
         Icon: ItemIcon,
     },
     {
-        text: 'Navigation/Tabs',
-        type: 'navigation_tabs',
+        text: 'Menu/Tabs/Dropdown',
+        type: 'menu_tabs_dropdown',
         Icon: ItemIcon,
     },
     {
@@ -116,16 +119,11 @@ export const itemList: ItemType[] = [
         type: 'notification',
         Icon: ItemIcon,
     },
-    {
+    /*     {
         text: 'Pagination',
         type: 'pagination',
         Icon: ItemIcon,
-    },
-    {
-        text: 'Color picker',
-        type: 'picker',
-        Icon: ItemIcon,
-    },
+    }, */
     {
         text: 'Rating',
         type: 'rating',
@@ -142,18 +140,8 @@ export const itemList: ItemType[] = [
         Icon: ItemIcon,
     },
     {
-        text: 'Select',
-        type: 'select',
-        Icon: ItemIcon,
-    },
-    {
         text: 'Slider',
         type: 'slider',
-        Icon: ItemIcon,
-    },
-    {
-        text: 'Spinner',
-        type: 'spinner',
         Icon: ItemIcon,
     },
     {
