@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import cls from './AboutPage.module.scss';
 import { Page } from '@/widgets/Page';
 import { Text } from '@/shared/ui/Text';
 import AppIcon from '@/shared/assets/icons/app-icon.svg';
@@ -13,12 +12,7 @@ export default function AboutPage() {
     return (
         <Page data-testid="AboutPage">
             <HStack justify="center">
-                <Icon
-                    Svg={AppIcon}
-                    height={100}
-                    width={100}
-                    className={cls._}
-                />
+                <Icon Svg={AppIcon} height={100} width={100} />
             </HStack>
             <br />
             <Text text={t('Github')} />
