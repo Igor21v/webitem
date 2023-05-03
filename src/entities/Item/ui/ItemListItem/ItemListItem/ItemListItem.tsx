@@ -33,7 +33,7 @@ export const ItemListItem = memo((props: ItemListItemProps) => {
     const views = (
         <HStack>
             <Text text={String(item.views)} />
-            <Icon Svg={EyeIcon} />
+            <Icon Svg={EyeIcon} className={cls.eyeIcon} />
         </HStack>
     );
 
