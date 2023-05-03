@@ -14,6 +14,7 @@ import TypeIcon from '@/shared/assets/icons/type.svg';
 import { CodesContentType, languageType } from '@/shared/types/codes';
 import { Item } from '../../model/types/item';
 import { CodeEditor } from '@/entities/CodeEditor';
+import { ItemTypeUI } from '../ItemTypeUI/ItemTypeUI';
 
 interface ItemDetailsProps {
     item?: Item;
@@ -89,7 +90,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 </HStack>
                 <HStack gap="8">
                     <Icon Svg={TypeIcon} />
-                    <Text text={item?.type} />
+                    <ItemTypeUI type={item?.type} />
                 </HStack>
             </VStack>
             <CodeEditor

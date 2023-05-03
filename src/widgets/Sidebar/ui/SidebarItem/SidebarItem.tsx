@@ -6,7 +6,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import cls from './SidebarItem.module.scss';
 import { getRouteItems } from '@/shared/const/router';
-import { ItemType } from '@/entities/Item';
+import { ItemType, ItemTypeUI } from '@/entities/Item';
+import { TextTheme } from '@/shared/ui/Text';
 
 interface SidibarItemProps {
     item: ItemType;
@@ -27,7 +28,13 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
             className={classNames(cls.item, { [cls.collapsed]: collapsed })}
         >
             <item.Icon className={cls.icon} />
-            {!collapsed && <span className={cls.link}>{t(item.text)}</span>}
+            {!collapsed && (
+                <ItemTypeUI
+                    type={item?.type}
+                    className={cls.link}
+                    theme={TextTheme.INVERTED_BRIGHT}
+                />
+            )}
         </AppLink>
     );
 });

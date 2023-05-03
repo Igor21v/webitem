@@ -7,6 +7,7 @@ export enum TextTheme {
     INVERTED = 'inverted',
     ERROR = 'error',
     SUCCESS = 'success',
+    INVERTED_BRIGHT = 'inverted_bright',
 }
 
 export enum TextAlign {
@@ -23,7 +24,7 @@ export enum TextSize {
 
 type HeaderTagType = 'h1' | 'h2' | 'h3' | 'p';
 
-interface TextProps {
+export interface TextProps {
     className?: string;
     title?: string;
     text?: string;

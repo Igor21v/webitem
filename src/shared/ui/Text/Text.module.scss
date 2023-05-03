@@ -38,6 +38,16 @@
     }
 }
 
+.inverted_bright {
+    .title {
+        color: var(--inverted-primary-color);
+    }
+
+    .text {
+        color: var(--inverted-primary-color);
+    }
+}
+
 .left {
     text-align: left;
 }

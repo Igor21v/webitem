@@ -3,7 +3,12 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ItemSortField, ItemTypes, ItemView } from '@/entities/Item';
+import {
+    ItemSortField,
+    ItemTypes,
+    ItemTypeUI,
+    ItemView,
+} from '@/entities/Item';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Input } from '@/shared/ui/Input';
 import { Card } from '@/shared/ui/Card';
@@ -23,7 +28,6 @@ import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
 import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
 
 interface ItemsPageFiltersProps {
     className?: string;
@@ -100,7 +104,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                     />
                 </Card>
                 <Card className={cls.type}>
-                    <Text text={type} />
+                    <ItemTypeUI type={type} />
                 </Card>
             </HStack>
         </div>

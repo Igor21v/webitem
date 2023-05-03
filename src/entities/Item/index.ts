@@ -32,3 +32,5 @@ export { fetchItemById } from './model/services/fetchItemById/fetchItemById';
 export { itemDetailsReducer } from './model/slice/itemDetailsSlice';
 
 export type { EditItemError } from './model/types/ItemEditCard';
+
+export { ItemTypeUI } from './ui/ItemTypeUI/ItemTypeUI';
