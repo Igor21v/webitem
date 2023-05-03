@@ -84,6 +84,7 @@ const LoginForm = memo((props: LoginFormProps) => {
                     placeholder={t('Enter password')}
                     onChange={onChangePassword}
                     value={password}
+                    type="password"
                 />
                 <Button
                     theme={ButtonTheme.OUTLINE}

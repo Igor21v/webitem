@@ -34,7 +34,7 @@ export const Input = <T extends number | string | undefined>(
     const canEdit = !readOnly;
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (type === 'text') {
+        if (type === 'text' || type === 'password') {
             onChange?.(e.target.value as T);
         } else if (type === 'number') {
             onChange?.(Number(e.target.value) as T);
