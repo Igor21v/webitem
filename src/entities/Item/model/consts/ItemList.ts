@@ -13,6 +13,7 @@ export type ItemTypes =
     | 'checkbox'
     | 'error'
     | 'icon'
+    | 'img_link'
     | 'input_form'
     | 'text_link'
     | 'label'
@@ -33,7 +34,7 @@ export type ItemTypes =
 
 export interface ItemType {
     type: ItemTypes;
-    text: string;
+    img: string;
     Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
     authOnly?: boolean;
 }
@@ -45,112 +46,112 @@ export const itemList: ItemType[] = [
         Icon: ItemIcon,
     }, */
     {
-        text: 'Animation',
+        img: 'Animation',
         type: 'animation',
         Icon: ItemIcon,
     },
     {
-        text: 'Background',
+        img: 'Background',
         type: 'background',
         Icon: ItemIcon,
     },
     {
-        text: 'Button',
+        img: 'Button',
         type: 'button',
         Icon: ItemIcon,
     },
     {
-        text: 'Card',
+        img: 'Card',
         type: 'card',
         Icon: ItemIcon,
     },
     {
-        text: 'Checkbox',
+        img: 'Checkbox',
         type: 'checkbox',
         Icon: ItemIcon,
     },
     /*     {
-        text: 'Color picker',
+        img: 'Color picker',
         type: 'picker',
         Icon: ItemIcon,
     }, */
     {
-        text: 'Error',
+        img: 'Error',
         type: 'error',
         Icon: ItemIcon,
     },
     {
-        text: 'Icon',
+        img: 'Icon',
         type: 'icon',
         Icon: ItemIcon,
     },
     {
-        text: 'Input/Form',
+        img: 'Input/Form',
         type: 'input_form',
         Icon: ItemIcon,
     },
     {
-        text: 'Text/Link',
-        type: 'text_link',
+        img: 'img/Link',
+        type: 'img_link',
         Icon: ItemIcon,
     },
     {
-        text: 'Loader/Progress',
+        img: 'Loader/Progress',
         type: 'loader',
         Icon: ItemIcon,
     },
     {
-        text: 'Mini app',
+        img: 'Mini app',
         type: 'mini_app',
         Icon: ItemIcon,
     },
     {
-        text: 'Modal',
+        img: 'Modal',
         type: 'modal',
         Icon: ItemIcon,
     },
     {
-        text: 'Menu/Tabs/Dropdown',
+        img: 'Menu/Tabs/Dropdown',
         type: 'menu_tabs_dropdown',
         Icon: ItemIcon,
     },
     {
-        text: 'Notification',
+        img: 'Notification',
         type: 'notification',
         Icon: ItemIcon,
     },
     /*     {
-        text: 'Pagination',
+        img: 'Pagination',
         type: 'pagination',
         Icon: ItemIcon,
     }, */
     {
-        text: 'Rating',
+        img: 'Rating',
         type: 'rating',
         Icon: ItemIcon,
     },
     {
-        text: 'Radio button',
+        img: 'Radio button',
         type: 'radio_button',
         Icon: ItemIcon,
     },
     {
-        text: 'Skeleton',
+        img: 'Skeleton',
         type: 'skeleton',
         Icon: ItemIcon,
     },
     {
-        text: 'Slider',
+        img: 'Slider',
         type: 'slider',
         Icon: ItemIcon,
     },
     {
-        text: 'Toggle',
+        img: 'Toggle',
         type: 'toggle',
         Icon: ItemIcon,
     },
     {
-        text: 'Tooltip',
+        img: 'Tooltip',
         type: 'tooltip',
         Icon: ItemIcon,
     },

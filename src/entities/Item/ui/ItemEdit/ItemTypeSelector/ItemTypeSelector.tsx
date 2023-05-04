@@ -17,7 +17,7 @@ export const ItemTypeSelector = memo((props: ItemTypeSelectorProps) => {
         () =>
             itemList.map((item) => ({
                 value: item.type,
-                content: item.text,
+                content: item.type,
             })),
         [],
     );
