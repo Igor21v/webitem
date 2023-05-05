@@ -11,6 +11,8 @@ import { ItemTypeUI } from '../ItemTypeUI/ItemTypeUI';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Icon } from '@/shared/ui/Icon';
 import ItemIcon from '@/shared/assets/icons/app-icon.svg';
+import { TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ItemTypeCardProps {
     className?: string;
@@ -29,25 +31,32 @@ export const ItemTypeCard = memo((props: ItemTypeCardProps) => {
             data-testid="ItemListItem"
             preventChangeOpacity
         >
-            <ItemTypeUI type={itemType.type} />
             <Card shadow>
-                <AppImage
-                    src={itemType.img}
-                    className={classNames('', {}, [className])}
-                    errorFallback={
-                        <Icon
-                            Svg={ItemIcon}
-                            width={355}
-                            height={200}
-                            opacity={0.7}
-                        />
-                    }
-                    fallback={
-                        <div>
-                            <Skeleton width={200} height={200} />
-                        </div>
-                    }
-                />
+                <VStack gap="8" align="center">
+                    <ItemTypeUI
+                        type={itemType.type}
+                        align={TextAlign.CENTER}
+                        size={TextSize.L}
+                        theme={TextTheme.BRIGHT}
+                    />
+                    <AppImage
+                        src={itemType.img}
+                        className={classNames(cls.img, {}, [className])}
+                        errorFallback={
+                            <Icon
+                                Svg={ItemIcon}
+                                width={355}
+                                height={200}
+                                opacity={0.7}
+                            />
+                        }
+                        fallback={
+                            <div>
+                                <Skeleton width={355} height={200} />
+                            </div>
+                        }
+                    />
+                </VStack>
             </Card>
         </AppLink>
     );

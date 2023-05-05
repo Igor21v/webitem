@@ -48,6 +48,16 @@
     }
 }
 
+.bright {
+    .title {
+        color: var(--primary-color);
+    }
+
+    .text {
+        color: var(--primary-color);
+    }
+}
+
 .left {
     text-align: left;
 }

@@ -34,3 +34,5 @@ export { itemDetailsReducer } from './model/slice/itemDetailsSlice';
 export type { EditItemError } from './model/types/ItemEditCard';
 
 export { ItemTypeUI } from './ui/ItemTypeUI/ItemTypeUI';
+
+export { ItemTypeList } from './ui/ItemTypeList/ItemTypeList';

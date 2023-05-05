@@ -7,6 +7,7 @@ export enum TextTheme {
     INVERTED = 'inverted',
     ERROR = 'error',
     SUCCESS = 'success',
+    BRIGHT = 'bright',
     INVERTED_BRIGHT = 'inverted_bright',
 }
 
