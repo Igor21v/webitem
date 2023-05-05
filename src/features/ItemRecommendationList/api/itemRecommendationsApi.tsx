@@ -8,6 +8,8 @@ const recommendationsApi = rtkApi.injectEndpoints({
                 url: '/items',
                 params: {
                     _limit: limit,
+                    _sort: 'views',
+                    _order: 'desc',
                 },
             }),
         }),
