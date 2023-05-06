@@ -1,7 +1,11 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { ItemDetails, itemDetailsReducer } from '@/entities/Item';
+import {
+    getItemDetailsData,
+    ItemDetails,
+    itemDetailsReducer,
+} from '@/entities/Item';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -27,6 +31,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
         itemDetails: itemDetailsReducer,
     };
     const { width: pageWidth } = useSelector(getPageDimensions);
+    const item = useSelector(getItemDetailsData);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -35,7 +40,12 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     <ItemDetailsPageHeader />
                     <ItemDetails id={id} />
                     {/* <ItemRating itemId={id} /> */}
-                    <ItemRecommendationList pageWidth={pageWidth} />
+                    {item?.type && (
+                        <ItemRecommendationList
+                            pageWidth={pageWidth}
+                            type={item?.type}
+                        />
+                    )}
                 </VStack>
             </Page>
         </DynamicModuleLoader>
