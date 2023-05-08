@@ -1,10 +1,11 @@
 import { memo } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import ThemeSwitcherIcon from '@/shared/assets/icons/theme-switcher.svg';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Icon } from '@/shared/ui/Icon';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import cls from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -15,10 +16,15 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
     return (
         <Button
             theme={ButtonTheme.CLEAR}
-            className={classNames('', {}, [className])}
+            className={classNames(cls.ThemeSwitcher, {}, [className])}
             onClick={toggleTheme}
         >
-            <Icon Svg={ThemeSwitcherIcon} inverted />
+            <AppImage
+                src={`${__STATIC_URL__}/common_icons/theme.png`}
+                fallback=<Skeleton height={40} width={40} />
+                width={40}
+                height={40}
+            />
         </Button>
     );
 });

@@ -13,6 +13,8 @@ export interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     fallback?: ReactElement;
     errorFallback?: ReactElement;
     round?: boolean;
+    width?: number;
+    height?: number;
 }
 
 export const AppImage = memo((props: AppImageProps) => {
@@ -23,6 +25,8 @@ export const AppImage = memo((props: AppImageProps) => {
         fallback,
         errorFallback,
         round,
+        width,
+        height,
         ...otherProps
     } = props;
     const [isLoading, setIsLoading] = useState(true);
@@ -53,6 +57,7 @@ export const AppImage = memo((props: AppImageProps) => {
             className={classNames('', { [cls.round]: round }, [className])}
             src={src}
             alt={alt}
+            style={{ width, height }}
             {...otherProps}
         />
     );
