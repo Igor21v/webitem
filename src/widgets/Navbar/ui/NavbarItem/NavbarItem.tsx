@@ -6,6 +6,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { NavbarItemType } from '../../model/types/navbar';
 import cls from './NavbarItem.module.scss';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 export const NavbarItem = memo((item: NavbarItemType) => {
     const { t } = useTranslation();
@@ -19,10 +21,11 @@ export const NavbarItem = memo((item: NavbarItemType) => {
             to={item.path}
             className={classNames(cls.item, {})}
         >
-            <item.Icon
+            <AppImage
+                src={`${__STATIC_URL__}/navbar_icons/${item.text}.png`}
                 height={20}
                 width={20}
-                className={classNames('', { [cls.icon]: item.fill })}
+                fallback=<Skeleton height={20} width={20} />
             />
             <span className={cls.link}>{t(item.text)}</span>
         </AppLink>
