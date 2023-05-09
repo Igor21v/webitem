@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { Page } from '@/widgets/Page';
 import { Text } from '@/shared/ui/Text';
-import AppIcon from '@/shared/assets/icons/app-icon.svg';
-import { Icon } from '@/shared/ui/Icon';
 import { AppLink } from '@/shared/ui/AppLink';
-import { HStack } from '@/shared/ui/Stack';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import cls from './AboutPage.module.scss';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
@@ -15,9 +15,8 @@ export default function AboutPage() {
     }, [t]);
     return (
         <Page data-testid="AboutPage">
-            <HStack justify="center">
-                <Icon Svg={AppIcon} height={100} width={100} />
-            </HStack>
+            {/*             <HStack justify="center">
+            </HStack> */}
             <br />
             <Text text={t('Github')} />
             <AppLink to={link} target="_blank">
@@ -25,6 +24,13 @@ export default function AboutPage() {
             </AppLink>
             <br />
             <ul>
+                <AppImage
+                    className={cls.img}
+                    src={`${__STATIC_URL__}/app_icons/appIcon_50_99.png`}
+                    height={99}
+                    width={50}
+                    fallback=<Skeleton height={99} width={50} />
+                />
                 <li>
                     <Text text={t('Introduction')} />
                 </li>
