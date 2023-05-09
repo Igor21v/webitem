@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 import { Page } from '@/widgets/Page';
 import { Text } from '@/shared/ui/Text';
 import AppIcon from '@/shared/assets/icons/app-icon.svg';
@@ -9,6 +10,9 @@ import { HStack } from '@/shared/ui/Stack';
 export default function AboutPage() {
     const { t } = useTranslation('about');
     const link = 'https://github.com/Igor21v/webitem';
+    useEffect(() => {
+        document.title = t('Title about');
+    }, [t]);
     return (
         <Page data-testid="AboutPage">
             <HStack justify="center">

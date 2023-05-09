@@ -1,5 +1,6 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -29,13 +30,16 @@ const ItemsPage = (props: ItemsPageProps) => {
     const dispatch = useAppDispatch();
     const [searchParams] = useSearchParams();
     const { type } = useParams<{ type: ItemTypes }>();
+    const { t } = useTranslation('itemType');
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextItemsPage());
     }, [dispatch]);
     useInitialEffect(() => {
         dispatch(initItemsPage({ searchParams, type }));
     });
-
+    useEffect(() => {
+        if (type) document.title = t(type);
+    }, [t, type]);
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page

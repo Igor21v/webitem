@@ -20,5 +20,6 @@
   "Save": "Сохранить",
   "Cancel": "Отменить",
   "Calculate height": "Рассчитать высоту",
-  "A component with this header already exists": "Компонент с таким заголовком уже существует"
+  "A component with this header already exists": "Компонент с таким заголовком уже существует",
+  "Title admin": "Админка"
 }
