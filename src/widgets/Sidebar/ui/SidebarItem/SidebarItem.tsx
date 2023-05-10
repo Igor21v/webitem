@@ -8,8 +8,7 @@ import cls from './SidebarItem.module.scss';
 import { getRouteItems } from '@/shared/const/router';
 import { ItemType, ItemTypeUI } from '@/entities/Item';
 import { TextTheme } from '@/shared/ui/Text';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { SpriteImg } from '@/shared/ui/SpriteImg';
 
 interface SidibarItemProps {
     item: ItemType;
@@ -29,11 +28,19 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
             to={getRouteItems(item.type)}
             className={classNames(cls.item, { [cls.collapsed]: collapsed })}
         >
-            <AppImage
+            {/* <AppImage
                 src={`${__STATIC_URL__}/sidebar_icons/${item.type}.png`}
                 height={20}
                 width={20}
                 fallback=<Skeleton height={20} width={20} />
+            /> */}
+            <SpriteImg
+                widthSource={32}
+                heightSource={32}
+                backgroundURL={`${__STATIC_URL__}/bar_icons/bar_sprite.png`}
+                offsetX={0}
+                offsetY={256}
+                zoom={0.625}
             />
             {!collapsed && (
                 <ItemTypeUI
