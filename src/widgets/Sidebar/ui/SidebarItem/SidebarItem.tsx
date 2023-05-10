@@ -39,7 +39,7 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
                 heightSource={32}
                 backgroundURL={`${__STATIC_URL__}/bar_icons/bar_sprite.png`}
                 offsetX={0}
-                offsetY={256}
+                offsetY={0}
                 zoom={0.625}
             />
             {!collapsed && (

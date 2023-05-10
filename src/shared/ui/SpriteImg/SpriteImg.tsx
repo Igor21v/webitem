@@ -24,7 +24,7 @@ export const SpriteImg = memo((props: SpriteImgProps) => {
                 width: `${widthSource}px`,
                 height: `${heightSource}px`,
                 background: `url("${backgroundURL}")`,
-                backgroundPosition: `-${offsetY}px -${offsetX}px`,
+                backgroundPosition: `-${offsetX}px -${offsetY}px`,
                 zoom,
             }}
         />
