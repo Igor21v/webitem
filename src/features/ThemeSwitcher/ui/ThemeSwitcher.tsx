@@ -20,7 +20,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
             onClick={toggleTheme}
         >
             <AppImage
-                src={`${__STATIC_URL__}/sidebar_icons/theme.png`}
+                src={`${__STATIC_URL__}/bar_icons/theme.png`}
                 fallback=<Skeleton height={40} width={40} />
                 width={40}
                 height={40}

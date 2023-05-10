@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, ReactElement, useLayoutEffect, useState } from 'react';
 
 interface SpriteImgProps {
     widthSource: number;
@@ -7,6 +7,8 @@ interface SpriteImgProps {
     offsetX?: number;
     offsetY?: number;
     zoom?: number;
+    fallback?: ReactElement;
+    errorFallback?: ReactElement;
 }
 
 export const SpriteImg = memo((props: SpriteImgProps) => {
@@ -17,7 +19,33 @@ export const SpriteImg = memo((props: SpriteImgProps) => {
         offsetX = 0,
         offsetY = 0,
         zoom = 1,
+        fallback,
+        errorFallback,
     } = props;
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
+
+    useLayoutEffect(() => {
+        const img = new Image();
+        img.src = `${__STATIC_URL__}/bar_icons/bar_sprite.png`;
+        img.onload = () => {
+            setIsLoading(false);
+        };
+        img.onerror = () => {
+            setIsLoading(false);
+            setHasError(true);
+        };
+    }, []);
+
+    if (isLoading && fallback) {
+        return fallback;
+    }
+
+    if (hasError && errorFallback) {
+        return errorFallback;
+    }
+
     return (
         <div
             style={{

@@ -7,6 +7,7 @@ import cls from './Sidebar.module.scss';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { itemList } from '@/entities/Item';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface SidebarProps {
     className?: string;
@@ -43,6 +44,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                             item={item}
                             collapsed={collapsed}
                             key={item.type}
+                            ImgOffsetX={item.ImgOffsetX}
+                            ImgOffsetY={item.ImgOffsetY}
                         />
                     ))}
                 </VStack>
@@ -50,6 +53,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 <div className={cls.switchers}>
                     <ThemeSwitcher />
                     <LangSwitcher className={cls.lang} short={collapsed} />
+                    <Skeleton height={40} width={40} />
                 </div>
             </VStack>
         </section>

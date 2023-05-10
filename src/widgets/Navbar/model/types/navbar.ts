@@ -3,4 +3,6 @@ export interface NavbarItemType {
     text: string;
     authOnly?: boolean;
     fill?: boolean;
+    ImgOffsetX: number;
+    ImgOffsetY: number;
 }

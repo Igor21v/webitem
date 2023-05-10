@@ -44,6 +44,7 @@ export default function AboutPage() {
                     <Text text={t('Developer')} />
                 </li>
             </ul>
+            <Skeleton height={40} width={40} />
         </Page>
     );
 }

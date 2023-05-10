@@ -9,16 +9,20 @@ import { getRouteItems } from '@/shared/const/router';
 import { ItemType, ItemTypeUI } from '@/entities/Item';
 import { TextTheme } from '@/shared/ui/Text';
 import { SpriteImg } from '@/shared/ui/SpriteImg';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface SidibarItemProps {
     item: ItemType;
     collapsed: boolean;
+    ImgOffsetX: number;
+    ImgOffsetY: number;
 }
 
 export const SidibarItem = memo((props: SidibarItemProps) => {
-    const { item, collapsed } = props;
+    const { item, collapsed, ImgOffsetX, ImgOffsetY } = props;
     const { t } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
+
     if (item.authOnly && !isAuth) {
         return null;
     }
@@ -33,14 +37,17 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
                 height={20}
                 width={20}
                 fallback=<Skeleton height={20} width={20} />
+
+                backgroundURL={`${__STATIC_URL__}/bar_icons/bar_sprite.png`}
             /> */}
             <SpriteImg
                 widthSource={32}
                 heightSource={32}
                 backgroundURL={`${__STATIC_URL__}/bar_icons/bar_sprite.png`}
-                offsetX={0}
-                offsetY={0}
+                offsetX={ImgOffsetX}
+                offsetY={ImgOffsetY}
                 zoom={0.625}
+                fallback=<Skeleton height={20} width={20} />
             />
             {!collapsed && (
                 <ItemTypeUI
