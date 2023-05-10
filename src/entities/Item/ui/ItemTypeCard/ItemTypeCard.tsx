@@ -31,7 +31,7 @@ export const ItemTypeCard = memo((props: ItemTypeCardProps) => {
             data-testid="ItemListItem"
             preventChangeOpacity
         >
-            <Card shadow>
+            <Card shadow role="link">
                 <VStack gap="8" align="center">
                     <ItemTypeUI
                         type={itemType.type}

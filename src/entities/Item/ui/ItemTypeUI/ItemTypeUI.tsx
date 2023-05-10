@@ -12,7 +12,14 @@ export const ItemTypeUI = memo((props: ItemTypeProps) => {
     const { className, type, ...rest } = props;
     const { t } = useTranslation('itemType');
     if (type) {
-        return <Text text={t(type)} className={className} {...rest} />;
+        return (
+            <Text
+                text={t(type)}
+                className={className}
+                {...rest}
+                HeaderTag="h2"
+            />
+        );
     }
     return null;
 });

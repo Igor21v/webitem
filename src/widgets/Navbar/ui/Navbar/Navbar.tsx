@@ -47,6 +47,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         theme={TextTheme.INVERTED}
                         title={t('Gallery of web components')}
                         size={TextSize.S}
+                        HeaderTag="h1"
                     />
                 </HStack>
             </AppLink>

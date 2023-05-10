@@ -70,8 +70,8 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     }
                 />
             </HStack>
-            <VStack gap="4" data-testid="ItemDetails.Info" max>
-                <Text title={item?.title} size={TextSize.L} />
+            <VStack gap="4" data-testid="ItemDetails.Info" max role="article">
+                <Text title={item?.title} size={TextSize.L} HeaderTag="h2" />
                 <Text
                     text={item?.description}
                     size={TextSize.M}
