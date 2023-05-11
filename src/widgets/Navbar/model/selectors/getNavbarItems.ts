@@ -35,7 +35,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
             path: getRouteAbout(),
             text: 'About',
             fill: true,
-            ImgOffsetX: 0,
+            ImgOffsetX: 96,
             ImgOffsetY: 32,
         },
     ];
@@ -52,7 +52,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
                 path: getRouteAdmin(),
                 text: 'Admin panel',
                 fill: true,
-                ImgOffsetX: 0,
+                ImgOffsetX: 128,
                 ImgOffsetY: 32,
             },
         );
