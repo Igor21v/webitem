@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { HTMLAttributeAnchorTarget, memo, ReactNode } from 'react';
+import { CSSProperties, HTMLAttributeAnchorTarget, memo } from 'react';
+import { FixedSizeList } from 'react-window';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text';
 import { ItemListItemSkeleton } from '../ItemListItem/ItemListItem/ItemListItemSkeleton';
@@ -39,7 +40,9 @@ export const ItemList = memo((props: ItemListProps) => {
     } = props;
     const { t } = useTranslation();
 
-    if (!isLoading && !items?.length) {
+    if (isLoading) getSkeletons(view);
+
+    if (!items?.length) {
         return (
             <div className={classNames('', {}, [className, cls[view]])}>
                 <Text size={TextSize.L} title={t('Elements not found')} />
@@ -47,7 +50,7 @@ export const ItemList = memo((props: ItemListProps) => {
         );
     }
 
-    const itemsForRender = items?.reduce((result: ReactNode[], item) => {
+    /*     const itemsForRender = items?.reduce((result: ReactNode[], item) => {
         if (item) {
             result.push(
                 <ItemListItem
@@ -60,15 +63,40 @@ export const ItemList = memo((props: ItemListProps) => {
             );
         }
         return result;
-    }, []);
+    }, []); */
+
+    const itemFuncRender = ({
+        index,
+        style,
+    }: {
+        index: number;
+        style: CSSProperties;
+    }) => (
+        <div style={style}>
+            <ItemListItem
+                item={items[index]}
+                view={view}
+                target={target}
+                /* key={items[index].id} */
+                className={classNames(cls.card, {}, [classNameCard])}
+            />
+            ,
+        </div>
+    );
 
     return (
         <div
             className={classNames('', {}, [cls[view], className])}
             data-testid="ItemList"
         >
-            {itemsForRender}
-            {isLoading && getSkeletons(view)}
+            <FixedSizeList
+                height={1000}
+                width={1000}
+                itemSize={350}
+                itemCount={items.length}
+            >
+                {itemFuncRender}
+            </FixedSizeList>
         </div>
     );
 });
