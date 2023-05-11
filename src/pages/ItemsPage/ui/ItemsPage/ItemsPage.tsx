@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -10,7 +10,6 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Page } from '@/widgets/Page';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { initItemsPage } from '../../model/services/initItemsPage/initItemsPage';
-import { fetchNextItemsPage } from '../../model/services/fetchNextItemsPage/fetchNextItemsPage';
 import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
 import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
@@ -31,9 +30,6 @@ const ItemsPage = (props: ItemsPageProps) => {
     const [searchParams] = useSearchParams();
     const { type } = useParams<{ type: ItemTypes }>();
     const { t } = useTranslation('itemType');
-    const onLoadNextPart = useCallback(() => {
-        dispatch(fetchNextItemsPage());
-    }, [dispatch]);
     useInitialEffect(() => {
         dispatch(initItemsPage({ searchParams, type }));
     });
@@ -45,7 +41,6 @@ const ItemsPage = (props: ItemsPageProps) => {
             <Page
                 data-testid="ItemsPage"
                 className={classNames(cls.ItemsPage, {}, [className])}
-                onScrollEnd={onLoadNextPart}
             >
                 <ItemsPageFilters />
                 <ItemInfiniteList className={cls.list} />
