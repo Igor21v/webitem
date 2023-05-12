@@ -36,3 +36,5 @@ export type { EditItemError } from './model/types/ItemEditCard';
 export { ItemTypeUI } from './ui/ItemTypeUI/ItemTypeUI';
 
 export { ItemTypeList } from './ui/ItemTypeList/ItemTypeList';
+
+export { ItemListInfinite } from './ui/ItemListInfinite/ItemListInfinite';

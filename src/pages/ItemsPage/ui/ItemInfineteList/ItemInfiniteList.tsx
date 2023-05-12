@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Text } from '@/shared/ui/Text';
-import { ItemList } from '@/entities/Item';
+import { ItemListInfinite } from '@/entities/Item';
 import { getItems } from '../../model/slice/ItemsPageSlice';
 import {
     getItemsPageError,
@@ -29,29 +29,19 @@ export const ItemInfiniteList = memo((props: ItemInfineteListProps) => {
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextItemsPage());
     }, [dispatch]);
-    const itemCount = hasNextPage ? items.length + 1 : items.length;
-    const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
-    const isItemLoaded = (index) => !hasNextPage || index < items.length;
-    const Item1 = ({ index, style }) => {
-        let content;
-        if (!isItemLoaded(index)) {
-            content = 'Loading...';
-        } else {
-            content = items[index].name;
-        }
-        return <div style={style}>{content}</div>;
-    };
 
     if (error) {
         return <Text text={t('an error occurred while downloading items ')} />;
     }
 
     return (
-        <ItemList
+        <ItemListInfinite
             isLoading={isLoading}
             view={view}
             items={items}
             className={className}
+            loadNextPage={onLoadNextPart}
+            hasNextPage={hasMore}
         />
     );
 });
