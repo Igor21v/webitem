@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { CSSProperties, HTMLAttributeAnchorTarget, memo } from 'react';
 import { FixedSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
+import AutoSizer from 'react-virtualized-auto-sizer';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text';
 import { ItemListItemSkeleton } from '../ItemListItem/ItemListItem/ItemListItemSkeleton';
@@ -86,7 +87,7 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
 
     return (
         <div
-            className={classNames('', {}, [cls[view], className])}
+            className={classNames(cls.ItemListInfinite, {}, [className])}
             data-testid="ItemList"
         >
             <InfiniteLoader
@@ -95,16 +96,20 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
                 loadMoreItems={loadMoreItems}
             >
                 {({ onItemsRendered, ref }) => (
-                    <FixedSizeList
-                        itemCount={itemCount}
-                        onItemsRendered={onItemsRendered}
-                        ref={ref}
-                        height={1000}
-                        width={1000}
-                        itemSize={350}
-                    >
-                        {itemFuncRender}
-                    </FixedSizeList>
+                    <AutoSizer>
+                        {({ height, width }) => (
+                            <FixedSizeList
+                                itemCount={itemCount}
+                                onItemsRendered={onItemsRendered}
+                                ref={ref}
+                                height={500}
+                                width={width || 0}
+                                itemSize={350}
+                            >
+                                {itemFuncRender}
+                            </FixedSizeList>
+                        )}
+                    </AutoSizer>
                 )}
             </InfiniteLoader>
         </div>
