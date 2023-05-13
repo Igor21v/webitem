@@ -9,7 +9,7 @@ export const getItemsPageView = (state: StateSchema) =>
 export const getItemsPageNum = (state: StateSchema) =>
     state.itemsPage?.page || 1;
 export const getItemsPageLimit = (state: StateSchema) =>
-    state.itemsPage?.limit || 9;
+    state.itemsPage?.limit || 20;
 export const getItemsPageHasMore = (state: StateSchema) =>
     state.itemsPage?.hasMore;
 export const getItemsPageInited = (state: StateSchema) =>
