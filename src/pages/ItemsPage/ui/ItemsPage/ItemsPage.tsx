@@ -12,7 +12,6 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { initItemsPage } from '../../model/services/initItemsPage/initItemsPage';
 import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
-import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
 import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
 import { ItemTypes } from '@/entities/Item';
 
@@ -42,8 +41,7 @@ const ItemsPage = (props: ItemsPageProps) => {
                 data-testid="ItemsPage"
                 className={classNames(cls.ItemsPage, {}, [className])}
             >
-                <ItemsPageFilters />
-                <ItemInfiniteList className={cls.list} />
+                <ItemInfiniteList />
                 <div />
             </Page>
         </DynamicModuleLoader>

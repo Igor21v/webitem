@@ -12,6 +12,7 @@ import {
 } from '../../model/selectors/itemsPageSelectors';
 import { fetchNextItemsPage } from '../../model/services/fetchNextItemsPage/fetchNextItemsPage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
 
 interface ItemInfineteListProps {
     className?: string;
@@ -42,6 +43,7 @@ export const ItemInfiniteList = memo((props: ItemInfineteListProps) => {
             className={className}
             loadNextPage={onLoadNextPart}
             hasNextPage={hasMore}
+            filters={<ItemsPageFilters />}
         />
     );
 });

@@ -1,5 +1,7 @@
 .ItemListInfinite {
-    height: 90%;
+    height: calc(100% - 20px);
+    width: calc(100% - 45px);
+    position: absolute;
 }
 
 .BIG {
@@ -23,4 +25,8 @@
         display: flex;
         gap: 30px;
     }
+}
+
+.itemWrapper {
+    padding-right: 20px;
 }

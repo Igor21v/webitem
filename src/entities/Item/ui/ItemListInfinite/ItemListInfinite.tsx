@@ -1,5 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { CSSProperties, HTMLAttributeAnchorTarget, memo } from 'react';
+import {
+    CSSProperties,
+    HTMLAttributeAnchorTarget,
+    memo,
+    ReactElement,
+} from 'react';
 import { FixedSizeList } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -20,6 +25,7 @@ interface ItemListInfiniteProps {
     view?: ItemView;
     hasNextPage?: boolean;
     loadNextPage: () => void;
+    filters: ReactElement;
 }
 
 const getSkeletons = (view: ItemView) =>
@@ -43,6 +49,7 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         classNameCard,
         hasNextPage,
         loadNextPage,
+        filters,
     } = props;
     const { t } = useTranslation();
 
@@ -51,6 +58,7 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
     if (!items?.length) {
         return (
             <div className={classNames('', {}, [className, cls[view]])}>
+                {filters}
                 <Text size={TextSize.L} title={t('Elements not found')} />
             </div>
         );
@@ -71,18 +79,23 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         let content;
         if (!isItemLoaded(index)) {
             content = 'Loading...';
+        } else if (index === 0) {
+            content = filters;
         } else {
             content = (
                 <ItemListItem
                     item={items[index]}
                     view={view}
                     target={target}
-                    /* key={items[index].id} */
                     className={classNames(cls.card, {}, [classNameCard])}
                 />
             );
         }
-        return <div style={style}>{content}</div>;
+        return (
+            <div style={style} className={cls.itemWrapper}>
+                {content}
+            </div>
+        );
     };
 
     return (
@@ -90,28 +103,28 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
             className={classNames(cls.ItemListInfinite, {}, [className])}
             data-testid="ItemList"
         >
-            <InfiniteLoader
-                isItemLoaded={isItemLoaded}
-                itemCount={itemCount}
-                loadMoreItems={loadMoreItems}
-            >
-                {({ onItemsRendered, ref }) => (
-                    <AutoSizer>
-                        {({ height, width }) => (
+            <AutoSizer>
+                {({ height, width }) => (
+                    <InfiniteLoader
+                        isItemLoaded={isItemLoaded}
+                        itemCount={itemCount + 1}
+                        loadMoreItems={loadMoreItems}
+                    >
+                        {({ onItemsRendered, ref }) => (
                             <FixedSizeList
                                 itemCount={itemCount}
                                 onItemsRendered={onItemsRendered}
                                 ref={ref}
-                                height={500}
+                                height={height || 0}
                                 width={width || 0}
-                                itemSize={350}
+                                itemSize={294}
                             >
                                 {itemFuncRender}
                             </FixedSizeList>
                         )}
-                    </AutoSizer>
+                    </InfiniteLoader>
                 )}
-            </InfiniteLoader>
+            </AutoSizer>
         </div>
     );
 });
