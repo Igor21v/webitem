@@ -67,7 +67,6 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
     const itemCount = hasNextPage ? rowCount + 1 : rowCount;
     const loadMoreItems = isLoading ? () => {} : loadNextPage;
     const isItemLoaded = (index: number) => !hasNextPage || index < rowCount;
-
     const getItemSize = (index: number) => {
         if (index === 0) return 135;
         if (view === ItemView.BIG) return 300;

@@ -1,5 +1,12 @@
 import { useCallback, useRef } from 'react';
 
+/**
+ * Хук, который вызывает колбэк и предотвращает повторный вызов в течении заданного времени
+ * @param callback
+ * @param delay
+ * @returns
+ */
+
 export function useThrottle(callback: (...args: any[]) => void, delay: number) {
     const throttleRef = useRef(false);
     return useCallback(

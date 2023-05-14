@@ -26,7 +26,6 @@ import {
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
 import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
-import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 import { HStack } from '@/shared/ui/Stack';
 
 interface ItemsPageFiltersProps {
@@ -78,14 +77,9 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
         },
         [dispatch, debouncedFetchData],
     );
-    useNonInitialEffect(() => {
-        dispatch(itemsPageActions.setPage(1));
-        dispatch(itemsPageActions.setType(type || 'all'));
-        fetchData();
-    }, [type]);
 
     return (
-        <div className={classNames('', {}, [className])}>
+        <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
                 <ItemSortSelector
                     onChangeOrder={onChangeOrder}

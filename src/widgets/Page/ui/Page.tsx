@@ -10,6 +10,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -41,9 +42,10 @@ export const Page = (props: PageProps) => {
             );
         }
     };
+    const debouncedSetPD = useDebounce(setPageDimensions, 500);
     useEffect(() => {
         const observer = new ResizeObserver(() => {
-            setPageDimensions();
+            debouncedSetPD();
         });
         observer.observe(wrapperRef?.current);
         return () => {
