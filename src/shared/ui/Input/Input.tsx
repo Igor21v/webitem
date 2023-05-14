@@ -17,7 +17,7 @@ interface InputProps<T extends string | number | undefined>
     readOnly?: boolean;
     validateError?: boolean;
     focusIsSet?: boolean;
-    onFocusHandler?: (value: boolean) => void;
+    focusHandler?: (value: boolean) => void;
 }
 export const Input = <T extends number | string | undefined>(
     props: InputProps<T>,
@@ -32,7 +32,7 @@ export const Input = <T extends number | string | undefined>(
         readOnly,
         validateError,
         focusIsSet,
-        onFocusHandler,
+        focusHandler,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
@@ -43,10 +43,10 @@ export const Input = <T extends number | string | undefined>(
         }
     });
     const onBlur = () => {
-        onFocusHandler?.(false);
+        focusHandler?.(false);
     };
     const onFocus = () => {
-        onFocusHandler?.(true);
+        focusHandler?.(true);
     };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

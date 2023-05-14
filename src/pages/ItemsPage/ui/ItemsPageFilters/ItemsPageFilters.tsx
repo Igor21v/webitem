@@ -79,7 +79,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
         },
         [dispatch, debouncedFetchData],
     );
-    const onFocusSearchHandler = (value: boolean) => {
+    const focusSearchHandler = (value: boolean) => {
         dispatch(itemsPageActions.searchFocus(value));
     };
     return (
@@ -100,7 +100,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                         onChange={onChangeSearch}
                         value={search}
                         focusIsSet={searchFocus}
-                        onFocusHandler={onFocusSearchHandler}
+                        focusHandler={focusSearchHandler}
                     />
                 </Card>
                 <Card className={cls.type}>
