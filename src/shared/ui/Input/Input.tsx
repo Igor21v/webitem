@@ -1,6 +1,7 @@
 import React, { InputHTMLAttributes, useRef } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -15,6 +16,8 @@ interface InputProps<T extends string | number | undefined>
     autoFocus?: boolean;
     readOnly?: boolean;
     validateError?: boolean;
+    focusIsSet?: boolean;
+    onFocusHandler?: (value: boolean) => void;
 }
 export const Input = <T extends number | string | undefined>(
     props: InputProps<T>,
@@ -28,10 +31,23 @@ export const Input = <T extends number | string | undefined>(
         autoFocus,
         readOnly,
         validateError,
+        focusIsSet,
+        onFocusHandler,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
     const canEdit = !readOnly;
+    useInitialEffect(() => {
+        if (focusIsSet) {
+            ref.current?.focus();
+        }
+    });
+    const onBlur = () => {
+        onFocusHandler?.(false);
+    };
+    const onFocus = () => {
+        onFocusHandler?.(true);
+    };
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (type === 'text' || type === 'password') {
@@ -62,6 +78,8 @@ export const Input = <T extends number | string | undefined>(
                 className={classNames(cls.input, mods, [className])}
                 autoFocus={autoFocus}
                 id={placeholder}
+                onFocus={onFocus}
+                onBlur={onBlur}
             />
         </div>
     );

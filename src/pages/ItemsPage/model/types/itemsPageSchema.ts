@@ -18,4 +18,6 @@ export interface ItemsPageSchema extends EntityState<Item> {
     type: ItemTypes;
 
     _inited: boolean;
+
+    searchFocus: boolean;
 }

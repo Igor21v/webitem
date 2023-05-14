@@ -22,6 +22,7 @@ import {
     getItemsPageSearch,
     getItemsPageSort,
     getItemsPageView,
+    getSearchFocus,
 } from '../../model/selectors/itemsPageSelectors';
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
 import { ItemSortSelector } from '@/features/ItemSortSelector';
@@ -40,6 +41,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const sort = useSelector(getItemsPageSort);
     const order = useSelector(getItemsPageOrder);
     const search = useSelector(getItemsPageSearch);
+    const searchFocus = useSelector(getSearchFocus);
     const { type } = useParams<{ type: ItemTypes }>();
     const fetchData = useCallback(() => {
         dispatch(fetchItemsList({ replace: true }));
@@ -77,7 +79,11 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
         },
         [dispatch, debouncedFetchData],
     );
-
+    const onFocusSearchHandler = (value: boolean) => {
+        dispatch(itemsPageActions.searchFocus(value));
+        console.log(`value ${value}`);
+    };
+    console.log(`searchFocus ${searchFocus}`);
     return (
         <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -95,6 +101,8 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                         placeholder={t('Search')}
                         onChange={onChangeSearch}
                         value={search}
+                        focusIsSet={searchFocus}
+                        onFocusHandler={onFocusSearchHandler}
                     />
                 </Card>
                 <Card className={cls.type}>

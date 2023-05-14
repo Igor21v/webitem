@@ -3,12 +3,11 @@ import { VariableSizeList, areEqual } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ItemListItem } from '../ItemListItem/ItemListItem/ItemListItem';
 import cls from './ItemListInfinite.module.scss';
 import { Item } from '../../model/types/item';
 import { ItemView } from '../../model/consts/ItemConst';
 import { ITEM_SMALL_WIDTH } from '@/shared/const/dimensions';
-import { HStack } from '@/shared/ui/Stack';
+import { ItemListInfiniteRenderItem } from './ItemListInfiniteRenderItem';
 
 interface ItemListInfiniteProps {
     className?: string;
@@ -41,28 +40,6 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         ); // 65 = пэдинг стр слева 45 + пэдин стр справа 20; 20 = компенсация того что в последнем эл-те в строке не нужен отступ; 20 мэрдж эл-та справа
     }
 
-    const getRow = (indexRow: number) => {
-        if (view === ItemView.BIG) {
-            return <ItemListItem item={items[indexRow]} view={view} />;
-        }
-        const arrayItems = new Array(0);
-        for (let indexCol = 0; indexCol < itemsInRow; indexCol += 1) {
-            if (items[indexRow * itemsInRow + indexCol]) {
-                arrayItems.push(
-                    <ItemListItem
-                        item={items[indexRow * itemsInRow + indexCol]}
-                        view={view}
-                        key={indexCol}
-                    />,
-                );
-            }
-        }
-        return (
-            <HStack gap="20" justify="center">
-                {arrayItems}
-            </HStack>
-        );
-    };
     const rowCount = Math.ceil(items.length / itemsInRow) + 1;
     const itemCount = hasNextPage ? rowCount + 1 : rowCount;
     const loadMoreItems = isLoading ? () => {} : loadNextPage;
@@ -73,22 +50,19 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         return 320;
     };
 
+    // eslint-disable-next-line react/no-unstable-nested-components
     const itemFuncRender = memo(
-        ({ index, style }: { index: number; style: CSSProperties }) => {
-            let content;
-            if (!isItemLoaded(index)) {
-                content = 'Loading...';
-            } else if (index === 0) {
-                content = filters;
-            } else {
-                content = getRow(index - 1);
-            }
-            return (
-                <div style={style} className={cls.itemWrapper}>
-                    {content}
-                </div>
-            );
-        },
+        ({ index, style }: { index: number; style: CSSProperties }) => (
+            <ItemListInfiniteRenderItem
+                filters={filters}
+                index={index}
+                items={items}
+                pageWidth={pageWidth}
+                style={style}
+                hasNextPage={hasNextPage}
+                view={view}
+            />
+        ),
         areEqual,
     );
 

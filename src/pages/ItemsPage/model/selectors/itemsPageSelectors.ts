@@ -22,3 +22,5 @@ export const getItemsPageSearch = (state: StateSchema) =>
     state.itemsPage?.search ?? '';
 export const getItemsPageType = (state: StateSchema) =>
     state.itemsPage?.type ?? 'all';
+export const getSearchFocus = (state: StateSchema) =>
+    state.itemsPage?.searchFocus ?? false;

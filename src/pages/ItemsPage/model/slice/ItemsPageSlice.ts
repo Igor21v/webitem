@@ -34,6 +34,7 @@ export const itemsPageSlice = createSlice({
         search: '',
         order: 'asc',
         type: 'all',
+        searchFocus: false,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ItemView>) => {
@@ -60,6 +61,9 @@ export const itemsPageSlice = createSlice({
         },
         initState: (state) => {
             state._inited = true;
+        },
+        searchFocus: (state, action: PayloadAction<boolean>) => {
+            state.searchFocus = action.payload;
         },
     },
     extraReducers: (builder) => {
