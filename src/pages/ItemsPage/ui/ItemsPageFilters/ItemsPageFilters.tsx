@@ -81,9 +81,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     );
     const onFocusSearchHandler = (value: boolean) => {
         dispatch(itemsPageActions.searchFocus(value));
-        console.log(`value ${value}`);
     };
-    console.log(`searchFocus ${searchFocus}`);
     return (
         <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
