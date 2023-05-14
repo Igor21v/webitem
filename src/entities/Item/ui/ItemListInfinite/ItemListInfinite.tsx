@@ -1,5 +1,5 @@
 import { CSSProperties, memo, ReactElement } from 'react';
-import { VariableSizeList } from 'react-window';
+import { VariableSizeList, areEqual } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -68,32 +68,29 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
     const loadMoreItems = isLoading ? () => {} : loadNextPage;
     const isItemLoaded = (index: number) => !hasNextPage || index < rowCount;
     const getItemSize = (index: number) => {
-        if (index === 0) return 135;
+        if (index === 0) return 145;
         if (view === ItemView.BIG) return 300;
         return 320;
     };
 
-    const itemFuncRender = ({
-        index,
-        style,
-    }: {
-        index: number;
-        style: CSSProperties;
-    }) => {
-        let content;
-        if (!isItemLoaded(index)) {
-            content = 'Loading...';
-        } else if (index === 0) {
-            content = filters;
-        } else {
-            content = getRow(index - 1);
-        }
-        return (
-            <div style={style} className={cls.itemWrapper}>
-                {content}
-            </div>
-        );
-    };
+    const itemFuncRender = memo(
+        ({ index, style }: { index: number; style: CSSProperties }) => {
+            let content;
+            if (!isItemLoaded(index)) {
+                content = 'Loading...';
+            } else if (index === 0) {
+                content = filters;
+            } else {
+                content = getRow(index - 1);
+            }
+            return (
+                <div style={style} className={cls.itemWrapper}>
+                    {content}
+                </div>
+            );
+        },
+        areEqual,
+    );
 
     return (
         <div

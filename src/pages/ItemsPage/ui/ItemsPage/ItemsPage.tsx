@@ -42,7 +42,6 @@ const ItemsPage = (props: ItemsPageProps) => {
         dispatch(itemsPageActions.setPage(1));
         dispatch(itemsPageActions.setType(type || 'all'));
         dispatch(fetchItemsList({ replace: true }));
-        console.log('sdfsneriof');
     }, [type]);
     useEffect(() => {
         if (type) document.title = t(type);

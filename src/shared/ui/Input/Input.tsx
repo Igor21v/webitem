@@ -12,7 +12,7 @@ interface InputProps<T extends string | number | undefined>
     className?: string;
     value?: T;
     onChange?: (value: T) => void;
-    autofocus?: boolean;
+    autoFocus?: boolean;
     readOnly?: boolean;
     validateError?: boolean;
 }
