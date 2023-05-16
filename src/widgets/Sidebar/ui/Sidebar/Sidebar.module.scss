@@ -7,6 +7,12 @@
     flex-shrink: 0;
 }
 
+@media (max-width: 1160px) {
+    .Sidebar {
+        display: none;
+    }
+}
+
 .switchers {
     margin-top: 15px;
     display: flex;
