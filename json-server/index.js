@@ -27,6 +27,7 @@ server.use((req, res, next) => {
 server.use(
     jsonServer.defaults({
         static: path.resolve(__dirname, 'static'),
+        noCors: true,
     }),
 );
 

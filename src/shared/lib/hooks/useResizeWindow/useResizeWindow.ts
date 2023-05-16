@@ -19,7 +19,7 @@ export const useResizeWindow = () => {
         /*         isScreenSm: width >= SCREEN_SM,
         isScreenMd: width >= SCREEN_MD,
         isScreenLg: width >= SCREEN_LG, */
-        isScreenXl: width >= SCREEN_XL,
+        isScreenXl: width > SCREEN_XL,
         /*         isScreenXxl: width >= SCREEN_XXL, */
     };
 };

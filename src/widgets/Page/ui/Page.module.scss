@@ -1,4 +1,4 @@
-@import "/src/app/styles/variables/saas";
+@import "/src/app/styles/variables/preproc";
 
 .Page {
     flex-grow: 1;
@@ -9,7 +9,7 @@
     background: var(--bg-color);
 }
 
-@media (max-width: $site-xl) {
+@media (max-width: $screen-xl) {
     .Page {
         height: 100vh;
         border-radius: 0;

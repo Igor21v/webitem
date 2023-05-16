@@ -1,4 +1,4 @@
-@import "/src/app/styles/variables/saas";
+@import "/src/app/styles/variables/preproc";
 
 .ItemListBigItem {
     position: relative;
@@ -34,7 +34,7 @@
     width: 100%;
 }
 
-@media (max-width: $site-xl) {
+@media (max-width: $screen-xl) {
     .img,
     .imgWrapper {
         width: 250px;
