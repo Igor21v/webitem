@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Navbar } from '@/widgets/Navbar';
+import { Navbar, NavbarMobile } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, userActions } from '@/entities/User';
 import { AppRouter } from './providers/router';
@@ -19,6 +19,7 @@ export default function App() {
         <div className={classNames('app', {}, [])}>
             <Suspense fallback="">
                 {isScreenXl && <Navbar />}
+                {!isScreenXl && <NavbarMobile />}
                 <div className="content-page">
                     {isScreenXl && <Sidebar />}
                     {inited && <AppRouter />}

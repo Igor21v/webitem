@@ -23,11 +23,42 @@ server.use((req, res, next) => {
     next();
 });
 
+// Эндпоинт для компонентов
+/* server.get('/itemsLike', (req, res) => {
+    try {
+        const itemsReq = JSON.parse(req.query.itemsReq);
+        const db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        );
+        console.log(`itemsReq ${JSON.stringify(itemsReq)}`);
+        const itemsDB = db.items;
+        const itemsRes = Object.keys(itemsReq).map((itemReq) =>
+            itemsDB.find((itemDB) => {
+                console.log(
+                    `itemDB.id ${itemDB.id} itemReq.id ${itemReq} bool ${
+                        itemDB.id === itemReq
+                    }`,
+                );
+                return itemDB.id === itemReq;
+            }),
+        );
+
+        if (itemsRes) {
+            console.log(`itemsRes ${JSON.stringify(itemsRes)}`);
+            return res.json(itemsRes);
+        }
+
+        return res.status(403).json({ message: 'Items not found' });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+}); */
+
 // Подключение статики
 server.use(
     jsonServer.defaults({
         static: path.resolve(__dirname, 'static'),
-        noCors: 'noCors',
     }),
 );
 
@@ -51,7 +82,6 @@ server.post('/login', (req, res) => {
 // Эндпоинт для избранного
 server.get('/itemsLike', (req, res) => {
     try {
-        console.log(`Res ${JSON.stringify(req.query)}`);
         const itemsReq = JSON.parse(req.query.itemsReq);
         const db = JSON.parse(
             fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
