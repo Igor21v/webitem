@@ -1,3 +1,5 @@
+@import "/src/app/styles/variables/saas";
+
 .Page {
     flex-grow: 1;
     padding: 20px 20px 20px 45px;
@@ -5,6 +7,13 @@
     overflow-y: auto;
     border-radius: 12px 0 0;
     background: var(--bg-color);
+}
+
+@media (max-width: $site-xl) {
+    .Page {
+        height: 100vh;
+        border-radius: 0;
+    }
 }
 
 .trigger {

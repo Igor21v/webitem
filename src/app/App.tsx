@@ -5,6 +5,7 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, userActions } from '@/entities/User';
 import { AppRouter } from './providers/router';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -12,12 +13,14 @@ export default function App() {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
     const inited = useSelector(getUserInited);
+    const { isScreenXl } = useResizeWindow();
+
     return (
         <div className={classNames('app', {}, [])}>
             <Suspense fallback="">
-                <Navbar />
+                {isScreenXl && <Navbar />}
                 <div className="content-page">
-                    <Sidebar />
+                    {isScreenXl && <Sidebar />}
                     {inited && <AppRouter />}
                 </div>
             </Suspense>

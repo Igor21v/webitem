@@ -1,3 +1,5 @@
+@import "/src/app/styles/variables/saas";
+
 .ItemListBigItem {
     position: relative;
 }
@@ -30,4 +32,12 @@
 
 .skeletonText {
     width: 100%;
+}
+
+@media (max-width: $site-xl) {
+    .img,
+    .imgWrapper {
+        width: 250px;
+        height: 143px;
+    }
 }
