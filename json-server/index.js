@@ -23,15 +23,17 @@ server.use((req, res, next) => {
     next();
 });
 
-// Эндпоинт для компонентов
-/* server.get('/itemsLike', (req, res) => {
+// Эндпоинт для списка компонентов
+/* server.get('/items', (req, res, next) => {
     try {
-        const itemsReq = JSON.parse(req.query.itemsReq);
-        const db = JSON.parse(
-            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
-        );
-        console.log(`itemsReq ${JSON.stringify(itemsReq)}`);
-        const itemsDB = db.items;
+        console.log(`sort ${JSON.stringify(req.query)}`); */
+/* const sort = JSON.parse(req.query.order); */
+/*   const sort = JSON.parse(req.query); */
+/* const itemDB = db.get('items').find({ title: `${search}` }); */
+/*       console.log(`type ${JSON.stringify(sort)}`);
+
+        next(); */
+/*  const itemsDB = db.items;
         const itemsRes = Object.keys(itemsReq).map((itemReq) =>
             itemsDB.find((itemDB) => {
                 console.log(
@@ -46,10 +48,10 @@ server.use((req, res, next) => {
         if (itemsRes) {
             console.log(`itemsRes ${JSON.stringify(itemsRes)}`);
             return res.json(itemsRes);
-        }
+        } */
 
-        return res.status(403).json({ message: 'Items not found' });
-    } catch (e) {
+/* return res.status(403).json({ message: 'Items not found' }); */
+/*  } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
     }
