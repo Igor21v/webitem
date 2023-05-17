@@ -1,7 +1,7 @@
 .NavbarMobile {
     --icon-width: 60px;
-    --text-width: 90px;
-    --padding: 1rem;
+    --text-width: 110px;
+    --padding: 1.5rem;
     --duration: 0.2s;
 
     font-family: sans-serif;
@@ -17,24 +17,23 @@
 
 .bar {
     width: calc(var(--icon-width) + var(--text-width));
-    height: calc(100% - var(--padding));
-    background: var(--inverted-bg-color);
+    height: calc(100% - (var(--padding) * 0.5));
+    background: var(--inverted-card-bg);
     position: absolute;
-    top: calc(var(--padding) * 0.5);
+    top: calc(var(--padding) * 0.3);
     left: calc(var(--padding) * 0.5);
     border-radius: var(--icon-width);
-    transform: translateX(calc(var(--icon-width) * var(--active)));
+    transform: translateX(calc(var(--icon-width) * var(--active-navbar)));
     transition: transform var(--duration) ease-in-out;
 }
 
 .ul {
     list-style: none;
-    background-color: white;
+    background-color: var(--inverted-bg-color);
     margin: 0;
     padding: var(--padding) calc(var(--padding) / 2);
     position: relative;
     padding-right: calc(var(--text-width) + var(--padding) / 2);
-    box-shadow: 0 0 15px rgb(0 0 0 / 20%);
     display: grid;
     grid-auto-flow: column;
 }
@@ -51,12 +50,10 @@
     }
 
     .icon {
-        z-index: 100;
         justify-content: center;
         width: var(--icon-width);
         cursor: pointer;
         text-align: center;
-        opacity: 0.3;
         transition-property: opacity, transform;
         transition-duration: var(--duration);
         transition-timing-function: ease-in-out;
@@ -72,16 +69,14 @@
         pointer-events: none;
         transition: opacity var(--duration) ease-in-out;
         height: 100%;
-        font-size: 0.9rem;
-        font-weight: bold;
     }
 
-    &[data-active] {
+    &[data-active-navbar] {
         .text,
         .icon { opacity: 1; }
     }
 }
 
-[data-active] ~ .li .icon {
+[data-active-navbar] ~ .li .icon {
     transform: translateX(calc((var(--i) * 1px) + var(--text-width)));
 }

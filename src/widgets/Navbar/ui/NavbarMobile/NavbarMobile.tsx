@@ -1,11 +1,12 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NavbarMobile.module.scss';
 import { getNavbarItems } from '../../model/selectors/getNavbarItems';
-import { Icon } from '@/shared/ui/Icon';
-import FavouriteIcon from '@/shared/assets/icons/like.svg';
+import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
+import { SpriteImg } from '@/shared/ui/SpriteImg';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface NavbarMobileProps {
     className?: string;
@@ -14,62 +15,59 @@ interface NavbarMobileProps {
 export const NavbarMobile = memo(({ className }: NavbarMobileProps) => {
     const { t } = useTranslation();
     const navbarItemsList = useSelector(getNavbarItems);
-    const root = document.documentElement;
-    const items = Array.from(document.querySelectorAll('li'));
-    root.style.setProperty('--active', '0');
 
-    items.forEach((item, index) => {
-        if (index === 0) item.setAttribute('data-active', 'true');
-        item.style.setProperty('--i', index.toString());
-
-        item.addEventListener('click', (e) => {
-            root.style.setProperty('--active', index.toString());
-            root.querySelectorAll('[data-active]').forEach((el) =>
-                el.removeAttribute('data-active'),
+    useEffect(() => {
+        const root = document.documentElement;
+        root.style.setProperty('--active-navbar', '');
+        const items = Array.from(document.querySelectorAll('li'));
+        const itemHandler = (item: any, index: any) => {
+            root.style.setProperty('--active-navbar', index.toString());
+            root.querySelectorAll('[data-active-navbar]').forEach((el) =>
+                el.removeAttribute('data-active-navbar'),
             );
-            item.setAttribute('data-active', 'true');
+            item.setAttribute('data-active-navbar', 'true');
+        };
+        items.forEach((item, index) => {
+            if (index === 0) item.setAttribute('data-active-navbar', 'true');
+            item.style.setProperty('--i', index.toString());
+            item.addEventListener('click', () => itemHandler(item, index));
         });
-    });
+        return () => {
+            items.forEach((item, index) => {
+                item.removeEventListener('click', () =>
+                    itemHandler(item, index),
+                );
+            });
+        };
+    }, []);
+
     return (
-        <header className={classNames(cls.NavbarMobile, {}, [className])}>
-            {/* <HStack role="navigation" gap="32">
-                {navbarItemsList.map((item) => (
-                    <NavbarItem {...item} key={item.path} />
-                ))}
-            </HStack> */}
+        <nav className={classNames(cls.NavbarMobile, {}, [className])}>
             <ul className={cls.ul}>
                 <div className={cls.bar} />
-                <li className={cls.li}>
-                    <div className={cls.icon}>
-                        <Icon width={25} height={24} Svg={FavouriteIcon} />
-                    </div>
-                    <div className={cls.text}>Home</div>
-                </li>
-                <li className={cls.li}>
-                    <div className={cls.icon}>
-                        <Icon width={25} height={24} Svg={FavouriteIcon} />
-                    </div>
-                    <div className={cls.text}>Files</div>
-                </li>
-                <li className={cls.li}>
-                    <div className={cls.icon}>
-                        <Icon width={25} height={24} Svg={FavouriteIcon} />
-                    </div>
-                    <div className={cls.text}>Profile</div>
-                </li>
-                <li className={cls.li}>
-                    <div className={cls.icon}>
-                        <Icon width={25} height={24} Svg={FavouriteIcon} />
-                    </div>
-                    <div className={cls.text}>Layers</div>
-                </li>
-                <li className={cls.li}>
-                    <div className={cls.icon}>
-                        <Icon width={25} height={24} Svg={FavouriteIcon} />
-                    </div>
-                    <div className={cls.text}>Settings</div>
-                </li>
+                {navbarItemsList.map((item) => (
+                    <li className={cls.li} key={item.path}>
+                        <div className={cls.icon}>
+                            <SpriteImg
+                                widthSource={32}
+                                heightSource={32}
+                                backgroundURL={`${__STATIC_URL__}/bar_icons/navbar_sprite.png`}
+                                offsetX={item.ImgOffsetX}
+                                offsetY={item.ImgOffsetY}
+                                /* zoom={0.625} */
+                                fallback=<Skeleton height={20} width={20} />
+                            />
+                        </div>
+                        <Text
+                            className={cls.text}
+                            title={t(item.text)}
+                            theme={TextTheme.INVERTED}
+                            HeaderTag="h2"
+                            size={TextSize.S}
+                        />
+                    </li>
+                ))}
             </ul>
-        </header>
+        </nav>
     );
 });

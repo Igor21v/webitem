@@ -43,7 +43,7 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
             <SpriteImg
                 widthSource={32}
                 heightSource={32}
-                backgroundURL={`${__STATIC_URL__}/bar_icons/bar_sprite.png`}
+                backgroundURL={`${__STATIC_URL__}/bar_icons/sidebar_sprite.png`}
                 offsetX={ImgOffsetX}
                 offsetY={ImgOffsetY}
                 zoom={0.625}

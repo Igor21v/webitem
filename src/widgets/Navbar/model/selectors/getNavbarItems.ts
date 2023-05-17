@@ -16,27 +16,27 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
             text: 'Main',
             fill: true,
             ImgOffsetX: 0,
-            ImgOffsetY: 32,
+            ImgOffsetY: 0,
         },
         {
             path: getRouteItems('all'),
             text: 'All items',
             fill: true,
             ImgOffsetX: 32,
-            ImgOffsetY: 32,
+            ImgOffsetY: 0,
         },
         {
             path: getRouteFavourites(),
             text: 'Favourites',
             ImgOffsetX: 64,
-            ImgOffsetY: 32,
+            ImgOffsetY: 0,
         },
         {
             path: getRouteAbout(),
             text: 'About',
             fill: true,
             ImgOffsetX: 96,
-            ImgOffsetY: 32,
+            ImgOffsetY: 0,
         },
     ];
 
@@ -53,7 +53,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
                 text: 'Admin panel',
                 fill: true,
                 ImgOffsetX: 128,
-                ImgOffsetY: 32,
+                ImgOffsetY: 0,
             },
         );
     }

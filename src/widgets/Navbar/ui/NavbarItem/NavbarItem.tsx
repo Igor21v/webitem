@@ -30,7 +30,7 @@ export const NavbarItem = memo((item: NavbarItemType) => {
             <SpriteImg
                 widthSource={32}
                 heightSource={32}
-                backgroundURL={`${__STATIC_URL__}/bar_icons/bar_sprite.png`}
+                backgroundURL={`${__STATIC_URL__}/bar_icons/navbar_sprite.png`}
                 offsetX={item.ImgOffsetX}
                 offsetY={item.ImgOffsetY}
                 zoom={0.625}
