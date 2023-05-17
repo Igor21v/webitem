@@ -28,7 +28,7 @@ export const SpriteImg = memo((props: SpriteImgProps) => {
 
     useLayoutEffect(() => {
         const img = new Image();
-        img.src = `${__STATIC_URL__}/bar_icons/bar_sprite.png`;
+        img.src = backgroundURL;
         img.onload = () => {
             setIsLoading(false);
         };
