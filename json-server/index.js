@@ -7,6 +7,7 @@ const http = require('http');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const findUser = require('./findUser');
+const { sortHandler, filterHandler } = require('./helpers');
 
 const db = low(new FileSync(path.resolve(__dirname, 'db.json')));
 const router = jsonServer.router(db);
@@ -24,38 +25,43 @@ server.use((req, res, next) => {
 });
 
 // Эндпоинт для списка компонентов
-/* server.get('/items', (req, res, next) => {
+server.get('/items', (req, res, next) => {
     try {
-        console.log(`sort ${JSON.stringify(req.query)}`); */
-/* const sort = JSON.parse(req.query.order); */
-/*   const sort = JSON.parse(req.query); */
-/* const itemDB = db.get('items').find({ title: `${search}` }); */
-/*       console.log(`type ${JSON.stringify(sort)}`);
+        const {
+            _limit: limit,
+            _page: page,
+            _sort: sort,
+            _order: order,
+            type,
+            q,
+        } = req.query;
+        const itemsDB = db.get('items').filter(filterHandler(type, q)).value(); // запускаем фильтр
 
-        next(); */
-/*  const itemsDB = db.items;
-        const itemsRes = Object.keys(itemsReq).map((itemReq) =>
-            itemsDB.find((itemDB) => {
-                console.log(
-                    `itemDB.id ${itemDB.id} itemReq.id ${itemReq} bool ${
-                        itemDB.id === itemReq
-                    }`,
-                );
-                return itemDB.id === itemReq;
-            }),
-        );
+        /* const sortHandler = (a, b) => {
+            if (order === 'asc') {
+                if (sort === 'views') return a.views - b.views;
+                return a[sort].localeCompare(b[sort]);
+            }
+            if (sort === 'views') return b.views - a.views;
+            return b[sort].localeCompare(a[sort]);
+        }; */
 
-        if (itemsRes) {
-            console.log(`itemsRes ${JSON.stringify(itemsRes)}`);
-            return res.json(itemsRes);
-        } */
+        if (sort) {
+            console.log(`sort ${sort}`);
+            itemsDB.sort(sortHandler(order, sort)); // запускаем сортировку
+        }
+        const fromEl = (page - 1) * limit;
+        const toEl = page * limit;
+        const itemsReturn = itemsDB.slice(fromEl, toEl);
 
-/* return res.status(403).json({ message: 'Items not found' }); */
-/*  } catch (e) {
+        console.log(`first ${itemsReturn[0].title}`);
+        console.log(`first ${itemsDB[0].title}`);
+        next();
+    } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
     }
-}); */
+});
 
 // Подключение статики
 server.use(
