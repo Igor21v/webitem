@@ -25,7 +25,7 @@ server.use((req, res, next) => {
 });
 
 // Эндпоинт для списка компонентов
-server.get('/items', (req, res, next) => {
+server.get('/items', (req, res) => {
     try {
         const {
             _limit: limit,
@@ -35,28 +35,21 @@ server.get('/items', (req, res, next) => {
             type,
             q,
         } = req.query;
+
         const itemsDB = db.get('items').filter(filterHandler(type, q)).value(); // запускаем фильтр
-
-        /* const sortHandler = (a, b) => {
-            if (order === 'asc') {
-                if (sort === 'views') return a.views - b.views;
-                return a[sort].localeCompare(b[sort]);
-            }
-            if (sort === 'views') return b.views - a.views;
-            return b[sort].localeCompare(a[sort]);
-        }; */
-
         if (sort) {
-            console.log(`sort ${sort}`);
             itemsDB.sort(sortHandler(order, sort)); // запускаем сортировку
         }
         const fromEl = (page - 1) * limit;
         const toEl = page * limit;
-        const itemsReturn = itemsDB.slice(fromEl, toEl);
 
-        console.log(`first ${itemsReturn[0].title}`);
-        console.log(`first ${itemsDB[0].title}`);
-        next();
+        const itemsReturn = itemsDB.slice(fromEl, toEl);
+        itemsReturn.forEach((item) => {
+            item.codes = { html: '', css: '', js: '' };
+        });
+        res.header('Cache-Control', 'no-cache');
+        res.header('Access-Control-Allow-Origin', '*');
+        return res.json(itemsReturn);
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });

@@ -19,7 +19,6 @@ function filterHandler(type, q) {
 
 // сортировка
 function sortHandler(order, sort) {
-    console.log(`sort222 ${sort}`);
     return (a, b) => {
         if (order === 'asc') {
             if (sort === 'views') return a.views - b.views;
