@@ -99,3 +99,9 @@
         font: var(--font-l);
     }
 }
+
+.italic {
+    .text {
+        font-style: italic;
+    }
+}

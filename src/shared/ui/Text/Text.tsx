@@ -33,6 +33,7 @@ export interface TextProps {
     align?: TextAlign;
     size?: TextSize;
     HeaderTag?: HeaderTagType;
+    italic?: boolean;
     'data-testid'?: string;
 }
 
@@ -45,12 +46,16 @@ export const Text = memo((props: TextProps) => {
         align = TextAlign.LEFT,
         size = TextSize.M,
         HeaderTag = 'p',
+        italic,
         'data-testid': dataTestId = 'Text',
     } = props;
 
     const additional = [className, cls[theme], cls[align], cls[size]];
+    const mods = {
+        [cls.italic]: italic,
+    };
     return (
-        <div className={classNames('', {}, additional)}>
+        <div className={classNames('', mods, additional)}>
             {title && (
                 <HeaderTag
                     className={cls.title}

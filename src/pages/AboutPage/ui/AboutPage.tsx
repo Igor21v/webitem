@@ -6,6 +6,7 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './AboutPage.module.scss';
+import { TextSpan } from '@/shared/ui/TextSpan';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
@@ -18,10 +19,13 @@ export default function AboutPage() {
             {/*             <HStack justify="center">
             </HStack> */}
             <br />
-            <Text text={t('Github')} />
-            <AppLink to={link} target="_blank">
-                <Text title={link} />
-            </AppLink>
+            <span>
+                <TextSpan text={t('Support')} />
+                <AppLink to={link} target="_blank">
+                    <TextSpan text={t('Github')} italic />
+                </AppLink>
+            </span>
+
             <br />
             <ul>
                 <AppImage
