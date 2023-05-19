@@ -101,10 +101,11 @@ server.get('/itemsLike', (req, res) => {
         );
 
         if (itemsRes) {
-            console.log(`itemsRes ${JSON.stringify(itemsRes)}`);
+            itemsRes.forEach((item) => {
+                item.codes = { html: '', css: '', js: '' };
+            });
             return res.json(itemsRes);
         }
-
         return res.status(403).json({ message: 'Items not found' });
     } catch (e) {
         console.log(e);
