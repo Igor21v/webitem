@@ -1,6 +1,4 @@
 import { memo } from 'react';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-import { LangSwitcher } from '@/features/LangSwitcher';
 import { NavbarMobileNavigate } from '../NavbarMobileNavigate/NavbarMobileNavigate';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { HStack } from '@/shared/ui/Stack';
@@ -14,10 +12,10 @@ export const NavbarMobile = memo(({ className }: NavbarMobileProps) => {
         <div className={classNames('', {}, [className])}>
             <HStack>
                 <NavbarMobileNavigate />
-                <HStack gap="8" align="center">
+                {/* <HStack gap="8" align="center">
                     <LangSwitcher short />
                     <ThemeSwitcher />
-                </HStack>
+                </HStack> */}
             </HStack>
         </div>
     );

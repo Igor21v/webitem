@@ -3,6 +3,7 @@
 @import "./themes/normal";
 @import "./themes/purple";
 @import "./variables/global";
+@import "/src/app/styles/variables/preproc";
 
 .app,
 .app_modal,
@@ -58,6 +59,30 @@
 
     *::-webkit-scrollbar-track {
         background: var(--inverted-bg-color);        /* цвет дорожки */
+    }
+}
+
+@media (max-width: $screen-xl) {
+    /* настройка скроллбара для FireFox */
+    * {
+        scrollbar-width: none;
+        scrollbar-color: var(--primary-color) var(--card-bg);
+    }
+
+    /* настройка скроллбара для Chrome/Edge/Safari */
+    *::-webkit-scrollbar {
+        width: 0;               /* ширина scrollbar */
+        height: 8px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: var(--card-bg);        /* цвет дорожки */
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: var(--inverted-primary-color);    /* цвет плашки */
+        border-radius: 20px;       /* закругления плашки */
+        border: 2px solid var(--primary-color);  /* padding вокруг плашки */
     }
 }
 

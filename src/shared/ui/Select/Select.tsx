@@ -55,7 +55,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                     className={classNames(
                         cls.select,
                         { [cls.validateError]: validateError },
-                        [className, 'scroll-thin'],
+                        ['scroll-thin'],
                     )}
                     value={value}
                     onChange={onChangeHandler}

@@ -8,6 +8,7 @@ import { Item } from '../../model/types/item';
 import { ItemView } from '../../model/consts/ItemConst';
 import { ITEM_SMALL_WIDTH } from '@/shared/const/dimensions';
 import { ItemListInfiniteRenderItem } from './ItemListInfiniteRenderItem';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 interface ItemListInfiniteProps {
     className?: string;
@@ -32,6 +33,7 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         pageWidth,
     } = props;
     let itemsInRow: number;
+    const { isScreenXl, isScreenSm } = useResizeWindow();
     if (view === ItemView.BIG) {
         itemsInRow = 1;
     } else {
@@ -45,7 +47,12 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
     const loadMoreItems = isLoading ? () => {} : loadNextPage;
     const isItemLoaded = (index: number) => !hasNextPage || index < rowCount;
     const getItemSize = (index: number) => {
-        if (index === 0) return 145;
+        if (index === 0) {
+            if (isScreenXl) return 145;
+            if (isScreenSm) return 155;
+            return 205;
+        }
+
         if (view === ItemView.BIG) return 300;
         return 320;
     };

@@ -28,6 +28,7 @@ import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsLi
 import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
 import { HStack } from '@/shared/ui/Stack';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 interface ItemsPageFiltersProps {
     className?: string;
@@ -82,31 +83,58 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const focusSearchHandler = (value: boolean) => {
         dispatch(itemsPageActions.searchFocus(value));
     };
-    return (
-        <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
-            <div className={cls.sortWrapper}>
-                <ItemSortSelector
-                    onChangeOrder={onChangeOrder}
-                    onChangeSort={onChangeSort}
-                    order={order}
-                    sort={sort}
-                />
-                <ItemViewSelector view={view} onViewClick={onChangeView} />
-            </div>
-            <HStack max justify="between" className={cls.search}>
-                <Card max>
-                    <Input
-                        placeholder={t('Search')}
-                        onChange={onChangeSearch}
-                        value={search}
-                        focusIsSet={searchFocus}
-                        focusHandler={focusSearchHandler}
+    const { isScreenXl } = useResizeWindow();
+    if (isScreenXl)
+        return (
+            <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
+                <div className={cls.sortWrapper}>
+                    <ItemSortSelector
+                        onChangeOrder={onChangeOrder}
+                        onChangeSort={onChangeSort}
+                        order={order}
+                        sort={sort}
                     />
-                </Card>
-                <Card className={cls.type}>
-                    <ItemTypeUI type={type} />
-                </Card>
+                    <ItemViewSelector view={view} onViewClick={onChangeView} />
+                </div>
+                <HStack max justify="between" className={cls.search}>
+                    <Card max>
+                        <Input
+                            placeholder={t('Search')}
+                            onChange={onChangeSearch}
+                            value={search}
+                            focusIsSet={searchFocus}
+                            focusHandler={focusSearchHandler}
+                        />
+                    </Card>
+                    <Card className={cls.type}>
+                        <ItemTypeUI type={type} />
+                    </Card>
+                </HStack>
+            </div>
+        );
+    return (
+        <Card
+            className={classNames(cls.ItemsPageFiltersMobile, {}, [className])}
+        >
+            <HStack justify="between" align="center" className={cls.typeMobile}>
+                <div />
+                <ItemTypeUI type={type} />
+                <ItemViewSelector view={view} onViewClick={onChangeView} />
             </HStack>
-        </div>
+            <ItemSortSelector
+                onChangeOrder={onChangeOrder}
+                onChangeSort={onChangeSort}
+                order={order}
+                sort={sort}
+            />
+            <Input
+                placeholder={t('Search')}
+                onChange={onChangeSearch}
+                value={search}
+                focusIsSet={searchFocus}
+                focusHandler={focusSearchHandler}
+                classNameWrapper={cls.search}
+            />
+        </Card>
     );
 });

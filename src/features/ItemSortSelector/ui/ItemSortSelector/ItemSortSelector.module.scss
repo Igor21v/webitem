@@ -1,8 +1,17 @@
-.ItemSortSelector {
-    display: flex;
-    align-items: center;
+@import "/src/app/styles/variables/preproc";
+
+@media (min-width: $screen-sm) {
+    .ItemSortSelector {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
 
-.order {
-    margin-left: 8px;
+.sort {
+    margin-right: 8px;
+}
+
+.text {
+    margin-right: 8px;
 }

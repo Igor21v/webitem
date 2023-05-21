@@ -11,6 +11,7 @@ type HTMLInputProps = Omit<
 interface InputProps<T extends string | number | undefined>
     extends HTMLInputProps {
     className?: string;
+    classNameWrapper?: string;
     value?: T;
     onChange?: (value: T) => void;
     autoFocus?: boolean;
@@ -24,6 +25,7 @@ export const Input = <T extends number | string | undefined>(
 ) => {
     const {
         className,
+        classNameWrapper,
         value,
         type = 'text',
         placeholder,
@@ -63,7 +65,7 @@ export const Input = <T extends number | string | undefined>(
         [cls.validateError]: validateError,
     };
     return (
-        <div className={cls.wrapper}>
+        <div className={classNames(cls.wrapper, {}, [classNameWrapper])}>
             <label htmlFor={placeholder} className={cls.lable}>
                 <div>{placeholder}</div>
                 {'>'}

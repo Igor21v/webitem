@@ -19,6 +19,7 @@ export interface TextSpanProps {
     align?: TextAlign;
     size?: TextSize;
     italic?: boolean;
+    underline?: boolean;
 }
 
 export const TextSpan = memo((props: TextSpanProps) => {
@@ -29,11 +30,13 @@ export const TextSpan = memo((props: TextSpanProps) => {
         align = 'left',
         size = 'size_m',
         italic,
+        underline,
     } = props;
 
     const additional = [className, cls[theme], cls[align], cls[size]];
     const mods = {
         [cls.italic]: italic,
+        [cls.underline]: underline,
     };
     return <span className={classNames('', mods, additional)}>{text}</span>;
 });

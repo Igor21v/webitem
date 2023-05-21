@@ -7,6 +7,7 @@ import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './AboutPage.module.scss';
 import { TextSpan } from '@/shared/ui/TextSpan';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
@@ -14,16 +15,16 @@ export default function AboutPage() {
     useEffect(() => {
         document.title = t('Title about');
     }, [t]);
+    const { isScreenXl } = useResizeWindow();
     return (
         <Page data-testid="AboutPage">
-            {/*             <HStack justify="center">
-            </HStack> */}
-            <br />
+            {isScreenXl && <br />}
             <span>
                 <TextSpan text={t('Support')} />
                 <AppLink to={link} target="_blank">
-                    <TextSpan text={t('Github')} italic />
+                    <TextSpan text={t('Github')} italic underline />
                 </AppLink>
+                <TextSpan text={t('Smile')} />
             </span>
 
             <br />
