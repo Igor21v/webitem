@@ -8,6 +8,7 @@ import { ItemView } from '../../../model/consts/ItemConst';
 import { ItemListBigItem } from '../ItemListBigItem/ItemListBigItem';
 import { ItemListSmallItem } from '../ItemListSmallItem/ItemListSmallItem';
 import { HStack } from '@/shared/ui/Stack';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 interface ItemListItemProps {
     className?: string;
@@ -23,6 +24,7 @@ export interface ItemListSpecItemProps extends ItemListItemProps {
 
 export const ItemListItem = memo((props: ItemListItemProps) => {
     const { className, item, view, target } = props;
+    const { isScreenXl } = useResizeWindow();
     const languages = (
         <Text
             text={Object.keys(item.codes).join(', ')}

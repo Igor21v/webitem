@@ -5,7 +5,7 @@ export const getItemsPageIsLoading = (state: StateSchema) =>
     state.itemsPage?.isLoading || false;
 export const getItemsPageError = (state: StateSchema) => state.itemsPage?.error;
 export const getItemsPageView = (state: StateSchema) =>
-    state.itemsPage?.view || ItemView.SMALL;
+    state.itemsPage?.view || ItemView.BIG;
 export const getItemsPageNum = (state: StateSchema) =>
     state.itemsPage?.page || 1;
 export const getItemsPageLimit = (state: StateSchema) =>

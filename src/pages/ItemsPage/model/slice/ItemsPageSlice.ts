@@ -25,7 +25,7 @@ export const itemsPageSlice = createSlice({
         error: undefined,
         ids: [],
         entities: {},
-        view: ItemView.SMALL,
+        view: ItemView.BIG,
         page: 1,
         hasMore: true,
         _inited: false,

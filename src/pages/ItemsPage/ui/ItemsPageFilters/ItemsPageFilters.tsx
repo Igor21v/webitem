@@ -29,6 +29,7 @@ import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
 import { HStack } from '@/shared/ui/Stack';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
+import { TextTheme } from '@/shared/ui/Text';
 
 interface ItemsPageFiltersProps {
     className?: string;
@@ -116,10 +117,8 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
         <Card
             className={classNames(cls.ItemsPageFiltersMobile, {}, [className])}
         >
-            <HStack justify="between" align="center" className={cls.typeMobile}>
-                <div />
-                <ItemTypeUI type={type} />
-                <ItemViewSelector view={view} onViewClick={onChangeView} />
+            <HStack justify="center" align="center" className={cls.typeMobile}>
+                <ItemTypeUI type={type} theme={TextTheme.BRIGHT} />
             </HStack>
             <ItemSortSelector
                 onChangeOrder={onChangeOrder}
