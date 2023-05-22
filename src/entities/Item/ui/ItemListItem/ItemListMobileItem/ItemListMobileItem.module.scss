@@ -32,7 +32,7 @@
 
 @media (max-width: $screen-md) {
     .ItemListBigItem {
-        height: 380px;
+        height: 460px;
     }
 
     .title {
@@ -47,5 +47,22 @@
 
     .vStack {
         flex-wrap: wrap;
+    }
+
+    .animateHandler {
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: $screen-sm) {
+    .ItemListBigItem {
+        height: 380px;
+    }
+
+    .img,
+    .imgWrapper {
+        width: 100%;
+        max-width: 290px;
+        max-height: 165px;
     }
 }

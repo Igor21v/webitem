@@ -85,6 +85,7 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                 </Card>
             </div>
         );
+
     return (
         <Card
             shadow
@@ -98,9 +99,15 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                         item={item}
                         className={cls.img}
                         animateOn={animateOn}
+                        width={290}
+                        height={165}
                     />
                 </div>
-                <Button theme={ButtonTheme.OUTLINE} onClick={animateHandler}>
+                <Button
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={animateHandler}
+                    className={cls.animateHandler}
+                >
                     {animateButtonText()}
                 </Button>
                 {languages}
