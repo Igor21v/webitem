@@ -18,6 +18,7 @@ import { ItemDetailsPageHeader } from '../ItemDetailsPageHeader/ItemDetailsPageH
 import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
 import { getPageDimensions } from '@/features/UI';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 interface ItemDetailsPageProps {
     className?: string;
@@ -32,6 +33,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     };
     const { width: pageWidth } = useSelector(getPageDimensions);
     const item = useSelector(getItemDetailsData);
+    const { isScreenXl } = useResizeWindow();
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -40,7 +42,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     <ItemDetailsPageHeader />
                     <ItemDetails id={id} />
                     {/* <ItemRating itemId={id} /> */}
-                    {item?.type && (
+                    {item?.type && isScreenXl && (
                         <ItemRecommendationList
                             pageWidth={pageWidth}
                             type={item?.type}

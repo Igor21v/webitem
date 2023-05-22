@@ -24,8 +24,8 @@ server.use((req, res, next) => {
     next();
 });
 
-// Эндпоинт для списка компонентов
-server.get('/items', (req, res) => {
+// Эндпоинт для компонентов
+server.get('/items/:id', (req, res) => {
     try {
         const {
             _limit: limit,
@@ -35,7 +35,10 @@ server.get('/items', (req, res) => {
             type,
             q,
         } = req.query;
-
+        res.header('Cache-Control', 'no-cache');
+        res.header('Access-Control-Allow-Origin', '*');
+        const { id } = req.params;
+        if (id) return res.json(db.get('items').find({ id: `${id}` }));
         const itemsDB = db.get('items').filter(filterHandler(type, q)).value(); // запускаем фильтр
         if (sort) {
             itemsDB.sort(sortHandler(order, sort)); // запускаем сортировку
@@ -47,8 +50,6 @@ server.get('/items', (req, res) => {
         itemsReturn.forEach((item) => {
             item.codes = { html: '', css: '', js: '' };
         });
-        res.header('Cache-Control', 'no-cache');
-        res.header('Access-Control-Allow-Origin', '*');
         return res.json(itemsReturn);
     } catch (e) {
         console.log(e);
