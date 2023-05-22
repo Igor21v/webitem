@@ -33,7 +33,7 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         pageWidth,
     } = props;
     let itemsInRow: number;
-    const { isScreenXl, isScreenSm } = useResizeWindow();
+    const { isScreenXl, isScreenSm, isScreenMd } = useResizeWindow();
     if (view === ItemView.BIG) {
         itemsInRow = 1;
     } else {
@@ -49,10 +49,11 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
     const getItemSize = (index: number) => {
         if (index === 0) {
             if (isScreenXl) return 145;
-            if (isScreenSm) return 155;
+            if (isScreenMd) return 155;
             return 205;
         }
 
+        if (!isScreenMd) return 400;
         if (view === ItemView.BIG) return 300;
         return 320;
     };

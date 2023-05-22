@@ -8,8 +8,8 @@ import ItemIcon from '@/shared/assets/icons/app-icon.svg';
 interface ItemCoverImgProps {
     className?: string;
     animateOn?: boolean;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     item: Item;
 }
 
@@ -24,7 +24,7 @@ export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
             alt={item.title}
             fallback={
                 <div>
-                    <Skeleton width={width} height={height} />
+                    <Skeleton />
                 </div>
             }
             errorFallback={

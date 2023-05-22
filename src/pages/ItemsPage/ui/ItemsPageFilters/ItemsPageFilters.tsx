@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -44,11 +44,15 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const order = useSelector(getItemsPageOrder);
     const search = useSelector(getItemsPageSearch);
     const searchFocus = useSelector(getSearchFocus);
+    const { isScreenXl } = useResizeWindow();
     const { type } = useParams<{ type: ItemTypes }>();
     const fetchData = useCallback(() => {
         dispatch(fetchItemsList({ replace: true }));
     }, [dispatch]);
     const debouncedFetchData = useDebounce(fetchData, 500);
+    useEffect(() => {
+        if (!isScreenXl) dispatch(itemsPageActions.setView(ItemView.BIG));
+    }, [dispatch, isScreenXl]);
     const onChangeView = useCallback(
         (view: ItemView) => {
             dispatch(itemsPageActions.setView(view));
@@ -84,7 +88,6 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const focusSearchHandler = (value: boolean) => {
         dispatch(itemsPageActions.searchFocus(value));
     };
-    const { isScreenXl } = useResizeWindow();
     if (isScreenXl)
         return (
             <div className={classNames(cls.ItemsPageFilters, {}, [className])}>

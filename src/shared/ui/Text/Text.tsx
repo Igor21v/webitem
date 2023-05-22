@@ -27,6 +27,7 @@ type HeaderTagType = 'h1' | 'h2' | 'h3' | 'p';
 
 export interface TextProps {
     className?: string;
+    classNameTitle?: string;
     title?: string;
     text?: string;
     theme?: TextTheme;
@@ -47,6 +48,7 @@ export const Text = memo((props: TextProps) => {
         size = TextSize.M,
         HeaderTag = 'p',
         italic,
+        classNameTitle,
         'data-testid': dataTestId = 'Text',
     } = props;
 
@@ -58,7 +60,7 @@ export const Text = memo((props: TextProps) => {
         <div className={classNames('', mods, additional)}>
             {title && (
                 <HeaderTag
-                    className={cls.title}
+                    className={classNames(cls.title, {}, [classNameTitle])}
                     data-testid={`${dataTestId}.Header`}
                 >
                     {title}

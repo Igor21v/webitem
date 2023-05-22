@@ -27,7 +27,6 @@ export const ItemListInfiniteRenderItem = memo(
             index,
             style,
         } = props;
-
         let itemsInRow: number;
         if (view === ItemView.BIG) {
             itemsInRow = 1;

@@ -1,4 +1,4 @@
-/* @import "/src/app/styles/variables/preproc"; */
+@import "/src/app/styles/variables/preproc";
 
 .ItemListBigItem {
     position: relative;
@@ -6,18 +6,14 @@
 
 .img,
 .imgWrapper {
-    width: 444px;
-    height: 250px;
+    width: 100%;
+    max-width: 444px;
+    max-height: 250px;
 }
 
 .img {
     border-radius: 10px;
     flex-shrink: 0;
-}
-
-.textBlock {
-    max-height: 200px;
-    overflow-y: hidden;
 }
 
 .description {
@@ -34,10 +30,22 @@
     width: 100%;
 }
 
-/* @media (max-width: $screen-xl) {
-    .img,
-    .imgWrapper {
-        width: 250px;
-        height: 143px;
+@media (max-width: $screen-md) {
+    .ItemListBigItem {
+        height: 380px;
     }
-} */
+
+    .title {
+        width: 100%;
+    }
+
+    .titleText {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .vStack {
+        flex-wrap: wrap;
+    }
+}
