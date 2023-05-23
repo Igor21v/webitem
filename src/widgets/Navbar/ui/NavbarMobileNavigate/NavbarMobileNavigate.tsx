@@ -17,18 +17,17 @@ export const NavbarMobileNavigate = memo(
     ({ className }: NavbarMobileNavigateProps) => {
         const { t } = useTranslation();
         const navbarItemsList = useSelector(getNavbarItems);
-        console.log(`ggggg ${window.location.pathname}`);
-        const page = window.location.pathname.split('/')[0];
-        /* const activePage = navbarItemsList.findIndex(item => {
-            pathname
-        return index
-        })
-        console.log('nnnn ' + activePage) */
+        const page = window.location.pathname.split('/')[1];
+        const activePage = navbarItemsList.findIndex((item) => {
+            const itemPath = item.path.split('/')[1];
+            return itemPath === page;
+        });
 
         useEffect(() => {
             const root = document.documentElement;
-            root.style.setProperty('--active-navbar', '');
             const items = Array.from(document.querySelectorAll('li'));
+            items[activePage].setAttribute('data-active-navbar', 'true');
+            root.style.setProperty('--active-navbar', `${activePage}`);
             const itemHandler = (item: any, index: any) => {
                 root.style.setProperty('--active-navbar', index.toString());
                 root.querySelectorAll('[data-active-navbar]').forEach((el) =>
@@ -37,8 +36,6 @@ export const NavbarMobileNavigate = memo(
                 item.setAttribute('data-active-navbar', 'true');
             };
             items.forEach((item, index) => {
-                if (index === 0)
-                    item.setAttribute('data-active-navbar', 'true');
                 item.style.setProperty('--i', index.toString());
                 item.addEventListener('click', () => itemHandler(item, index));
             });

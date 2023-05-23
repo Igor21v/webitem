@@ -29,7 +29,7 @@ import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
 import { HStack } from '@/shared/ui/Stack';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
-import { TextTheme } from '@/shared/ui/Text';
+import { TextSize, TextTheme } from '@/shared/ui/Text';
 
 interface ItemsPageFiltersProps {
     className?: string;
@@ -121,7 +121,11 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
             className={classNames(cls.ItemsPageFiltersMobile, {}, [className])}
         >
             <HStack justify="center" align="center" className={cls.typeMobile}>
-                <ItemTypeUI type={type} theme={TextTheme.BRIGHT} />
+                <ItemTypeUI
+                    type={type}
+                    theme={TextTheme.BRIGHT}
+                    size={TextSize.L}
+                />
             </HStack>
             <ItemSortSelector
                 onChangeOrder={onChangeOrder}
