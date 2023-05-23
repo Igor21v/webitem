@@ -17,6 +17,13 @@ export const NavbarMobileNavigate = memo(
     ({ className }: NavbarMobileNavigateProps) => {
         const { t } = useTranslation();
         const navbarItemsList = useSelector(getNavbarItems);
+        console.log(`ggggg ${window.location.pathname}`);
+        const page = window.location.pathname.split('/')[0];
+        /* const activePage = navbarItemsList.findIndex(item => {
+            pathname
+        return index
+        })
+        console.log('nnnn ' + activePage) */
 
         useEffect(() => {
             const root = document.documentElement;
