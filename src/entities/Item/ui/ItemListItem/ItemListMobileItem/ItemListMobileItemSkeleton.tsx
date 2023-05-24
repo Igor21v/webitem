@@ -14,7 +14,7 @@ interface ItemListItemSkeletonProps {
 
 export const ItemListItemMobileSkeleton = memo(
     (props: ItemListItemSkeletonProps) => {
-        const { isScreenXl, isScreenMd } = useResizeWindow();
+        const { isScreenXl, isScreenMd, isScreenSm } = useResizeWindow();
         const { t } = useTranslation();
         const { className } = props;
 
@@ -35,13 +35,13 @@ export const ItemListItemMobileSkeleton = memo(
                                 align="center"
                                 className={cls.description}
                             >
-                                <Skeleton width={400} height={32} />
+                                <Skeleton width={400} height={30} />
                                 <Button theme={ButtonTheme.OUTLINE}>
                                     {t('Show animation')}
                                 </Button>
-                                <Skeleton width={115} height={24} />
-                                <Skeleton width={90} height={24} />
-                                <Skeleton width={60} height={24} />
+                                <Skeleton width={115} height={20} />
+                                <Skeleton width={90} height={20} />
+                                <Skeleton width={60} height={20} />
 
                                 <Button theme={ButtonTheme.OUTLINE}>
                                     {t('View the source code')}
@@ -64,9 +64,12 @@ export const ItemListItemMobileSkeleton = memo(
                 data-testid="ItemListItem"
             >
                 <VStack justify="center" align="center" className={cls.vStack}>
-                    <Skeleton width={400} height={32} />
+                    <Skeleton width={290} height={32} />
                     <div className={cls.imgWrapper}>
-                        <Skeleton width={290} height={165} />
+                        <Skeleton
+                            width={isScreenSm ? 444 : 290}
+                            height={isScreenSm ? 250 : 165}
+                        />
                     </div>
                     <Button
                         theme={ButtonTheme.OUTLINE}

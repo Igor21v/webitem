@@ -13,7 +13,8 @@ interface ItemListItemSkeletonProps {
 export const ItemListItemSkeleton = memo((props: ItemListItemSkeletonProps) => {
     const { className, view } = props;
     const { isScreenXl, isScreenMd } = useResizeWindow();
-    if (!isScreenXl) return <ItemListItemMobileSkeleton />;
+    if (!isScreenXl)
+        return <ItemListItemMobileSkeleton className={className} />;
     if (view === ItemView.BIG) {
         return <ItemListItemBigSkeleton className={className} />;
     }

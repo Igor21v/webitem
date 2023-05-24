@@ -36,7 +36,7 @@ export const ItemListInfiniteWrapp = memo(
         if (isLoading && !items?.length)
             return (
                 <>
-                    {filters}
+                    <div className={cls.skeletonFilters}>{filters}</div>
                     <div className={classNames('', {}, [cls[view], className])}>
                         {ItemListSkeletons(view)}
                     </div>
