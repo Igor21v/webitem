@@ -24,7 +24,7 @@ export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
             alt={item.title}
             fallback={
                 <div>
-                    <Skeleton />
+                    <Skeleton width={width} height={height} />
                 </div>
             }
             errorFallback={
