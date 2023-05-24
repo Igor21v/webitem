@@ -28,7 +28,7 @@ export const ItemLikeListFetch = memo((props: ItemLikeListProps) => {
             isLoading={isLoading}
             items={items}
             className={cls.itemLikeList}
-            view={ItemView.SMALL}
+            view={ItemView.BIG}
         />
     );
 });
