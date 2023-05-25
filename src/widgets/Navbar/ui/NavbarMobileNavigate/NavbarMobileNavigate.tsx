@@ -17,13 +17,14 @@ export const NavbarMobileNavigate = memo(
     ({ className }: NavbarMobileNavigateProps) => {
         const { t } = useTranslation();
         const navbarItemsList = useSelector(getNavbarItems);
-        const page = window.location.pathname.split('/')[1];
-        const activePage = navbarItemsList.findIndex((item) => {
-            const itemPath = item.path.split('/')[1];
-            return itemPath === page;
-        });
 
         useEffect(() => {
+            const page = window.location.pathname.split('/')[1];
+            let activePage = navbarItemsList.findIndex((item) => {
+                const itemPath = item.path.split('/')[1];
+                return itemPath === page;
+            });
+            if (activePage === -1) activePage = 1; // для ненайденных роутов выбираем страницу компонентов
             const root = document.documentElement;
             const items = Array.from(document.querySelectorAll('li'));
             items[activePage].setAttribute('data-active-navbar', 'true');
@@ -46,7 +47,7 @@ export const NavbarMobileNavigate = memo(
                     );
                 });
             };
-        }, []);
+        }, [navbarItemsList]);
 
         return (
             <nav className={classNames(cls.NavbarMobile, {}, [className])}>
