@@ -62,12 +62,12 @@ export const CodeEditor = memo((props: CodeEditorProps) => {
                 theme={editorTheme}
                 className={cls.editor}
             />
-            <HStack justify="between" align="start">
+            <HStack justify="between" align="start" wrap gap="8">
                 <Tabs<languageType>
                     tabs={langTabs}
                     value={openedEditor}
                     onTabClick={onTabClick}
-                    className={classNames('', {}, [className])}
+                    className={classNames('', {}, [])}
                 />
                 <ThemeSelect
                     editorTheme={editorTheme}

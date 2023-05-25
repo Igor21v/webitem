@@ -18,6 +18,7 @@ interface SelectProps<T extends string> {
     readonly?: boolean;
     validateError?: boolean;
     notSelectedEnable?: boolean;
+    column?: boolean;
 }
 
 const Select = <T extends string>(props: SelectProps<T>) => {
@@ -30,6 +31,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
         readonly,
         validateError,
         notSelectedEnable,
+        column,
     } = props;
     const { t } = useTranslation();
     const optionsList = options?.map((opt) => (
@@ -43,33 +45,34 @@ const Select = <T extends string>(props: SelectProps<T>) => {
     };
 
     return (
-        <div
-            className={classNames(cls.Wrapper, {}, [className, 'scroll-thin'])}
+        <p
+            className={classNames(cls.Wrapper, { [cls.column]: column }, [
+                className,
+                'scroll-thin',
+            ])}
         >
-            <p>
-                <label htmlFor={label}>
-                    {label && <span className={cls.label}>{`${label}>`}</span>}
-                </label>
-                <select
-                    disabled={readonly}
-                    className={classNames(
-                        cls.select,
-                        { [cls.validateError]: validateError },
-                        ['scroll-thin'],
-                    )}
-                    value={value}
-                    onChange={onChangeHandler}
-                    id={label}
-                >
-                    {notSelectedEnable && (
-                        <option className={cls.option} value="not selected">
-                            {t('not selected')}
-                        </option>
-                    )}
-                    {optionsList}
-                </select>
-            </p>
-        </div>
+            <label htmlFor={label}>
+                {label && <span className={cls.label}>{`${label}>`}</span>}
+            </label>
+            <select
+                disabled={readonly}
+                className={classNames(
+                    cls.select,
+                    { [cls.validateError]: validateError },
+                    ['scroll-thin'],
+                )}
+                value={value}
+                onChange={onChangeHandler}
+                id={label}
+            >
+                {notSelectedEnable && (
+                    <option className={cls.option} value="not selected">
+                        {t('not selected')}
+                    </option>
+                )}
+                {optionsList}
+            </select>
+        </p>
     );
 };
 

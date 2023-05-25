@@ -22,3 +22,7 @@
 .validateError {
     border: 1px solid var(--red-dark-color);
 }
+
+.column {
+    flex-direction: column;
+}
