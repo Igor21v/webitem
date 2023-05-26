@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { SCREEN_MD, SCREEN_SM, SCREEN_XL } from './ResizeBreakpoints';
+import { RESIZEBREAKPOINTS } from './ResizeBreakpoints';
 
 export const useResizeWindow = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -16,10 +16,10 @@ export const useResizeWindow = () => {
 
     return {
         width,
-        isScreenSm: width > SCREEN_SM,
-        isScreenMd: width >= SCREEN_MD,
+        isScreenSm: width > RESIZEBREAKPOINTS.SCREEN_SM,
+        isScreenMd: width >= RESIZEBREAKPOINTS.SCREEN_MD,
         // isScreenLg: width >= SCREEN_LG,
-        isScreenXl: width > SCREEN_XL,
+        isScreenXl: width > RESIZEBREAKPOINTS.SCREEN_XL,
         /*         isScreenXxl: width >= SCREEN_XXL, */
     };
 };
