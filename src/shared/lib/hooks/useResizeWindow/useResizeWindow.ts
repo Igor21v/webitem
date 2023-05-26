@@ -16,10 +16,10 @@ export const useResizeWindow = () => {
 
     return {
         width,
-        isScreenSm: width > RESIZEBREAKPOINTS.SCREEN_SM,
-        isScreenMd: width >= RESIZEBREAKPOINTS.SCREEN_MD,
-        // isScreenLg: width >= SCREEN_LG,
-        isScreenXl: width > RESIZEBREAKPOINTS.SCREEN_XL,
-        /*         isScreenXxl: width >= SCREEN_XXL, */
+        isScreenSm: width > RESIZEBREAKPOINTS.SM,
+        isScreenMd: width >= RESIZEBREAKPOINTS.MD,
+        // isScreenLg: width >= LG,
+        isScreenXl: width > RESIZEBREAKPOINTS.XL,
+        /*         isScreenXxl: width >= XXL, */
     };
 };

@@ -5,9 +5,9 @@
     top: 0;
 }
 
-@media (max-width: $screen-xl) {
+@media (max-width: breakpoints(MD)) {
     .ItemListInfinite {
-        width: calc(100% - 20px);
+        width: calc(100% - 150px);
     }
 }
 

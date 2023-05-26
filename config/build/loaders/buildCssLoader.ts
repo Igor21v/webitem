@@ -1,19 +1,21 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-// eslint-disable-next-line unused-imports/no-unused-imports
-import { Breakpoint, RESIZEBREAKPOINTS } from "../../../src/shared/lib/hooks/useResizeWindow/ResizeBreakpoints";
-
-const sass = require("node-sass");
-const sassUtils = require("node-sass-utils")(sass);
+import { RESIZEBREAKPOINTS } from "../../../src/shared/lib/hooks/useResizeWindow/ResizeBreakpoints";
 
 const getBreakpoints = () => {
-    return ('@import "/src/app/styles/variables/preproc"; @function pow($base, $exponent) {$result: 1; @for $_ from 1 through $exponent {$result: $result * $base;} @return $result;}'
+    return (`@function breakpoints($size) {
+                @if $size==SM {
+                    @return ${RESIZEBREAKPOINTS.SM}px
+                } @if $size==MD {
+                    @return ${RESIZEBREAKPOINTS.MD}px
+                } @if $size==LG {
+                    @return ${RESIZEBREAKPOINTS.LG}px
+                } @if $size==XL {
+                    @return ${RESIZEBREAKPOINTS.XL}px
+                } @if $size==XXL {
+                    @return ${RESIZEBREAKPOINTS.XXL}px    
+                }}`
   )
-
-  .sidebar {
-    float: left;
-    margin-left: pow(4, 3) * 1px;
-  }
-
+}
 
 export function buildCssLoader(isDev: boolean) {
     return {
