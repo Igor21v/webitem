@@ -17,7 +17,11 @@ export function buildCssLoader(isDev: boolean) {
                     },
                 },
             },
-            'sass-loader',
+            {loader: 'sass-loader',
+            options: {
+                    additionalData: '@import "/src/app/styles/variables/preproc";',
+                },
+            },
         ],
     };
 }
