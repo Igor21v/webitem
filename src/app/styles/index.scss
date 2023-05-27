@@ -3,7 +3,6 @@
 @import "./themes/normal";
 @import "./themes/purple";
 @import "./variables/global";
-@import "/src/app/styles/variables/preproc";
 
 .app,
 .app_modal,
@@ -62,7 +61,7 @@
     }
 }
 
-@media (max-width: $screen-xl) {
+@media (max-width: breakpoints(XL)) {
     /* настройка скроллбара для FireFox */
     * {
         scrollbar-width: none;

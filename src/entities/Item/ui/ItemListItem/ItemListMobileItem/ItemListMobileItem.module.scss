@@ -1,5 +1,3 @@
-@import "/src/app/styles/variables/preproc";
-
 .ItemListBigItem {
     position: relative;
 }
@@ -30,7 +28,7 @@
     width: 100%;
 }
 
-@media (max-width: $screen-md) {
+@media (max-width: breakpoints(MD)) {
     .ItemListBigItem {
         height: 460px;
     }
@@ -54,7 +52,7 @@
     }
 }
 
-@media (max-width: $screen-sm) {
+@media (max-width: breakpoints(SM)) {
     .ItemListBigItem {
         height: 380px;
     }
