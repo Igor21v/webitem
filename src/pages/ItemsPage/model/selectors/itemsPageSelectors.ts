@@ -1,5 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { ItemSortField, ItemView } from '@/entities/Item';
+import { buildSelector } from '@/shared/lib/store';
 
 export const getItemsPageIsLoading = (state: StateSchema) =>
     state.itemsPage?.isLoading || false;
@@ -24,3 +25,6 @@ export const getItemsPageType = (state: StateSchema) =>
     state.itemsPage?.type ?? 'all';
 export const getSearchFocus = (state: StateSchema) =>
     state.itemsPage?.searchFocus ?? false;
+export const [useItemById] = buildSelector(
+    (state, id: string) => state.itemsPage?.entities[id],
+);
