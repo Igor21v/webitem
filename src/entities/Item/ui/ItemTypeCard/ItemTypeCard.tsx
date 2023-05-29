@@ -45,14 +45,14 @@ export const ItemTypeCard = memo((props: ItemTypeCardProps) => {
                         errorFallback={
                             <Icon
                                 Svg={ItemIcon}
-                                width={355}
-                                height={200}
+                                width={300}
+                                height={172}
                                 opacity={0.7}
                             />
                         }
                         fallback={
                             <div>
-                                <Skeleton width={355} height={200} />
+                                <Skeleton width={300} height={172} />
                             </div>
                         }
                     />
