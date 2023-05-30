@@ -51,6 +51,7 @@ export function buildPlugins({
         plugins.push(new CopyPlugin({
             patterns: [
                 { from: paths.locales, to: paths.buildLocales },
+                { from: paths.favicon, to: paths.buildFavicon },
             ],
         }));
     }
