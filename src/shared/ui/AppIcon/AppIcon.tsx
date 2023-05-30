@@ -3,7 +3,7 @@ import { memo } from 'react';
 import AppIconSVG from '@../../../public/favicon.svg';
 import { Icon, IconProps } from '../Icon';
 
-interface AppIconProps extends Partial<IconProps> {
+interface AppIconProps extends Omit<IconProps, 'Svg'> {
     className?: string;
 }
 
