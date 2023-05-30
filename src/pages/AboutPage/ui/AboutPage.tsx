@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import { Page } from '@/widgets/Page';
 import { Text } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/AppLink';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import cls from './AboutPage.module.scss';
 import { TextSpan } from '@/shared/ui/TextSpan';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
@@ -29,22 +26,22 @@ export default function AboutPage() {
 
             <br />
             <ul>
-                <AppImage
+                {/* <AppImage
                     className={cls.img}
-                    src={`${__STATIC_URL__}/app_icons/appIcon_50_99.png`}
-                    height={99}
-                    width={50}
+                    src="favicon.svg"
+                    height={100}
+                    width={100}
                     fallback=<Skeleton height={99} width={50} />
-                />
+                /> */}
                 <li>
                     <Text text={t('Introduction')} />
                 </li>
                 <li>
                     <Text text={t('Frontend')} />
                 </li>
-                <li>
+                {/* <li>
                     <Text text={t('Backend')} />
-                </li>
+                </li> */}
                 <li>
                     <Text text={t('Developer')} />
                 </li>

@@ -13,8 +13,7 @@ import { NavbarItem } from '../NavbarItem/NavbarItem';
 import { getNavbarItems } from '../../model/selectors/getNavbarItems';
 import { AppLink } from '@/shared/ui/AppLink';
 import { getRouteMain } from '@/shared/const/router';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { AppIcon } from '@/shared/ui/AppIcon';
 
 interface NavbarProps {
     className?: string;
@@ -37,12 +36,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 <HStack gap="16">
                     <Text theme={TextTheme.INVERTED} title={t('webitem')} />
                     {/* <Icon Svg={AppIcon} inverted height={20} width={20} /> */}
-                    <AppImage
-                        src={`${__STATIC_URL__}/app_icons/appIcon_30_30.png`}
-                        height={20}
-                        width={20}
-                        fallback=<Skeleton height={20} width={20} />
-                    />
+                    <AppIcon inverted />
                     <Text
                         theme={TextTheme.INVERTED}
                         title={t('Gallery of web components')}
