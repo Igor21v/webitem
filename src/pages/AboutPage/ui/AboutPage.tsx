@@ -5,6 +5,8 @@ import { Text } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/AppLink';
 import { TextSpan } from '@/shared/ui/TextSpan';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
+import cls from './AboutPage.module.scss';
+import { AppIcon } from '@/shared/ui/AppIcon';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
@@ -14,8 +16,9 @@ export default function AboutPage() {
     }, [t]);
     const { isScreenXl } = useResizeWindow();
     return (
-        <Page data-testid="AboutPage">
+        <Page data-testid="AboutPage" className={cls.AboutPage}>
             {isScreenXl && <br />}
+            <AppIcon className={cls.img} />
             <span>
                 <TextSpan text={t('Support')} />
                 <AppLink to={link} target="_blank">
@@ -26,13 +29,6 @@ export default function AboutPage() {
 
             <br />
             <ul>
-                {/* <AppImage
-                    className={cls.img}
-                    src="favicon.svg"
-                    height={100}
-                    width={100}
-                    fallback=<Skeleton height={99} width={50} />
-                /> */}
                 <li>
                     <Text text={t('Introduction')} />
                 </li>
