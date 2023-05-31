@@ -9,6 +9,9 @@ import { AppHead } from '@/shared/ui/AppHead';
 export default function MainPage() {
     const { t } = useTranslation('main');
     const { isScreenXl } = useResizeWindow();
+    const description =
+        'Все компоненты. All components. Элементы для сайта. Библиотека элементов для сайта.' +
+        'Gallery of web components';
     return (
         <>
             <Page data-testid="MainPage">
@@ -19,7 +22,7 @@ export default function MainPage() {
                 title={t(
                     'Главная страница webitem. Элементы и компоненты сайта разных типов',
                 )}
-                description="Все компоненты. All components. Элементы для сайта. Библиотека элементов для сайта"
+                description={description}
             />
         </>
     );
