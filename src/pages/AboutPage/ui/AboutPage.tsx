@@ -4,14 +4,11 @@ import { Text } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/AppLink';
 import { TextSpan } from '@/shared/ui/TextSpan';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
-import { Portal } from '@/shared/ui/Portal';
+import { AppHead } from '@/shared/ui/AppHead';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
     const link = 'https://github.com/Igor21v/webitem';
-    /* useEffect(() => {
-        document.head.title = t('Title about');
-    }, [t]); */
     const { isScreenXl } = useResizeWindow();
     return (
         <>
@@ -42,17 +39,12 @@ export default function AboutPage() {
                     </li>
                 </ul>
             </Page>
-            <Portal element={document.head}>
-                <title>
-                    {t(
-                        'Информация о сайте Webitem. Разработка и поддержка галереи компонентов для сайта',
-                    )}
-                </title>
-                <meta
-                    name="description"
-                    content="Сайт на React. Бондаренко Игорь Владимирович."
-                />
-            </Portal>
+            <AppHead
+                title={t(
+                    'Информация о сайте Webitem. Разработка и поддержка галереи компонентов для сайта',
+                )}
+                description="Сайт на React. Бондаренко Игорь Владимирович. Приложение React"
+            />
         </>
     );
 }

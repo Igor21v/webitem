@@ -19,6 +19,7 @@ import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
 import { ItemTypes } from '@/entities/Item';
 import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
+import { AppHead } from '@/shared/ui/AppHead';
 
 interface ItemsPageProps {
     className?: string;
@@ -33,7 +34,8 @@ const ItemsPage = (props: ItemsPageProps) => {
     const dispatch = useAppDispatch();
     const [searchParams] = useSearchParams();
     const { type } = useParams<{ type: ItemTypes }>();
-    const { t } = useTranslation('itemType');
+    const { t: tType } = useTranslation('itemType');
+    const { t } = useTranslation('items');
 
     useInitialEffect(() => {
         dispatch(initItemsPage({ searchParams, type }));
@@ -46,16 +48,30 @@ const ItemsPage = (props: ItemsPageProps) => {
     /* useEffect(() => {
         if (type) document.title = t(type);
     }, [t, type]); */
+
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page
-                data-testid="ItemsPage"
-                className={classNames(cls.ItemsPage, {}, [className])}
-            >
-                <ItemInfiniteList />
-                <div />
-            </Page>
-        </DynamicModuleLoader>
+        <>
+            <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+                <Page
+                    data-testid="ItemsPage"
+                    className={classNames(cls.ItemsPage, {}, [className])}
+                >
+                    <ItemInfiniteList />
+                    <div />
+                </Page>
+            </DynamicModuleLoader>
+            {type && (
+                <AppHead
+                    title={
+                        tType(type) +
+                        t(
+                            'в галерее webitem. Лучшие компоненты со открытым исходынм кодом для сайта',
+                        )
+                    }
+                    description="Компоненты для сайта. Сomponents for website. Элементы для сайта"
+                />
+            )}
+        </>
     );
 };
 
