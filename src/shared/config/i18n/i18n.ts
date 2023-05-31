@@ -8,8 +8,8 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        /* fallbackLng: 'en', */
-        /* lng: 'ru', */
+        fallbackLng: false,
+        lng: 'ru', // TODO влкючено для индексации яндексом на русском языке
         /* debug: !!__IS_DEV__, */
         debug: false,
 
