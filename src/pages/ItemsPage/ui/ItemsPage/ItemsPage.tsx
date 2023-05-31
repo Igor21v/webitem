@@ -65,7 +65,7 @@ const ItemsPage = (props: ItemsPageProps) => {
                     title={
                         tType(type) +
                         t(
-                            'в галерее webitem. Лучшие компоненты со открытым исходынм кодом для сайта',
+                            'в галерее webitem. Лучшие компоненты / элементы с открытым исходным кодом для сайта',
                         )
                     }
                     description="Компоненты для сайта. Сomponents for website. Элементы для сайта"
