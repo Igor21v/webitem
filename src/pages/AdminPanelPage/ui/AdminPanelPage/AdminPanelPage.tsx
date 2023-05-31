@@ -7,7 +7,7 @@ import { ItemAdd } from '@/features/ItemAdd';
 const AdminPanelPage = () => {
     const { t } = useTranslation('adminPanel');
     useEffect(() => {
-        document.title = t('Title admin');
+        document.head.title = t('Title admin');
     }, [t]);
     return (
         <Page data-testid="AdminPanelPage">
