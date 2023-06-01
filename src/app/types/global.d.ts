@@ -16,6 +16,8 @@ declare module '*.svg' {
     export default SVG;
 }
 
+declare function ym(id: number, method: string, url: string): void;
+
 declare const __IS_DEV__: boolean;
 declare const __API__: string;
 declare const __STATIC_URL__: string;

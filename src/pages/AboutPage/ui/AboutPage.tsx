@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 import { Page } from '@/widgets/Page';
 import { Text } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/AppLink';
@@ -10,6 +11,9 @@ export default function AboutPage() {
     const { t } = useTranslation('about');
     const link = 'https://github.com/Igor21v/webitem';
     const { isScreenXl } = useResizeWindow();
+    useEffect(() => {
+        ym(93784203, 'hit', '#');
+    }, []);
     return (
         <>
             <Page data-testid="AboutPage">

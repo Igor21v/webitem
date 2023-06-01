@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -45,9 +45,9 @@ const ItemsPage = (props: ItemsPageProps) => {
         dispatch(itemsPageActions.setType(type || 'all'));
         dispatch(fetchItemsList({ replace: true }));
     }, [type]);
-    /* useEffect(() => {
-        if (type) document.title = t(type);
-    }, [t, type]); */
+    useEffect(() => {
+        ym(93784203, 'hit', '#');
+    }, []);
 
     return (
         <>

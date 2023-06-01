@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -37,6 +37,9 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     const { width: pageWidth } = useSelector(getPageDimensions);
     const item = useSelector(getItemDetailsData);
     const { isScreenXl } = useResizeWindow();
+    useEffect(() => {
+        ym(93784203, 'hit', '#');
+    }, []);
 
     return (
         <>

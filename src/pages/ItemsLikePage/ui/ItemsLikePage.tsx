@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 import { Page } from '@/widgets/Page';
 import { ItemLikeList } from '@/features/ItemLikeList';
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
@@ -7,6 +8,9 @@ import { AppHead } from '@/shared/ui/AppHead';
 
 export default function ItemsLikePage() {
     const { t } = useTranslation('itemsLike');
+    useEffect(() => {
+        ym(93784203, 'hit', '#');
+    }, []);
     return (
         <>
             <Page data-testid="MainPage">
