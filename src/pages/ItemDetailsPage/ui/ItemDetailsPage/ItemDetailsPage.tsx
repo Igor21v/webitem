@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -39,6 +39,10 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     const item = useSelector(getItemDetailsData);
     const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit(id);
+    const title = useMemo(() => {
+        if (item) return item.title;
+        return t('Loading');
+    }, [item, t]);
 
     return (
         <>
@@ -59,12 +63,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     </VStack>
                 </Page>
             </DynamicModuleLoader>
-            <AppHead
-                title={`${item?.title} ${t(
-                    'в галерее веб компонентов webitem',
-                )}`}
-                description={item?.description}
-            />
+            <AppHead title={title} description={item?.description} />
         </>
     );
 };

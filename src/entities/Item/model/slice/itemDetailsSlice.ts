@@ -4,7 +4,7 @@ import { Item } from '../types/item';
 import { ItemDetailsSchema } from '../types/itemDetailsSchema';
 
 const initialState: ItemDetailsSchema = {
-    isLoading: false,
+    isLoading: true,
     error: undefined,
     fulfilled: false,
     data: undefined,
