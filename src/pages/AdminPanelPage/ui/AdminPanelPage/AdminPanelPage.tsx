@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 import { Text, TextAlign } from '@/shared/ui/Text';
 import { ItemAdd } from '@/features/ItemAdd';
-import { AppHead } from '@/shared/ui/AppHead';
+import { AppHead } from '@/shared/lib/components/AppHead';
 
 const AdminPanelPage = () => {
     const { t } = useTranslation('adminPanel');

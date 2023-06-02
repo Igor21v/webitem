@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -19,7 +19,8 @@ import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
 import { ItemTypes } from '@/entities/Item';
 import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
-import { AppHead } from '@/shared/ui/AppHead';
+import { AppHead } from '@/shared/lib/components/AppHead';
+import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 
 interface ItemsPageProps {
     className?: string;
@@ -45,9 +46,7 @@ const ItemsPage = (props: ItemsPageProps) => {
         dispatch(itemsPageActions.setType(type || 'all'));
         dispatch(fetchItemsList({ replace: true }));
     }, [type]);
-    useEffect(() => {
-        ym(93784203, 'hit', '#');
-    }, []);
+    useYandexMetrikaHit(type);
 
     return (
         <>

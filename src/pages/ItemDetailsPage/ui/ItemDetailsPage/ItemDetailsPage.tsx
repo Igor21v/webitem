@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +20,8 @@ import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
 import { getPageDimensions } from '@/features/UI';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
-import { AppHead } from '@/shared/ui/AppHead';
+import { AppHead } from '@/shared/lib/components/AppHead';
+import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 
 interface ItemDetailsPageProps {
     className?: string;
@@ -37,9 +38,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     const { width: pageWidth } = useSelector(getPageDimensions);
     const item = useSelector(getItemDetailsData);
     const { isScreenXl } = useResizeWindow();
-    useEffect(() => {
-        ym(93784203, 'hit', '#');
-    }, []);
+    useYandexMetrikaHit(id);
 
     return (
         <>

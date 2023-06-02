@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ItemEdit } from '@/features/ItemEdit';
 import { Page } from '@/widgets/Page';
 import { ItemEditPageHeader } from '../ItemEditPageHeader/ItemEditPageHeader';
-import { AppHead } from '@/shared/ui/AppHead';
+import { AppHead } from '@/shared/lib/components/AppHead';
 
 interface ItemEditPageProps {
     className?: string;

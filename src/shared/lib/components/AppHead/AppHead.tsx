@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Portal } from '../Portal';
+import { Portal } from '../../../ui/Portal';
 
 interface AppHeadProps {
     title?: string;

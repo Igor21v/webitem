@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
-import { AppHead } from '@/shared/ui/AppHead';
+import { AppHead } from '@/shared/lib/components/AppHead';
 
 const ForbiddenPage = () => {
     const { t } = useTranslation('forbidden');
