@@ -42,10 +42,8 @@ export default function AboutPage() {
                 </ul>
             </Page>
             <AppHead
-                title={t(
-                    'Информация о сайте Webitem. Разработка и поддержка галереи компонентов для сайта',
-                )}
-                description="Сайт на React. Бондаренко Игорь Владимирович. Приложение React"
+                title={t('About title')}
+                description="Сайт на React Бондаренко Игорь Владимирович Пример приложения React"
             />
         </>
     );

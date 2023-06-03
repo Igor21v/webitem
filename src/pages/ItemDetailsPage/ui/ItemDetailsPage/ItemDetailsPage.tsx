@@ -40,7 +40,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit(id);
     const title = useMemo(() => {
-        if (item) return item.title;
+        if (item) return `${item?.title} ${t('in gallery')}`;
         return t('Loading');
     }, [item, t]);
 

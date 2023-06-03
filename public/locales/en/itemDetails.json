@@ -1,11 +1,11 @@
 {
-  "Item not found": "Item not found",
-  "Comments": "Comments",
-  "Back to the list": "Back to the list",
-  "We recommend": "We recommend",
-  "Edit": "Edit",
-  "Rate the item": "Rate the item",
-  "Leave your feedback about the item": "Leave your feedback about the item, it will help to improve the quality",
-  "в галерее веб компонентов webitem": "in the webitem web components gallery",
-  "Loading": "Loading..."
+    "Item not found": "Item not found",
+    "Comments": "Comments",
+    "Back to the list": "Back to the list",
+    "We recommend": "We recommend",
+    "Edit": "Edit",
+    "Rate the item": "Rate the item",
+    "Leave your feedback about the item": "Leave your feedback about the item, it will help to improve the quality",
+    "in gallery": "in the webitem web components gallery",
+    "Loading": "Loading..."
 }

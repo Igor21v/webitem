@@ -13,19 +13,14 @@ export default function MainPage() {
     useYandexMetrikaHit();
     const description =
         'Все компоненты. All components. Элементы для сайта. Библиотека элементов для сайта.' +
-        'Gallery of web components';
+        'Галерея веб компонентов';
     return (
         <>
             <Page data-testid="MainPage">
                 <ItemTypeList />
                 {!isScreenXl && <MobileSettings />}
             </Page>
-            <AppHead
-                title={t(
-                    'Главная страница webitem. Элементы и компоненты сайта разных типов',
-                )}
-                description={description}
-            />
+            <AppHead title={t('Main page title')} description={description} />
         </>
     );
 }

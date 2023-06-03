@@ -22,7 +22,7 @@ export default function ItemsLikePage() {
                 </VStack>
             </Page>
             <AppHead
-                title={t('Избранные компоненты webitem')}
+                title={t('Favorite webitem components')}
                 description="Избранное выбранные компоненты для сайта"
             />
         </>
