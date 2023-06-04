@@ -6,6 +6,8 @@ import { TextSpan } from '@/shared/ui/TextSpan';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 import { AppHead } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
+import { AppIcon } from '@/shared/ui/AppIcon';
+import cls from './AboutPage.module.scss';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
@@ -14,9 +16,9 @@ export default function AboutPage() {
     useYandexMetrikaHit();
     return (
         <>
-            <Page data-testid="AboutPage">
+            <Page data-testid="AboutPage" className={cls.AboutPage}>
                 {isScreenXl && <br />}
-                {/* <AppIcon className={cls.img} /> */}
+                <AppIcon className={cls.img} />
                 <span>
                     <TextSpan text={t('Support')} />
                     <AppLink to={link} target="_blank">
