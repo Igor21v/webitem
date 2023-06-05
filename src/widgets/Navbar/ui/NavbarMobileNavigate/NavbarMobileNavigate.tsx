@@ -26,7 +26,9 @@ export const NavbarMobileNavigate = memo(
             });
             if (activePage === -1) activePage = 1; // для ненайденных роутов выбираем страницу компонентов
             const root = document.documentElement;
-            const items = Array.from(document.querySelectorAll('li'));
+            const items = Array.from(
+                document.querySelectorAll<HTMLLIElement>(`.${cls.li}`),
+            );
             items[activePage].setAttribute('data-active-navbar', 'true');
             root.style.setProperty('--active-navbar', `${activePage}`);
             const itemHandler = (item: any, index: any) => {
