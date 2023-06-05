@@ -9,5 +9,6 @@ export function useYandexMetrikaHit(deps?: string) {
         ) {
             ym(93784203, 'hit', '#');
         }
+        console.log('YM');
     }, [deps]);
 }
