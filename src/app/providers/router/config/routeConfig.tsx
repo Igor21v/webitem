@@ -7,7 +7,6 @@ import { ItemEditPage } from '@/pages/ItemEditPage';
 import { ItemsPage } from '@/pages/ItemsPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import {
     AppRoutes,
@@ -31,7 +30,7 @@ export type AppRouteProps = RouteProps & {
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.MAIN]: {
-        path: getRouteMain(),
+        path: getRouteMain(':lang'),
         element: <MainPage />,
     },
     [AppRoutes.ABOUT]: {
@@ -78,6 +77,6 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     // last
     [AppRoutes.NOT_FOUND]: {
         path: '*',
-        element: <NotFoundPage />,
+        element: <MainPage />,
     },
 };

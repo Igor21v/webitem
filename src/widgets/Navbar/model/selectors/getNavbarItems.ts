@@ -12,7 +12,7 @@ import { NavbarItemType } from '../types/navbar';
 export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
     const navbarItemsList: NavbarItemType[] = [
         {
-            path: getRouteMain(),
+            path: getRouteMain('ru'),
             text: 'Main',
             fill: true,
             ImgOffsetX: 0,

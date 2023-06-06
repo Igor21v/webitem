@@ -1,5 +1,7 @@
 import { ItemTypes } from '../../entities/Item/model/consts/ItemList';
 
+type langType = 'ru' | 'en';
+
 export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
@@ -14,7 +16,7 @@ export enum AppRoutes {
     FORBIDDEN = 'forbidden',
 }
 
-export const getRouteMain = () => '/';
+export const getRouteMain = (lang: langType | ':lang') => `/${lang}`;
 export const getRouteAbout = () => '/about';
 export const getRouteProfile = (id: string) => `/profile/${id}`;
 export const getRouteItems = (type: ItemTypes) => `/items/${type}`;
