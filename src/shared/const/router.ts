@@ -17,12 +17,9 @@ export enum AppRoutes {
 }
 
 const getRoute = (lang: langType, func: (param?: string) => string) => {
-    console.log(`trap1 ${lang}`);
     if (lang === 'ru') {
-        console.log(`trap2  ${func()}`);
         return func();
     }
-    console.log(`trap3  /:lang${func()}`);
     return `/${lang}${func()}`;
 };
 

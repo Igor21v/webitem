@@ -21,9 +21,9 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
         >
             <AppImage
                 src={`${__STATIC_URL__}/bar_icons/theme.png`}
-                fallback=<Skeleton height={40} width={40} />
                 width={40}
                 height={40}
+                fallback=<Skeleton height={40} width={40} />
             />
         </Button>
     );
