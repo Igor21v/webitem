@@ -20,21 +20,25 @@ import {
     getRouteMain,
     getRouteProfile,
     getRouteFavourites,
+    langType,
 } from '@/shared/const/router';
 import { ItemsLikePage } from '@/pages/ItemsLikePage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
     roles?: UserRole[];
 };
 
-export const routeConfig: Record<AppRoutes, AppRouteProps> = {
+export const routeConfig = (
+    lang: langType,
+): Record<AppRoutes, AppRouteProps> => ({
     [AppRoutes.MAIN]: {
-        path: getRouteMain(':lang'),
+        path: getRouteMain(),
         element: <MainPage />,
     },
     [AppRoutes.ABOUT]: {
-        path: getRouteAbout(),
+        path: getRouteAbout(lang),
         element: <AboutPage />,
     },
     [AppRoutes.PROFILE]: {
@@ -67,7 +71,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         roles: [UserRole.MANAGER, UserRole.ADMIN],
     },
     [AppRoutes.FAVOURITES]: {
-        path: getRouteFavourites(),
+        path: getRouteFavourites(lang),
         element: <ItemsLikePage />,
     },
     [AppRoutes.FORBIDDEN]: {
@@ -77,6 +81,6 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     // last
     [AppRoutes.NOT_FOUND]: {
         path: '*',
-        element: <MainPage />,
+        element: <NotFoundPage />,
     },
-};
+});

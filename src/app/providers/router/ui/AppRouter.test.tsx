@@ -11,7 +11,7 @@ import { UserRole } from '@/entities/User';
 describe('app/router/AppRouter', () => {
     test('Страница должна отрендерится', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteAbout(),
+            route: getRouteAbout('en'),
         });
         const page = await screen.findByTestId('AboutPage');
         expect(page).toBeInTheDocument();

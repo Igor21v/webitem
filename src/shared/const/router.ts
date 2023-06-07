@@ -1,6 +1,6 @@
 import { ItemTypes } from '../../entities/Item/model/consts/ItemList';
 
-type langType = 'ru' | 'en';
+export type langType = 'ru' | 'en' | ':lang';
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -16,13 +16,24 @@ export enum AppRoutes {
     FORBIDDEN = 'forbidden',
 }
 
-export const getRouteMain = (lang: langType | ':lang') => `/${lang}`;
-export const getRouteAbout = () => '/about';
+const getRoute = (lang: langType, func: (param?: string) => string) => {
+    console.log(`trap1 ${lang}`);
+    if (lang === 'ru') {
+        console.log(`trap2  ${func()}`);
+        return func();
+    }
+    console.log(`trap3  /:lang${func()}`);
+    return `/${lang}${func()}`;
+};
+
+export const getRouteMain = () => `/`;
+export const getRouteAbout = (lang: langType) => getRoute(lang, () => '/about');
 export const getRouteProfile = (id: string) => `/profile/${id}`;
 export const getRouteItems = (type: ItemTypes) => `/items/${type}`;
 export const getRouteItemDetails = (id: string) => `/item/${id}`;
 export const getRouteItemCreate = () => '/items/new';
 export const getRouteItemEdit = (id: string) => `/items/${id}/edit`;
 export const getRouteAdmin = () => '/admin';
-export const getRouteFavourites = () => '/favourites';
+export const getRouteFavourites = (lang: langType) =>
+    getRoute(lang, () => '/favourites');
 export const getRouteForbidden = () => '/forbidden';
