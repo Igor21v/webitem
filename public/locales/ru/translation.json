@@ -4,7 +4,6 @@
     "Items": "Статьи",
     "Translate": "English",
     "toggle": "переключатель",
-    "page-not-found": "Страница не найдена",
     "An unexpected error has occurred": "Произошла непредвиденная ошибка",
     "Reload page": "Обновить страницу",
     "Short translate": "EN",
@@ -45,5 +44,5 @@
     "Gallery of web components": "Галерея веб компонентов",
     "Show animation": "Показать анимацию",
     "Hide animation": "Скрыть анимацию",
-    "Страница не найдена :( webitem": "Страница не найдена :( webitem"
+    "Page not found": "Страница не найдена :( webitem"
 }

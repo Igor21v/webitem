@@ -9,7 +9,7 @@ const ForbiddenPage = () => {
             <Page data-testid="ForbiddenPage">
                 {t('You do not have access to this page')}
             </Page>
-            <AppHead title={t('Отказано в доступе к странице на webitem.ru')} />
+            <AppHead title={t('Forbidden title')} />
         </>
     );
 };

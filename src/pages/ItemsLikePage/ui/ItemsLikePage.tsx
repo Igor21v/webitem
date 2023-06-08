@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import { Page } from '@/widgets/Page';
 import { ItemLikeList } from '@/features/ItemLikeList';
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
@@ -10,8 +9,6 @@ import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYand
 export default function ItemsLikePage() {
     const { t } = useTranslation('itemsLike');
     useYandexMetrikaHit();
-    const { lang } = useParams();
-    console.log(`RRRR ${lang}`);
     return (
         <>
             <Page data-testid="MainPage">
@@ -25,8 +22,8 @@ export default function ItemsLikePage() {
                 </VStack>
             </Page>
             <AppHead
-                title={t('Favorite webitem components')}
-                description="Избранное выбранные компоненты для сайта"
+                title={t('Favorite title')}
+                description={t('Favorite description')}
             />
         </>
     );

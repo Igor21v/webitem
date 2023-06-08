@@ -8,6 +8,7 @@ import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
 import { SpriteImg } from '@/shared/ui/SpriteImg';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { getRoute, langType } from '@/shared/const/router';
 
 interface NavbarMobileNavigateProps {
     className?: string;
@@ -15,7 +16,7 @@ interface NavbarMobileNavigateProps {
 
 export const NavbarMobileNavigate = memo(
     ({ className }: NavbarMobileNavigateProps) => {
-        const { t } = useTranslation();
+        const { t, i18n } = useTranslation();
         const navbarItemsList = useSelector(getNavbarItems);
 
         useEffect(() => {
@@ -59,7 +60,11 @@ export const NavbarMobileNavigate = memo(
                         <li className={cls.li} key={item.path}>
                             <AppLink
                                 theme={AppLinkTheme.SECONDARY}
-                                to={item.path}
+                                to={getRoute(
+                                    item.path,
+                                    i18n.language as langType,
+                                    item.pathParam,
+                                )}
                                 className={cls.icon}
                                 /* className={classNames(cls.item, {})} */
                             >

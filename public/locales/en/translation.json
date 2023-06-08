@@ -4,7 +4,6 @@
     "Items": "Items",
     "Translate": "Русский",
     "toggle": "toggle",
-    "page-not-found": "Page not found",
     "An unexpected error has occurred": "An unexpected error has occurred",
     "Reload page": "Reload page",
     "Short translate": "RU",
@@ -45,5 +44,5 @@
     "Gallery of web components": "Gallery of web components",
     "Show animation": "Show animation",
     "Hide animation": "Hide animation",
-    "Страница не найдена :( webitem": "Page not found :( webitem"
+    "Page not found": "Page not found :( webitem"
 }

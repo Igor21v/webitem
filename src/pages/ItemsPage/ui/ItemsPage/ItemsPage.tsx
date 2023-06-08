@@ -61,8 +61,8 @@ const ItemsPage = (props: ItemsPageProps) => {
             </DynamicModuleLoader>
             {type && (
                 <AppHead
-                    title={tType(type) + t('items page title')}
-                    description="Компоненты для сайта. Сomponents for website. Элементы для сайта"
+                    title={tType(type) + t('Items title')}
+                    description={t('Items description')}
                 />
             )}
         </>

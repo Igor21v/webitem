@@ -20,7 +20,10 @@ export default function MainPage() {
                 <ItemTypeList />
                 {!isScreenXl && <MobileSettings />}
             </Page>
-            <AppHead title={t('Main page title')} description={description} />
+            <AppHead
+                title={t('Main page title')}
+                description={t('Main page description')}
+            />
         </>
     );
 }

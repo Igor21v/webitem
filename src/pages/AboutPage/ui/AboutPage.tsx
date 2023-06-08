@@ -45,7 +45,7 @@ export default function AboutPage() {
             </Page>
             <AppHead
                 title={t('About title')}
-                description="Сайт на React Бондаренко Игорь Владимирович Пример приложения React"
+                description={t('About description')}
             />
         </>
     );

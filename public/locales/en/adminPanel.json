@@ -22,5 +22,6 @@
     "Calculate height": "Calculate height",
     "A component with this header already exists": "A component with this header already exists",
     "Title admin": "Admin panal",
-    "Панель администратора webitem": "Webitem admin panel"
+    "Admin panel title": "Webitem admin panel",
+    "Admin panel description": "Add a component to the gallery"
 }

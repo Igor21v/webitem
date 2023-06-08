@@ -21,10 +21,7 @@ const ItemEditPage = memo((props: ItemEditPageProps) => {
                 <ItemEditPageHeader />
                 {id && <ItemEdit id={id} />}
             </Page>
-            <AppHead
-                title={t('Редактирование компонента webitem')}
-                description="Редактировать компонент webitem"
-            />
+            <AppHead title={t('Edit title')} />
         </>
     );
 });

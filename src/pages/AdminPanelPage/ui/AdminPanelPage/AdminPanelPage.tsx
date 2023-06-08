@@ -13,8 +13,8 @@ const AdminPanelPage = () => {
                 <ItemAdd />
             </Page>
             <AppHead
-                title={t('Панель администратора webitem')}
-                description="Добавить компонент webitem"
+                title={t('Admin panel title')}
+                description={t('Admin panel description')}
             />
         </>
     );
