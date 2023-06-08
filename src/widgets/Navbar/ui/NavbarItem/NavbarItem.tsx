@@ -8,9 +8,10 @@ import { NavbarItemType } from '../../model/types/navbar';
 import cls from './NavbarItem.module.scss';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { SpriteImg } from '@/shared/ui/SpriteImg';
+import { getRoute, langType } from '@/shared/const/router';
 
 export const NavbarItem = memo((item: NavbarItemType) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
     if (item.authOnly && !isAuth) {
         return null;
@@ -18,7 +19,7 @@ export const NavbarItem = memo((item: NavbarItemType) => {
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}
-            to={item.path}
+            to={getRoute(item.path, i18n.language as langType, item.pathParam)}
             className={classNames(cls.item, {})}
         >
             {/* <AppImage

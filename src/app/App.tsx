@@ -12,7 +12,6 @@ export default function App() {
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
-    console.log('Render App');
     const inited = useSelector(getUserInited);
     const { isScreenXl } = useResizeWindow();
 

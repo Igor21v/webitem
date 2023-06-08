@@ -17,7 +17,6 @@ export const LangSwitcher = memo((props: LangSwitcherProps) => {
     const navigate = useNavigate();
 
     const langPath = url.pathname.slice(1, 3);
-    console.log(`Render lSwitcher ${i18n.language !== 'en'}`);
 
     useEffect(() => {
         if (langPath === 'en') {

@@ -1,35 +1,32 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { useTranslation } from 'react-i18next';
 import { getUserAuthData } from '@/entities/User';
-import { getRoute, langType } from '@/shared/const/router';
 import { NavbarItemType } from '../types/navbar';
 
 export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
-    const { i18n } = useTranslation();
-    const lang = i18n.language as langType;
     const navbarItemsList: NavbarItemType[] = [
         {
-            path: getRoute('main', lang),
+            path: 'main',
             text: 'Main',
             fill: true,
             ImgOffsetX: 0,
             ImgOffsetY: 0,
         },
         {
-            path: getRoute('items', lang, 'all'),
+            path: 'items',
+            pathParam: 'all',
             text: 'All items',
             fill: true,
             ImgOffsetX: 32,
             ImgOffsetY: 0,
         },
         {
-            path: getRoute('favourites', lang),
+            path: 'favourites',
             text: 'Favourites',
             ImgOffsetX: 64,
             ImgOffsetY: 0,
         },
         {
-            path: getRoute('about', lang),
+            path: 'about',
             text: 'About',
             fill: true,
             ImgOffsetX: 96,
@@ -46,7 +43,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
                 fill: true,
             }, */
             {
-                path: getRoute('admin_panele', lang),
+                path: 'admin_panele',
                 text: 'Admin panel',
                 fill: true,
                 ImgOffsetX: 128,

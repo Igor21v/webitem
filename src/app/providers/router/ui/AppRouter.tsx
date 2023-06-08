@@ -8,7 +8,6 @@ import { langType } from '@/shared/const/router';
 
 const AppRouter = () => {
     const { i18n } = useTranslation();
-    console.log('Render AppRout');
 
     const renderWithWrapper = useCallback((route: AppRouteProps) => {
         const element = (
