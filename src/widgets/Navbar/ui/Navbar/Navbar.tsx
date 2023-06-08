@@ -12,7 +12,7 @@ import cls from './Navbar.module.scss';
 import { NavbarItem } from '../NavbarItem/NavbarItem';
 import { getNavbarItems } from '../../model/selectors/getNavbarItems';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteMain } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { AppIcon } from '@/shared/ui/AppIcon';
 
 interface NavbarProps {
@@ -20,7 +20,7 @@ interface NavbarProps {
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -32,7 +32,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const navbarItemsList = useSelector(getNavbarItems);
     const content = (
         <>
-            <AppLink to={getRouteMain()} className={cls.appName}>
+            <AppLink
+                to={getRoute('main', i18n.language as langType)}
+                className={cls.appName}
+            >
                 <HStack gap="16">
                     <Text theme={TextTheme.INVERTED} title={t('webitem')} />
                     <AppIcon width={30} height={30} inverted />

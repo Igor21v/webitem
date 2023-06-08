@@ -6,7 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getItemDetailsData } from '@/entities/Item';
 import { HStack } from '@/shared/ui/Stack';
-import { getRouteItemEdit } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { getUserAuthData } from '@/entities/User';
 
 interface ItemDetailsPageHeaderProps {
@@ -16,7 +16,7 @@ interface ItemDetailsPageHeaderProps {
 export const ItemDetailsPageHeader = memo(
     (props: ItemDetailsPageHeaderProps) => {
         const { className } = props;
-        const { t } = useTranslation('itemDetails');
+        const { t, i18n } = useTranslation('itemDetails');
         const navigate = useNavigate();
         const authData = useSelector(getUserAuthData);
         const item = useSelector(getItemDetailsData);
@@ -25,9 +25,11 @@ export const ItemDetailsPageHeader = memo(
         }, [navigate]);
         const onEditItem = useCallback(() => {
             if (item) {
-                navigate(getRouteItemEdit(item.id));
+                navigate(
+                    getRoute('item_edit', i18n.language as langType, item.id),
+                );
             }
-        }, [item, navigate]);
+        }, [i18n.language, item, navigate]);
         return (
             <HStack
                 max

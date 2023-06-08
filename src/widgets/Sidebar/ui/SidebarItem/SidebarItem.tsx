@@ -5,7 +5,7 @@ import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import cls from './SidebarItem.module.scss';
-import { getRouteItems } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { ItemType, ItemTypeUI } from '@/entities/Item';
 import { TextTheme } from '@/shared/ui/Text';
 import { SpriteImg } from '@/shared/ui/SpriteImg';
@@ -20,7 +20,7 @@ interface SidibarItemProps {
 
 export const SidibarItem = memo((props: SidibarItemProps) => {
     const { item, collapsed, ImgOffsetX, ImgOffsetY } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
 
     if (item.authOnly && !isAuth) {
@@ -29,7 +29,7 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}
-            to={getRouteItems(item.type)}
+            to={getRoute('items', i18n.language as langType, item.type)}
             className={classNames(cls.item, { [cls.collapsed]: collapsed })}
         >
             {/* <AppImage

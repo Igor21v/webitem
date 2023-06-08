@@ -1,9 +1,5 @@
 import { screen } from '@testing-library/react';
-import {
-    getRouteAbout,
-    getRouteAdmin,
-    getRouteProfile,
-} from '@/shared/const/router';
+import { getRoute } from '@/shared/const/router';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import AppRouter from './AppRouter';
 import { UserRole } from '@/entities/User';
@@ -11,7 +7,7 @@ import { UserRole } from '@/entities/User';
 describe('app/router/AppRouter', () => {
     test('Страница должна отрендерится', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteAbout('en'),
+            route: getRoute('about', 'ru'),
         });
         const page = await screen.findByTestId('AboutPage');
         expect(page).toBeInTheDocument();
@@ -27,7 +23,7 @@ describe('app/router/AppRouter', () => {
 
     test('Редирект неавторизованного пользователя на главную', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteProfile('1'),
+            route: getRoute('profile', 'ru', '1'),
         });
 
         const page = await screen.findByTestId('MainPage');
@@ -36,7 +32,7 @@ describe('app/router/AppRouter', () => {
 
     test('Доступ к закрытой странице для авторизованного пользователя', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteProfile('1'),
+            route: getRoute('profile', 'ru', '1'),
             initialState: {
                 user: { _inited: true, authData: {} },
             },
@@ -48,7 +44,7 @@ describe('app/router/AppRouter', () => {
 
     test('Доступ запрещен (отсутствует роль)', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteAdmin(),
+            route: getRoute('admin_panele', 'ru'),
             initialState: {
                 user: { _inited: true, authData: {} },
             },
@@ -60,7 +56,7 @@ describe('app/router/AppRouter', () => {
 
     test('Доступ разрешен (присутствует роль)', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteAdmin(),
+            route: getRoute('admin_panele', 'ru'),
             initialState: {
                 user: { _inited: true, authData: { roles: [UserRole.ADMIN] } },
             },

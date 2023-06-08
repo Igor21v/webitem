@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextAlign } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { getRouteItemDetails } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ItemListMobileItem.module.scss';
 import { ItemListSpecItemProps } from '../ItemListItem/ItemListItem';
@@ -15,7 +15,7 @@ import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWin
 
 export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [animateOn, setAnimateOn] = useState(false);
     const { isScreenXl, isScreenMd } = useResizeWindow();
     const animateHandler = useCallback(() => {
@@ -33,6 +33,8 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
             classNameTitle={cls.titleText}
         />
     );
+
+    const link = getRoute('item_details', i18n.language as langType, item.id);
 
     if (isScreenMd)
         return (
@@ -68,10 +70,7 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                             <Text text={item.createdAt} />
                             {views}
 
-                            <AppLink
-                                target={target}
-                                to={getRouteItemDetails(item.id)}
-                            >
+                            <AppLink target={target} to={link}>
                                 <Button theme={ButtonTheme.OUTLINE}>
                                     {t('View the source code')}
                                 </Button>
@@ -114,7 +113,7 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                 <Text text={item.createdAt} />
                 {views}
 
-                <AppLink target={target} to={getRouteItemDetails(item.id)}>
+                <AppLink target={target} to={link}>
                     <Button theme={ButtonTheme.OUTLINE}>
                         {t('View the source code')}
                     </Button>

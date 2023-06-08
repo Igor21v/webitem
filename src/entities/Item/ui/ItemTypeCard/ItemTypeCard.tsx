@@ -5,7 +5,7 @@ import cls from './ItemTypeCard.module.scss';
 import { Card } from '@/shared/ui/Card';
 import { ItemType } from '../../model/consts/ItemList';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteItems } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { AppImage } from '@/shared/ui/AppImage';
 import { ItemTypeUI } from '../ItemTypeUI/ItemTypeUI';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -22,11 +22,11 @@ interface ItemTypeCardProps {
 
 export const ItemTypeCard = memo((props: ItemTypeCardProps) => {
     const { className, itemType, target } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     return (
         <AppLink
             target={target}
-            to={getRouteItems(itemType.type)}
+            to={getRoute('items', i18n.language as langType, itemType.type)}
             className={classNames(cls.ItemTypeCard, {}, [className])}
             data-testid="ItemListItem"
             preventChangeOpacity

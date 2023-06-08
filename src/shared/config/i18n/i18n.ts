@@ -9,7 +9,7 @@ i18n.use(Backend)
     .use(initReactI18next)
     .init({
         fallbackLng: false,
-        lng: 'ru', // TODO влкючено для индексации яндексом на русском языке
+        /* lng: 'ru',  */
         /* debug: !!__IS_DEV__, */
         debug: false,
 

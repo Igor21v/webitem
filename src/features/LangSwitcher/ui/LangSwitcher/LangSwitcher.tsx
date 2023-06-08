@@ -23,7 +23,6 @@ export const LangSwitcher = memo((props: LangSwitcherProps) => {
         if (langPath === 'en') {
             if (i18n.language !== 'en') {
                 i18n.changeLanguage('en');
-                console.log(`Render lSwitcher111 ${langPath}`);
             }
         } else if (i18n.language !== 'ru') {
             i18n.changeLanguage('ru');

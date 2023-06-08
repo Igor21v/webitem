@@ -2,8 +2,9 @@ import { useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getUserAuthData, getUserRoles, UserRole } from '@/entities/User';
-import { getRouteForbidden, getRouteMain } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 
 interface RequireAuthProps {
     children: JSX.Element;
@@ -14,6 +15,7 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
     const auth = useSelector(getUserAuthData);
     const location = useLocation();
     const userRoles = useSelector(getUserRoles);
+    const { i18n } = useTranslation();
     const hasRequiredRoles = useMemo(() => {
         if (!roles) {
             return true;
@@ -25,13 +27,17 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
     }, [roles, userRoles]);
     if (!auth) {
         return (
-            <Navigate to={getRouteMain()} state={{ from: location }} replace />
+            <Navigate
+                to={getRoute('main', i18n.language as langType)}
+                state={{ from: location }}
+                replace
+            />
         );
     }
     if (!hasRequiredRoles) {
         return (
             <Navigate
-                to={getRouteForbidden()}
+                to={getRoute('forbidden', i18n.language as langType)}
                 state={{ from: location }}
                 replace
             />
