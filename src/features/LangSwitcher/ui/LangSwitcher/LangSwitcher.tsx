@@ -33,7 +33,6 @@ export const LangSwitcher = memo((props: LangSwitcherProps) => {
             i18n.changeLanguage('en');
             const newPath = `en${url.pathname}`;
             url.pathname = newPath;
-            /* document.location = url.href; */
             navigate(url.pathname + url.search + url.hash);
         } else {
             i18n.changeLanguage('ru');
@@ -42,8 +41,6 @@ export const LangSwitcher = memo((props: LangSwitcherProps) => {
             navigate(url.pathname + url.search + url.hash);
         }
     };
-
-    /* navigate((item.id)); */
 
     return (
         <Button
