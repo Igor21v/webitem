@@ -46,7 +46,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
                 path: 'admin_panel',
                 text: 'Admin panel',
                 fill: true,
-                ImgOffsetX: 128,
+                ImgOffsetX: 160,
                 ImgOffsetY: 0,
             },
         );

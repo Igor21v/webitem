@@ -11,9 +11,6 @@ export default function MainPage() {
     const { t } = useTranslation('main');
     const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit();
-    const description =
-        'Все компоненты. All components. Элементы для сайта. Библиотека элементов для сайта.' +
-        'Галерея веб компонентов';
     return (
         <>
             <Page data-testid="MainPage">

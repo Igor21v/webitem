@@ -1,6 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 import { HStack } from '@/shared/ui/Stack';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
@@ -11,9 +10,6 @@ import { ButtonTheme } from '@/shared/ui/Button';
 
 export default function MobileSettings() {
     const { t } = useTranslation('main');
-    useEffect(() => {
-        document.title = t('Title main');
-    }, [t]);
     return (
         <HStack max justify="center">
             <Card className={cls.settings} shadow>
