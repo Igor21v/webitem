@@ -11,7 +11,7 @@ export type AppRoutes =
     | 'item_create'
     | 'item_edit'
     | 'favourites'
-    | 'admin_panele'
+    | 'admin_panel'
     | 'forbidden'
     | 'not_found';
 
@@ -35,7 +35,7 @@ const routerMap: Record<AppRoutes, (value: any) => string> = {
     item_create: () => '/items/new',
     item_edit: (id: string) => `/items/${id}/edit`,
     favourites: () => '/favourites',
-    admin_panele: () => '/admin',
+    admin_panel: () => '/admin',
     forbidden: () => '/forbidden',
     not_found: () => '/',
 };

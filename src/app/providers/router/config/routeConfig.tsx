@@ -55,8 +55,8 @@ export const routeConfig = (
             element: <ItemEditPage />,
             authOnly: true,
         },
-        admin_panele: {
-            path: getRouteWrapper('admin_panele'),
+        admin_panel: {
+            path: getRouteWrapper('admin_panel'),
             element: <AdminPanelPage />,
             authOnly: true,
             roles: [UserRole.MANAGER, UserRole.ADMIN],

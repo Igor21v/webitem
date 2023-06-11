@@ -37,7 +37,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                           {
                               content: t('Admin panel'),
                               href: getRoute(
-                                  'admin_panele',
+                                  'admin_panel',
                                   i18n.language as langType,
                               ),
                           },

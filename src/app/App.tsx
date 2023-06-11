@@ -6,6 +6,7 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, userActions } from '@/entities/User';
 import { AppRouter } from './providers/router';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
+import { LangInit } from '@/widgets/LangInit';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function App() {
                     {isScreenXl && <Sidebar />}
                     {inited && <AppRouter />}
                 </div>
+                <LangInit />
             </Suspense>
         </div>
     );

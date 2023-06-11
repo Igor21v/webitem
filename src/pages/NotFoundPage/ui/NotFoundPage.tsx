@@ -22,7 +22,7 @@ export const NotFoundPage = ({ className }: NotFoundPageProps) => {
         loadingLang = false;
     }
 
-    const content = !loadingLang ? (
+    const content = loadingLang ? (
         <HStack align="center">
             <Loader className={cls.loader} />
         </HStack>

@@ -9,6 +9,11 @@ import { SpriteImg } from '@/shared/ui/SpriteImg';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { getRoute, langType } from '@/shared/const/router';
+import { Popover } from '@/shared/ui/Popups';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
+import { VStack } from '@/shared/ui/Stack';
+import { ButtonTheme } from '@/shared/ui/Button';
 
 interface NavbarMobileNavigateProps {
     className?: string;
@@ -20,12 +25,13 @@ export const NavbarMobileNavigate = memo(
         const navbarItemsList = useSelector(getNavbarItems);
 
         useEffect(() => {
-            const page = window.location.pathname.split('/')[1];
+            const page = window.location.pathname.split('/')[2];
+            const pageRu = window.location.pathname.split('/')[1];
             let activePage = navbarItemsList.findIndex((item) => {
-                const itemPath = item.path.split('/')[1];
-                return itemPath === page;
+                /*                 const itemPath = item.path.split('/')[1]; */
+                return item.path === page || item.path === pageRu;
             });
-            if (activePage === -1) activePage = 1; // для ненайденных роутов выбираем страницу компонентов
+            if (activePage === -1) activePage = 0; // для ненайденных роутов выбираем главную
             const root = document.documentElement;
             const items = Array.from(
                 document.querySelectorAll<HTMLLIElement>(`.${cls.li}`),
@@ -88,6 +94,27 @@ export const NavbarMobileNavigate = memo(
                         </li>
                     ))}
                 </ul>
+
+                <Popover
+                    className={className}
+                    direction="bottom left"
+                    trigger={
+                        <SpriteImg
+                            widthSource={32}
+                            heightSource={32}
+                            backgroundURL={`${__STATIC_URL__}/bar_icons/navbar_sprite.png`}
+                            offsetX={128}
+                            offsetY={0}
+                            /* zoom={0.625} */
+                            fallback=<Skeleton height={32} width={32} />
+                        />
+                    }
+                >
+                    <VStack gap="8" align="center">
+                        <LangSwitcher theme={ButtonTheme.CLEAR} />
+                        <ThemeSwitcher />
+                    </VStack>
+                </Popover>
             </nav>
         );
     },

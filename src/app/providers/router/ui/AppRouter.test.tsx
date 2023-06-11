@@ -44,7 +44,7 @@ describe('app/router/AppRouter', () => {
 
     test('Доступ запрещен (отсутствует роль)', async () => {
         componentRender(<AppRouter />, {
-            route: getRoute('admin_panele', 'ru'),
+            route: getRoute('admin_panel', 'ru'),
             initialState: {
                 user: { _inited: true, authData: {} },
             },
@@ -56,7 +56,7 @@ describe('app/router/AppRouter', () => {
 
     test('Доступ разрешен (присутствует роль)', async () => {
         componentRender(<AppRouter />, {
-            route: getRoute('admin_panele', 'ru'),
+            route: getRoute('admin_panel', 'ru'),
             initialState: {
                 user: { _inited: true, authData: { roles: [UserRole.ADMIN] } },
             },

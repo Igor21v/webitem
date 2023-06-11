@@ -43,7 +43,7 @@ export const getNavbarItems = createSelector(getUserAuthData, (userData) => {
                 fill: true,
             }, */
             {
-                path: 'admin_panele',
+                path: 'admin_panel',
                 text: 'Admin panel',
                 fill: true,
                 ImgOffsetX: 128,

@@ -48,8 +48,8 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
     const isItemLoaded = (index: number) => !hasNextPage || index < rowCount;
     const getItemSize = (index: number) => {
         if (index === 0) {
-            if (!isScreenSm) return 215;
-            if (!isScreenXl) return 165;
+            if (!isScreenSm) return 225;
+            if (!isScreenXl) return 175;
             return 155;
         }
         if (!isScreenSm) return 400;

@@ -34,7 +34,7 @@ export const NavbarItem = memo((item: NavbarItemType) => {
                 backgroundURL={`${__STATIC_URL__}/bar_icons/navbar_sprite.png`}
                 offsetX={item.ImgOffsetX}
                 offsetY={item.ImgOffsetY}
-                zoom={0.625}
+                /* zoom={0.625} */
                 fallback=<Skeleton height={20} width={20} />
             />
             <span className={cls.link}>{t(item.text)}</span>

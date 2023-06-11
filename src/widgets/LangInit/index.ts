@@ -1,0 +1,1 @@
+export { LangInit } from './LangInit';
