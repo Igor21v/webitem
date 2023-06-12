@@ -9,6 +9,7 @@ import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { SortOrder } from '@/shared/types';
 import { fetchItemsList } from '../services/fetchItemsList/fetchItemsList';
 import { ItemsPageSchema } from '../types/itemsPageSchema';
+import { itemsPageInitState } from '../consts/itemsPageConst';
 
 const itemsAdapter = createEntityAdapter<Item>({
     selectId: (item) => item.id,
@@ -20,22 +21,8 @@ export const getItems = itemsAdapter.getSelectors<StateSchema>(
 
 export const itemsPageSlice = createSlice({
     name: 'itemsPageSlice',
-    initialState: itemsAdapter.getInitialState<ItemsPageSchema>({
-        isLoading: false,
-        error: undefined,
-        ids: [],
-        entities: {},
-        view: ItemView.SMALL,
-        page: 1,
-        hasMore: true,
-        _inited: false,
-        limit: 15,
-        sort: ItemSortField.CREATED,
-        search: '',
-        order: 'asc',
-        type: 'all',
-        searchFocus: false,
-    }),
+    initialState:
+        itemsAdapter.getInitialState<ItemsPageSchema>(itemsPageInitState),
     reducers: {
         setView: (state, action: PayloadAction<ItemView>) => {
             state.view = action.payload;

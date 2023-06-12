@@ -10,6 +10,7 @@ import {
     getItemsPageSort,
     getItemsPageType,
 } from '../../selectors/itemsPageSelectors';
+import { itemsPageInitState } from '../../consts/itemsPageConst';
 
 interface FetchItemListProps {
     replace?: boolean;
@@ -28,11 +29,18 @@ export const fetchItemsList = createAsyncThunk<
     const search = getItemsPageSearch(getState());
     const type = getItemsPageType(getState());
     try {
-        addQueryParams({
-            sort,
-            order,
-            search,
-        });
+        if (
+            sort !== itemsPageInitState.sort ||
+            order !== itemsPageInitState.order ||
+            search !== itemsPageInitState.search
+        ) {
+            console.log('addQP');
+            addQueryParams({
+                sort,
+                order,
+                search,
+            });
+        }
         const response = await extra.api.get<Item[]>('/items/', {
             params: {
                 _limit: limit,
