@@ -34,7 +34,6 @@ export const fetchItemsList = createAsyncThunk<
             order !== itemsPageInitState.order ||
             search !== itemsPageInitState.search
         ) {
-            console.log('addQP');
             addQueryParams({
                 sort,
                 order,
