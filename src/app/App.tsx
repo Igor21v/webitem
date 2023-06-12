@@ -15,6 +15,7 @@ export default function App() {
     }, [dispatch]);
     const inited = useSelector(getUserInited);
     const { isScreenXl } = useResizeWindow();
+    /* useLangInit(); */
 
     return (
         <div className={classNames('app', {}, [])}>
