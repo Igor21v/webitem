@@ -44,5 +44,6 @@
     "Gallery of web components": "Gallery of web components",
     "Show animation": "Show animation",
     "Hide animation": "Hide animation",
-    "Page not found": "Page not found :( webitem"
+    "Page not found": "Page not found :( webitem",
+    "Loading": "Loading..."
 }

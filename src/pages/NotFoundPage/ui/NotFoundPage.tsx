@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Page } from '@/widgets/Page';
 import { AppHead } from '@/shared/lib/components/AppHead';
 import { Text, TextAlign } from '@/shared/ui/Text';
 import { Loader } from '@/shared/ui/Loader';
 import cls from './NotFoundPage.module.scss';
 import { HStack } from '@/shared/ui/Stack';
+import { Page } from '@/widgets/Page';
 
 interface NotFoundPageProps {
     className?: string;
@@ -22,18 +22,19 @@ export const NotFoundPage = ({ className }: NotFoundPageProps) => {
         loadingLang = false;
     }
 
-    const content = loadingLang ? (
-        <HStack align="center">
-            <Loader className={cls.loader} />
-        </HStack>
-    ) : (
-        <Text title={t('Page not found')} align={TextAlign.CENTER} />
-    );
-
+    if (loadingLang)
+        return (
+            <Page data-testid="NotFoundPage">
+                <HStack align="center">
+                    <Loader className={cls.loader} />
+                </HStack>
+                <AppHead title={t('Loading')} />
+            </Page>
+        );
     return (
-        <>
-            <Page data-testid="NotFoundPage">{content}</Page>
+        <Page data-testid="NotFoundPage">
+            <Text title={t('Page not found')} align={TextAlign.CENTER} />
             <AppHead title={t('Page not found')} />
-        </>
+        </Page>
     );
 };
