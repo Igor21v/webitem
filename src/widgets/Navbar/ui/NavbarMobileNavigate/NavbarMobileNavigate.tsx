@@ -90,6 +90,7 @@ export const NavbarMobileNavigate = memo(
                                 theme={TextTheme.INVERTED}
                                 HeaderTag="h2"
                                 size={TextSize.S}
+                                minLineHeight
                             />
                         </li>
                     ))}
