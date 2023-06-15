@@ -18,7 +18,7 @@ export default function App() {
     /* useLangInit(); */
 
     return (
-        <div className={classNames('app', {}, [])}>
+        <div className={classNames('app', {}, [])} id="app">
             <Suspense fallback="">
                 {isScreenXl && <Navbar />}
                 {!isScreenXl && <NavbarMobile />}
