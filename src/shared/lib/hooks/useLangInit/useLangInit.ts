@@ -15,5 +15,4 @@ export const useLangInit = () => {
             i18n.changeLanguage('ru');
         }
     }, [i18n, langPath]);
-    return null;
 };

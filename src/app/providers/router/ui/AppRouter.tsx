@@ -1,4 +1,4 @@
-import { memo, Suspense, useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PageLoader } from '@/widgets/PageLoader';
@@ -37,4 +37,4 @@ const AppRouter = () => {
     );
 };
 
-export default memo(AppRouter);
+export default AppRouter;
