@@ -27,6 +27,7 @@ server.use((req, res, next) => {
 // Эндпоинт для компонентов
 server.get('/items', (req, res) => {
     try {
+        console.log('2');
         const {
             _limit: limit,
             _page: page,
@@ -45,10 +46,12 @@ server.get('/items', (req, res) => {
         const toEl = page * limit;
 
         const itemsReturn = itemsDB.slice(fromEl, toEl);
-        itemsReturn.forEach((item) => {
-            item.codes = { html: '', css: '', js: '' };
+        const response = itemsReturn.map((item) => {
+            newItem = { ...item };
+            newItem.codes = { html: '', css: '', js: '' };
+            return newItem;
         });
-        return res.json(itemsReturn);
+        return res.json(response);
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
