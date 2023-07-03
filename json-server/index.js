@@ -27,7 +27,6 @@ server.use((req, res, next) => {
 // Эндпоинт для компонентов
 server.get('/items', (req, res) => {
     try {
-        console.log('2');
         const {
             _limit: limit,
             _page: page,
@@ -55,6 +54,23 @@ server.get('/items', (req, res) => {
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
+    }
+});
+
+// Дабавляем просмотр и возвращаем компонент
+server.get('/items/:id', (req, res, next) => {
+    try {
+        const { id } = req.params;
+        console.log('trap2');
+        res.header('Cache-Control', 'no-cache');
+        res.header('Access-Control-Allow-Origin', '*');
+        const itemDB = db.get('items').find({ id: `${id}` });
+        const { views } = itemDB.value();
+        itemDB.assign({ views: views + 1 }).write();
+        return res.json(itemDB);
+    } catch (e) {
+        console.log(`Ошибка при добавлении просмотра/возврате компонента ${e}`);
+        next();
     }
 });
 
@@ -112,20 +128,6 @@ server.get('/itemsLike', (req, res) => {
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
-    }
-});
-
-// Дабавляем просмотр
-server.get('/items/:id', (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const itemDB = db.get('items').find({ id: `${id}` });
-        const { views } = itemDB.value();
-        itemDB.assign({ views: views + 1 }).write();
-        next();
-    } catch (e) {
-        console.log(`Ошибка при добавлении просмотра ${e}`);
-        next();
     }
 });
 

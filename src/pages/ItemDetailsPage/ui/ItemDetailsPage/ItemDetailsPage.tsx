@@ -14,12 +14,9 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack';
-import { ItemRecommendationList } from '@/features/ItemRecommendationList';
 import { ItemDetailsPageHeader } from '../ItemDetailsPageHeader/ItemDetailsPageHeader';
 import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
-import { getPageDimensions } from '@/features/UI';
-import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 import { AppHead } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 
@@ -35,9 +32,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
         itemDetailsPage: itemDetailsPageReducer,
         itemDetails: itemDetailsReducer,
     };
-    const { width: pageWidth } = useSelector(getPageDimensions);
     const item = useSelector(getItemDetailsData);
-    const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit(id);
     const title = useMemo(() => {
         if (item) return `${item?.title} ${t('in gallery')}`;
@@ -54,12 +49,12 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                         <ItemDetailsPageHeader />
                         <ItemDetails id={id} />
                         {/* <ItemRating itemId={id} /> */}
-                        {item?.type && isScreenXl && (
+                        {/* {item?.type && isScreenXl && (
                             <ItemRecommendationList
                                 pageWidth={pageWidth}
                                 type={item?.type}
                             />
-                        )}
+                        )} */}
                     </VStack>
                 </Page>
             </DynamicModuleLoader>
