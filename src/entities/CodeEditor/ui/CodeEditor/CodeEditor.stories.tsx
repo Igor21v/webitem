@@ -14,4 +14,15 @@ const Template: ComponentStory<typeof CodeEditor> = (args) => (
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    codes: {
+        html: 'HTML codes',
+        css: 'CSS codes',
+        js: 'JS codes',
+    },
+    langTabs: [
+        { value: 'html', content: 'HTML' },
+        { value: 'css', content: 'CSS' },
+        { value: 'js', content: 'JS' },
+    ],
+};
