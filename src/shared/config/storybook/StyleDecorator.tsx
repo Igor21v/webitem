@@ -3,4 +3,8 @@ import { Story } from '@storybook/react';
 import '@/app/styles/index.scss';
 import './storybookStyles.scss';
 
-export const StyleDecorator = (story: () => Story) => story();
+export const StyleDecorator = (StoryComponent: Story) => (
+    <div className="app storybook">
+        <StoryComponent />
+    </div>
+);

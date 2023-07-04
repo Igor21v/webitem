@@ -5,7 +5,7 @@ import { TEST_ITEM } from '@/shared/const/tests';
 import ItemsPage from './ItemsPage';
 
 export default {
-    title: 'pages/ItemsPage/ItemsPage',
+    title: 'pages/ItemsPage',
     component: ItemsPage,
     argTypes: {
         backgroundColor: { control: 'color' },
