@@ -2,12 +2,14 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '../../model/types/country';
 import { ListBox } from '@/shared/ui/Popups';
+import { DropdownDirection } from '@/shared/types/ui';
 
 interface CountrySelectProps {
     className?: string;
     value?: Country;
     onChange?: (value: Country) => void;
     readonly?: boolean;
+    direction?: DropdownDirection;
 }
 
 const options = [
@@ -19,7 +21,13 @@ const options = [
 ];
 
 export const CountrySelect = memo((props: CountrySelectProps) => {
-    const { className, value, onChange, readonly } = props;
+    const {
+        className,
+        value,
+        onChange,
+        readonly,
+        direction = 'top right',
+    } = props;
     const onChangeHandler = (value: string) => {
         onChange?.(value as Country);
     };
@@ -33,7 +41,7 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
             label={t('Specify the country')}
             items={options}
             readonly={readonly}
-            direction="top right"
+            direction={direction}
         />
     );
 });

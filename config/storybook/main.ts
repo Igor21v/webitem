@@ -58,6 +58,7 @@ export default {
                 __IS_DEV__: JSON.stringify(true),
                 __API__: JSON.stringify('https://testapi.ru'),
                 __PROJECT__: JSON.stringify('storybook'),
+                __STATIC_URL__: JSON.stringify('https://testapi.ru'),
             }),
         );
         // Return the altered config

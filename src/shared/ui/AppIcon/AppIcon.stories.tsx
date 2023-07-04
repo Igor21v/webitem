@@ -14,4 +14,6 @@ const Template: ComponentStory<typeof AppIcon> = (args) => (
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    width: 200,
+};

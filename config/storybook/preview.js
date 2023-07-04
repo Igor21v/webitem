@@ -22,5 +22,6 @@ export const parameters = {
     /* layout: 'fullscreen', */
 };
 
+/* addDecorator(RouterDecorator()); */
 addDecorator(StyleDecorator);
 addDecorator(SuspenseDecorator);

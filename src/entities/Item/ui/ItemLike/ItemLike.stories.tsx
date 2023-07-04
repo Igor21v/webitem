@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ItemLike } from './ItemLike';
 
 export default {
-    title: 'entities/ItemLike',
+    title: 'entities/item/ItemLike',
     component: ItemLike,
     argTypes: {
         backgroundColor: { control: 'color' },
