@@ -18,7 +18,7 @@ export const RouterDecorator =
         return (
             <MemoryRouter initialEntries={[route]}>
                 <Routes>
-                    {Object.values(routeConfig()).map(renderWithWrapper)}
+                    {Object.values(routeConfig('ru')).map(renderWithWrapper)}
                 </Routes>
             </MemoryRouter>
         );
