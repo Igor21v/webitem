@@ -1,13 +1,12 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { ItemListInfinite } from './ItemListInfinite';
 import { ItemView } from '../../model/consts/ItemConst';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
-import { TEST_ITEM } from '@/shared/const/tests';
+import { TEST_ITEMS } from '@/shared/const/tests';
 
 export default {
-    title: 'entities/Item/ItemList',
+    title: 'entities/Item/ItemListInfinite',
     component: ItemListInfinite,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -21,34 +20,30 @@ const Template: ComponentStory<typeof ItemListInfinite> = (args) => (
 
 export const LoadingBig = Template.bind({});
 LoadingBig.args = {
-    items: [],
+    items: TEST_ITEMS,
     isLoading: true,
     view: ItemView.BIG,
 };
 
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
-    items: [],
+    items: TEST_ITEMS,
     isLoading: true,
     view: ItemView.SMALL,
+    pageWidth: 500,
 };
 
 export const ListSmall = Template.bind({});
 ListSmall.args = {
-    items: new Array(9).fill(0).map((item, index) => ({
-        ...TEST_ITEM,
-        id: String(index),
-    })),
+    items: TEST_ITEMS,
     isLoading: false,
     view: ItemView.SMALL,
+    pageWidth: 500,
 };
 
 export const ListBig = Template.bind({});
 ListBig.args = {
-    items: new Array(9).fill(0).map((item, index) => ({
-        ...TEST_ITEM,
-        id: String(index),
-    })),
+    items: TEST_ITEMS,
     isLoading: false,
     view: ItemView.BIG,
 };

@@ -4,7 +4,7 @@ import { TextSpan } from './TextSpan';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: 'shared/Text',
+    title: 'shared/TextSpan',
     component: TextSpan,
     argTypes: {
         backgroundColor: { control: 'color' },

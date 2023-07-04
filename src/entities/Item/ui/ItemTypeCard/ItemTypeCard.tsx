@@ -10,7 +10,7 @@ import { AppImage } from '@/shared/ui/AppImage';
 import { ItemTypeUI } from '../ItemTypeUI/ItemTypeUI';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Icon } from '@/shared/ui/Icon';
-import ItemIcon from '@/shared/assets/icons/app-icon.svg';
+import ItemIcon from '@/../public/favicon.svg';
 import { TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
 

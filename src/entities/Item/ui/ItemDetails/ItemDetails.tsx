@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './ItemDetails.module.scss';
 import { AppImage } from '@/shared/ui/AppImage';
-import ItemIcon from '@/shared/assets/icons/app-icon.svg';
+import ItemIcon from '@/../public/favicon.svg';
 import { ItemLike } from '../ItemLike/ItemLike';
 import TypeIcon from '@/shared/assets/icons/type.svg';
 import { CodesContentType, languageType } from '@/shared/types/codes';

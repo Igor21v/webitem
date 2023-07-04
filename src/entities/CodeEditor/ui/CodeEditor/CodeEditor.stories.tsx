@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof CodeEditor> = (args) => (
 export const Normal = Template.bind({});
 Normal.args = {
     codes: {
-        html: 'HTML codes',
+        html: 'HTML markup',
         css: 'CSS codes',
         js: 'JS codes',
     },

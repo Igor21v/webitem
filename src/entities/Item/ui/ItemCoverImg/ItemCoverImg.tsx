@@ -3,7 +3,7 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { Icon } from '@/shared/ui/Icon';
 import { Item } from '../../model/types/item';
 import { OptionAnimate } from '@/shared/ui/OptionAnimate';
-import ItemIcon from '@/shared/assets/icons/app-icon.svg';
+import ItemIcon from '@/../public/favicon.svg';
 
 interface ItemCoverImgProps {
     className?: string;

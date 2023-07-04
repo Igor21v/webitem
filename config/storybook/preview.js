@@ -19,7 +19,7 @@ export const parameters = {
             { name: 'purple', class: Theme.PURPLE, color: '#eb57ee' },
         ],
     },
-    /* layout: 'fullscreen', */
+    layout: 'fullscreen',
 };
 
 /* addDecorator(RouterDecorator()); */
