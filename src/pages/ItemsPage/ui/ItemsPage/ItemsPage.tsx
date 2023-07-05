@@ -37,7 +37,6 @@ const ItemsPage = (props: ItemsPageProps) => {
     const { type } = useParams<{ type: ItemTypes }>();
     const { t: tType } = useTranslation('itemType');
     const { t } = useTranslation('items');
-
     useInitialEffect(() => {
         dispatch(initItemsPage({ searchParams, type }));
     });

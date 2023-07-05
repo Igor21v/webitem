@@ -3,6 +3,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { AvatarDropdown } from './AvatarDropdown';
 import avatar from '@/shared/assets/tests/avatar.jpg';
 import { UserRole } from '@/entities/User';
+import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 
 export default {
     title: 'features/AvatarDropdown',
@@ -26,6 +27,7 @@ export default {
                 <Story />
             </div>
         ),
+        RouterDecorator(),
     ],
 } as ComponentMeta<typeof AvatarDropdown>;
 
