@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { ItemTypeList } from './ItemTypeList';
 
 export default {
@@ -7,6 +8,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [RouterDecorator()],
 } as ComponentMeta<typeof ItemTypeList>;
 
 const Template: ComponentStory<typeof ItemTypeList> = (args) => (

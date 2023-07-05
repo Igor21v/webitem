@@ -23,9 +23,6 @@ export const SidibarItem = memo((props: SidibarItemProps) => {
     const { t, i18n } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
 
-    if (item.authOnly && !isAuth) {
-        return null;
-    }
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}

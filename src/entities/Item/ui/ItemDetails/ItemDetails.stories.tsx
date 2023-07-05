@@ -1,18 +1,18 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
-import { ItemDetails } from './ItemDetails';
+import { ItemDetailsWrapper } from './ItemDetailsWrapper';
 import { TEST_ITEM } from '@/shared/const/tests';
 
 export default {
-    title: 'entities/ItemDetails',
-    component: ItemDetails,
+    title: 'entities/item/ItemDetails',
+    component: ItemDetailsWrapper,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ItemDetails>;
+} as ComponentMeta<typeof ItemDetailsWrapper>;
 
-const Template: ComponentStory<typeof ItemDetails> = (args) => (
-    <ItemDetails {...args} />
+const Template: ComponentStory<typeof ItemDetailsWrapper> = (args) => (
+    <ItemDetailsWrapper {...args} />
 );
 
 export const Normal = Template.bind({});
@@ -21,6 +21,8 @@ Normal.decorators = [
     StoreDecorator({
         itemDetails: {
             data: TEST_ITEM,
+            isLoading: false,
+            fulfilled: true,
         },
     }),
 ];

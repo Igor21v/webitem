@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { ItemTypeCard } from './ItemTypeCard';
+import image from '@/shared/assets/tests/3D Card.png';
 
 export default {
     title: 'entities/Item/ItemTypeCard',
@@ -7,6 +9,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [RouterDecorator()],
 } as ComponentMeta<typeof ItemTypeCard>;
 
 const Template: ComponentStory<typeof ItemTypeCard> = (args) => (
@@ -14,4 +17,11 @@ const Template: ComponentStory<typeof ItemTypeCard> = (args) => (
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    itemType: {
+        type: 'animation',
+        img: image,
+        ImgOffsetX: 0,
+        ImgOffsetY: 0,
+    },
+};

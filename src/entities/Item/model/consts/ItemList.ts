@@ -32,7 +32,6 @@ export type ItemTypes =
 export interface ItemType {
     type: ItemTypes;
     img: string;
-    authOnly?: boolean;
     ImgOffsetX: number;
     ImgOffsetY: number;
 }
