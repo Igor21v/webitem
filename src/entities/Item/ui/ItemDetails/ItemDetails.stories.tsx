@@ -42,6 +42,7 @@ Error.args = {};
 Error.decorators = [
     StoreDecorator({
         itemDetails: {
+            isLoading: false,
             error: 'error',
         },
     }),

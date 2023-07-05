@@ -1,17 +1,33 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ItemLikeList } from './ItemLikeList';
+import { TEST_ITEMS } from '@/shared/const/tests';
+import { ItemLikeListFetch } from './ItemLikeListFetch';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 
 export default {
     title: 'features/ItemLikeList',
-    component: ItemLikeList,
+    component: ItemLikeListFetch,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ItemLikeList>;
+} as ComponentMeta<typeof ItemLikeListFetch>;
 
-const Template: ComponentStory<typeof ItemLikeList> = (args) => (
-    <ItemLikeList {...args} />
+const Template: ComponentStory<typeof ItemLikeListFetch> = (args) => (
+    <ItemLikeListFetch {...args} />
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    likeItems: '1',
+};
+Normal.decorators = [RouterDecorator(), StoreDecorator({})];
+Normal.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/itemsLike?itemsReq=1`,
+            method: 'GET',
+            status: 200,
+            response: TEST_ITEMS,
+        },
+    ],
+};
