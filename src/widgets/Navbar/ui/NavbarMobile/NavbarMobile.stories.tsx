@@ -6,11 +6,12 @@ import { Theme } from '@/shared/const/theme';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 
 export default {
-    title: 'widget/Navbar',
+    title: 'widget/NavbarMobile',
     component: NavbarMobile,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [RouterDecorator(), StoreDecorator({})],
 } as ComponentMeta<typeof NavbarMobile>;
 
 const Template: ComponentStory<typeof NavbarMobile> = (args) => (
@@ -19,18 +20,8 @@ const Template: ComponentStory<typeof NavbarMobile> = (args) => (
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [];
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
-
-export const Authed = Template.bind({});
-Authed.args = {};
-Authed.decorators = [
-    RouterDecorator(),
-    StoreDecorator({
-        user: { authData: {} },
-    }),
-];
+Dark.decorators = [ThemeDecorator(Theme.DARK)];

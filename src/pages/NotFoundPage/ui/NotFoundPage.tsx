@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { AppHead } from '@/shared/lib/components/AppHead';
 import { Text, TextAlign } from '@/shared/ui/Text';
 import { Loader } from '@/shared/ui/Loader';
@@ -8,13 +9,16 @@ import { Page } from '@/widgets/Page';
 
 interface NotFoundPageProps {
     className?: string;
+    loadingLang?: boolean;
 }
 
-export const NotFoundPage = ({ className }: NotFoundPageProps) => {
+export const NotFoundPage = ({
+    className,
+    loadingLang = true,
+}: NotFoundPageProps) => {
     const { t, i18n } = useTranslation();
-    const url = new URL(String(document.location));
+    const url = useLocation();
     const langPath = url.pathname.slice(1, 3);
-    let loadingLang = true;
     if (
         i18n.language === langPath ||
         (i18n.language === 'ru' && langPath !== 'en')
