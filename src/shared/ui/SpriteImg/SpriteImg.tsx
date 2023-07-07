@@ -1,4 +1,5 @@
 import { memo, ReactElement, useLayoutEffect, useState } from 'react';
+import { TEST_SPITE_IMAGE } from '@/shared/const/tests';
 
 interface SpriteImgProps {
     widthSource: number;
@@ -25,10 +26,15 @@ export const SpriteImg = memo((props: SpriteImgProps) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
-
+    let source: string;
+    if (__PROJECT__ === 'storybook') {
+        source = TEST_SPITE_IMAGE;
+    } else {
+        source = backgroundURL;
+    }
     useLayoutEffect(() => {
         const img = new Image();
-        img.src = backgroundURL;
+        img.src = source;
         img.onload = () => {
             setIsLoading(false);
         };
@@ -36,7 +42,7 @@ export const SpriteImg = memo((props: SpriteImgProps) => {
             setIsLoading(false);
             setHasError(true);
         };
-    }, []);
+    }, [source]);
 
     if (isLoading && fallback) {
         return fallback;
@@ -51,7 +57,7 @@ export const SpriteImg = memo((props: SpriteImgProps) => {
             style={{
                 width: `${widthSource}px`,
                 height: `${heightSource}px`,
-                background: `url("${backgroundURL}")`,
+                background: `url("${source}")`,
                 backgroundPosition: `-${offsetX}px -${offsetY}px`,
                 zoom,
             }}

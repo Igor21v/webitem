@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { ItemTypeCard } from './ItemTypeCard';
-import image from '@/shared/assets/tests/3D Card.png';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
     title: 'entities/Item/ItemTypeCard',
@@ -20,7 +20,7 @@ export const Normal = Template.bind({});
 Normal.args = {
     itemType: {
         type: 'animation',
-        img: image,
+        img: TEST_IMAGE,
         ImgOffsetX: 0,
         ImgOffsetY: 0,
     },

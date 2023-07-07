@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { CommentList } from './CommentList';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
     title: 'entities/Comment/CommentList',
@@ -21,12 +22,12 @@ Normal.args = {
         {
             id: '1',
             text: 'hello world',
-            user: { id: '1', username: 'Vasya' },
+            user: { id: '1', username: 'Vasya', avatar: TEST_IMAGE },
         },
         {
             id: '2',
             text: 'hi guys',
-            user: { id: '2', username: 'Masha' },
+            user: { id: '2', username: 'Masha', avatar: TEST_IMAGE },
         },
     ],
 };

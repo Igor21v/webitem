@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppImage.module.scss';
-import image from '@/shared/assets/tests/3D Card.png';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
@@ -30,7 +30,7 @@ export const AppImage = memo((props: AppImageProps) => {
     const [hasError, setHasError] = useState(false);
     let source: string | undefined;
     if (__PROJECT__ === 'storybook') {
-        source = image;
+        source = TEST_IMAGE;
     } else {
         source = src;
     }
@@ -45,7 +45,7 @@ export const AppImage = memo((props: AppImageProps) => {
             setIsLoading(false);
             setHasError(true);
         };
-    }, [source, src]);
+    }, [source]);
 
     if (isLoading && fallback) {
         return fallback;

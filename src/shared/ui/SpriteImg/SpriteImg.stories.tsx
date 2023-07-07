@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { TEST_SPITE_IMAGE } from '@/shared/const/tests';
 import { SpriteImg } from './SpriteImg';
-import sprite from '@/shared/assets/tests/navbar_sprite.png';
 
 export default {
     title: 'shared/SpriteImg',
@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof SpriteImg> = (args) => (
 
 export const First = Template.bind({});
 First.args = {
-    backgroundURL: sprite,
+    backgroundURL: TEST_SPITE_IMAGE,
     heightSource: 32,
     widthSource: 32,
     offsetX: 0,
@@ -24,7 +24,7 @@ First.args = {
 
 export const Second = Template.bind({});
 Second.args = {
-    backgroundURL: sprite,
+    backgroundURL: TEST_SPITE_IMAGE,
     heightSource: 32,
     widthSource: 32,
     offsetX: 32,
@@ -32,7 +32,7 @@ Second.args = {
 
 export const Third = Template.bind({});
 Third.args = {
-    backgroundURL: sprite,
+    backgroundURL: TEST_SPITE_IMAGE,
     heightSource: 32,
     widthSource: 32,
     offsetX: 64,

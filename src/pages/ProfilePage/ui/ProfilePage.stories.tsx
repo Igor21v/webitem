@@ -2,9 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
-import avatar from '@/shared/assets/tests/avatar.jpg';
 import ProfilePage from './ProfilePage';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
     title: 'pages/ProfilePage',
@@ -24,7 +24,7 @@ export default {
                     lastname: 'Flcvb',
                     currency: Currency.EUR,
                     username: 'hhh',
-                    avatar,
+                    avatar: TEST_IMAGE,
                 },
             },
         }),

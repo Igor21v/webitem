@@ -19,16 +19,14 @@ const Template: ComponentStory<typeof ItemEditPage> = (args) => (
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [
-    StoreDecorator({
-        itemDetails: {
-            data: TEST_ITEM,
-            fulfilled: true,
-            isLoading: false,
+Normal.decorators = [StoreDecorator({})];
+Normal.parameters = {
+    mockData: [
+        {
+            url: `${__API__}/items/2`,
+            method: 'GET',
+            status: 200,
+            response: TEST_ITEM,
         },
-
-        user: {
-            authData: { id: '1' },
-        },
-    }),
-];
+    ],
+};

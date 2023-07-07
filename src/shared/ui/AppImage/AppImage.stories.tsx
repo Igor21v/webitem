@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AppImage } from './AppImage';
-import avatar from '@/shared/assets/tests/avatar.jpg';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
     title: 'shared/AppImage',
@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof AppImage> = (args) => (
 
 export const Normal = Template.bind({});
 Normal.args = {
-    src: avatar,
+    src: TEST_IMAGE,
     height: 100,
     width: 100,
 };

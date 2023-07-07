@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { TEST_ANIMATION, TEST_IMAGE } from '@/shared/const/tests';
 import { OptionAnimate } from './OptionAnimate';
-import image from '@/shared/assets/tests/3D Card.png';
-import animate from '@/shared/assets/tests/3D Card.gif';
 
 export default {
     title: 'shared/OptionAnimate',
@@ -17,6 +16,6 @@ const Template: ComponentStory<typeof OptionAnimate> = (args) => (
 
 export const Normal = Template.bind({});
 Normal.args = {
-    src: image,
-    animateSrc: animate,
+    src: TEST_IMAGE,
+    animateSrc: TEST_ANIMATION,
 };
