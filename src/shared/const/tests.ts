@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
-import { Item } from '@/entities/Item/testing';
-import image from '@/shared/assets/tests/CSS Bear Toggle.png';
+/* import image from '@/shared/assets/tests/CSS Bear Toggle.png';
 import animation from '@/shared/assets/tests/CSS Bear Toggle.gif';
-import sprite from '@/shared/assets/tests/navbar_sprite.png';
+import sprite from '@/shared/assets/tests/navbar_sprite.png'; */
+
+import { Item } from '@/entities/Item/testing';
 
 export const TEST_ITEM = {
     id: '1',
@@ -22,8 +23,11 @@ export const TEST_ITEMS = new Array(9).fill(0).map((item, index) => ({
     id: String(index),
 }));
 
-export const TEST_IMAGE = image;
+export const TEST_IMAGE =
+    'https://wallpapercrafter.com/th800/132058-mountains-landscape-Oregon-Farm-House-barn-artwork-car-vehicle-nature-fiat-500.jpg';
 
-export const TEST_ANIMATION = animation;
+export const TEST_ANIMATION =
+    'https://wallpapercrafter.com/th800/132058-mountains-landscape-Oregon-Farm-House-barn-artwork-car-vehicle-nature-fiat-500.jpg';
 
-export const TEST_SPITE_IMAGE = sprite;
+export const TEST_SPITE_IMAGE =
+    'https://wallpapercrafter.com/th800/132058-mountains-landscape-Oregon-Farm-House-barn-artwork-car-vehicle-nature-fiat-500.jpg';
