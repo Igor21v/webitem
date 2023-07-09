@@ -1,8 +1,12 @@
+/* eslint-disable class-methods-use-this */
 import { screen } from '@testing-library/react';
+import ResizeObserver from 'resize-observer-polyfill';
 import { getRoute } from '@/shared/const/router';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import AppRouter from './AppRouter';
 import { UserRole } from '@/entities/User';
+
+global.ResizeObserver = ResizeObserver;
 
 describe('app/router/AppRouter', () => {
     test('Страница должна отрендерится', async () => {
