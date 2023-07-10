@@ -78,6 +78,7 @@ export const ItemEditCard = memo((props: ItemEditProps) => {
                 placeholder={t('Title')}
                 onChange={handleUpdateItem('title')}
                 validateError={titleError && validateEnable}
+                data-testid="ItemEditCard.Title"
             />
             <Input
                 value={item?.description}

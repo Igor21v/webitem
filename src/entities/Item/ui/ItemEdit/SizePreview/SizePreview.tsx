@@ -42,7 +42,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
         >
             <VStack>
                 <Text
-                    text="Настройка окна предварительного просмотра, (805*462 для создания скрина 800*458)"
+                    text={t('size settings')}
                     className={cls.text}
                     align={TextAlign.CENTER}
                 />
@@ -50,6 +50,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
                     checked={Boolean(useSize)}
                     onChange={setFullWidth}
                     label="Задать статический размер окна для элемента:"
+                    data-testid="SizePreview.Checkbox"
                 />
                 <HStack gap="8">
                     <Input
@@ -58,6 +59,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
                         onChange={setWidth}
                         type="number"
                         readOnly={!useSize}
+                        data-testid="SizePreview.Width"
                     />
                     <Input
                         value={height}
@@ -65,6 +67,7 @@ export const SizePreview = memo((props: SizePreviewProps) => {
                         onChange={setHeight}
                         type="number"
                         readOnly={!useSize}
+                        data-testid="SizePreview.Height"
                     />
                     <Button disabled={!useSize} onClick={calculateHandle}>
                         {t('Calculate height')}

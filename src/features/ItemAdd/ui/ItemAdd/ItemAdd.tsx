@@ -69,20 +69,26 @@ export const ItemAdd = memo((props: ItemAddProps) => {
                 />
 
                 <HStack gap="8">
-                    <Button onClick={handleAddItem}>{t('Add item')}</Button>
+                    <Button
+                        onClick={handleAddItem}
+                        data-testid="ItemAdd.AddButton"
+                    >
+                        {t('Add item')}
+                    </Button>
                     {itemAddState.fulfilled && (
                         <Text
                             theme={TextTheme.SUCCESS}
                             text={t('The component was successfully added')}
                         />
                     )}
-                    {itemAddState.error?.length &&
+                    {validateEnable &&
+                        itemAddState.error?.length &&
                         itemAddState.error?.map((err: ValidateAddItemError) => (
                             <Text
                                 theme={TextTheme.ERROR}
                                 text={`${validateErrorTranslates[err]};`}
                                 key={err}
-                                data-testid="EditableProfileCard.Error"
+                                data-testid="ItemAdd.Error"
                             />
                         ))}
                 </HStack>

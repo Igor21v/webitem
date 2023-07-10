@@ -32,6 +32,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
         validateError,
         notSelectedEnable,
         column,
+        ...rest
     } = props;
     const { t } = useTranslation();
     const optionsList = options?.map((opt) => (
@@ -64,6 +65,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                 value={value}
                 onChange={onChangeHandler}
                 id={label}
+                {...rest}
             >
                 {notSelectedEnable && (
                     <option className={cls.option} value="not selected">

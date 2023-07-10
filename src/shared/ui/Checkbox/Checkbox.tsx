@@ -11,14 +11,14 @@ interface CheckboxProps {
 }
 
 export const Checkbox = memo((props: CheckboxProps) => {
-    const { className, checked, label, onChange } = props;
+    const { className, checked, label, onChange, ...rest } = props;
     const { t } = useTranslation();
     const handleChange = () => {
         onChange(!checked);
     };
     return (
         // eslint-disable-next-line jsx-a11y/label-has-associated-control
-        <label className={classNames(cls.Checkbox, {}, [className])}>
+        <label className={classNames(cls.Checkbox, {}, [className])} {...rest}>
             <input
                 type="checkbox"
                 checked={checked}

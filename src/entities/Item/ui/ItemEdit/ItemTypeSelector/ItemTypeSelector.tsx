@@ -30,6 +30,7 @@ export const ItemTypeSelector = memo((props: ItemTypeSelectorProps) => {
             className={className}
             validateError={validateError}
             notSelectedEnable
+            data-testid="ItemTypeSelector.Select"
         />
     );
 });
