@@ -1,10 +1,11 @@
 import { selectByTestId } from '../../helpers/selectByTestId';
 import { USER_LOCALSTORAGE_KEY } from '../../../src/shared/const/localstorage';
 import { User } from '../../../src/entities/User';
+import { testLogin, testPassword } from '../../../json-server/keys/tests.js';
 
 export const login = (
-    username: string = 'testUser',
-    password: string = '123',
+    username: string = testLogin,
+    password: string = testPassword,
 ) => {
     return cy
         .request({

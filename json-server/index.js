@@ -139,6 +139,7 @@ server.use((req, res, next) => {
         req.method === 'PATCH' ||
         req.method === 'DELETE'
     ) {
+        console.log(`LLLLL ${JSON.stringify(req.body)}`);
         const headAuth = JSON.parse(req.headers.authorization);
         const username = headAuth?.username;
         const password = headAuth?.password;

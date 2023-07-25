@@ -1,23 +1,19 @@
+import { testLogin, testPassword } from '../../../json-server/keys/tests.js';
+import { TEST_ITEM } from '@/shared/const/tests';
 import { Item } from '../../../src/entities/Item';
-
-const defaultItem = {
-    title: 'TESTING ITEM',
-    subtitle: 'Экономика',
-    img: 'https://www.mirea.ru/upload/iblock/7cf/vvp_rf2018_1.jpg',
-    views: 1022,
-    createdAt: '26.02.2022',
-    userId: '1',
-    type: ['ECONOMICS'],
-    blocks: [],
-};
 
 export const createItem = (item?: Item) => {
     return cy
         .request({
             method: 'POST',
             url: 'http://localhost:8000/items',
-            headers: { Authorization: 'qwesd' },
-            body: item ?? defaultItem,
+            headers: {
+                authorization: JSON.stringify({
+                    username: testLogin,
+                    password: testPassword,
+                }),
+            },
+            body: item ?? { ...TEST_ITEM, id: null },
         })
         .then((resp) => resp.body);
 };
@@ -26,7 +22,12 @@ export const removeItem = (itemId: string) => {
     return cy.request({
         method: 'DELETE',
         url: `http://localhost:8000/items/${itemId}`,
-        headers: { Authorization: 'qwesd' },
+        headers: {
+            authorization: JSON.stringify({
+                username: testLogin,
+                password: testPassword,
+            }),
+        },
     });
 };
 

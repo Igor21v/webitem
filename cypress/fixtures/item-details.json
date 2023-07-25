@@ -1,0 +1,12 @@
+{
+    "id": "1",
+    "title": "TestComponent",
+    "description": "Описание тестового компонента",
+    "views": 1022,
+    "createdAt": "26.05.2023",
+    "codes": {
+        "html": "<div class='test'>TEXT</div>",
+        "css": ".test {font-size: 30px}",
+        "js": "console.log('test')"
+    }
+}

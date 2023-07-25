@@ -1,15 +1,13 @@
 describe('Пользователь заходит на страницу статей', () => {
     beforeEach(() => {
-        cy.login().then(() => {
-            cy.visit('items');
-        });
+        cy.visit('/items/all');
     });
     it('Статьи успешно подгружаются', () => {
         cy.getByTestID('ItemList').should('exist');
         cy.getByTestID('ItemListItem').should('have.length.greaterThan', 3);
     });
     it('На стабах (фикстурах)', () => {
-        cy.intercept('GET', '**/items?*', { fixture: 'items.json' });
+        cy.intercept('GET', '**/items/*', { fixture: 'items.json' });
         cy.getByTestID('ItemList').should('exist');
         cy.getByTestID('ItemListItem').should('have.length.greaterThan', 3);
     });
