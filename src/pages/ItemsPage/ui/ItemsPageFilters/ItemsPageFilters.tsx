@@ -108,6 +108,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                             value={search}
                             focusIsSet={searchFocus}
                             focusHandler={focusSearchHandler}
+                            data-testid="ItemsPageFilters.Search"
                         />
                     </Card>
                     <Card className={cls.type}>
@@ -140,6 +141,7 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                 focusIsSet={searchFocus}
                 focusHandler={focusSearchHandler}
                 classNameWrapper={cls.search}
+                data-testid="ItemsPageFilters.Search"
             />
         </Card>
     );

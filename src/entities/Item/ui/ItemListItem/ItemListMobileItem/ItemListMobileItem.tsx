@@ -71,7 +71,10 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                             {views}
 
                             <AppLink target={target} to={link}>
-                                <Button theme={ButtonTheme.OUTLINE}>
+                                <Button
+                                    theme={ButtonTheme.OUTLINE}
+                                    data-testid="ItemListItem.ViewButton"
+                                >
                                     {t('View the source code')}
                                 </Button>
                             </AppLink>
@@ -114,7 +117,10 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                 {views}
 
                 <AppLink target={target} to={link}>
-                    <Button theme={ButtonTheme.OUTLINE}>
+                    <Button
+                        theme={ButtonTheme.OUTLINE}
+                        data-testid="ItemListItem.ViewButton"
+                    >
                         {t('View the source code')}
                     </Button>
                 </AppLink>

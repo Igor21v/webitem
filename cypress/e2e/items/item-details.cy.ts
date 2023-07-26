@@ -1,5 +1,5 @@
 let currentItemId = '';
-describe('Пользователь заходит на страницу статей', () => {
+describe('Пользователь заходит на страницу компонентов', () => {
     beforeEach(() => {
         cy.login();
         cy.createItem().then((item) => {
@@ -10,7 +10,7 @@ describe('Пользователь заходит на страницу стат
     afterEach(() => {
         cy.removeItem(currentItemId);
     });
-    it('И видит содержимое статьи', () => {
+    it('И видит содержимое компонента', () => {
         cy.getByTestID('ItemDetails.Info').should('exist');
     });
 });
