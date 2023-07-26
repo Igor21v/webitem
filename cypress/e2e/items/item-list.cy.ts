@@ -1,8 +1,8 @@
-describe('Пользователь заходит на страницу статей', () => {
+describe('Пользователь заходит на страницу компонентов', () => {
     beforeEach(() => {
         cy.visit('/items/all');
     });
-    it('Статьи успешно подгружаются', () => {
+    it('Компоненты успешно подгружаются', () => {
         cy.getByTestID('ItemList').should('exist');
         cy.getByTestID('ItemListItem').should('have.length.greaterThan', 3);
     });
