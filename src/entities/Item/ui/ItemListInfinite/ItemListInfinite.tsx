@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import { CSSProperties, memo, ReactElement } from 'react';
 import { VariableSizeList, areEqual } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
@@ -80,7 +81,7 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
             data-testid="ItemList"
         >
             <AutoSizer>
-                {({ height, width }) => (
+                {({ height, width }: { height: number; width: number }) => (
                     <InfiniteLoader
                         isItemLoaded={isItemLoaded}
                         itemCount={itemCount}
