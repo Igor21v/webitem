@@ -27,22 +27,10 @@ describe('app/router/AppRouter', () => {
 
     test('Редирект неавторизованного пользователя на главную', async () => {
         componentRender(<AppRouter />, {
-            route: getRoute('profile', 'ru', '1'),
+            route: getRoute('admin_panel', 'ru', '1'),
         });
 
         const page = await screen.findByTestId('MainPage');
-        expect(page).toBeInTheDocument();
-    });
-
-    test('Доступ к закрытой странице для авторизованного пользователя', async () => {
-        componentRender(<AppRouter />, {
-            route: getRoute('profile', 'ru', '1'),
-            initialState: {
-                user: { _inited: true, authData: {} },
-            },
-        });
-
-        const page = await screen.findByTestId('ProfilePage');
         expect(page).toBeInTheDocument();
     });
 

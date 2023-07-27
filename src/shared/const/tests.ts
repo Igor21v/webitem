@@ -12,7 +12,7 @@ export const TEST_ITEM = {
     views: 1022,
     createdAt: '26.05.2023',
     codes: {
-        html: '<div class="test">TEXT</div>',
+        html: '<div class="test"></div>',
         css: '.test {font-size: 30px}',
         js: 'console.log("test")',
     },
