@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppImage.module.scss';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
@@ -27,10 +28,16 @@ export const AppImage = memo((props: AppImageProps) => {
     } = props;
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
+    let source: string | undefined;
+    if (__PROJECT__ === 'storybook') {
+        source = TEST_IMAGE;
+    } else {
+        source = src;
+    }
 
     useLayoutEffect(() => {
         const img = new Image();
-        img.src = src ?? '';
+        img.src = source ?? '';
         img.onload = () => {
             setIsLoading(false);
         };
@@ -38,7 +45,7 @@ export const AppImage = memo((props: AppImageProps) => {
             setIsLoading(false);
             setHasError(true);
         };
-    }, [src]);
+    }, [source]);
 
     if (isLoading && fallback) {
         return fallback;
@@ -51,7 +58,7 @@ export const AppImage = memo((props: AppImageProps) => {
     return (
         <img
             className={classNames('', { [cls.round]: round }, [className])}
-            src={src}
+            src={source}
             alt={alt}
             {...otherProps}
         />

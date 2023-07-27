@@ -7,22 +7,20 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ButtonTheme, Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
-import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import cls from './Navbar.module.scss';
 import { NavbarItem } from '../NavbarItem/NavbarItem';
 import { getNavbarItems } from '../../model/selectors/getNavbarItems';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteMain } from '@/shared/const/router';
-import { Icon } from '@/shared/ui/Icon';
-import AppIcon from '@/shared/assets/icons/app-icon.svg';
+import { getRoute, langType } from '@/shared/const/router';
+import { AppIcon } from '@/shared/ui/AppIcon';
 
 interface NavbarProps {
     className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -34,14 +32,18 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const navbarItemsList = useSelector(getNavbarItems);
     const content = (
         <>
-            <AppLink to={getRouteMain()} className={cls.appName}>
+            <AppLink
+                to={getRoute('main', i18n.language as langType)}
+                className={cls.appName}
+            >
                 <HStack gap="16">
                     <Text theme={TextTheme.INVERTED} title={t('webitem')} />
-                    <Icon Svg={AppIcon} inverted />
+                    <AppIcon width={30} height={30} inverted />
                     <Text
                         theme={TextTheme.INVERTED}
-                        title={t('Elements for your website')}
+                        title={t('Gallery of web components')}
                         size={TextSize.S}
+                        HeaderTag="h1"
                     />
                 </HStack>
             </AppLink>
@@ -58,7 +60,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <header className={classNames(cls.Navbar, {}, [className])}>
                 {content}
                 <HStack gap="16">
-                    <NotificationButton />
+                    {/* <NotificationButton /> */}
                     <AvatarDropdown />
                 </HStack>
             </header>

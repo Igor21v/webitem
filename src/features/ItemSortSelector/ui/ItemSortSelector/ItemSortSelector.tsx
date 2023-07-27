@@ -5,6 +5,7 @@ import { Select, SelectOption } from '@/shared/ui/Select';
 import { SortOrder } from '@/shared/types';
 import cls from './ItemSortSelector.module.scss';
 import { ItemSortField } from '@/entities/Item';
+import { TextSpan } from '@/shared/ui/TextSpan';
 
 interface ItemSortSelectorProps {
     className?: string;
@@ -52,18 +53,19 @@ export const ItemSortSelector = memo((props: ItemSortSelectorProps) => {
 
     return (
         <div className={classNames(cls.ItemSortSelector, {}, [className])}>
+            <TextSpan text={t('Sort')} theme="bright" className={cls.text} />
             <Select<ItemSortField>
                 options={sortFieldOptions}
-                label={t('Sort by')}
+                label={t('by')}
                 value={sort}
                 onChange={onChangeSort}
+                className={cls.sort}
             />
             <Select
                 options={orderOptions}
                 label={t('by')}
                 value={order}
                 onChange={onChangeOrder}
-                className={cls.order}
             />
         </div>
     );

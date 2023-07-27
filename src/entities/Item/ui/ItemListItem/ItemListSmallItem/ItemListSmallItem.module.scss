@@ -7,6 +7,8 @@
 
 .ItemListSmallItem {
     transition: 0.2s;
+    height: 300px;
+    display: inline-flex;
 
     &:hover {
         transform: scale(1.01);

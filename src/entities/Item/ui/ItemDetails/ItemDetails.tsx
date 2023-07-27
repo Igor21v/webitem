@@ -1,5 +1,4 @@
-import { memo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { memo, useMemo, useState } from 'react';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize } from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
@@ -8,12 +7,13 @@ import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './ItemDetails.module.scss';
 import { AppImage } from '@/shared/ui/AppImage';
-import ItemIcon from '@/shared/assets/icons/item.svg';
+import ItemIcon from '@/../public/favicon.svg';
 import { ItemLike } from '../ItemLike/ItemLike';
 import TypeIcon from '@/shared/assets/icons/type.svg';
-import { CodesContentType } from '@/shared/types/codes';
+import { CodesContentType, languageType } from '@/shared/types/codes';
 import { Item } from '../../model/types/item';
 import { CodeEditor } from '@/entities/CodeEditor';
+import { ItemTypeUI } from '../ItemTypeUI/ItemTypeUI';
 
 interface ItemDetailsProps {
     item?: Item;
@@ -21,12 +21,26 @@ interface ItemDetailsProps {
 
 export const ItemDetails = memo((props: ItemDetailsProps) => {
     const { item } = props;
-    const { t } = useTranslation();
     const [codes, setCodes] = useState<CodesContentType>({
         html: item?.codes.html,
         css: item?.codes.css,
         js: item?.codes.js,
     });
+    const langTabs = useMemo(() => {
+        if (item) {
+            return Object.keys(item?.codes).map((lang) => ({
+                value: lang as languageType, // TODO
+                content: lang.toUpperCase(),
+            }));
+        }
+        return [];
+    }, [item]);
+    let width;
+    let height;
+    if (item?.useSize) {
+        width = item.width;
+        height = item.height;
+    }
     return (
         <>
             <HStack justify="center" max>
@@ -34,7 +48,7 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     height={200}
                     width={200}
                     round
-                    src={item?.img}
+                    src={`${__STATIC_URL__}/items/${item?.title}.png`}
                     className={cls.itemImage}
                     fallback={
                         <Skeleton
@@ -54,8 +68,13 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                     }
                 />
             </HStack>
-            <VStack gap="4" data-testid="ItemDetails.Info" max>
-                <Text title={item?.title} size={TextSize.L} />
+            <VStack gap="4" data-testid="ItemDetails.Info" max role="article">
+                <Text
+                    title={item?.title}
+                    size={TextSize.L}
+                    HeaderTag="h2"
+                    data-testid="ItemDetails"
+                />
                 <Text
                     text={item?.description}
                     size={TextSize.M}
@@ -74,10 +93,16 @@ export const ItemDetails = memo((props: ItemDetailsProps) => {
                 </HStack>
                 <HStack gap="8">
                     <Icon Svg={TypeIcon} />
-                    <Text text={item?.type} />
+                    <ItemTypeUI type={item?.type} />
                 </HStack>
             </VStack>
-            <CodeEditor codes={codes} setCodes={setCodes} />
+            <CodeEditor
+                codes={codes}
+                setCodes={setCodes}
+                langTabs={langTabs}
+                previewWidth={width}
+                previewHeight={height}
+            />
         </>
     );
 });

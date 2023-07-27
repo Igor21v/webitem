@@ -1,0 +1,45 @@
+.ItemListInfinite {
+    height: calc(100%);
+    width: calc(100% - 45px);
+    position: absolute;
+    top: 0;
+}
+
+@media (max-width: breakpoints(MD)) {
+    .ItemListInfinite {
+        width: calc(100% - 20px);
+    }
+}
+
+.BIG {
+    .card {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.SMALL {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+
+    .card {
+        display: inline-flex;
+        height: 300px;
+    }
+
+    .row {
+        display: flex;
+        gap: 30px;
+    }
+}
+
+.itemWrapper {
+    padding-right: 20px;
+}
+
+.skeletonFilters {
+    margin-top: -20px;
+}

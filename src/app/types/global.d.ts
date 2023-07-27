@@ -9,6 +9,7 @@ declare module '*.scss' {
 declare module '*.png';
 declare module '*.jpeg';
 declare module '*.jpg';
+declare module '*.gif';
 declare module '*.svg' {
     import React from 'react';
 
@@ -16,8 +17,11 @@ declare module '*.svg' {
     export default SVG;
 }
 
+declare function ym(id: number, method: string, url: string): void;
+
 declare const __IS_DEV__: boolean;
 declare const __API__: string;
+declare const __STATIC_URL__: string;
 declare const __PROJECT__: 'storybook' | 'frontend' | 'jest';
 
 type DeepPartial<T> = T extends object

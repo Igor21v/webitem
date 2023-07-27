@@ -7,77 +7,72 @@ import { ItemEditPage } from '@/pages/ItemEditPage';
 import { ItemsPage } from '@/pages/ItemsPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import {
-    AppRoutes,
-    getRouteAbout,
-    getRouteAdmin,
-    getRouteItemCreate,
-    getRouteItemDetails,
-    getRouteItemEdit,
-    getRouteForbidden,
-    getRouteItems,
-    getRouteMain,
-    getRouteProfile,
-    getRouteFavourites,
-} from '@/shared/const/router';
+import { langType, getRoute, AppRoutes } from '@/shared/const/router';
 import { ItemsLikePage } from '@/pages/ItemsLikePage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
     roles?: UserRole[];
 };
 
-export const routeConfig: Record<AppRoutes, AppRouteProps> = {
-    [AppRoutes.MAIN]: {
-        path: getRouteMain(),
-        element: <MainPage />,
-    },
-    [AppRoutes.ABOUT]: {
-        path: getRouteAbout(),
-        element: <AboutPage />,
-    },
-    [AppRoutes.PROFILE]: {
-        path: getRouteProfile(':id'),
-        element: <ProfilePage />,
-        authOnly: true,
-    },
-    [AppRoutes.ITEMS]: {
-        path: getRouteItems(':type'),
-        element: <ItemsPage />,
-    },
-    [AppRoutes.ITEM_DETAILS]: {
-        path: getRouteItemDetails(':id'),
-        element: <ItemDetailPage />,
-    },
-    [AppRoutes.ITEM_CREATE]: {
-        path: getRouteItemCreate(),
-        element: <ItemEditPage />,
-        authOnly: true,
-    },
-    [AppRoutes.ITEM_EDIT]: {
-        path: getRouteItemEdit(':id'),
-        element: <ItemEditPage />,
-        authOnly: true,
-    },
-    [AppRoutes.ADMIN_PANEL]: {
-        path: getRouteAdmin(),
-        element: <AdminPanelPage />,
-        authOnly: true,
-        roles: [UserRole.MANAGER, UserRole.ADMIN],
-    },
-    [AppRoutes.FAVOURITES]: {
-        path: getRouteFavourites(),
-        element: <ItemsLikePage />,
-    },
-    [AppRoutes.FORBIDDEN]: {
-        path: getRouteForbidden(),
-        element: <ForbiddenPage />,
-    },
-    // last
-    [AppRoutes.NOT_FOUND]: {
-        path: '*',
-        element: <NotFoundPage />,
-    },
+export const routeConfig = (
+    lang: langType,
+): Record<AppRoutes, AppRouteProps> => {
+    const getRouteWrapper = (page: AppRoutes, param?: string) =>
+        getRoute(page, lang, param);
+
+    return {
+        main: {
+            path: getRouteWrapper('main'),
+            element: <MainPage />,
+        },
+        about: {
+            path: getRouteWrapper('about'),
+            element: <AboutPage />,
+        },
+        profile: {
+            path: getRouteWrapper('profile', ':id'),
+            element: <ProfilePage />,
+            authOnly: true,
+        },
+        items: {
+            path: getRouteWrapper('items', ':type'),
+            element: <ItemsPage />,
+        },
+        item_details: {
+            path: getRouteWrapper('item_details', ':id'),
+            element: <ItemDetailPage />,
+        },
+        item_create: {
+            path: getRouteWrapper('item_create'),
+            element: <ItemEditPage />,
+            authOnly: true,
+        },
+        item_edit: {
+            path: getRouteWrapper('item_edit', ':id'),
+            element: <ItemEditPage />,
+            authOnly: true,
+        },
+        admin_panel: {
+            path: getRouteWrapper('admin_panel'),
+            element: <AdminPanelPage />,
+            authOnly: true,
+            roles: [UserRole.MANAGER, UserRole.ADMIN],
+        },
+        favourites: {
+            path: getRouteWrapper('favourites'),
+            element: <ItemsLikePage />,
+        },
+        forbidden: {
+            path: getRouteWrapper('forbidden'),
+            element: <ForbiddenPage />,
+        },
+        // last
+        not_found: {
+            path: '*',
+            element: <NotFoundPage />,
+        },
+    };
 };

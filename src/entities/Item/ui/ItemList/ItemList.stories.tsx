@@ -1,10 +1,8 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { ItemList } from './ItemList';
 import { ItemView } from '../../model/consts/ItemConst';
-import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { TEST_ITEM } from '@/shared/const/tests';
+import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 
 export default {
     title: 'entities/Item/ItemList',
@@ -21,14 +19,12 @@ const Template: ComponentStory<typeof ItemList> = (args) => (
 
 export const LoadingBig = Template.bind({});
 LoadingBig.args = {
-    items: [],
     isLoading: true,
     view: ItemView.BIG,
 };
 
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
-    items: [],
     isLoading: true,
     view: ItemView.SMALL,
 };

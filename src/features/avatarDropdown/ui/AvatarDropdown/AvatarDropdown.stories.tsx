@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { AvatarDropdown } from './AvatarDropdown';
-import avatar from '@/shared/assets/tests/avatar.jpg';
 import { UserRole } from '@/entities/User';
+import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
     title: 'features/AvatarDropdown',
@@ -14,7 +15,7 @@ export default {
         StoreDecorator({
             user: {
                 authData: {
-                    avatar,
+                    avatar: TEST_IMAGE,
                     id: '1',
                     roles: [UserRole.ADMIN],
                     username: 'Admin',
@@ -26,6 +27,7 @@ export default {
                 <Story />
             </div>
         ),
+        RouterDecorator(),
     ],
 } as ComponentMeta<typeof AvatarDropdown>;
 

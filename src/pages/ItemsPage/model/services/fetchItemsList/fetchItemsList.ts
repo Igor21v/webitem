@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { Item, ItemSortField } from '@/entities/Item';
+import { Item } from '@/entities/Item';
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 import {
     getItemsPageLimit,
@@ -10,6 +10,7 @@ import {
     getItemsPageSort,
     getItemsPageType,
 } from '../../selectors/itemsPageSelectors';
+import { itemsPageInitState } from '../../consts/itemsPageConst';
 
 interface FetchItemListProps {
     replace?: boolean;
@@ -29,9 +30,9 @@ export const fetchItemsList = createAsyncThunk<
     const type = getItemsPageType(getState());
     try {
         if (
-            sort !== ItemSortField.CREATED ||
-            order !== 'asc' ||
-            search !== ''
+            sort !== itemsPageInitState.sort ||
+            order !== itemsPageInitState.order ||
+            search !== itemsPageInitState.search
         ) {
             addQueryParams({
                 sort,

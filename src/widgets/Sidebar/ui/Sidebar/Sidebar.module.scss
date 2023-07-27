@@ -7,10 +7,17 @@
     flex-shrink: 0;
 }
 
+/* @media (max-width: $site-xl) {
+    .Sidebar {
+        display: none;
+    }
+} */
+
 .switchers {
     margin-top: 15px;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
 }
 

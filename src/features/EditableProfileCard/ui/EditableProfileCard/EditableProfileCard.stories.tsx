@@ -3,7 +3,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { EditableProfileCard } from './EditableProfileCard';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import avatar from '@/shared/assets/tests/avatar.jpg';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
     title: 'features/EditableProfileCard/EditableProfileCard',
@@ -22,7 +22,7 @@ export default {
                     lastname: 'Flcvb',
                     currency: Currency.EUR,
                     username: 'hhh',
-                    avatar,
+                    avatar: TEST_IMAGE,
                 },
             },
         }),

@@ -45,7 +45,10 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['error', { onlyAttribute: ['value'] }],
+        'i18next/no-literal-string': [
+            'error',
+            { onlyAttribute: ['text', 'title'] },
+        ],
         'max-len': [2, { ignoreComments: true, code: 120 }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
@@ -60,16 +63,24 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx', '**/tests.ts'],
-            }],
+                testFilesPatterns: [
+                    '**/*.test.*',
+                    '**/*.story.*',
+                    '**/StoreDecorator.tsx',
+                    '**/tests.ts',
+                ],
+            },
+        ],
         'igor21v/layer-imports': [
             'error',
             {
                 alias: '@',
                 ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
-            }],
+            },
+        ],
         'consistent-return': 'warn',
-        'unused-imports/no-unused-imports': 'error'
+        'unused-imports/no-unused-imports': 'error',
+        'jsx-a11y/no-autofocus': 'off',
         // 'react/jsx-max-props-per-line' : ['error', {maximum: 1}],
     },
     globals: {

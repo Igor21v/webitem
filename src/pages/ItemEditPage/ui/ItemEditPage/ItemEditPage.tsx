@@ -1,22 +1,23 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ItemEditPage.module.scss';
+import { useTranslation } from 'react-i18next';
+import { ItemEdit } from '@/features/ItemEdit';
+import { Page } from '@/widgets/Page';
+import { ItemEditPageHeader } from '../ItemEditPageHeader/ItemEditPageHeader';
+import { AppHead } from '@/shared/lib/components/AppHead';
 
-interface ItemEditPageProps {
-    className?: string;
-}
-
-const ItemEditPage = memo((props: ItemEditPageProps) => {
-    const { className } = props;
+const ItemEditPage = memo(() => {
     const { t } = useTranslation('itemEdit');
     const { id } = useParams<{ id: string }>();
-    const isEdit = Boolean(id);
     return (
-        <div className={classNames(cls.ItemEditPage, {}, [className])}>
-            {isEdit ? t('Edit item with ID') + id : t('Creat new item')}
-        </div>
+        <>
+            <Page data-testid="AdminPanelPage">
+                {' '}
+                <ItemEditPageHeader />
+                {id && <ItemEdit id={id} />}
+            </Page>
+            <AppHead title={t('Edit title')} />
+        </>
     );
 });
 

@@ -1,4 +1,21 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { RESIZEBREAKPOINTS } from "../../../src/shared/lib/hooks/useResizeWindow/ResizeBreakpoints";
+
+const getBreakpoints = () => {
+    return (`@function breakpoints($size) {
+                @if $size==SM {
+                    @return ${RESIZEBREAKPOINTS.SM}px
+                } @if $size==MD {
+                    @return ${RESIZEBREAKPOINTS.MD}px
+                } @if $size==LG {
+                    @return ${RESIZEBREAKPOINTS.LG}px
+                } @if $size==XL {
+                    @return ${RESIZEBREAKPOINTS.XL}px
+                } @if $size==XXL {
+                    @return ${RESIZEBREAKPOINTS.XXL}px    
+                }}`
+  )
+}
 
 export function buildCssLoader(isDev: boolean) {
     return {
@@ -17,7 +34,13 @@ export function buildCssLoader(isDev: boolean) {
                     },
                 },
             },
-            'sass-loader',
+            {loader: 'sass-loader',
+            options: {
+                additionalData: getBreakpoints()
+            },
+        }
         ],
     };
 }
+
+

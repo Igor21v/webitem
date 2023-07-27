@@ -6,8 +6,12 @@ describe('Роутинг', () => {
             cy.visit('/');
             cy.get(selectByTestId('MainPage')).should('exist');
         });
-        it('Попытка перехода на страницу профиля', () => {
-            cy.visit('/profile/1');
+        it('Переход на страницу всех компонентов', () => {
+            cy.visit('/items/all');
+            cy.get(selectByTestId('ItemsPage')).should('exist');
+        });
+        it('Попытка перехода в панель администратора', () => {
+            cy.visit('/admin');
             cy.get(selectByTestId('MainPage')).should('exist');
         });
         it('Попытка перехода по несуществующему маршруту', () => {
@@ -20,13 +24,9 @@ describe('Роутинг', () => {
         beforeEach(() => {
             cy.login();
         });
-        it('Переход на страницу профиля', () => {
-            cy.visit('/profile/1');
-            cy.get(selectByTestId('ProfilePage')).should('exist');
-        });
-        it('Переход на станицу статей', () => {
-            cy.visit('/items');
-            cy.get(selectByTestId('ItemsPage')).should('exist');
+        it('Переход в панель администратора', () => {
+            cy.visit('/admin');
+            cy.get(selectByTestId('AdminPanelPage')).should('exist');
         });
     });
 });

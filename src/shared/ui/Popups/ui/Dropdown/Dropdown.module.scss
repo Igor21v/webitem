@@ -6,6 +6,7 @@
     border: 1px solid var(--primary-color);
     flex-direction: column;
     display: flex;
+    overflow: hidden;
 }
 
 .item {

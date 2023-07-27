@@ -18,6 +18,16 @@
     }
 }
 
+.success {
+    .title {
+        color: var(--green-light-color);
+    }
+
+    .text {
+        color: var(--green-dark-color);
+    }
+}
+
 .inverted {
     .title {
         color: var(--inverted-primary-color);
@@ -25,6 +35,26 @@
 
     .text {
         color: var(--inverted-secondary-color);
+    }
+}
+
+.inverted_bright {
+    .title {
+        color: var(--inverted-primary-color);
+    }
+
+    .text {
+        color: var(--inverted-primary-color);
+    }
+}
+
+.bright {
+    .title {
+        color: var(--primary-color);
+    }
+
+    .text {
+        color: var(--primary-color);
     }
 }
 
@@ -67,5 +97,17 @@
 
     .text {
         font: var(--font-l);
+    }
+}
+
+.italic {
+    .text {
+        font-style: italic;
+    }
+}
+
+.minLineHeight {
+    .title {
+        line-height: 1.2;
     }
 }

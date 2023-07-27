@@ -4,8 +4,9 @@ import { Item } from '../types/item';
 import { ItemDetailsSchema } from '../types/itemDetailsSchema';
 
 const initialState: ItemDetailsSchema = {
-    isLoading: false,
+    isLoading: true,
     error: undefined,
+    fulfilled: false,
     data: undefined,
 };
 
@@ -18,17 +19,20 @@ export const itemDetailsSlice = createSlice({
             .addCase(fetchItemById.pending, (state) => {
                 state.error = undefined;
                 state.isLoading = true;
+                state.fulfilled = false;
             })
             .addCase(
                 fetchItemById.fulfilled,
                 (state, action: PayloadAction<Item>) => {
                     state.isLoading = false;
+                    state.fulfilled = true;
                     state.data = action.payload;
                 },
             )
             .addCase(fetchItemById.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+                state.fulfilled = false;
             });
     },
 });

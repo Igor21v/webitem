@@ -9,12 +9,6 @@ import {
 import { itemsPageActions } from '../../slice/ItemsPageSlice';
 import { fetchItemsList } from '../fetchItemsList/fetchItemsList';
 import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
-import { getPageDimensions } from '@/features/UI';
-import {
-    ITEM_BIG_HEIGHT,
-    ITEM_SMALL_HEIGHT,
-    ITEM_SMALL_WIDTH,
-} from '@/shared/const/dimensions';
 
 interface InitItemsPageProps {
     searchParams: URLSearchParams;
@@ -49,22 +43,25 @@ export const initItemsPage = createAsyncThunk<
         if (view) {
             dispatch(itemsPageActions.setView(view));
         }
-        const { height: pageHeight, width: pageWidth } = getPageDimensions(
+        /* const { height: pageHeight, width: pageWidth } = getPageDimensions(
             getState(),
-        );
+        ); */
         let limit;
         if (view === ItemView.BIG) {
-            limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT) + 2;
+            /* limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT); */
+            limit = 20;
         } else {
-            const pageSquare = pageHeight * pageWidth;
+            /* const pageSquare = pageHeight * pageWidth;
             const itemSquare = ITEM_SMALL_HEIGHT * ITEM_SMALL_WIDTH;
-            limit = Math.max(Math.ceil(pageSquare / itemSquare) + 6, 9);
+            limit = Math.ceil(pageSquare / itemSquare); */
+            limit = 30;
         }
         dispatch(itemsPageActions.setLimit(limit));
         dispatch(itemsPageActions.initState());
     }
     if (!inited || type !== currType) {
+        dispatch(itemsPageActions.setPage(1));
         dispatch(itemsPageActions.setType(type || 'all'));
-        dispatch(fetchItemsList({}));
+        dispatch(fetchItemsList({ replace: true }));
     }
 });

@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { Select, SelectOption } from '@/shared/ui/Select';
 import { EditorThemeType } from '../CodeEditor/CodeEditor';
 import { CODE_EDITOR_THEME_KEY } from '@/shared/const/localstorage';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 interface ThemeSelectProps {
     className?: string;
@@ -13,6 +14,7 @@ interface ThemeSelectProps {
 export const ThemeSelect = memo((props: ThemeSelectProps) => {
     const { className, editorTheme, setEditorTheme } = props;
     const { t } = useTranslation();
+    const { isScreenSm } = useResizeWindow();
     const selectOptions: SelectOption<EditorThemeType>[] = [
         {
             value: 'none',
@@ -38,6 +40,7 @@ export const ThemeSelect = memo((props: ThemeSelectProps) => {
             value={editorTheme}
             onChange={selectHandler}
             label={t('Editor_s theme')}
+            column={!isScreenSm}
         />
     );
 });

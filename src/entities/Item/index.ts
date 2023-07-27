@@ -16,6 +16,25 @@ export type { ItemDetailsSchema } from './model/types/itemDetailsSchema';
 
 export { ItemList } from './ui/ItemList/ItemList';
 
-export { getItemDetailsData } from './model/selectors/itemDetails';
+export {
+    useItemDetailsSelector,
+    getItemDetailsData,
+} from './model/selectors/itemDetails';
 
 export { itemList } from './model/consts/ItemList';
+
+export { ItemEditCard } from './ui/ItemEdit/ItemEdit/ItemEditCard';
+
+export type { ItemEditCardType as ItemEditType } from './model/types/ItemEditCard';
+
+export { fetchItemById } from './model/services/fetchItemById/fetchItemById';
+
+export { itemDetailsReducer } from './model/slice/itemDetailsSlice';
+
+export type { EditItemError } from './model/types/ItemEditCard';
+
+export { ItemTypeUI } from './ui/ItemTypeUI/ItemTypeUI';
+
+export { ItemTypeList } from './ui/ItemTypeList/ItemTypeList';
+
+export { ItemListInfiniteWrapp } from './ui/ItemListInfinite/ItemListInfiniteWrapp';

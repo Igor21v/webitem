@@ -15,7 +15,10 @@ export default {
         StoreDecorator({
             itemDetails: {
                 data: TEST_ITEM,
+                fulfilled: true,
+                isLoading: false,
             },
+
             user: {
                 authData: { id: '1' },
             },
@@ -29,26 +32,3 @@ const Template: ComponentStory<typeof ItemDetailsPage> = (args) => (
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/item-ratings?userId=1`,
-            method: 'GET',
-            status: 200,
-            response: [
-                {
-                    rate: 4,
-                },
-            ],
-        },
-        {
-            url: `${__API__}/items?_limit`,
-            method: 'GET',
-            status: 200,
-            response: new Array(7).fill(0).map((item, index) => ({
-                ...TEST_ITEM,
-                id: String(index),
-            })),
-        },
-    ],
-};

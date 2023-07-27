@@ -21,7 +21,9 @@ export const ItemDetailsSkeleton = memo(() => (
         </HStack>
         <Skeleton width={200} height={18} />
         <Skeleton width={100} height={18} />
+        <Skeleton width="100%" height={600} />
         <VStack max gap="4">
+            <Skeleton width="100%" height={400} />
             <HStack justify="between" align="end" max>
                 <HStack gap="8">
                     <Skeleton width={60} height={56} border="20%" />
@@ -30,7 +32,6 @@ export const ItemDetailsSkeleton = memo(() => (
                 </HStack>
                 <Skeleton width={200} height={24} />
             </HStack>
-            <Skeleton width="100%" height={400} />
         </VStack>
     </>
 ));

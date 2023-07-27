@@ -7,12 +7,15 @@ export interface BuildPaths {
     src: string;
     locales: string;
     buildLocales: string;
+    favicon: string;
+    buildFavicon: string;
 }
 
 export interface BuilEnv {
     mode: BuildMode;
     port: number;
     apiUrl: string;
+    staticUrl: string;
     bundleAnalyzer: boolean;
 }
 
@@ -22,6 +25,7 @@ export interface BuildOptions {
     isDev: boolean;
     port: number;
     apiUrl: string;
+    staticUrl: string;
     project: 'storybook' | 'frontend' | 'jest';
     bundleAnalyzer: boolean;
 }

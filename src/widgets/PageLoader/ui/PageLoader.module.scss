@@ -4,4 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    z-index: var(5000);
+    border-radius: 12px 0 0;
+    background: var(--bg-color);
 }

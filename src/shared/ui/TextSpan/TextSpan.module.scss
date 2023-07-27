@@ -1,0 +1,55 @@
+.primary {
+    color: var(--secondary-color);
+}
+
+.error {
+    color: var(--red-dark-color);
+}
+
+.success {
+    color: var(--green-dark-color);
+}
+
+.inverted {
+    color: var(--inverted-secondary-color);
+}
+
+.inverted_bright {
+    color: var(--inverted-primary-color);
+}
+
+.bright {
+    color: var(--primary-color);
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.size_s {
+    font: var(--font-s);
+}
+
+.size_m {
+    font: var(--font-m);
+}
+
+.size_l {
+    font: var(--font-l);
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline var(--secondary-color);
+}

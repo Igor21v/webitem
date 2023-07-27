@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { TEST_ANIMATION, TEST_IMAGE } from '@/shared/const/tests';
 import { OptionAnimate } from './OptionAnimate';
 
 export default {
-    title: 'shared/AnimateHover',
+    title: 'shared/OptionAnimate',
     component: OptionAnimate,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -14,4 +15,7 @@ const Template: ComponentStory<typeof OptionAnimate> = (args) => (
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    src: TEST_IMAGE,
+    animateSrc: TEST_ANIMATION,
+};

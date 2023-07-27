@@ -3,6 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppImageProps } from '../AppImage';
 import cls from './OptionAnimate.module.scss';
 import { Loader } from '../Loader';
+import { TEST_ANIMATION, TEST_IMAGE } from '@/shared/const/tests';
 
 interface OptionAnimateProps extends AppImageProps {
     animateOn?: boolean;
@@ -27,9 +28,18 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
     const [hasError, setHasError] = useState(false);
     const [animateLoaded, setAnimateLoaded] = useState(false);
 
+    let source: string | undefined;
+    let animateSource: string | undefined;
+    if (__PROJECT__ === 'storybook') {
+        source = TEST_IMAGE;
+        animateSource = TEST_ANIMATION;
+    } else {
+        source = src;
+        animateSource = animateSrc;
+    }
     useLayoutEffect(() => {
         const img = new Image();
-        img.src = src ?? '';
+        img.src = source ?? '';
         img.onload = () => {
             setIsLoading(false);
         };
@@ -37,18 +47,18 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
             setIsLoading(false);
             setHasError(true);
         };
-    }, [src]);
+    }, [source]);
 
     if (
         animateOn &&
-        animateSrc &&
+        animateSource &&
         !isLoadingAnimate &&
         !hasErrorAnimate &&
         !animateLoaded
     ) {
         setIsLoadingAnimate(true);
         const imgAnim = new Image();
-        imgAnim.src = animateSrc;
+        imgAnim.src = animateSource;
         imgAnim.onload = () => {
             setIsLoadingAnimate(false);
             setAnimateLoaded(true);
@@ -75,7 +85,7 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
                     { [cls.round]: round },
                     [className],
                 )}
-                src={src}
+                src={source}
                 alt={alt}
                 {...otherProps}
             />
@@ -91,7 +101,7 @@ export const OptionAnimate = memo((props: OptionAnimateProps) => {
         return (
             <img
                 className={classNames('', { [cls.round]: round }, [className])}
-                src={animateSrc}
+                src={animateSource}
                 alt={alt}
                 {...otherProps}
             />

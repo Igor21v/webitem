@@ -10,7 +10,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Dropdown } from '@/shared/ui/Popups';
 import { Avatar } from '@/shared/ui/Avatar';
-import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -18,7 +18,7 @@ interface AvatarDropdownProps {
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const dispatch = useAppDispatch();
     const authData = useSelector(getUserAuthData);
     const isAdmin = useSelector(isUserAdmin);
@@ -36,13 +36,20 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                     ? [
                           {
                               content: t('Admin panel'),
-                              href: getRouteAdmin(),
+                              href: getRoute(
+                                  'admin_panel',
+                                  i18n.language as langType,
+                              ),
                           },
                       ]
                     : []),
                 {
                     content: t('Profile'),
-                    href: getRouteProfile(authData!.id),
+                    href: getRoute(
+                        'profile',
+                        i18n.language as langType,
+                        authData!.id,
+                    ),
                 },
                 {
                     content: t('sign-out'),

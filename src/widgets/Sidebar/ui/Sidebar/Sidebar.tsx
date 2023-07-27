@@ -43,6 +43,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                             item={item}
                             collapsed={collapsed}
                             key={item.type}
+                            ImgOffsetX={item.ImgOffsetX}
+                            ImgOffsetY={item.ImgOffsetY}
                         />
                     ))}
                 </VStack>

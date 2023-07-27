@@ -1,16 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useItemRecommendationsList } from '../../api/itemLikeListApi';
-import { ItemList } from '@/entities/Item';
+import { ItemList, ItemView } from '@/entities/Item';
 import { Text } from '@/shared/ui/Text';
+import cls from './ItemLikeList.module.scss';
 
 interface ItemLikeListProps {
-    className?: string;
     likeItems: string;
 }
 
 export const ItemLikeListFetch = memo((props: ItemLikeListProps) => {
-    const { className, likeItems } = props;
+    const { likeItems } = props;
     const { t } = useTranslation('itemsLike');
     const {
         isError,
@@ -23,6 +23,11 @@ export const ItemLikeListFetch = memo((props: ItemLikeListProps) => {
     }
 
     return (
-        <ItemList isLoading={isLoading} items={items} className={className} />
+        <ItemList
+            isLoading={isLoading}
+            items={items}
+            className={cls.itemLikeList}
+            view={ItemView.BIG}
+        />
     );
 });

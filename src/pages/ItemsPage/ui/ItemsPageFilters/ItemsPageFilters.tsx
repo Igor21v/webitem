@@ -1,9 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ItemSortField, ItemTypes, ItemView } from '@/entities/Item';
+import {
+    ItemSortField,
+    ItemTypes,
+    ItemTypeUI,
+    ItemView,
+} from '@/entities/Item';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Input } from '@/shared/ui/Input';
 import { Card } from '@/shared/ui/Card';
@@ -17,13 +22,14 @@ import {
     getItemsPageSearch,
     getItemsPageSort,
     getItemsPageView,
+    getSearchFocus,
 } from '../../model/selectors/itemsPageSelectors';
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
 import { ItemSortSelector } from '@/features/ItemSortSelector';
 import { ItemViewSelector } from '@/features/ItemViewSelector';
-import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
+import { TextSize, TextTheme } from '@/shared/ui/Text';
 
 interface ItemsPageFiltersProps {
     className?: string;
@@ -37,11 +43,16 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const sort = useSelector(getItemsPageSort);
     const order = useSelector(getItemsPageOrder);
     const search = useSelector(getItemsPageSearch);
+    const searchFocus = useSelector(getSearchFocus);
+    const { isScreenXl } = useResizeWindow();
     const { type } = useParams<{ type: ItemTypes }>();
     const fetchData = useCallback(() => {
         dispatch(fetchItemsList({ replace: true }));
     }, [dispatch]);
     const debouncedFetchData = useDebounce(fetchData, 500);
+    useEffect(() => {
+        if (!isScreenXl) dispatch(itemsPageActions.setView(ItemView.BIG));
+    }, [dispatch, isScreenXl]);
     const onChangeView = useCallback(
         (view: ItemView) => {
             dispatch(itemsPageActions.setView(view));
@@ -74,35 +85,64 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
         },
         [dispatch, debouncedFetchData],
     );
-    useNonInitialEffect(() => {
-        dispatch(itemsPageActions.setPage(1));
-        dispatch(itemsPageActions.setType(type || 'all'));
-        fetchData();
-    }, [type]);
-
-    return (
-        <div className={classNames('', {}, [className])}>
-            <div className={cls.sortWrapper}>
-                <ItemSortSelector
-                    onChangeOrder={onChangeOrder}
-                    onChangeSort={onChangeSort}
-                    order={order}
-                    sort={sort}
-                />
-                <ItemViewSelector view={view} onViewClick={onChangeView} />
-            </div>
-            <HStack max justify="between" className={cls.search}>
-                <Card max>
-                    <Input
-                        placeholder={t('Search')}
-                        onChange={onChangeSearch}
-                        value={search}
+    const focusSearchHandler = (value: boolean) => {
+        dispatch(itemsPageActions.searchFocus(value));
+    };
+    if (isScreenXl)
+        return (
+            <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
+                <div className={cls.sortWrapper}>
+                    <ItemSortSelector
+                        onChangeOrder={onChangeOrder}
+                        onChangeSort={onChangeSort}
+                        order={order}
+                        sort={sort}
                     />
-                </Card>
-                <Card className={cls.type}>
-                    <Text text={type} />
-                </Card>
+                    <ItemViewSelector view={view} onViewClick={onChangeView} />
+                </div>
+                <HStack max justify="between" className={cls.search}>
+                    <Card max>
+                        <Input
+                            placeholder={t('Search')}
+                            onChange={onChangeSearch}
+                            value={search}
+                            focusIsSet={searchFocus}
+                            focusHandler={focusSearchHandler}
+                            data-testid="ItemsPageFilters.Search"
+                        />
+                    </Card>
+                    <Card className={cls.type}>
+                        <ItemTypeUI type={type} />
+                    </Card>
+                </HStack>
+            </div>
+        );
+    return (
+        <Card
+            className={classNames(cls.ItemsPageFiltersMobile, {}, [className])}
+        >
+            <HStack justify="center" align="center" className={cls.typeMobile}>
+                <ItemTypeUI
+                    type={type}
+                    theme={TextTheme.BRIGHT}
+                    size={TextSize.L}
+                />
             </HStack>
-        </div>
+            <ItemSortSelector
+                onChangeOrder={onChangeOrder}
+                onChangeSort={onChangeSort}
+                order={order}
+                sort={sort}
+            />
+            <Input
+                placeholder={t('Search')}
+                onChange={onChangeSearch}
+                value={search}
+                focusIsSet={searchFocus}
+                focusHandler={focusSearchHandler}
+                classNameWrapper={cls.search}
+                data-testid="ItemsPageFilters.Search"
+            />
+        </Card>
     );
 });

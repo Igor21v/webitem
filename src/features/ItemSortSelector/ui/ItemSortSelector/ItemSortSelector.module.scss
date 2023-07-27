@@ -1,8 +1,15 @@
-.ItemSortSelector {
-    display: flex;
-    align-items: center;
+@media (min-width: breakpoints(SM)) {
+    .ItemSortSelector {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
 }
 
-.order {
-    margin-left: 8px;
+.sort {
+    margin-right: 8px;
+}
+
+.text {
+    margin-right: 8px;
 }

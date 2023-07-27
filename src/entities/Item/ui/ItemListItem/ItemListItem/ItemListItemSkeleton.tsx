@@ -1,6 +1,8 @@
 import { memo } from 'react';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 import { ItemView } from '../../../model/consts/ItemConst';
 import { ItemListItemBigSkeleton } from '../ItemListBigItem/ItemListItemBigSkeleton';
+import { ItemListItemMobileSkeleton } from '../ItemListMobileItem/ItemListMobileItemSkeleton';
 import { ItemListItemSmallSkeleton } from '../ItemListSmallItem/ItemListItemSmallSkeleton';
 
 interface ItemListItemSkeletonProps {
@@ -10,6 +12,9 @@ interface ItemListItemSkeletonProps {
 
 export const ItemListItemSkeleton = memo((props: ItemListItemSkeletonProps) => {
     const { className, view } = props;
+    const { isScreenXl } = useResizeWindow();
+    if (!isScreenXl)
+        return <ItemListItemMobileSkeleton className={className} />;
     if (view === ItemView.BIG) {
         return <ItemListItemBigSkeleton className={className} />;
     }

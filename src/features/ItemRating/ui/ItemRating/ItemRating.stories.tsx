@@ -28,7 +28,7 @@ Normal.decorators = [
 Normal.parameters = {
     mockData: [
         {
-            url: `${__API__}/item-ratings?userId=1&itemId=1`,
+            url: `${__API__}/itemRatings?userId=1&itemId=1`,
             method: 'GET',
             status: 200,
             response: [
@@ -54,7 +54,7 @@ WithoutRate.decorators = [
 WithoutRate.parameters = {
     mockData: [
         {
-            url: `${__API__}/item-ratings?userId=1&itemId=1`,
+            url: `${__API__}/itemRatings?userId=1&itemId=1`,
             method: 'GET',
             status: 200,
             response: [],

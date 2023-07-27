@@ -1,3 +1,7 @@
+.ItemsPageFilters {
+    margin-top: 20px;
+}
+
 .sortWrapper {
     display: flex;
     align-items: center;
@@ -14,4 +18,17 @@
 
 .type {
     margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.test {
+    flex-grow: 55;
+}
+
+.ItemsPageFiltersMobile {
+    margin-top: 10px;
+}
+
+.typeMobile {
+    margin-bottom: 8px;
 }

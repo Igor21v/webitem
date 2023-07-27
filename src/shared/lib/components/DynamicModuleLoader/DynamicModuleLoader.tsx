@@ -36,6 +36,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         // eslint-disable-next-line react/jsx-no-useless-fragment
         <>{children}</>

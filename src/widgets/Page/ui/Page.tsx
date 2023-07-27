@@ -1,4 +1,4 @@
-import { MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
+import { MutableRefObject, ReactNode, UIEvent, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getUIScrollByPath, uIActions } from '@/features/UI';
@@ -10,6 +10,7 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -28,6 +29,30 @@ export const Page = (props: PageProps) => {
     const scrollPosition = useSelector((state: StateSchema) =>
         getUIScrollByPath(state, pathname),
     );
+    const setPageDimensions = () => {
+        if (
+            wrapperRef.current?.clientWidth &&
+            wrapperRef.current?.clientHeight
+        ) {
+            dispatch(
+                uIActions.setPageDimensions({
+                    width: wrapperRef.current?.clientWidth,
+                    height: wrapperRef.current?.clientHeight,
+                }),
+            );
+        }
+    };
+    const debouncedSetPD = useDebounce(setPageDimensions, 500);
+    useEffect(() => {
+        const observer = new ResizeObserver(() => {
+            debouncedSetPD();
+        });
+        observer.observe(wrapperRef?.current);
+        return () => {
+            observer.disconnect();
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useInfiniteScroll({
         triggerRef,
@@ -36,14 +61,9 @@ export const Page = (props: PageProps) => {
     });
 
     useInitialEffect(() => {
-        dispatch(
-            uIActions.setPageDimensions({
-                width: wrapperRef.current.clientWidth,
-                height: wrapperRef.current.clientHeight,
-            }),
-        );
         wrapperRef.current.scrollTop = scrollPosition;
     });
+
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
         dispatch(
             uIActions.setScrollPosition({

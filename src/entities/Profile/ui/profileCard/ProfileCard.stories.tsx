@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import avatar from '@/shared/assets/tests/avatar.jpg';
 import { ProfileCard } from './ProfileCard';
+import { TEST_IMAGE } from '@/shared/const/tests';
 
 export default {
-    title: 'entities/ProfilePage',
+    title: 'entities/ProfileCard',
     component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -26,7 +26,7 @@ Normal.args = {
         lastname: 'Flcvb',
         currency: Currency.EUR,
         username: 'hhh',
-        avatar,
+        avatar: TEST_IMAGE,
     },
 };
 

@@ -1,0 +1,66 @@
+.ItemListBigItem {
+    position: relative;
+}
+
+.img,
+.imgWrapper {
+    width: 100%;
+    max-width: 444px;
+    max-height: 250px;
+}
+
+.img {
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.description {
+    height: 250px;
+}
+
+.itemLike {
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+}
+
+.skeletonText {
+    width: 100%;
+}
+
+@media (max-width: breakpoints(MD)) {
+    .ItemListBigItem {
+        height: 460px;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+    .titleText {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .vStack {
+        flex-wrap: wrap;
+    }
+
+    .animateHandler {
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: breakpoints(SM)) {
+    .ItemListBigItem {
+        height: 380px;
+    }
+
+    .img,
+    .imgWrapper {
+        width: 100%;
+        max-width: 290px;
+        max-height: 165px;
+    }
+}

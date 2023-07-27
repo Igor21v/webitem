@@ -4,50 +4,93 @@ const jsonServer = require('json-server');
 const path = require('path');
 const https = require('https');
 const http = require('http');
-const items = require('./db/items');
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const findUser = require('./findUser');
+const { sortHandler, filterHandler } = require('./helpers');
+
+const db = low(new FileSync(path.resolve(__dirname, 'db.json')));
+const router = jsonServer.router(db);
 
 const options = {
-    key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
-    cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
+    key: fs.readFileSync(path.resolve(__dirname, 'keys', 'key.pem')),
+    cert: fs.readFileSync(path.resolve(__dirname, 'keys', 'cert.pem')),
 };
 
 const server = jsonServer.create();
 
-const router = jsonServer.router(require('./db.js')());
-
-server.use(jsonServer.defaults({ static: './json-server/static' }));
-// Заменить путь при деплое
-
-server.use(jsonServer.bodyParser);
-
-// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
-server.use(async (req, res, next) => {
-    await new Promise((res) => {
-        setTimeout(res, 800);
-    });
+server.use((req, res, next) => {
+    res.header('Cache-Control', 'public, max-age=86400000'); // change max-age to any value in milliseconds you want
     next();
 });
+
+// Эндпоинт для компонентов
+server.get('/items', (req, res) => {
+    try {
+        const {
+            _limit: limit,
+            _page: page,
+            _sort: sort,
+            _order: order,
+            type,
+            q,
+        } = req.query;
+        res.header('Cache-Control', 'no-cache');
+        res.header('Access-Control-Allow-Origin', '*');
+        const itemsDB = db.get('items').filter(filterHandler(type, q)).value(); // запускаем фильтр
+        if (sort) {
+            itemsDB.sort(sortHandler(order, sort)); // запускаем сортировку
+        }
+        const fromEl = (page - 1) * limit;
+        const toEl = page * limit;
+
+        const itemsReturn = itemsDB.slice(fromEl, toEl);
+        const response = itemsReturn.map((item) => {
+            newItem = { ...item };
+            newItem.codes = { html: '', css: '', js: '' };
+            return newItem;
+        });
+        return res.json(response);
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
+// Дабавляем просмотр и возвращаем компонент
+server.get('/items/:id', (req, res, next) => {
+    try {
+        const { id } = req.params;
+        console.log('trap2');
+        res.header('Cache-Control', 'no-cache');
+        res.header('Access-Control-Allow-Origin', '*');
+        const itemDB = db.get('items').find({ id: `${id}` });
+        const { views } = itemDB.value();
+        itemDB.assign({ views: views + 1 }).write();
+        return res.json(itemDB);
+    } catch (e) {
+        console.log(`Ошибка при добавлении просмотра/возврате компонента ${e}`);
+        next();
+    }
+});
+
+// Подключение статики
+server.use(
+    jsonServer.defaults({
+        static: path.resolve(__dirname, 'static'),
+    }),
+);
+
+server.use(jsonServer.bodyParser);
 
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        const db = JSON.parse(
-            fs.readFileSync(
-                path.resolve(__dirname, 'db', 'users.json'),
-                'UTF-8',
-            ),
-        );
-        const users = db;
-
-        const userFromBd = users.find(
-            (user) => user.username === username && user.password === password,
-        );
-
+        userFromBd = findUser(username, password);
         if (userFromBd) {
             return res.json(userFromBd);
         }
-
         return res.status(403).json({ message: 'User not found' });
     } catch (e) {
         console.log(e);
@@ -58,10 +101,12 @@ server.post('/login', (req, res) => {
 // Эндпоинт для избранного
 server.get('/itemsLike', (req, res) => {
     try {
-        console.log(`Res ${JSON.stringify(req.query)}`);
         const itemsReq = JSON.parse(req.query.itemsReq);
+        const db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        );
         console.log(`itemsReq ${JSON.stringify(itemsReq)}`);
-        const itemsDB = items();
+        const itemsDB = db.items;
         const itemsRes = Object.keys(itemsReq).map((itemReq) =>
             itemsDB.find((itemDB) => {
                 console.log(
@@ -74,25 +119,55 @@ server.get('/itemsLike', (req, res) => {
         );
 
         if (itemsRes) {
-            console.log(`itemsRes ${JSON.stringify(itemsRes)}`);
+            itemsRes.forEach((item) => {
+                item.codes = { html: '', css: '', js: '' };
+            });
             return res.json(itemsRes);
         }
-
         return res.status(403).json({ message: 'Items not found' });
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });
     }
 });
-// проверяем, авторизован ли пользователь
-// eslint-disable-next-line
-/* server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
-    }
 
+// авторизован ли пользователь
+server.use((req, res, next) => {
+    if (
+        req.method === 'POST' ||
+        req.method === 'PUT' ||
+        req.method === 'PATCH' ||
+        req.method === 'DELETE'
+    ) {
+        console.log(`LLLLL ${JSON.stringify(req.body)}`);
+        const headAuth = JSON.parse(req.headers.authorization);
+        const username = headAuth?.username;
+        const password = headAuth?.password;
+        userFromBd = findUser(username, password);
+        if (!userFromBd) {
+            return res.status(401).json({ message: 'AUTH ERROR' });
+        }
+        if (req.method === 'POST' && req.path === '/items') {
+            console.log(`test ${JSON.stringify(req.path)}`);
+            const { title } = req.body;
+            console.log(`title ${JSON.stringify(title)}`);
+            const itemDB = db.get('items').find({ title: `${title}` });
+            console.log(`itemDB ${JSON.stringify(itemDB.value())}`);
+            if (itemDB.value()) {
+                return res
+                    .status(409)
+                    .json({ message: 'ELEMENT ALREADY EXISTS' });
+            }
+
+            const dateTime = new Date().toISOString();
+            const date = dateTime.slice(0, 10).replaceAll('-', '.');
+            console.log(`DN  ${date}`);
+            req.body.createdAt = date;
+            req.body.views = 0;
+        }
+    }
     next();
-}); */
+});
 
 server.use(router);
 

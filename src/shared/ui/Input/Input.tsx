@@ -1,89 +1,88 @@
-import React, {
-    InputHTMLAttributes,
-    memo,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import React, { InputHTMLAttributes, useRef } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
     'value' | 'onChange' | 'readOnly'
 >;
 
-interface InputProps extends HTMLInputProps {
+interface InputProps<T extends string | number | undefined>
+    extends HTMLInputProps {
     className?: string;
-    value?: string | number;
-    onChange?: (value: string) => void;
-    autofocus?: boolean;
+    classNameWrapper?: string;
+    value?: T;
+    onChange?: (value: T) => void;
+    autoFocus?: boolean;
     readOnly?: boolean;
+    validateError?: boolean;
+    focusIsSet?: boolean;
+    focusHandler?: (value: boolean) => void;
 }
-export const Input = memo((props: InputProps) => {
+export const Input = <T extends number | string | undefined>(
+    props: InputProps<T>,
+) => {
     const {
         className,
+        classNameWrapper,
         value,
         type = 'text',
         placeholder,
         onChange,
         autoFocus,
         readOnly,
+        validateError,
+        focusIsSet,
+        focusHandler,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
-    const [isFocused, setIsFocuset] = useState(false);
-    const [caretPosition, setCaretPosition] = useState(0);
-
-    useEffect(() => {
-        if (autoFocus) {
-            setIsFocuset(true);
+    const canEdit = !readOnly;
+    useInitialEffect(() => {
+        if (focusIsSet) {
             ref.current?.focus();
         }
-    }, [autoFocus]);
-
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length);
-    };
+    });
     const onBlur = () => {
-        setIsFocuset(false);
+        focusHandler?.(false);
     };
     const onFocus = () => {
-        setIsFocuset(true);
+        focusHandler?.(true);
     };
-    const onSelect = (e: any) => {
-        setCaretPosition(e?.target?.selectionStart || 0);
+
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (type === 'text' || type === 'password') {
+            onChange?.(e.target.value as T);
+        } else if (type === 'number') {
+            onChange?.(Number(e.target.value) as T);
+        }
     };
+
     const mods: Mods = {
         [cls.readOnly]: readOnly,
+        [cls.canEdit]: canEdit,
+        [cls.validateError]: validateError,
     };
-    const isCaretVisible = isFocused && !readOnly;
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
-            {placeholder && (
-                <div className={cls.placeholder}>{`${placeholder}>`}</div>
-            )}
-            <div className={cls.caretWrapper}>
-                <input
-                    ref={ref}
-                    type={type}
-                    onChange={onChangeHandler}
-                    readOnly={readOnly}
-                    value={value}
-                    {...otherProps}
-                    className={classNames(cls.input, mods, [])}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSelect={onSelect}
-                />
-                {isCaretVisible && (
-                    <span
-                        className={cls.caret}
-                        style={{ left: `${caretPosition * 9}px` }}
-                    />
-                )}
-            </div>
+        <div className={classNames(cls.wrapper, {}, [classNameWrapper])}>
+            <label htmlFor={placeholder} className={cls.lable}>
+                <div>{placeholder}</div>
+                {'>'}
+            </label>
+            <input
+                ref={ref}
+                type={type}
+                onChange={onChangeHandler}
+                disabled={readOnly}
+                value={value}
+                {...otherProps}
+                className={classNames(cls.input, mods, [className])}
+                autoFocus={autoFocus}
+                id={placeholder}
+                onFocus={onFocus}
+                onBlur={onBlur}
+            />
         </div>
     );
-});
+};

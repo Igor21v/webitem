@@ -1,0 +1,82 @@
+$icon-width: 40px;
+$text-width: 110px;
+$padding: 1.5rem;
+$duration: 0.2s;
+
+.NavbarMobile {
+    font-family: sans-serif;
+    background: var(--inverted-bg-color);
+    width: 100%;
+    height: var(--navbar-height);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bar {
+    width: calc($icon-width + $text-width);
+    height: calc(100% - ($padding * 0.5));
+    background: var(--inverted-card-bg);
+    position: absolute;
+    top: calc($padding * 0.3);
+    left: calc($padding * 0.5);
+    border-radius: $icon-width;
+    transform: translateX(calc($icon-width * var(--active-navbar)));
+    transition: transform $duration ease-in-out;
+}
+
+.ul {
+    list-style: none;
+    background-color: var(--inverted-bg-color);
+    margin: 0;
+    padding: $padding calc($padding / 2);
+    position: relative;
+    padding-right: calc($text-width + $padding / 2);
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.li {
+    position: relative;
+    list-style-type: none;
+
+    >* {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 0;
+    }
+
+    .icon {
+        justify-content: center;
+        width: $icon-width;
+        cursor: pointer;
+        text-align: center;
+        transition-property: opacity, transform;
+        transition-duration: $duration;
+        transition-timing-function: ease-in-out;
+    }
+
+    .text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        width: $text-width;
+        margin-left: $icon-width;
+        pointer-events: none;
+        transition: opacity $duration ease-in-out;
+        height: 100%;
+    }
+
+    &[data-active-navbar] {
+        .text,
+        .icon { opacity: 1; }
+    }
+}
+
+[data-active-navbar] ~ .li .icon {
+    transform: translateX(calc((var(--i) * 1px) + $text-width));
+}

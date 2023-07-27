@@ -1,5 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { ItemSortField, ItemView } from '@/entities/Item';
+import { buildSelector } from '@/shared/lib/store';
 
 export const getItemsPageIsLoading = (state: StateSchema) =>
     state.itemsPage?.isLoading || false;
@@ -9,7 +10,7 @@ export const getItemsPageView = (state: StateSchema) =>
 export const getItemsPageNum = (state: StateSchema) =>
     state.itemsPage?.page || 1;
 export const getItemsPageLimit = (state: StateSchema) =>
-    state.itemsPage?.limit || 9;
+    state.itemsPage?.limit || 20;
 export const getItemsPageHasMore = (state: StateSchema) =>
     state.itemsPage?.hasMore;
 export const getItemsPageInited = (state: StateSchema) =>
@@ -22,3 +23,8 @@ export const getItemsPageSearch = (state: StateSchema) =>
     state.itemsPage?.search ?? '';
 export const getItemsPageType = (state: StateSchema) =>
     state.itemsPage?.type ?? 'all';
+export const getSearchFocus = (state: StateSchema) =>
+    state.itemsPage?.searchFocus ?? false;
+export const [useItemById] = buildSelector(
+    (state, id: string) => state.itemsPage?.entities[id],
+);

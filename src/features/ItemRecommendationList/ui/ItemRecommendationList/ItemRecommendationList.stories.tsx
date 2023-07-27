@@ -18,12 +18,14 @@ const Template: ComponentStory<typeof ItemRecommendationList> = (args) => (
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    pageWidth: 800,
+};
 Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
     mockData: [
         {
-            url: `${__API__}/items?_limit=3`,
+            url: `${__API__}/items?_limit=1&_order=desc`,
             method: 'GET',
             status: 200,
             response: [

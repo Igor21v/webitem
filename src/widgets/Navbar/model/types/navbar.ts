@@ -1,9 +1,11 @@
-import React from 'react';
+import { AppRoutes } from '@/shared/const/router';
 
 export interface NavbarItemType {
-    path: string;
+    path: AppRoutes;
+    pathParam?: string;
     text: string;
-    Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
     authOnly?: boolean;
     fill?: boolean;
+    ImgOffsetX: number;
+    ImgOffsetY: number;
 }

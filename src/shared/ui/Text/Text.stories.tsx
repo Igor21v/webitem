@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    title: 'Title lorem ipsun',
+    title: 'Title lorem ipsun1',
     text: 'Text lorem ipsun',
 };
 
@@ -60,4 +60,16 @@ SizeS.args = {
     title: 'Title lorem ipsun',
     text: 'Text lorem ipsun',
     size: TextSize.S,
+};
+
+export const TitleH1 = Template.bind({});
+TitleH1.args = {
+    title: 'Title H1 lorem ipsun',
+    HeaderTag: 'h1',
+};
+
+export const TitleH3 = Template.bind({});
+TitleH3.args = {
+    title: 'Title H3 lorem ipsun',
+    HeaderTag: 'h3',
 };

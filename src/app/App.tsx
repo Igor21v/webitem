@@ -1,10 +1,12 @@
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Navbar } from '@/widgets/Navbar';
+import { Navbar, NavbarMobile } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, userActions } from '@/entities/User';
 import { AppRouter } from './providers/router';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
+import { useLangInit } from '@/shared/lib/hooks/useLangInit/useLangInit';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -12,14 +14,19 @@ export default function App() {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
     const inited = useSelector(getUserInited);
+    const { isScreenXl } = useResizeWindow();
+    useLangInit();
+
     return (
-        <div className={classNames('app', {}, [])}>
+        <div className={classNames('app', {}, [])} id="app">
             <Suspense fallback="">
-                <Navbar />
+                {isScreenXl && <Navbar />}
+                {!isScreenXl && <NavbarMobile />}
                 <div className="content-page">
-                    <Sidebar />
+                    {isScreenXl && <Sidebar />}
                     {inited && <AppRouter />}
                 </div>
+                {/* <LangInit /> */}
             </Suspense>
         </div>
     );

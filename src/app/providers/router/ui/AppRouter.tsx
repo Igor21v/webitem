@@ -1,10 +1,13 @@
-import { memo, Suspense, useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { PageLoader } from '@/widgets/PageLoader';
 import { RequireAuth } from './RequireAuth';
 import { AppRouteProps, routeConfig } from '../config/routeConfig';
+import { langType } from '@/shared/const/router';
 
 const AppRouter = () => {
+    const { i18n } = useTranslation();
     const renderWithWrapper = useCallback((route: AppRouteProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
@@ -23,7 +26,13 @@ const AppRouter = () => {
             />
         );
     }, []);
-    return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
+    return (
+        <Routes>
+            {Object.values(routeConfig(i18n.language as langType)).map(
+                renderWithWrapper,
+            )}
+        </Routes>
+    );
 };
 
-export default memo(AppRouter);
+export default AppRouter;

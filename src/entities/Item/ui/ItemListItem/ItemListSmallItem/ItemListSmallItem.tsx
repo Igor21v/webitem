@@ -1,8 +1,9 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
-import { getRouteItemDetails } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ItemListSmallItem.module.scss';
 import { useHover } from '@/shared/lib/hooks/useHover/useHover';
@@ -14,10 +15,11 @@ import { ItemLike } from '../../ItemLike/ItemLike';
 export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
     const [isHover, { onMouseEnter, onMouseLeave }] = useHover();
+    const { i18n } = useTranslation();
     return (
         <AppLink
             target={target}
-            to={getRouteItemDetails(item.id)}
+            to={getRoute('item_details', i18n.language as langType, item.id)}
             className={classNames('', {}, [className, cls.ItemListSmallItem])}
             data-testid="ItemListItem"
             onMouseEnter={onMouseEnter}

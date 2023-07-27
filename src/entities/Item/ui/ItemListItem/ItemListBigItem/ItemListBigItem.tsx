@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { memo, MutableRefObject, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
+import { Text, TextAlign } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { getRouteItemDetails } from '@/shared/const/router';
+import { getRoute, langType } from '@/shared/const/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import cls from './ItemListBigItem.module.scss';
 import { ItemListSpecItemProps } from '../ItemListItem/ItemListItem';
@@ -16,7 +16,7 @@ type AnyTODO = any;
 
 export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const triggerElement = useRef() as MutableRefObject<HTMLDivElement>;
     const [animateOn, setAnimateOn] = useState(false);
     const intersectionHandler = (entries: AnyTODO[]) => {
@@ -45,7 +45,7 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
             ref={triggerElement}
         >
             <Card shadow>
-                <HStack>
+                <HStack gap="16">
                     <div className={cls.imgWrapper}>
                         <ItemCoverImg
                             item={item}
@@ -62,11 +62,12 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
                         align="center"
                         className={cls.description}
                     >
-                        <Text title={item.title} />
+                        <Text title={item.title} align={TextAlign.CENTER} />
                         {item.description && (
                             <Text
                                 text={item.description}
                                 className={cls.textBlock}
+                                align={TextAlign.CENTER}
                             />
                         )}
                         {languages}
@@ -75,7 +76,11 @@ export const ItemListBigItem = memo((props: ItemListSpecItemProps) => {
 
                         <AppLink
                             target={target}
-                            to={getRouteItemDetails(item.id)}
+                            to={getRoute(
+                                'item_details',
+                                i18n.language as langType,
+                                item.id,
+                            )}
                         >
                             <Button theme={ButtonTheme.OUTLINE}>
                                 {t('View the source code')}

@@ -1,5 +1,6 @@
-import { languageType } from '@/shared/types/codes';
+import { CodesContentType } from '@/shared/types/codes';
 import { ItemBlockType } from '../consts/ItemConst';
+import { ItemTypes } from '../consts/ItemList';
 
 export interface ItemBlockBase {
     id: string;
@@ -28,11 +29,12 @@ export type ItemBlock = ItemCodeBlock | ItemImageBlock | ItemTextBlock;
 export interface Item {
     id: string;
     title: string;
-    description: string;
-    img: string;
-    imgAnim: string;
-    type: string;
+    description?: string;
+    type?: ItemTypes;
     views: number;
     createdAt: string;
-    codes: Record<languageType, string>;
+    codes: CodesContentType;
+    useSize?: boolean;
+    width?: number;
+    height?: number;
 }

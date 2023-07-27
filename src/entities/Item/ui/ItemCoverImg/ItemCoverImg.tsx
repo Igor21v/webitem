@@ -3,13 +3,13 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { Icon } from '@/shared/ui/Icon';
 import { Item } from '../../model/types/item';
 import { OptionAnimate } from '@/shared/ui/OptionAnimate';
-import ItemIcon from '@/shared/assets/icons/item.svg';
+import ItemIcon from '@/../public/favicon.svg';
 
 interface ItemCoverImgProps {
     className?: string;
     animateOn?: boolean;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     item: Item;
 }
 
@@ -18,8 +18,8 @@ export const ItemCoverImg = memo((props: ItemCoverImgProps) => {
     return (
         <OptionAnimate
             animateOn={animateOn}
-            animateSrc={item.imgAnim}
-            src={item.img}
+            animateSrc={`${__STATIC_URL__}/items/${item.title}.gif`}
+            src={`${__STATIC_URL__}/items/${item.title}.png`}
             className={className}
             alt={item.title}
             fallback={
