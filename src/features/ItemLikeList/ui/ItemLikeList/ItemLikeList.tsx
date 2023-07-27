@@ -6,12 +6,7 @@ import { LOCAL_STORAGE_ITEMS_LIKE } from '@/shared/const/localstorage';
 import { Icon } from '@/shared/ui/Icon';
 import FavouriteIcon from '@/shared/assets/icons/like.svg';
 
-interface ItemLikeListProps {
-    className?: string;
-}
-
-export const ItemLikeList = memo((props: ItemLikeListProps) => {
-    const { className } = props;
+export const ItemLikeList = memo(() => {
     const { t } = useTranslation('itemsLike');
     const likeItems = localStorage.getItem(LOCAL_STORAGE_ITEMS_LIKE);
 
@@ -28,5 +23,5 @@ export const ItemLikeList = memo((props: ItemLikeListProps) => {
         );
     }
 
-    return <ItemLikeListFetch likeItems={likeItems} className={className} />;
+    return <ItemLikeListFetch likeItems={likeItems} />;
 });

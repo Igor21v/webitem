@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Checkbox.module.scss';
@@ -12,7 +11,6 @@ interface CheckboxProps {
 
 export const Checkbox = memo((props: CheckboxProps) => {
     const { className, checked, label, onChange, ...rest } = props;
-    const { t } = useTranslation();
     const handleChange = () => {
         onChange(!checked);
     };

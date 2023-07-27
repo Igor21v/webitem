@@ -22,7 +22,7 @@ interface ItemTypeCardProps {
 
 export const ItemTypeCard = memo((props: ItemTypeCardProps) => {
     const { className, itemType, target } = props;
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     return (
         <AppLink
             target={target}

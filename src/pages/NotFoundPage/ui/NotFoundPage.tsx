@@ -8,14 +8,10 @@ import { HStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 
 interface NotFoundPageProps {
-    className?: string;
     loadingLang?: boolean;
 }
 
-export const NotFoundPage = ({
-    className,
-    loadingLang = true,
-}: NotFoundPageProps) => {
+export const NotFoundPage = ({ loadingLang = true }: NotFoundPageProps) => {
     const { t, i18n } = useTranslation();
     const url = useLocation();
     const langPath = url.pathname.slice(1, 3);

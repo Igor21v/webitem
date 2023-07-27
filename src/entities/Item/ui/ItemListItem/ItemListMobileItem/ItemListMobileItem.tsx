@@ -17,7 +17,7 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
     const { t, i18n } = useTranslation();
     const [animateOn, setAnimateOn] = useState(false);
-    const { isScreenXl, isScreenMd } = useResizeWindow();
+    const { isScreenMd } = useResizeWindow();
     const animateHandler = useCallback(() => {
         setAnimateOn((value) => !value);
     }, []);

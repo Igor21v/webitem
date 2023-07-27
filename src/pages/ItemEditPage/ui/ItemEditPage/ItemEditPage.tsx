@@ -6,13 +6,8 @@ import { Page } from '@/widgets/Page';
 import { ItemEditPageHeader } from '../ItemEditPageHeader/ItemEditPageHeader';
 import { AppHead } from '@/shared/lib/components/AppHead';
 
-interface ItemEditPageProps {
-    className?: string;
-}
-
-const ItemEditPage = memo((props: ItemEditPageProps) => {
+const ItemEditPage = memo(() => {
     const { t } = useTranslation('itemEdit');
-    const { className } = props;
     const { id } = useParams<{ id: string }>();
     return (
         <>

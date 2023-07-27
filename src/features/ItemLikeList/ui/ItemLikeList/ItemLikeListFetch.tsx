@@ -6,12 +6,11 @@ import { Text } from '@/shared/ui/Text';
 import cls from './ItemLikeList.module.scss';
 
 interface ItemLikeListProps {
-    className?: string;
     likeItems: string;
 }
 
 export const ItemLikeListFetch = memo((props: ItemLikeListProps) => {
-    const { className, likeItems } = props;
+    const { likeItems } = props;
     const { t } = useTranslation('itemsLike');
     const {
         isError,

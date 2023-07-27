@@ -1,5 +1,4 @@
 import { memo, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Text, TextSize } from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
@@ -22,7 +21,6 @@ interface ItemDetailsProps {
 
 export const ItemDetails = memo((props: ItemDetailsProps) => {
     const { item } = props;
-    const { t } = useTranslation();
     const [codes, setCodes] = useState<CodesContentType>({
         html: item?.codes.html,
         css: item?.codes.css,

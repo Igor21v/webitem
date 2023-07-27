@@ -14,7 +14,7 @@ interface ItemListItemSkeletonProps {
 
 export const ItemListItemMobileSkeleton = memo(
     (props: ItemListItemSkeletonProps) => {
-        const { isScreenXl, isScreenMd, isScreenSm } = useResizeWindow();
+        const { isScreenMd, isScreenSm } = useResizeWindow();
         const { t } = useTranslation();
         const { className } = props;
 

@@ -15,12 +15,11 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { ValidateEditItemError } from '../../model/types/itemEditSchema';
 
 interface ItemAddProps {
-    className?: string;
     initItem: Item;
 }
 
 export const ItemEdit = memo((props: ItemAddProps) => {
-    const { className, initItem } = props;
+    const { initItem } = props;
     const { t } = useTranslation('adminPanel');
     const langTabs = Object.keys(initialState.item.codes).map((lang) => ({
         value: lang as languageType, // TODO

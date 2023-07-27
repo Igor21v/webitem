@@ -16,12 +16,11 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { ItemEdit } from './ItemEdit';
 
 interface ItemAddProps {
-    className?: string;
     id: string;
 }
 
 export const ItemEditWrapper = memo((props: ItemAddProps) => {
-    const { className, id } = props;
+    const { id } = props;
     const { t } = useTranslation('adminPanel');
     const dispatch = useAppDispatch();
     useInitialEffect(() => {

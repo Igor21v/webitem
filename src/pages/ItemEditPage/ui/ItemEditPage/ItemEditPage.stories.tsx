@@ -13,9 +13,7 @@ export default {
     decorators: [RouterDecorator('/items/2/edit')],
 } as ComponentMeta<typeof ItemEditPage>;
 
-const Template: ComponentStory<typeof ItemEditPage> = (args) => (
-    <ItemEditPage {...args} />
-);
+const Template: ComponentStory<typeof ItemEditPage> = () => <ItemEditPage />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

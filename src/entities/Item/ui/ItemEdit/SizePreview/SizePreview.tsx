@@ -10,7 +10,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
 
 interface SizePreviewProps {
-    className?: string;
     width?: number;
     height?: number;
     setWidth: (value: number) => void;
@@ -22,7 +21,6 @@ interface SizePreviewProps {
 
 export const SizePreview = memo((props: SizePreviewProps) => {
     const {
-        className,
         height,
         width = 450,
         setHeight,

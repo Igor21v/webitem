@@ -11,9 +11,7 @@ export default {
     decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ItemAdd>;
 
-const Template: ComponentStory<typeof ItemAdd> = (args) => (
-    <ItemAdd {...args} />
-);
+const Template: ComponentStory<typeof ItemAdd> = () => <ItemAdd />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

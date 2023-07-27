@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof ItemEditCard> = (args) => (
 export const Normal = Template.bind({});
 Normal.args = {
     item: TEST_ITEM,
-    handleUpdateItem: (key) => (value) => null,
+    handleUpdateItem: () => () => null,
     langTabs: [
         {
             content: 'HTML',

@@ -1,7 +1,6 @@
-import { useTranslation } from 'react-i18next';
+/* eslint-disable i18next/no-literal-string */
 import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './ConvertCodeToJSON.module.scss';
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
@@ -21,9 +20,8 @@ export const ConvertCodeToJSON = memo((props: ConvertCodeToJSONProps) => {
         },
         [codes],
     );
-    const { t } = useTranslation();
     return (
-        <div className={classNames(cls.ConvertCodeToJSON, {}, [className])}>
+        <div className={classNames('', {}, [className])}>
             <Text
                 title="Конвертер кода в JSON"
                 size={TextSize.L}

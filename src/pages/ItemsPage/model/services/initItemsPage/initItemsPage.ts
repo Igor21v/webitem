@@ -9,7 +9,6 @@ import {
 import { itemsPageActions } from '../../slice/ItemsPageSlice';
 import { fetchItemsList } from '../fetchItemsList/fetchItemsList';
 import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
-import { getPageDimensions } from '@/features/UI';
 
 interface InitItemsPageProps {
     searchParams: URLSearchParams;
@@ -44,9 +43,9 @@ export const initItemsPage = createAsyncThunk<
         if (view) {
             dispatch(itemsPageActions.setView(view));
         }
-        const { height: pageHeight, width: pageWidth } = getPageDimensions(
+        /* const { height: pageHeight, width: pageWidth } = getPageDimensions(
             getState(),
-        );
+        ); */
         let limit;
         if (view === ItemView.BIG) {
             /* limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT); */

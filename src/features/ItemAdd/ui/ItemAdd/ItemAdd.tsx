@@ -20,12 +20,7 @@ import { initialState } from '../../model/consts/itemAddConsts';
 import { ItemEditCard, ItemEditType } from '@/entities/Item';
 import { ValidateAddItemError } from '../../model/types/itemAddSchema';
 
-interface ItemAddProps {
-    className?: string;
-}
-
-export const ItemAdd = memo((props: ItemAddProps) => {
-    const { className } = props;
+export const ItemAdd = memo(() => {
     const { t } = useTranslation('adminPanel');
     const langTabs = Object.keys(initialState.item.codes).map((lang) => ({
         value: lang as languageType, // TODO
