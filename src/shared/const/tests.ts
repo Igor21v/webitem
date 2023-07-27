@@ -23,11 +23,9 @@ export const TEST_ITEMS = new Array(9).fill(0).map((item, index) => ({
     id: String(index),
 }));
 
-export const TEST_IMAGE =
-    'https://wallpapercrafter.com/th800/132058-mountains-landscape-Oregon-Farm-House-barn-artwork-car-vehicle-nature-fiat-500.jpg';
+export const TEST_IMAGE = 'https://webitem.ru/static/tests/test.png';
 
-export const TEST_ANIMATION =
-    'https://wallpapercrafter.com/th800/132058-mountains-landscape-Oregon-Farm-House-barn-artwork-car-vehicle-nature-fiat-500.jpg';
+export const TEST_ANIMATION = 'https://webitem.ru/static/tests/test.gif';
 
 export const TEST_SPITE_IMAGE =
-    'https://wallpapercrafter.com/th800/132058-mountains-landscape-Oregon-Farm-House-barn-artwork-car-vehicle-nature-fiat-500.jpg';
+    'https://webitem.ru/static/tests/test_sprite.png';
