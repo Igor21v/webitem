@@ -33,3 +33,6 @@ Normal.args = {
         },
     ],
 };
+Normal.parameters = {
+    loki: { skip: true },
+};

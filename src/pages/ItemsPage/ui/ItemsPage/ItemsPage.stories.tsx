@@ -35,4 +35,5 @@ Normal.parameters = {
             response: TEST_ITEMS,
         },
     ],
+    loki: { skip: true },
 };

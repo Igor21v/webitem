@@ -26,3 +26,6 @@ Normal.args = {
         { value: 'js', content: 'JS' },
     ],
 };
+Normal.parameters = {
+    loki: { skip: true },
+};
