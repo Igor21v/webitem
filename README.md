@@ -61,7 +61,7 @@
 В проекте используется eslint для проверки typescript кода, stylelint для проверки файлов со стилями и prettier для форматирования файлов .ts, .tsx и .json.
 
 Также для строгого контроля главных архитектурных принципов
-используется собственный eslint plugin _eslint-plugin-igor21v_,
+используется собственный eslint [plugin _eslint-plugin-igor21v_](https://www.npmjs.com/package/eslint-plugin-igor21v),
 который содержит 3 правила
 
 1. path-checker - запрещает использовать абсолютные импорты в рамках одного модуля
