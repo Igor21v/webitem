@@ -19,14 +19,6 @@ export default function AboutPage() {
             <Page data-testid="AboutPage" className={cls.AboutPage}>
                 {isScreenXl && <br />}
                 <AppIcon className={cls.img} />
-                <span>
-                    <TextSpan text={t('Support')} />
-                    <AppLink to={link} target="_blank">
-                        <TextSpan text={t('Github')} italic underline />
-                    </AppLink>
-                    <TextSpan text={t('Smile')} />
-                </span>
-
                 <br />
                 <ul>
                     <li>
@@ -38,6 +30,14 @@ export default function AboutPage() {
                     {/* <li>
                     <Text text={t('Backend')} />
                 </li> */}
+                    <li>
+                        <span>
+                            <TextSpan text={t('Link')} />
+                            <AppLink to={link} target="_blank">
+                                <TextSpan text={t('Github')} italic underline />
+                            </AppLink>
+                        </span>
+                    </li>
                     <li>
                         <Text text={t('Developer')} />
                     </li>
