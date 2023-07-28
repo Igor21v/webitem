@@ -1,11 +1,10 @@
 # [webitem.ru](https://webitem.ru) - галерея веб компонентов с открытым исходным кодом
 
-## Запуск проекта
+## Архитектура проекта
 
-```
-npm install - устанавливаем зависимости
-npm run start:dev или npm run start:dev:vite - запуск сервера + frontend проекта в dev режиме
-```
+Проект написан в соответствии с методологией Feature sliced design
+
+Ссылка на документацию - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)
 
 ---
 
@@ -32,14 +31,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 -   `npm run test:e2e` - Открытие e2e тестов в Сypress
 -   `npm run storybook` - запуск Storybook
 -   `npm run generate:slice` - Скрипт для генерации FSD слайсов
-
----
-
-## Архитектура проекта
-
-Проект написан в соответствии с методологией Feature sliced design
-
-Ссылка на документацию - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)
 
 ---
 
