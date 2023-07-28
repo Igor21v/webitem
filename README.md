@@ -1,11 +1,10 @@
 # [webitem.ru](https://webitem.ru) - галерея веб компонентов с открытым исходным кодом
 
-## Запуск проекта
+## Архитектура проекта
 
-```
-npm install - устанавливаем зависимости
-npm run start:dev или npm run start:dev:vite - запуск сервера + frontend проекта в dev режиме
-```
+Проект написан в соответствии с методологией Feature sliced design
+
+Ссылка на документацию - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)
 
 ---
 
@@ -32,14 +31,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 -   `npm run test:e2e` - Открытие e2e тестов в Сypress
 -   `npm run storybook` - запуск Storybook
 -   `npm run generate:slice` - Скрипт для генерации FSD слайсов
-
----
-
-## Архитектура проекта
-
-Проект написан в соответствии с методологией Feature sliced design
-
-Ссылка на документацию - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)
 
 ---
 
@@ -70,7 +61,7 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 В проекте используется eslint для проверки typescript кода, stylelint для проверки файлов со стилями и prettier для форматирования файлов .ts, .tsx и .json.
 
 Также для строгого контроля главных архитектурных принципов
-используется собственный eslint plugin _eslint-plugin-igor21v_,
+используется собственный eslint [plugin _eslint-plugin-igor21v_](https://www.npmjs.com/package/eslint-plugin-igor21v),
 который содержит 3 правила
 
 1. path-checker - запрещает использовать абсолютные импорты в рамках одного модуля
