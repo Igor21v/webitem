@@ -17,4 +17,8 @@
     outline: none;
     color: var(--primary-color);
     cursor: pointer;
+
+    :hover {
+        background: var(--card-bg);
+    }
 }
