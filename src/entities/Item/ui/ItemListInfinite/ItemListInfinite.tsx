@@ -1,8 +1,15 @@
 /* eslint-disable react/no-unused-prop-types */
-import { CSSProperties, memo, ReactElement } from 'react';
+import {
+    CSSProperties,
+    memo,
+    MutableRefObject,
+    ReactElement,
+    useRef,
+} from 'react';
 import { VariableSizeList, areEqual } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
+import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ItemListInfinite.module.scss';
 import { Item } from '../../model/types/item';
@@ -10,6 +17,10 @@ import { ItemView } from '../../model/consts/ItemConst';
 import { ITEM_SMALL_WIDTH } from '@/shared/const/dimensions';
 import { ItemListInfiniteRenderItem } from './ItemListInfiniteRenderItem';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getUIScrollByPath, uIActions } from '@/features/UI';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface ItemListInfiniteProps {
     className?: string;
@@ -59,6 +70,28 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
         return 320;
     };
 
+    const scrollInited = useRef(false);
+    const outerRef = useRef() as MutableRefObject<any>;
+    const scrollPosition = useSelector((state: StateSchema) =>
+        getUIScrollByPath(state, '/items/all'),
+    );
+    if (outerRef.current && !scrollInited.current) {
+        /*  outerRef.current.scrollTop = 40000; */
+        scrollInited.current = true;
+    }
+    const dispatch = useAppDispatch();
+    const onScroll = useThrottle(() => {
+        if (scrollInited.current) {
+            dispatch(
+                uIActions.setScrollPosition({
+                    position: outerRef.current.scrollTop,
+                    path: '/items/all',
+                }),
+            );
+            console.log(`SP ${outerRef.current.scrollTop}`);
+        }
+    }, 2000);
+
     // eslint-disable-next-line react/no-unstable-nested-components
     const itemFuncRender = memo(
         ({ index, style }: { index: number; style: CSSProperties }) => (
@@ -93,9 +126,12 @@ export const ItemListInfinite = memo((props: ItemListInfiniteProps) => {
                                 itemCount={itemCount}
                                 onItemsRendered={onItemsRendered}
                                 ref={ref}
+                                outerRef={outerRef}
                                 height={height || 0}
                                 width={width || 0}
                                 itemSize={getItemSize}
+                                onScroll={onScroll}
+                                initialScrollOffset={scrollPosition}
                             >
                                 {itemFuncRender}
                             </VariableSizeList>
