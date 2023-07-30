@@ -22,7 +22,6 @@ import {
     getItemsPageSearch,
     getItemsPageSort,
     getItemsPageView,
-    getSearchFocus,
 } from '../../model/selectors/itemsPageSelectors';
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
 import { ItemSortSelector } from '@/features/ItemSortSelector';
@@ -43,7 +42,6 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const sort = useSelector(getItemsPageSort);
     const order = useSelector(getItemsPageOrder);
     const search = useSelector(getItemsPageSearch);
-    const searchFocus = useSelector(getSearchFocus);
     const { isScreenXl } = useResizeWindow();
     const { type } = useParams<{ type: ItemTypes }>();
     const fetchData = useCallback(() => {
@@ -85,9 +83,6 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
         },
         [dispatch, debouncedFetchData],
     );
-    const focusSearchHandler = (value: boolean) => {
-        dispatch(itemsPageActions.searchFocus(value));
-    };
     if (isScreenXl)
         return (
             <div className={classNames(cls.ItemsPageFilters, {}, [className])}>
@@ -106,8 +101,6 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                             placeholder={t('Search')}
                             onChange={onChangeSearch}
                             value={search}
-                            focusIsSet={searchFocus}
-                            focusHandler={focusSearchHandler}
                             data-testid="ItemsPageFilters.Search"
                         />
                     </Card>
@@ -138,8 +131,6 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
                 placeholder={t('Search')}
                 onChange={onChangeSearch}
                 value={search}
-                focusIsSet={searchFocus}
-                focusHandler={focusSearchHandler}
                 classNameWrapper={cls.search}
                 data-testid="ItemsPageFilters.Search"
             />
