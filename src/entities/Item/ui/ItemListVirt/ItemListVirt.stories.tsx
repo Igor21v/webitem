@@ -1,21 +1,21 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ItemListInfiniteWrapp } from './ItemListInfiniteWrapp';
+import { ItemListVirtWrapp } from './ItemListVirtWrapp';
 import { ItemView } from '../../model/consts/ItemConst';
 import { RouterDecorator } from '@/shared/config/storybook/RouterDecorator';
 import { TEST_ITEMS } from '@/shared/const/tests';
 
 export default {
     title: 'entities/Item/ItemListInfinite',
-    component: ItemListInfiniteWrapp,
+    component: ItemListVirtWrapp,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
     decorators: [RouterDecorator()],
-} as ComponentMeta<typeof ItemListInfiniteWrapp>;
+} as ComponentMeta<typeof ItemListVirtWrapp>;
 
-const Template: ComponentStory<typeof ItemListInfiniteWrapp> = (args) => (
-    <ItemListInfiniteWrapp {...args} />
+const Template: ComponentStory<typeof ItemListVirtWrapp> = (args) => (
+    <ItemListVirtWrapp {...args} />
 );
 
 export const LoadingBig = Template.bind({});

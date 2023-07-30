@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -21,6 +21,8 @@ import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useN
 import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
 import { AppHead } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
+import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
+import { fetchNextItemsPage } from '../../model/services/fetchNextItemsPage/fetchNextItemsPage';
 
 interface ItemsPageProps {
     className?: string;
@@ -46,6 +48,9 @@ const ItemsPage = (props: ItemsPageProps) => {
         dispatch(fetchItemsList({ replace: true }));
     }, [type]);
     useYandexMetrikaHit(type);
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextItemsPage());
+    }, [dispatch]);
 
     return (
         <>
@@ -53,8 +58,10 @@ const ItemsPage = (props: ItemsPageProps) => {
                 <Page
                     data-testid="ItemsPage"
                     className={classNames(cls.ItemsPage, {}, [className])}
+                    onScrollEnd={onLoadNextPart}
                 >
-                    <ItemInfiniteList />
+                    <ItemsPageFilters />
+                    <ItemInfiniteList className={cls.list} />
                     <div />
                 </Page>
             </DynamicModuleLoader>

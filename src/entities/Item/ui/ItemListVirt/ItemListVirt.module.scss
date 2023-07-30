@@ -1,4 +1,4 @@
-.ItemListInfinite {
+.ItemListVirt {
     height: calc(100%);
     width: calc(100% - 45px);
     position: absolute;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: breakpoints(MD)) {
-    .ItemListInfinite {
+    .ItemListVirt {
         width: calc(100% - 20px);
     }
 }

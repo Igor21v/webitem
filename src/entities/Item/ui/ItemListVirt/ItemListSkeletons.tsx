@@ -1,5 +1,5 @@
 import { ItemListItemSkeleton } from '../ItemListItem/ItemListItem/ItemListItemSkeleton';
-import cls from './ItemListInfinite.module.scss';
+import cls from './ItemListVirt.module.scss';
 import { ItemView } from '../../model/consts/ItemConst';
 
 export const ItemListSkeletons = (view: ItemView) =>

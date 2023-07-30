@@ -1,6 +1,6 @@
 import { CSSProperties, memo, ReactElement } from 'react';
 import { ItemListItem } from '../ItemListItem/ItemListItem/ItemListItem';
-import cls from './ItemListInfinite.module.scss';
+import cls from './ItemListVirt.module.scss';
 import { Item } from '../../model/types/item';
 import { ItemView } from '../../model/consts/ItemConst';
 import { ITEM_SMALL_WIDTH } from '@/shared/const/dimensions';
@@ -16,7 +16,7 @@ interface ItemListInfiniteRenderItemProps {
     style: CSSProperties;
 }
 
-export const ItemListInfiniteRenderItem = memo(
+export const ItemListVirtRenderItem = memo(
     (props: ItemListInfiniteRenderItemProps) => {
         const {
             items,
