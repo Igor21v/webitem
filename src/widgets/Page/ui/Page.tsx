@@ -1,4 +1,5 @@
-import { MutableRefObject, ReactNode, UIEvent, useEffect, useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { MutableRefObject, ReactNode, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getUIScrollByPath, uIActions } from '@/features/UI';
@@ -6,11 +7,10 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -51,7 +51,6 @@ export const Page = (props: PageProps) => {
         return () => {
             observer.disconnect();
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useInfiniteScroll({
@@ -60,18 +59,28 @@ export const Page = (props: PageProps) => {
         callback: onScrollEnd,
     });
 
-    useInitialEffect(() => {
+    let setScrollPosition = () => {};
+    const onScroll = () => {
+        const scroll = wrapperRef.current.scrollTop;
+        setScrollPosition = () => {
+            dispatch(
+                uIActions.setScrollPosition({
+                    position: scroll,
+                    path: pathname,
+                }),
+            );
+        };
+    };
+    useEffect(() => {
         wrapperRef.current.scrollTop = scrollPosition;
-    });
+        return () => {
+            setScrollPosition();
+        };
+    }, [pathname]);
+    useNonInitialEffect(() => {
+        wrapperRef.current.scrollTop = 0;
+    }, [pathname]);
 
-    const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        dispatch(
-            uIActions.setScrollPosition({
-                position: e.currentTarget.scrollTop,
-                path: pathname,
-            }),
-        );
-    }, 2000);
     return (
         <main
             ref={wrapperRef}
