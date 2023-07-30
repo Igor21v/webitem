@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     ItemSortField,
@@ -44,9 +44,10 @@ export const ItemsPageFilters = memo((props: ItemsPageFiltersProps) => {
     const search = useSelector(getItemsPageSearch);
     const { isScreenXl } = useResizeWindow();
     const { type } = useParams<{ type: ItemTypes }>();
+    const [searchParams] = useSearchParams();
     const fetchData = useCallback(() => {
-        dispatch(fetchItemsList({ replace: true }));
-    }, [dispatch]);
+        dispatch(fetchItemsList({ replace: true, searchParams }));
+    }, [dispatch, searchParams]);
     const debouncedFetchData = useDebounce(fetchData, 500);
     useEffect(() => {
         if (!isScreenXl) dispatch(itemsPageActions.setView(ItemView.BIG));

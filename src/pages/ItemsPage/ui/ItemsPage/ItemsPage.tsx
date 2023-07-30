@@ -45,12 +45,12 @@ const ItemsPage = (props: ItemsPageProps) => {
     useNonInitialEffect(() => {
         dispatch(itemsPageActions.setPage(1));
         dispatch(itemsPageActions.setType(type || 'all'));
-        dispatch(fetchItemsList({ replace: true }));
+        dispatch(fetchItemsList({ replace: true, searchParams }));
     }, [type]);
     useYandexMetrikaHit(type);
     const onLoadNextPart = useCallback(() => {
-        dispatch(fetchNextItemsPage());
-    }, [dispatch]);
+        dispatch(fetchNextItemsPage(searchParams));
+    }, [dispatch, searchParams]);
 
     return (
         <>

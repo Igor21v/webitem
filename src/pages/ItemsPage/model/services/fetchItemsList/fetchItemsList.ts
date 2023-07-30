@@ -13,6 +13,7 @@ import {
 import { itemsPageInitState } from '../../consts/itemsPageConst';
 
 interface FetchItemListProps {
+    searchParams: URLSearchParams;
     replace?: boolean;
 }
 
@@ -20,7 +21,8 @@ export const fetchItemsList = createAsyncThunk<
     Item[],
     FetchItemListProps,
     ThunkConfig<string>
->('itemsPage/fetchItemsList', async (_props, thunkApi) => {
+>('itemsPage/fetchItemsList', async (props, thunkApi) => {
+    const { searchParams } = props;
     const { extra, rejectWithValue, getState } = thunkApi;
     const page = getItemsPageNum(getState());
     const limit = getItemsPageLimit(getState());
@@ -32,7 +34,8 @@ export const fetchItemsList = createAsyncThunk<
         if (
             sort !== itemsPageInitState.sort ||
             order !== itemsPageInitState.order ||
-            search !== itemsPageInitState.search
+            search !== itemsPageInitState.search ||
+            Array.from(searchParams).length !== 0
         ) {
             addQueryParams({
                 sort,

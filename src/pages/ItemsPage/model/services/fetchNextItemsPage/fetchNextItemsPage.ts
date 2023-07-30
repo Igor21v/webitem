@@ -10,15 +10,15 @@ import { fetchItemsList } from '../fetchItemsList/fetchItemsList';
 
 export const fetchNextItemsPage = createAsyncThunk<
     void,
-    void,
+    URLSearchParams,
     ThunkConfig<string>
->('itemsPage/fetchNextItemPage', async (_, thunkApi) => {
+>('itemsPage/fetchNextItemPage', async (searchParams, thunkApi) => {
     const { dispatch, getState } = thunkApi;
     const page = getItemsPageNum(getState());
     const hasMore = getItemsPageHasMore(getState());
     const isLoading = getItemsPageIsLoading(getState());
     if (hasMore && !isLoading) {
         dispatch(itemsPageActions.setPage(page + 1));
-        dispatch(fetchItemsList({}));
+        dispatch(fetchItemsList({ searchParams }));
     }
 });

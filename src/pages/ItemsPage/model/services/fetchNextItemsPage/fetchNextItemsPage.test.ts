@@ -17,7 +17,7 @@ describe('fetchNextItemsPage.test', () => {
             },
         });
 
-        await thunk.callThunk();
+        await thunk.callThunk(new URLSearchParams());
 
         expect(thunk.dispatch).toBeCalledTimes(4);
         expect(fetchItemsList).toHaveBeenCalled();
@@ -34,7 +34,7 @@ describe('fetchNextItemsPage.test', () => {
             },
         });
 
-        await thunk.callThunk();
+        await thunk.callThunk(new URLSearchParams());
 
         expect(thunk.dispatch).toBeCalledTimes(2);
         expect(fetchItemsList).not.toHaveBeenCalled();
