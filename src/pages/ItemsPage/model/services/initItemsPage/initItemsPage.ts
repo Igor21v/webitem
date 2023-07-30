@@ -62,6 +62,6 @@ export const initItemsPage = createAsyncThunk<
     if (!inited || type !== currType) {
         dispatch(itemsPageActions.setPage(1));
         dispatch(itemsPageActions.setType(type || 'all'));
-        dispatch(fetchItemsList({ replace: true }));
+        dispatch(fetchItemsList({ replace: true, searchParams }));
     }
 });

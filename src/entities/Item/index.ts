@@ -37,4 +37,4 @@ export { ItemTypeUI } from './ui/ItemTypeUI/ItemTypeUI';
 
 export { ItemTypeList } from './ui/ItemTypeList/ItemTypeList';
 
-export { ItemListInfiniteWrapp } from './ui/ItemListInfinite/ItemListInfiniteWrapp';
+export { ItemListVirtWrapp } from './ui/ItemListVirt/ItemListVirtWrapp';
