@@ -17,6 +17,7 @@ export const fetchNextItemsPage = createAsyncThunk<
     const page = getItemsPageNum(getState());
     const hasMore = getItemsPageHasMore(getState());
     const isLoading = getItemsPageIsLoading(getState());
+    console.log('Feth attempt');
     if (hasMore && !isLoading) {
         dispatch(itemsPageActions.setPage(page + 1));
         dispatch(fetchItemsList({ searchParams }));

@@ -1,16 +1,17 @@
-import { MutableRefObject, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { MutableRefObject, useEffect, useRef } from 'react';
 
-export interface UseInfiniteScrollOptions {
+interface AppObserverProps {
     callback?: () => void;
-    triggerRef: MutableRefObject<HTMLElement>;
     wrapperRef?: MutableRefObject<HTMLElement>;
+    className?: string;
 }
 
-export function useInfiniteScroll({
-    callback,
-    wrapperRef,
-    triggerRef,
-}: UseInfiniteScrollOptions) {
+export const PAGE_ID = 'PAGE_ID';
+
+export const AppObserver = (props: AppObserverProps) => {
+    const { callback, wrapperRef, className } = props;
+    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
     useEffect(() => {
         const wrapperElement = wrapperRef?.current || null;
         const triggerElement = triggerRef.current;
@@ -19,9 +20,8 @@ export function useInfiniteScroll({
             const options = {
                 root: wrapperElement,
                 rootMargin: '350px',
-                threshold: 1.0,
+                threshold: 1,
             };
-            console.log(`inersecting 1`);
             observer = new IntersectionObserver(([entry]) => {
                 console.log(`inersecting ${entry.isIntersecting}`);
                 if (entry.isIntersecting) {
@@ -36,5 +36,7 @@ export function useInfiniteScroll({
             };
         }
         return undefined;
-    }, [callback, triggerRef, wrapperRef]);
-}
+    }, [callback, wrapperRef]);
+
+    return <div className={className} ref={triggerRef} />;
+};

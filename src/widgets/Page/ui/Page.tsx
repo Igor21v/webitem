@@ -6,11 +6,11 @@ import { getUIScrollByPath, uIActions } from '@/features/UI';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -54,8 +54,8 @@ export const Page = (props: PageProps) => {
     }, []);
 
     useInfiniteScroll({
-        triggerRef,
         wrapperRef,
+        triggerRef,
         callback: onScrollEnd,
     });
 
