@@ -49,12 +49,12 @@ export const initItemsPage = createAsyncThunk<
         let limit;
         if (view === ItemView.BIG) {
             /* limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT); */
-            limit = 40;
+            limit = 20;
         } else {
             /* const pageSquare = pageHeight * pageWidth;
             const itemSquare = ITEM_SMALL_HEIGHT * ITEM_SMALL_WIDTH;
             limit = Math.ceil(pageSquare / itemSquare); */
-            limit = 40;
+            limit = 25;
         }
         dispatch(itemsPageActions.setLimit(limit));
         dispatch(itemsPageActions.initState());
