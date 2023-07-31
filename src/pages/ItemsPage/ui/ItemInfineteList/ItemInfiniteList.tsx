@@ -1,20 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
 import { Text } from '@/shared/ui/Text';
 import { getItems } from '../../model/slice/ItemsPageSlice';
 import {
     getItemsPageError,
-    getItemsPageHasMore,
     getItemsPageIsLoading,
     getItemsPageView,
 } from '../../model/selectors/itemsPageSelectors';
-import { ItemListVirtWrapp } from '@/entities/Item';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchNextItemsPage } from '../../model/services/fetchNextItemsPage/fetchNextItemsPage';
-import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
-import { getPageDimensions } from '@/features/UI';
+import { ItemList } from '@/entities/Item';
 
 interface ItemInfineteListProps {
     className?: string;
@@ -27,28 +21,16 @@ export const ItemInfiniteList = memo((props: ItemInfineteListProps) => {
     const isLoading = useSelector(getItemsPageIsLoading);
     const view = useSelector(getItemsPageView);
     const error = useSelector(getItemsPageError);
-    const dispatch = useAppDispatch();
-    const hasMore = useSelector(getItemsPageHasMore);
-    const [searchParams] = useSearchParams();
-    const onLoadNextPart = useCallback(() => {
-        dispatch(fetchNextItemsPage(searchParams));
-    }, [dispatch, searchParams]);
-    const { width: pageWidth } = useSelector(getPageDimensions);
-
     if (error) {
         return <Text text={t('an error occurred while downloading items ')} />;
     }
 
     return (
-        <ItemListVirtWrapp
+        <ItemList
             isLoading={isLoading}
             view={view}
             items={items}
             className={className}
-            loadNextPage={onLoadNextPart}
-            hasNextPage={hasMore}
-            filters={<ItemsPageFilters />}
-            pageWidth={pageWidth}
         />
     );
 });
