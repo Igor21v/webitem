@@ -48,10 +48,9 @@ export const initItemsPage = createAsyncThunk<
             getState(),
         );
         let limit;
-        console.log(`Re ${pageHeight}`);
         if (view === ItemView.BIG) {
             /* limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT); */
-            limit = 20;
+            limit = 2;
         } else {
             /* const pageSquare = pageHeight * pageWidth;
             const itemSquare = ITEM_SMALL_HEIGHT * ITEM_SMALL_WIDTH;
