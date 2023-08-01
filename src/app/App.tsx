@@ -1,12 +1,13 @@
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { Navbar, NavbarMobile } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, userActions } from '@/entities/User';
 import { AppRouter } from './providers/router';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 import { useLangInit } from '@/shared/lib/hooks/useLangInit/useLangInit';
+import { MainLayout } from '@/shared/layouts/MainLayout';
+import { MainLayoutMobile } from '@/shared/layouts/MainLayoutMobile';
 
 export default function App() {
     const dispatch = useDispatch();
@@ -18,16 +19,19 @@ export default function App() {
     useLangInit();
 
     return (
-        <div className={classNames('app', {}, [])} id="app">
-            <Suspense fallback="">
-                {isScreenXl && <Navbar />}
-                {!isScreenXl && <NavbarMobile />}
-                <div className="content-page">
-                    {isScreenXl && <Sidebar />}
-                    {inited && <AppRouter />}
-                </div>
-                {/* <LangInit /> */}
-            </Suspense>
-        </div>
+        <Suspense fallback="">
+            {isScreenXl && inited ? (
+                <MainLayout
+                    navbar={<Navbar />}
+                    sidebar={<Sidebar />}
+                    content={<AppRouter />}
+                />
+            ) : (
+                <MainLayoutMobile
+                    navbar={<NavbarMobile />}
+                    content={<AppRouter />}
+                />
+            )}
+        </Suspense>
     );
 }

@@ -1,0 +1,18 @@
+.MainLayout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-areas: "navbar content";
+}
+
+.navbar {
+    position: sticky;
+    grid-area: header;
+    width: 100%;
+}
+
+.content {
+    grid-area: content;
+    justify-self: center;
+    width: 100%;
+}
