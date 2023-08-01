@@ -4,8 +4,8 @@ import cls from './MainLayout.module.scss';
 
 interface MainLayoutProps {
     navbar: ReactElement;
-    sidebar?: ReactElement;
-    content?: ReactElement;
+    sidebar: ReactElement;
+    content: ReactElement;
 }
 
 export const MainLayout = memo((props: MainLayoutProps) => {

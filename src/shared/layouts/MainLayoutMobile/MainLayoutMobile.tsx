@@ -11,7 +11,7 @@ export const MainLayoutMobile = memo((props: MainLayoutProps) => {
     const { content, navbar } = props;
 
     return (
-        <div className={classNames(cls.MainLayout, {}, ['app'])} id="app">
+        <div className={classNames(cls.MainLayoutMobile, {}, ['app'])} id="app">
             <div className={cls.navbar}>{navbar}</div>
             <div className={cls.content}>{content}</div>
         </div>
