@@ -1,7 +1,7 @@
 .MainLayout {
     min-height: 100vh;
     display: grid;
-    grid-template: 50px auto / min-content 1fr;
+    grid-template: 50px auto / min-content minmax(0, 1fr);
     grid-template-areas:
         "navbar navbar"
         "sidebar content";
@@ -17,4 +17,5 @@
 
 .content {
     grid-area: content;
+    max-width: 100%;
 }
