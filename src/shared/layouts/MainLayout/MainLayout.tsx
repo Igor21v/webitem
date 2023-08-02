@@ -15,7 +15,9 @@ export const MainLayout = memo((props: MainLayoutProps) => {
         <div className={classNames(cls.MainLayout, {}, ['app'])} id="app">
             <div className={cls.navbar}>{navbar}</div>
             <div className={cls.sidebar}>{sidebar}</div>
-            <div className={cls.content}>{content}</div>
+            <div className={cls.content} id="content">
+                {content}
+            </div>
         </div>
     );
 });

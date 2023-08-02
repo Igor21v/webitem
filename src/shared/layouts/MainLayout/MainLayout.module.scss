@@ -19,4 +19,11 @@
     grid-area: content;
     background: var(--bg-color);
     border-radius: 12px 0 0;
+    overflow-y: auto;
+}
+
+@media (max-width: breakpoints(XL)) {
+    .content {
+        overflow-y: visible;
+    }
 }

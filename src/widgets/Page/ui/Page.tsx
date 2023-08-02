@@ -103,7 +103,9 @@ export const Page = (props: PageProps) => {
         >
             {children}
             {onScrollEnd ? (
-                <div className={cls.trigger} ref={triggerRef} />
+                <div className={cls.trigger} ref={triggerRef}>
+                    11111111
+                </div>
             ) : null}
         </main>
     );
