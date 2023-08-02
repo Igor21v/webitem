@@ -1,20 +1,18 @@
 .MainLayout {
     min-height: 100vh;
     display: grid;
-    grid-template: 50px auto / min-content auto;
+    grid-template: 50px auto / min-content 1fr;
     grid-template-areas:
         "navbar navbar"
         "sidebar content";
 }
 
 .navbar {
-    position: sticky;
     grid-area: navbar;
 }
 
 .sidebar {
     grid-area: sidebar;
-    position: sticky;
 }
 
 .content {

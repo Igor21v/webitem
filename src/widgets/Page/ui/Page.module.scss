@@ -1,16 +1,16 @@
 .Page {
     padding: 20px 20px 20px 45px;
     height: calc(100vh - var(--navbar-height));
-    overflow-y: auto;
     border-radius: 12px 0 0;
     background: var(--bg-color);
-    width: fit-content;
+    overflow-y: auto;
 }
 
 @media (max-width: breakpoints(XL)) {
     .Page {
         border-radius: 0;
         padding: 20px;
+        overflow-y: visible;
     }
 }
 
