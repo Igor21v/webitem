@@ -17,5 +17,6 @@
 
 .content {
     grid-area: content;
-    max-width: 100%;
+    background: var(--bg-color);
+    border-radius: 12px 0 0;
 }

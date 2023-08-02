@@ -19,11 +19,10 @@ export function useInfiniteScroll({
             const options = {
                 root: wrapperElement,
                 rootMargin: '350px',
-                threshold: 1.0,
+                threshold: 0.0,
             };
-            console.log(`inersecting 1`);
             observer = new IntersectionObserver(([entry]) => {
-                console.log(`inersecting ${entry.isIntersecting}`);
+                console.log(`inersecting ${entry.time}`);
                 if (entry.isIntersecting) {
                     callback();
                 }

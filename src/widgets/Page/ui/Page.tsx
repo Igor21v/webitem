@@ -81,6 +81,18 @@ export const Page = (props: PageProps) => {
         wrapperRef.current.scrollTop = 0;
     }, [pathname]);
 
+    /* useInitialEffect(() => {
+        const observer = new MutationObserver((mutationRecords) => {
+            console.log('mutation PAGE'); // console.log(изменения)
+        });
+        observer.observe(wrapperRef.current, {
+            childList: true, // наблюдать за непосредственными детьми
+            subtree: false, // и более глубокими потомками
+            characterDataOldValue: true, // передавать старое значение в колбэк
+        });
+    });
+    console.log('RENDER PAGE'); */
+
     return (
         <main
             ref={wrapperRef}
