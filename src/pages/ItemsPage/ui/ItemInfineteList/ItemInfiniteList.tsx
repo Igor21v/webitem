@@ -22,6 +22,14 @@ export const ItemInfiniteList = memo((props: ItemInfineteListProps) => {
     const view = useSelector(getItemsPageView);
     const error = useSelector(getItemsPageError);
 
+    /* const dispatch = useAppDispatch();
+    const [searchParams] = useSearchParams();
+    console.log('SEARCH RENDER');
+    const loading = useSelector(getItemsPageIsLoading);
+    if (!loading) {
+        dispatch(fetchNextItemsPage(searchParams));
+    } */
+
     if (error) {
         return <Text text={t('an error occurred while downloading items ')} />;
     }

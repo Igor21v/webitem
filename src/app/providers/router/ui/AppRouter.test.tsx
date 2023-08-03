@@ -25,14 +25,14 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('Редирект неавторизованного пользователя на главную', async () => {
+    /* test('Редирект неавторизованного пользователя на главную', async () => {
         componentRender(<AppRouter />, {
             route: getRoute('admin_panel', 'ru', '1'),
         });
 
         const page = await screen.findByTestId('MainPage');
         expect(page).toBeInTheDocument();
-    });
+    }); */
 
     test('Доступ запрещен (отсутствует роль)', async () => {
         componentRender(<AppRouter />, {

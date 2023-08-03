@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -8,17 +8,11 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Page } from '@/widgets/Page';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { initItemsPage } from '../../model/services/initItemsPage/initItemsPage';
-import {
-    itemsPageActions,
-    itemsPageReducer,
-} from '../../model/slice/ItemsPageSlice';
+import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
 import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
 import { ItemTypes } from '@/entities/Item';
-import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
-import { fetchItemsList } from '../../model/services/fetchItemsList/fetchItemsList';
 import { AppHead } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
@@ -39,13 +33,9 @@ const ItemsPage = (props: ItemsPageProps) => {
     const { type } = useParams<{ type: ItemTypes }>();
     const { t: tType } = useTranslation('itemType');
     const { t } = useTranslation('items');
-    useInitialEffect(() => {
+    useEffect(() => {
         dispatch(initItemsPage({ searchParams, type }));
-    });
-    useNonInitialEffect(() => {
-        dispatch(itemsPageActions.setPage(1));
-        dispatch(itemsPageActions.setType(type || 'all'));
-        dispatch(fetchItemsList({ replace: true, searchParams }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [type]);
     useYandexMetrikaHit(type);
     const onLoadNextPart = useCallback(() => {

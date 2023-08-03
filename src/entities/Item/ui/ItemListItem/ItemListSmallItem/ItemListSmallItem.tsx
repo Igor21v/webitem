@@ -9,8 +9,8 @@ import cls from './ItemListSmallItem.module.scss';
 import { useHover } from '@/shared/lib/hooks/useHover/useHover';
 import { HStack } from '@/shared/ui/Stack';
 import { ItemListSpecItemProps } from '../ItemListItem/ItemListItem';
-import { ItemCoverImg } from '../../ItemCoverImg/ItemCoverImg';
 import { ItemLike } from '../../ItemLike/ItemLike';
+import { ItemCoverImg } from '../../ItemCoverImg/ItemCoverImg';
 
 export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
@@ -35,6 +35,7 @@ export const ItemListSmallItem = memo((props: ItemListSpecItemProps) => {
                         className={cls.img}
                         animateOn={isHover}
                     />
+
                     <Text text={item.createdAt} className={cls.date} />
                 </div>
                 <HStack justify="between" align="center">

@@ -1,0 +1,19 @@
+.MainLayoutMobile {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 50px min-content;
+    grid-template-areas:
+        "navbar"
+        "content";
+    min-width: 0;
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.content {
+    grid-area: content;
+    min-width: 0;
+    overflow-x: hidden;
+}

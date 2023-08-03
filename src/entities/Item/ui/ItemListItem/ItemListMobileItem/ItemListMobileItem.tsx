@@ -17,7 +17,7 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
     const { className, item, target, languages, views } = props;
     const { t, i18n } = useTranslation();
     const [animateOn, setAnimateOn] = useState(false);
-    const { isScreenMd } = useResizeWindow();
+    const { isScreenMd, isScreenSm } = useResizeWindow();
     const animateHandler = useCallback(() => {
         setAnimateOn((value) => !value);
     }, []);
@@ -101,8 +101,8 @@ export const ItemListMobileItem = memo((props: ItemListSpecItemProps) => {
                         item={item}
                         className={cls.img}
                         animateOn={animateOn}
-                        width={290}
-                        height={165}
+                        width={isScreenSm ? 444 : 290}
+                        height={isScreenSm ? 250 : 165}
                     />
                 </div>
                 <Button

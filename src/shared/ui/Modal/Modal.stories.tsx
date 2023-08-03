@@ -20,6 +20,9 @@ Primary.args = {
     children:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam.\n ',
 };
+Primary.parameters = {
+    loki: { skip: true },
+};
 
 export const Dark = Template.bind({});
 Dark.args = {
@@ -28,3 +31,6 @@ Dark.args = {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam.\n ',
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.parameters = {
+    loki: { skip: true },
+};

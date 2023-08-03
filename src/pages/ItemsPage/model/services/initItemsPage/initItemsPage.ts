@@ -9,6 +9,7 @@ import {
 import { itemsPageActions } from '../../slice/ItemsPageSlice';
 import { fetchItemsList } from '../fetchItemsList/fetchItemsList';
 import { ITEMS_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
+import { ITEM_SMALL_HEIGHT, ITEM_SMALL_WIDTH } from '@/shared/const/dimensions';
 
 interface InitItemsPageProps {
     searchParams: URLSearchParams;
@@ -43,19 +44,10 @@ export const initItemsPage = createAsyncThunk<
         if (view) {
             dispatch(itemsPageActions.setView(view));
         }
-        /* const { height: pageHeight, width: pageWidth } = getPageDimensions(
-            getState(),
-        ); */
-        let limit;
-        if (view === ItemView.BIG) {
-            /* limit = Math.ceil(pageHeight / ITEM_BIG_HEIGHT); */
-            limit = 20;
-        } else {
-            /* const pageSquare = pageHeight * pageWidth;
-            const itemSquare = ITEM_SMALL_HEIGHT * ITEM_SMALL_WIDTH;
-            limit = Math.ceil(pageSquare / itemSquare); */
-            limit = 30;
-        }
+
+        const itemsInRow = Math.ceil(window.screen.width / ITEM_SMALL_WIDTH);
+        const itemsInCol = Math.ceil(window.screen.height / ITEM_SMALL_HEIGHT);
+        const limit = itemsInRow * itemsInCol;
         dispatch(itemsPageActions.setLimit(limit));
         dispatch(itemsPageActions.initState());
     }

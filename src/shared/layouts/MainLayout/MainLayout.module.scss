@@ -1,0 +1,22 @@
+.MainLayout {
+    min-height: 100vh;
+    display: grid;
+    grid-template: 50px auto / min-content minmax(0, 1fr);
+    grid-template-areas:
+        "navbar navbar"
+        "sidebar content";
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: content;
+    background: var(--bg-color);
+    border-radius: 12px 0 0;
+}
