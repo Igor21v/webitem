@@ -23,7 +23,6 @@ export const AppObserver = (props: AppObserverProps) => {
                 threshold: 1,
             };
             observer = new IntersectionObserver(([entry]) => {
-                console.log(`inersecting ${entry.isIntersecting}`);
                 if (entry.isIntersecting) {
                     callback();
                 }

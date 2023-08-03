@@ -1,27 +1,20 @@
 .Page {
-    padding: 20px 30px;
+    padding: 20px 20px 20px 45px;
     height: calc(100vh - var(--navbar-height));
-    max-width: 1320px;
-    margin: 0 auto;
-
-    /* position: relative; */
-
-    /* overflow: auto; */
+    overflow-y: auto;
 }
 
 @media (max-width: breakpoints(XL)) {
     .Page {
         border-radius: 0;
         padding: 20px;
+
+        /* overflow-y: visible; */
     }
 }
 
 .trigger {
-    height: 200px;
-    width: 200px;
-    background: darkblue;
-    margin: 10px;
-    position: relative;
-    bottom: 600px;
     pointer-events: none;
+    position: relative;
+    bottom: 340px;
 }
