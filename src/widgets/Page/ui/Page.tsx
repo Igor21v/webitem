@@ -69,9 +69,7 @@ export const Page = (props: PageProps) => {
         const scroll = isScreenXl
             ? wrapperRef.current.scrollTop
             : window.scrollY;
-        console.log(`скролл ${scroll}`);
         setScrollPosition.current = () => {
-            console.log(`установка ${scroll}`);
             dispatch(
                 uIActions.setScrollPosition({
                     position: scroll,
@@ -83,12 +81,9 @@ export const Page = (props: PageProps) => {
     useEffect(() => {
         const scrollElement = isScreenXl ? wrapperRef.current : window;
         scrollElement.addEventListener('scroll', onScroll);
-        console.log(`Автоскр ${scrollPosition}`);
         scrollElement.scrollTo(0, scrollPosition);
         return () => {
-            console.log(`Ret 1`);
             setScrollPosition.current();
-            console.log(`Ret 2`);
             scrollElement.removeEventListener('scroll', onScroll);
         };
     }, [pathname]);
