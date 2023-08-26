@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
@@ -14,10 +15,16 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
+    const { i18n } = useTranslation();
     const onToggle = () => {
         setCollapsed((prev) => !prev);
     };
-
+    const itemListSorted = itemList;
+    if (i18n.language === 'ru') {
+        itemList.sort((a, b) => a.positionRu - b.positionRu);
+    } else {
+        itemList.sort((a, b) => (a.type > b.type ? 1 : -1));
+    }
     return (
         <section
             data-testid="sidebar"
@@ -38,7 +45,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             </Button>
             <VStack justify="between" className={cls.content}>
                 <VStack role="navigation" gap="8" className={cls.items}>
-                    {itemList.map((item) => (
+                    {itemListSorted.map((item) => (
                         <SidibarItem
                             item={item}
                             collapsed={collapsed}

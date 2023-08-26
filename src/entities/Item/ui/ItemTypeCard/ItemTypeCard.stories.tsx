@@ -23,5 +23,6 @@ Normal.args = {
         img: TEST_IMAGE,
         ImgOffsetX: 0,
         ImgOffsetY: 0,
+        positionRu: 1,
     },
 };
