@@ -9,6 +9,8 @@ export interface BuildPaths {
     buildLocales: string;
     favicon: string;
     buildFavicon: string;
+    robotsTxt: string;
+    buildRobotsTxt: string;
 }
 
 export interface BuilEnv {

@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 1
+Disallow: /admin_panel/
+Disallow: /profile/
+Disallow: /item_create/
+Disallow: /item_edit/
+Disallow: /forbidden/
+Sitemap: https://webitem.ru/static/sitemap.txt
