@@ -3,12 +3,15 @@ const path = require('path');
 
 const host = 'https://webitem.ru';
 const links = [];
+
+// Пути для базовых маршрутов
 basePaths = ['', '/items/all', '/favourites', '/about'];
 basePaths.forEach((path) => {
-    links.push(host + path); // путь на Русском
-    links.push(`${host}/en${path}`); // путь на Английском
+    links.push(host + path);
+    links.push(`${host}/en${path}`);
 });
 
+// Пути для компонентов
 const db = JSON.parse(
     fs.readFileSync(
         path.resolve(__dirname, '..', 'json-server', 'db.json'),
