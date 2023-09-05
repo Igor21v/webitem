@@ -46,6 +46,7 @@ export default function AboutPage() {
             <AppHead
                 title={t('About title')}
                 description={t('About description')}
+                keywords={t('About keywords')}
             />
         </>
     );
