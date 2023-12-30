@@ -5,4 +5,4 @@ Disallow: /profile/
 Disallow: /item_create/
 Disallow: /item_edit/
 Disallow: /forbidden/
-Sitemap: https://webitem.ru/static/sitemap.txt
+Sitemap: https://webitem.ru/static/sitemap.xml

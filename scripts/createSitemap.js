@@ -24,7 +24,17 @@ ids.forEach((id) => {
     links.push(`${host}/en/item/${id}`);
 });
 
-fs.writeFileSync(
-    path.resolve(__dirname, '..', 'sitemap.txt'),
-    links.join('\r\n'),
+const blocks = links.map(
+    (link) => `<url>
+<loc>${link}</loc>
+</url>
+`,
 );
+
+const content = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  ${blocks.join('')}
+</urlset>
+`;
+
+fs.writeFileSync(path.resolve(__dirname, '..', 'sitemap.xml'), content);
