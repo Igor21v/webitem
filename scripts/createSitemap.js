@@ -1,11 +1,42 @@
 const fs = require('fs');
 const path = require('path');
+const itemList = [
+    'accordion',
+    'alert',
+    'animation',
+    'background',
+    'button',
+    'card',
+    'checkbox',
+    'error',
+    'icon',
+    'input_form',
+    'text_link',
+    'label',
+    'loader',
+    'mini_app',
+    'modal',
+    'menu_tabs_dropdown',
+    'notification',
+    'pagination',
+    'picker',
+    'progress',
+    'rating',
+    'radio_button',
+    'skeleton',
+    'slider',
+    'toggle',
+    'tooltip',
+];
 
 const host = 'https://webitem.ru';
 const links = [];
 
 // Пути для базовых маршрутов
 basePaths = ['', '/items/all', '/favourites', '/about'];
+itemList.forEach((item) => {
+    basePaths.push(`/items/${item.type}`);
+});
 basePaths.forEach((path) => {
     links.push(host + path);
     links.push(`${host}/en${path}`);
