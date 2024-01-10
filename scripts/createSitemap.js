@@ -36,7 +36,7 @@ const links = [];
 // Пути для базовых маршрутов
 basePaths = ['', '/items/all', '/favourites', '/about'];
 itemList.forEach((item) => {
-    basePaths.push(`/items/${item.type}`);
+    basePaths.push(`/items/${item}`);
 });
 basePaths.forEach((path) => {
     links.push(host + path);
