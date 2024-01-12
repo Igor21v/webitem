@@ -11,7 +11,6 @@ const itemList = [
     'icon',
     'input_form',
     'text_link',
-    'label',
     'loader',
     'mini_app',
     'modal',
