@@ -2,8 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const itemList = [
-    'accordion',
-    'alert',
     'animation',
     'background',
     'button',
