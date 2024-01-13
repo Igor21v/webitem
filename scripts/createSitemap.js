@@ -10,21 +10,18 @@ const itemList = [
     'error',
     'icon',
     'input_form',
-    'text_link',
     'loader',
     'mini_app',
     'modal',
     'menu_tabs_dropdown',
     'notification',
-    'pagination',
-    'picker',
-    'progress',
     'rating',
     'radio_button',
     'skeleton',
     'slider',
     'toggle',
     'tooltip',
+    'text_link',
 ];
 
 const host = 'https://webitem.ru';
