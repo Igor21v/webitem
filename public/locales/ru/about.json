@@ -7,5 +7,6 @@
     "Github": "Гитхабе",
     "Developer": "Разработка и поддержка: Игорь Бондаренко.",
     "About title": "Webitem - информация о разработке и поддержке приложения",
-    "About description": "Сайт на React Бондаренко Игорь Владимирович Пример приложения React"
+    "About description": "О сайте webitem",
+    "About keywords": "Сайт на React Бондаренко Игорь Владимирович Пример приложения React"
 }

@@ -11,6 +11,7 @@ import { TestProps } from '@/shared/types/tests';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { useNonInitialEffect } from '@/shared/lib/hooks/useNonInitialEffect/useNonInitialEffect';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -26,9 +27,8 @@ export const Page = (props: PageProps) => {
     const { pathname } = useLocation();
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-    const scrollPosition = useSelector((state: StateSchema) =>
-        getUIScrollByPath(state, pathname),
-    );
+
+    // Измерение размера страницы
     const setPageDimensions = () => {
         if (
             wrapperRef.current?.clientWidth &&
@@ -53,15 +53,23 @@ export const Page = (props: PageProps) => {
         };
     }, []);
 
+    // Бесконечная прокрутка
     useInfiniteScroll({
         triggerRef,
         callback: onScrollEnd,
     });
 
-    let setScrollPosition = () => {};
+    // Запоминание скролла
+    const { isScreenXl } = useResizeWindow();
+    const scrollPosition = useSelector((state: StateSchema) =>
+        getUIScrollByPath(state, pathname),
+    );
+    const setScrollPosition = useRef(() => {});
     const onScroll = () => {
-        const scroll = wrapperRef.current.scrollTop;
-        setScrollPosition = () => {
+        const scroll = isScreenXl
+            ? wrapperRef.current.scrollTop
+            : window.scrollY;
+        setScrollPosition.current = () => {
             dispatch(
                 uIActions.setScrollPosition({
                     position: scroll,
@@ -71,20 +79,23 @@ export const Page = (props: PageProps) => {
         };
     };
     useEffect(() => {
-        wrapperRef.current.scrollTop = scrollPosition;
+        const scrollElement = isScreenXl ? wrapperRef.current : window;
+        scrollElement.addEventListener('scroll', onScroll);
+        scrollElement.scrollTo(0, scrollPosition);
         return () => {
-            setScrollPosition();
+            setScrollPosition.current();
+            scrollElement.removeEventListener('scroll', onScroll);
         };
     }, [pathname]);
     useNonInitialEffect(() => {
-        wrapperRef.current.scrollTop = 0;
+        const scrollElement = isScreenXl ? wrapperRef.current : window;
+        scrollElement.scrollTo(0, 0);
     }, [pathname]);
 
     return (
         <main
             ref={wrapperRef}
             className={classNames(cls.Page, {}, [className])}
-            onScroll={onScroll}
             id={PAGE_ID}
             {...otherProps}
         >

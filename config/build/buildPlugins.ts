@@ -52,6 +52,7 @@ export function buildPlugins({
             patterns: [
                 { from: paths.locales, to: paths.buildLocales },
                 { from: paths.favicon, to: paths.buildFavicon },
+                { from: paths.robotsTxt, to: paths.buildRobotsTxt },
             ],
         }));
     }

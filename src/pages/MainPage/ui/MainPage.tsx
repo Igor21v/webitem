@@ -20,6 +20,7 @@ export default function MainPage() {
             <AppHead
                 title={t('Main page title')}
                 description={t('Main page description')}
+                keywords={t('Main page keywords')}
             />
         </>
     );

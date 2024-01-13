@@ -33,6 +33,8 @@ export default (env: BuilEnv) => {
         buildLocales: path.resolve(__dirname, 'build', 'locales'),
         favicon: path.resolve(__dirname, 'public', 'favicon.svg'),
         buildFavicon: path.resolve(__dirname, 'build', 'favicon.svg'),
+        robotsTxt: path.resolve(__dirname, 'public', 'robots.txt'),
+        buildRobotsTxt: path.resolve(__dirname, 'build', 'robots.txt'),
     };
 
     const mode = env?.mode || 'development';
