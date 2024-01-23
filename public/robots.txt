@@ -5,5 +5,7 @@ Disallow: /profile/
 Disallow: /item_create/
 Disallow: /item_edit/
 Disallow: /forbidden/
+Disallow: /en-US/
+Disallow: /video/
 Sitemap: https://webitem.ru/static/sitemap.xml
 Clean-param: sort&order&search
