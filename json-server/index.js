@@ -61,7 +61,6 @@ server.get('/items', (req, res) => {
 server.get('/items/:id', (req, res, next) => {
     try {
         const { id } = req.params;
-        console.log('trap2');
         res.header('Cache-Control', 'no-cache');
         res.header('Access-Control-Allow-Origin', '*');
         const itemDB = db.get('items').find({ id: `${id}` });
