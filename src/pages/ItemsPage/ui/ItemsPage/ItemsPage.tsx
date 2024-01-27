@@ -58,7 +58,7 @@ const ItemsPage = (props: ItemsPageProps) => {
             {type && (
                 <AppHead
                     title={tType(type) + t('Items title')}
-                    description={t('Items description')}
+                    description={t(type) + t('Items description')}
                     keywords={t('Items keywords')}
                 />
             )}
