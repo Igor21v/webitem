@@ -39,6 +39,10 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
         return t('Loading');
     }, [item, t]);
 
+    const description = item?.description
+        ? `${item.description} ${t('description')}`
+        : t('description');
+
     return (
         <>
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -58,10 +62,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     </VStack>
                 </Page>
             </DynamicModuleLoader>
-            <AppHead
-                title={title}
-                description={item?.description + t('description')}
-            />
+            <AppHead title={title} description={description} />
         </>
     );
 };
