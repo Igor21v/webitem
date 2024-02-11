@@ -7,5 +7,6 @@ Disallow: /item_edit/
 Disallow: /forbidden/
 Disallow: /en-US/
 Disallow: /video/
+Disallow: /?*
 Sitemap: https://webitem.ru/static/sitemap.xml
 Clean-param: sort&order&search
