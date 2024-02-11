@@ -7,10 +7,11 @@ interface AppHeadProps {
     title?: string;
     description?: string;
     keywords?: string;
+    noFollow?: boolean;
 }
 
 export const AppHead = memo((props: AppHeadProps) => {
-    const { title, description, keywords } = props;
+    const { title, description, keywords, noFollow } = props;
     let { pathname } = useLocation();
     const { i18n } = useTranslation();
     if (i18n.language === 'en') {
@@ -24,7 +25,8 @@ export const AppHead = memo((props: AppHeadProps) => {
             <link rel="alternate" hrefLang="ru" href={fullPathRu} />
             <link rel="alternate" hrefLang="en" href={fullPathEn} />
             <meta name="description" content={description} />
-            <meta name="keywords" content={keywords} />
+            {keywords && <meta name="keywords" content={keywords} />}
+            {noFollow && <meta name="robots" content="nofollow" />}
         </Portal>
     );
 });

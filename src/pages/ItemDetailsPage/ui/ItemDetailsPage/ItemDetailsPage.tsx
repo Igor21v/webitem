@@ -62,7 +62,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     </VStack>
                 </Page>
             </DynamicModuleLoader>
-            <AppHead title={title} description={description} />
+            <AppHead title={title} description={description} noFollow />
         </>
     );
 };
