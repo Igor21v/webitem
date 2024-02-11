@@ -4,5 +4,5 @@ cd /home/igor21v/webitem
 git pull
 pwd
 pm2 stop 0
-pm2 start ~/webitem/json-server/index.js
+pm2 start 0
 echo "Деплой бэка завершен"  
