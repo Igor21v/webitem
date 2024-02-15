@@ -8,12 +8,19 @@ import { AppHead } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 import { AppIcon } from '@/shared/ui/AppIcon';
 import cls from './AboutPage.module.scss';
+import { breadcrmbElementType } from '@/shared/lib/components/AppHead/BreadcrumbList';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
     const link = 'https://github.com/Igor21v/webitem';
     const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit();
+    const breadcrumb: breadcrmbElementType[] = [
+        {
+            name: 'Huemoe',
+            path: 'sdf',
+        },
+    ];
     return (
         <>
             <Page data-testid="AboutPage" className={cls.AboutPage}>
@@ -27,9 +34,6 @@ export default function AboutPage() {
                     <li>
                         <Text text={t('Frontend')} />
                     </li>
-                    {/* <li>
-                    <Text text={t('Backend')} />
-                </li> */}
                     <li>
                         <span>
                             <TextSpan text={t('Link')} />
@@ -47,6 +51,7 @@ export default function AboutPage() {
                 title={t('About title')}
                 description={t('About description')}
                 keywords={t('About keywords')}
+                breadcrumbList={breadcrumb}
             />
         </>
     );
