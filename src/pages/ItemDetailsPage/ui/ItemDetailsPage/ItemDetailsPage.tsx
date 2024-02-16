@@ -17,7 +17,7 @@ import { VStack } from '@/shared/ui/Stack';
 import { ItemDetailsPageHeader } from '../ItemDetailsPageHeader/ItemDetailsPageHeader';
 import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
-import { AppHead } from '@/shared/lib/components/AppHead';
+import { AppHead, breadcrmbElementType } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 
 interface ItemDetailsPageProps {
@@ -28,12 +28,27 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     const { className } = props;
     const { id } = useParams<{ id: string }>();
     const { t } = useTranslation('itemDetails');
+    const { t: tType } = useTranslation('itemType');
     const reducers: ReducersList = {
         itemDetailsPage: itemDetailsPageReducer,
         itemDetails: itemDetailsReducer,
     };
     const item = useSelector(getItemDetailsData);
     useYandexMetrikaHit(id);
+    let breadcrumb: breadcrmbElementType[] | undefined;
+    if (item?.type) {
+        breadcrumb = [
+            {
+                name: tType(item.type),
+                path: `/items/${item.type}`,
+            },
+            {
+                name: item.title,
+                path: `/item/${item.id}`,
+            },
+        ];
+    }
+
     const title = useMemo(() => {
         if (item) return `${item?.title} ${t('in gallery')}`;
         return t('Loading');
@@ -62,7 +77,12 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                     </VStack>
                 </Page>
             </DynamicModuleLoader>
-            <AppHead title={title} description={description} noFollow />
+            <AppHead
+                title={title}
+                description={description}
+                noFollow
+                breadcrumbList={breadcrumb}
+            />
         </>
     );
 };

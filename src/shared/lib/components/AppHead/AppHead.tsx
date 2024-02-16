@@ -16,8 +16,10 @@ export const AppHead = memo((props: AppHeadProps) => {
     const { title, description, keywords, noFollow, breadcrumbList } = props;
     let { pathname } = useLocation();
     const { i18n } = useTranslation();
+    let host = 'https://webitem.ru';
     if (i18n.language === 'en') {
         pathname = pathname.slice(3);
+        host += '/en';
     }
     const fullPathRu = `https://webitem.ru${pathname}`;
     const fullPathEn = `https://webitem.ru/en${pathname}`;
@@ -29,7 +31,9 @@ export const AppHead = memo((props: AppHeadProps) => {
             <meta name="description" content={description} />
             {keywords && <meta name="keywords" content={keywords} />}
             {noFollow && <meta name="robots" content="nofollow" />}
-            {breadcrumbList && <BreadcrumbList elements={breadcrumbList} />}
+            {breadcrumbList && (
+                <BreadcrumbList elements={breadcrumbList} host={host} />
+            )}
         </Portal>
     );
 });

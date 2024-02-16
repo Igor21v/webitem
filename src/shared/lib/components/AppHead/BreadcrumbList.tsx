@@ -7,17 +7,18 @@ export interface breadcrmbElementType {
 
 interface BreadcrumbListProps {
     elements: breadcrmbElementType[];
+    host: string;
 }
 
 export const BreadcrumbList = memo((props: BreadcrumbListProps) => {
-    const { elements } = props;
+    const { elements, host } = props;
     const itemListElement = [
         {
             '@type': 'ListItem',
             position: 1,
             item: {
-                '@id': 'https://mmetalloprom.ru/',
-                name: 'Металлопром',
+                '@id': host,
+                name: 'Webitem.ru',
             },
         },
     ];
@@ -26,7 +27,7 @@ export const BreadcrumbList = memo((props: BreadcrumbListProps) => {
             '@type': 'ListItem',
             position: index + 2,
             item: {
-                '@id': el.path,
+                '@id': host + el.path,
                 name: el.name,
             },
         });
