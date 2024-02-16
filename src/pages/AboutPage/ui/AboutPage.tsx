@@ -4,16 +4,23 @@ import { Text } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/AppLink';
 import { TextSpan } from '@/shared/ui/TextSpan';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
-import { AppHead } from '@/shared/lib/components/AppHead';
+import { AppHead, breadcrmbElementType } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 import { AppIcon } from '@/shared/ui/AppIcon';
 import cls from './AboutPage.module.scss';
 
 export default function AboutPage() {
     const { t } = useTranslation('about');
+    const { t: tBasic } = useTranslation();
     const link = 'https://github.com/Igor21v/webitem';
     const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit();
+    const breadcrumb: breadcrmbElementType[] = [
+        {
+            name: tBasic('About'),
+            path: '/about',
+        },
+    ];
     return (
         <>
             <Page data-testid="AboutPage" className={cls.AboutPage}>
@@ -27,9 +34,6 @@ export default function AboutPage() {
                     <li>
                         <Text text={t('Frontend')} />
                     </li>
-                    {/* <li>
-                    <Text text={t('Backend')} />
-                </li> */}
                     <li>
                         <span>
                             <TextSpan text={t('Link')} />
@@ -47,6 +51,7 @@ export default function AboutPage() {
                 title={t('About title')}
                 description={t('About description')}
                 keywords={t('About keywords')}
+                breadcrumbList={breadcrumb}
             />
         </>
     );

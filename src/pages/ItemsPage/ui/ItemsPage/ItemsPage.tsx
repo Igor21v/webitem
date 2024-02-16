@@ -13,7 +13,7 @@ import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
 import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
 import { ItemTypes } from '@/entities/Item';
-import { AppHead } from '@/shared/lib/components/AppHead';
+import { AppHead, breadcrmbElementType } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
 import { fetchNextItemsPage } from '../../model/services/fetchNextItemsPage/fetchNextItemsPage';
@@ -41,6 +41,15 @@ const ItemsPage = (props: ItemsPageProps) => {
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextItemsPage(searchParams));
     }, [dispatch, searchParams]);
+    let breadcrumb: breadcrmbElementType[] | undefined;
+    if (type) {
+        breadcrumb = [
+            {
+                name: tType(type),
+                path: `/items/${type}`,
+            },
+        ];
+    }
 
     return (
         <>
@@ -60,6 +69,7 @@ const ItemsPage = (props: ItemsPageProps) => {
                     title={tType(type) + t('Items title')}
                     description={t(type) + t('Items description')}
                     keywords={t('Items keywords')}
+                    breadcrumbList={breadcrumb}
                 />
             )}
         </>
