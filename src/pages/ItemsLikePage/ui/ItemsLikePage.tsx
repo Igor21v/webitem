@@ -9,6 +9,12 @@ import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYand
 export default function ItemsLikePage() {
     const { t } = useTranslation('itemsLike');
     useYandexMetrikaHit();
+    const breadcrumb = [
+        {
+            name: t('Favorite elements'),
+            path: `/favourites`,
+        },
+    ];
     return (
         <>
             <Page data-testid="MainPage">
@@ -24,6 +30,7 @@ export default function ItemsLikePage() {
             <AppHead
                 title={t('Favorite title')}
                 description={t('Favorite description')}
+                breadcrumbList={breadcrumb}
             />
         </>
     );

@@ -18,7 +18,7 @@ export const BreadcrumbList = memo((props: BreadcrumbListProps) => {
             position: 1,
             item: {
                 '@id': host,
-                name: 'Webitem.ru',
+                name: 'webitem.ru',
             },
         },
     ];
