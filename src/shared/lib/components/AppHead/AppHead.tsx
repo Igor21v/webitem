@@ -20,8 +20,8 @@ export const AppHead = memo((props: AppHeadProps) => {
         description,
         keywords,
         noFollow,
-        breadcrumbList,
-        openGraph,
+        /*         breadcrumbList,
+        openGraph, */
     } = props;
     let { pathname } = useLocation();
     const { i18n } = useTranslation();
