@@ -1,13 +1,13 @@
 import { memo } from 'react';
 
-export interface OpenGraphProps {
+export interface OpenGraphType {
     title: string;
     description: string;
     image: string;
     url: string;
 }
 
-export const OpenGraph = memo((props: OpenGraphProps) => {
+export const OpenGraph = memo((props: OpenGraphType) => {
     const { title, description, image, url } = props;
 
     return (
