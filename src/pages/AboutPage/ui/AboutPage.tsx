@@ -61,8 +61,8 @@ export default function AboutPage() {
                 title={t('About title')}
                 description={t('About description')}
                 keywords={t('About keywords')}
-                /* breadcrumbList={breadcrumb}
-                openGraph={openGraph} */
+                breadcrumbList={breadcrumb}
+                openGraph={openGraph}
             />
         </>
     );
