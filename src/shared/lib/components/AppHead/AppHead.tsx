@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { Portal } from '../../../ui/Portal';
 import { breadcrmbElementType, BreadcrumbList } from './BreadcrumbList';
+import { OpenGraph, OpenGraphType } from './OpenGraph';
 
 interface AppHeadProps {
     title?: string;
@@ -10,10 +11,18 @@ interface AppHeadProps {
     keywords?: string;
     noFollow?: boolean;
     breadcrumbList?: breadcrmbElementType[];
+    openGraph?: OpenGraphType;
 }
 
 export const AppHead = memo((props: AppHeadProps) => {
-    const { title, description, keywords, noFollow, breadcrumbList } = props;
+    const {
+        title,
+        description,
+        keywords,
+        noFollow,
+        breadcrumbList,
+        openGraph,
+    } = props;
     let { pathname } = useLocation();
     const { i18n } = useTranslation();
     let host = 'https://webitem.ru';
@@ -34,6 +43,7 @@ export const AppHead = memo((props: AppHeadProps) => {
             {breadcrumbList && (
                 <BreadcrumbList elements={breadcrumbList} host={host} />
             )}
+            {openGraph && <OpenGraph {...openGraph} />}
         </Portal>
     );
 });

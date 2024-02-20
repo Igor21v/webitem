@@ -4,7 +4,11 @@ import { Text } from '@/shared/ui/Text';
 import { AppLink } from '@/shared/ui/AppLink';
 import { TextSpan } from '@/shared/ui/TextSpan';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
-import { AppHead, breadcrmbElementType } from '@/shared/lib/components/AppHead';
+import {
+    AppHead,
+    breadcrmbElementType,
+    OpenGraphType,
+} from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 import { AppIcon } from '@/shared/ui/AppIcon';
 import cls from './AboutPage.module.scss';
@@ -21,6 +25,12 @@ export default function AboutPage() {
             path: '/about',
         },
     ];
+    const openGraph: OpenGraphType = {
+        title: t('About title'),
+        description: t('Introduction'),
+        image: 'https://webitem.ru/favicon.svg',
+        url: 'https://webitem.ru/about',
+    };
     return (
         <>
             <Page data-testid="AboutPage" className={cls.AboutPage}>
@@ -52,6 +62,7 @@ export default function AboutPage() {
                 description={t('About description')}
                 keywords={t('About keywords')}
                 breadcrumbList={breadcrumb}
+                openGraph={openGraph}
             />
         </>
     );
