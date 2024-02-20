@@ -43,7 +43,7 @@ export const AppHead = memo((props: AppHeadProps) => {
             {breadcrumbList && (
                 <BreadcrumbList elements={breadcrumbList} host={host} />
             )}
-            {openGraph && <OpenGraph {...openGraph} />}
+            {/* {openGraph && <OpenGraph {...openGraph} />} */}
         </Portal>
     );
 });
