@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useMemo } from 'react';
 import { Select, SelectOption } from '@/shared/ui/Select';
-import { itemList, ItemTypes } from '../../../model/consts/ItemList';
+import { itemList } from '../../../model/consts/ItemList';
+import { ItemTypes } from '../../../model/consts/ItemTypes';
 
 interface ItemTypeSelectorProps {
     className?: string;

@@ -1,4 +1,4 @@
-import { ItemTypes } from '../../entities/Item/model/consts/ItemList';
+import { ItemTypes } from '../../entities/Item/model/consts/ItemTypes';
 
 export type langType = 'ru' | 'en' | ':lang';
 

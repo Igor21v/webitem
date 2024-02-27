@@ -1,6 +1,6 @@
 import { CodesContentType } from '@/shared/types/codes';
 import { ItemBlockType } from '../consts/ItemConst';
-import { ItemTypes } from '../consts/ItemList';
+import { ItemTypes } from '../consts/ItemTypes';
 
 export interface ItemBlockBase {
     id: string;
