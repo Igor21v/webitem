@@ -12,7 +12,7 @@ import { initItemsPage } from '../../model/services/initItemsPage/initItemsPage'
 import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
 import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
-import { ItemTypes } from '@/entities/Item';
+import { itemTypeImg, ItemTypes } from '@/entities/Item';
 import {
     AppHead,
     breadcrmbElementType,
@@ -57,8 +57,8 @@ const ItemsPage = (props: ItemsPageProps) => {
         openGraph = {
             title: tType(type) + t('Items title'),
             description: t(type) + t('Items description'),
-            image: 'https://webitem.ru/favicon.svg',
-            url: 'https://webitem.ru/about',
+            image: `${itemTypeImg[type] || 'https://webitem.ru/favicon.svg'}`,
+            url: `https://webitem.ru/items/${type}`,
         };
     }
 
