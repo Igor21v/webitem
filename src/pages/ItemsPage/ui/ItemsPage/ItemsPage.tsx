@@ -57,9 +57,7 @@ const ItemsPage = (props: ItemsPageProps) => {
         openGraph = {
             title: tType(type) + t('Items title'),
             description: t(type) + t('Items description'),
-            image: `https://webitem.ru${
-                itemTypeImg[type] || 'https://webitem.ru/favicon.svg'
-            }`,
+            image: `https://webitem.ru${itemTypeImg[type] || '/favicon.svg'}`,
             url: `https://webitem.ru/items/${type}`,
         };
     }
