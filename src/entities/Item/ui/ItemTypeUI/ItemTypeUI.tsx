@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { ItemTypes } from '../../model/consts/ItemList';
+import { ItemTypes } from '../../model/consts/ItemTypes';
 import { Text, TextProps } from '@/shared/ui/Text';
 
 interface ItemTypeProps extends TextProps {

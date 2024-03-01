@@ -4,13 +4,19 @@ import { Page } from '@/widgets/Page';
 import { ItemTypeList } from '@/entities/Item';
 import { useResizeWindow } from '@/shared/lib/hooks/useResizeWindow/useResizeWindow';
 import MobileSettings from './MobileSettings';
-import { AppHead } from '@/shared/lib/components/AppHead';
+import { AppHead, OpenGraphType } from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 
 export default function MainPage() {
     const { t } = useTranslation('main');
     const { isScreenXl } = useResizeWindow();
     useYandexMetrikaHit();
+    const openGraph: OpenGraphType = {
+        title: t('Main page title'),
+        description: t('Main page description'),
+        image: 'https://webitem.ru/favicon.svg',
+        url: 'https://webitem.ru/',
+    };
     return (
         <>
             <Page data-testid="MainPage">
@@ -21,6 +27,7 @@ export default function MainPage() {
                 title={t('Main page title')}
                 description={t('Main page description')}
                 keywords={t('Main page keywords')}
+                openGraph={openGraph}
             />
         </>
     );

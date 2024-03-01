@@ -12,8 +12,12 @@ import { initItemsPage } from '../../model/services/initItemsPage/initItemsPage'
 import { itemsPageReducer } from '../../model/slice/ItemsPageSlice';
 import cls from './ItemsPage.module.scss';
 import { ItemInfiniteList } from '../ItemInfineteList/ItemInfiniteList';
-import { ItemTypes } from '@/entities/Item';
-import { AppHead, breadcrmbElementType } from '@/shared/lib/components/AppHead';
+import { itemTypeImg, ItemTypes } from '@/entities/Item';
+import {
+    AppHead,
+    breadcrmbElementType,
+    OpenGraphType,
+} from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 import { ItemsPageFilters } from '../ItemsPageFilters/ItemsPageFilters';
 import { fetchNextItemsPage } from '../../model/services/fetchNextItemsPage/fetchNextItemsPage';
@@ -42,6 +46,7 @@ const ItemsPage = (props: ItemsPageProps) => {
         dispatch(fetchNextItemsPage(searchParams));
     }, [dispatch, searchParams]);
     let breadcrumb: breadcrmbElementType[] | undefined;
+    let openGraph: OpenGraphType | undefined;
     if (type) {
         breadcrumb = [
             {
@@ -49,6 +54,12 @@ const ItemsPage = (props: ItemsPageProps) => {
                 path: `/items/${type}`,
             },
         ];
+        openGraph = {
+            title: tType(type) + t('Items title'),
+            description: t(type) + t('Items description'),
+            image: `${itemTypeImg[type] || 'https://webitem.ru/favicon.svg'}`,
+            url: `https://webitem.ru/items/${type}`,
+        };
     }
 
     return (
@@ -70,6 +81,7 @@ const ItemsPage = (props: ItemsPageProps) => {
                     description={t(type) + t('Items description')}
                     keywords={t('Items keywords')}
                     breadcrumbList={breadcrumb}
+                    openGraph={openGraph}
                 />
             )}
         </>

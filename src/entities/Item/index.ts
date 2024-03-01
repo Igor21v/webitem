@@ -6,13 +6,15 @@ export {
     ItemBlockType,
 } from './model/consts/ItemConst';
 
-export type { ItemTypes } from './model/consts/ItemList';
+export type { ItemTypes } from './model/consts/ItemTypes';
 
 export type { ItemType } from './model/consts/ItemList';
 
 export type { Item } from './model/types/item';
 
 export type { ItemDetailsSchema } from './model/types/itemDetailsSchema';
+
+export { itemTypeImg } from './model/consts/itemTypeImg';
 
 export { ItemList } from './ui/ItemList/ItemList';
 

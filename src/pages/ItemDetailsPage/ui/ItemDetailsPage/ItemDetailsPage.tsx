@@ -17,7 +17,11 @@ import { VStack } from '@/shared/ui/Stack';
 import { ItemDetailsPageHeader } from '../ItemDetailsPageHeader/ItemDetailsPageHeader';
 import cls from './ItemDetailsPage.module.scss';
 import { itemDetailsPageReducer } from '../../model/slices';
-import { AppHead, breadcrmbElementType } from '@/shared/lib/components/AppHead';
+import {
+    AppHead,
+    breadcrmbElementType,
+    OpenGraphType,
+} from '@/shared/lib/components/AppHead';
 import { useYandexMetrikaHit } from '@/shared/lib/hooks/useYandexMetrika/useYandexMetrika';
 
 interface ItemDetailsPageProps {
@@ -35,7 +39,18 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
     };
     const item = useSelector(getItemDetailsData);
     useYandexMetrikaHit(id);
+
+    const title = useMemo(() => {
+        if (item) return `${item?.title} ${t('in gallery')}`;
+        return t('Loading');
+    }, [item, t]);
+
+    const description = item?.description
+        ? `${item.description} ${t('description')}`
+        : t('description');
+
     let breadcrumb: breadcrmbElementType[] | undefined;
+    let openGraph: OpenGraphType | undefined;
     if (item?.type) {
         breadcrumb = [
             {
@@ -47,17 +62,13 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                 path: `/item/${item.id}`,
             },
         ];
+        openGraph = {
+            title,
+            description,
+            image: `${__STATIC_URL__}/items/${item?.title}.png`,
+            url: `https://webitem.ru/item/${item.id}`,
+        };
     }
-
-    const title = useMemo(() => {
-        if (item) return `${item?.title} ${t('in gallery')}`;
-        return t('Loading');
-    }, [item, t]);
-
-    const description = item?.description
-        ? `${item.description} ${t('description')}`
-        : t('description');
-
     return (
         <>
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -82,6 +93,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
                 description={description}
                 noFollow
                 breadcrumbList={breadcrumb}
+                openGraph={openGraph}
             />
         </>
     );

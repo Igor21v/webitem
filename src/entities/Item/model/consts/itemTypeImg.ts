@@ -1,89 +1,35 @@
-import { ItemTypes } from './ItemList';
+import { ItemTypes } from './ItemTypes';
 
-export interface itemTypeImgProps {
-    type: ItemTypes;
-    src: string;
-}
+type itemTypeImgProps = Record<ItemTypes, string>;
 
-export const itemTypeImg: itemTypeImgProps[] = [
-    {
-        type: 'animation',
-        src: '',
-    },
-    {
-        type: 'background',
-        src: '',
-    },
-    {
-        type: 'button',
-        src: '',
-    },
-    {
-        type: 'card',
-        src: '',
-    },
-    {
-        type: 'checkbox',
-        src: '',
-    },
-    {
-        type: 'error',
-        src: '',
-    },
-    {
-        type: 'icon',
-        src: '',
-    },
-    {
-        type: 'input_form',
-        src: '',
-    },
-    {
-        type: 'text_link',
-        src: '',
-    },
-    {
-        type: 'loader',
-        src: '',
-    },
-    {
-        type: 'mini_app',
-        src: '',
-    },
-    {
-        type: 'modal',
-        src: '',
-    },
-    {
-        type: 'menu_tabs_dropdown',
-        src: '',
-    },
-    {
-        type: 'notification',
-        src: '',
-    },
-    {
-        type: 'rating',
-        src: '',
-    },
-    {
-        type: 'radio_button',
-        src: '',
-    },
-    {
-        type: 'skeleton',
-        src: '',
-    },
-    {
-        type: 'slider',
-        src: '',
-    },
-    {
-        type: 'toggle',
-        src: '',
-    },
-    {
-        type: 'tooltip',
-        src: '',
-    },
-];
+export const itemTypeImg: itemTypeImgProps = {
+    animation: `${__STATIC_URL__}/items/CSS Blossoming Flowers at Magical Night.png`,
+    button: `${__STATIC_URL__}/items/Button hover effect 2.png`,
+    label: '',
+    progress: '',
+    checkbox: `${__STATIC_URL__}/items/Style checkbox.png`,
+    alert: '',
+    slider: `${__STATIC_URL__}/items/Range Slider Progress in Chrome with pure CSS.png`,
+    tooltip: `${__STATIC_URL__}/items/Tooltip.png`,
+    accordion: '',
+    background: `${__STATIC_URL__}/items/Home Snowflakes Background Animation Pure CSS.png`,
+    card: `${__STATIC_URL__}/items/Kippo Hover Card Effect.png`,
+    error: `${__STATIC_URL__}/items/404 error page.png`,
+    icon: `${__STATIC_URL__}/items/3D glass weather icons.png`,
+    input_form: `${__STATIC_URL__}/items/Slide Sign In Sign Up form.png`,
+    text_link: `${__STATIC_URL__}/items/Animated Social Links.png`,
+    loader: `${__STATIC_URL__}/items/The progress.png`,
+    mini_app: `${__STATIC_URL__}/items/Hatchet Toss.png`,
+    modal: `${__STATIC_URL__}/items/Modal.png`,
+    menu_tabs_dropdown: `${__STATIC_URL__}/items/Animated Tab Bar.png`,
+    notification: `${__STATIC_URL__}/items/Lotsa Notifications.png`,
+    pagination: '',
+    picker: '',
+    rating: `${__STATIC_URL__}/items/Rating & Counter.png`,
+    radio_button: `${__STATIC_URL__}/items/Radio Hopping.png`,
+    skeleton: `${__STATIC_URL__}/items/Smooth Skeletons.png`,
+    toggle: `${__STATIC_URL__}/items/Light and Dark Toggle With Morphing Icon.png`,
+    ':type': '',
+    'not selected': '',
+    all: '',
+};
