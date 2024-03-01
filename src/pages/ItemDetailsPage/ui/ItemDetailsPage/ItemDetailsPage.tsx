@@ -65,7 +65,7 @@ const ItemDetailsPage = (props: ItemDetailsPageProps) => {
         openGraph = {
             title,
             description,
-            image: `${__STATIC_URL__}/items/${item?.title}.png`,
+            image: `https://webitem.ru/static/items/${item?.title}.png`,
             url: `https://webitem.ru/item/${item.id}`,
         };
     }
